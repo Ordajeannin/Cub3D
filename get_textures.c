@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/11 12:44:44 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/20 17:11:49 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	free_textures(t_textures *textures)
 
 int	*atorgb(char *str)
 {
-	int	*rgb;
-	int	i;
+	int		*rgb;
+	int		i;
 	char	*tmp;
 
 	i = 0;
@@ -42,7 +42,7 @@ int	*atorgb(char *str)
 		printf("malloc error\n");
 		exit (1);
 	}
-	while(i < 3)
+	while (i < 3)
 	{
 		tmp = ft_strdupto_n(str, ',');
 		rgb[i] = atoi(str);

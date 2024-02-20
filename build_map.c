@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/08 16:38:27 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/20 17:10:33 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,37 @@ int	is_player(char *str)
 
 	i = 0;
 	player = 0;
-	while(str && str[i])
+	while (str && str[i])
 	{
 		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E'
 			|| str[i] == 'W')
-			player ++;	
-		i ++;	
+			player ++;
+		i ++;
 	}
 	return (player);
 }
 
+/*
+	si un 1 est au début de ligne
+	(sans les whitespace), la map commence
+*/
 int	map_started(char *str)
-{//si un 1 est au début de ligne (sans les whitespace), la map commence
+{
 	int	i;
 
 	i = 0;
-	while(str[i] == ' ' || str[i] == '\t')// isspace, sans \n
+	while (str[i] == ' ' || str[i] == '\t') //isspace, sans \n
 		i ++;
 	if (str[i] == '1' || str[i] == '0')
 		return (1);
 	return (0);
 }
 
+/*
+	récupère la hauteur de la map
+*/
 int	get_map_y(t_textures *map_utils, char *map_path)
-{//récupère la hauteur de la map
+{
 	int		i;
 	char	*str;
 	int		fd;
@@ -52,7 +59,7 @@ int	get_map_y(t_textures *map_utils, char *map_path)
 	if (fd == -1)
 		quit_w_message("cannot open map");
 	str = go_to_map(fd, map_utils);
-	while(str)
+	while (str)
 	{
 		free(str);
 		str = get_next_line(fd);
@@ -63,18 +70,18 @@ int	get_map_y(t_textures *map_utils, char *map_path)
 	return (i);
 }
 
+/*
+	avance dans le fichier .cub jusqu'a trouver la map
+*/
 char	*go_to_map(int fd, t_textures *map_utils)
-{//avance dans le fichier .cub jusqu'a trouver la map
-	char *str;
+{
+	char	*str;
 
 	str = get_next_line(fd);
 	while (str)
 	{
 		if (map_started(str))
-		{
-			// printf("map started on :%s\n", str);
 			return (str);
-		}
 		if (map_utils)
 			get_textures(str, map_utils);
 		free(str);
@@ -95,7 +102,6 @@ void	build_map_line(char **map, int map_y, char *argv)
 	i = 1;
 	fd = open("map.cub", O_RDONLY);
 	map[0] = go_to_map(fd, NULL);
-	// printf("map[0] :%s\n", map[0]);
 	while (i <= map_y - 1)
 	{
 		map[i] = get_next_line(fd);
