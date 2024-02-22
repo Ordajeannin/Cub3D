@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/20 17:10:33 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:34:47 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	map_started(char *str)
 /*
 	récupère la hauteur de la map
 */
-int	get_map_y(t_textures *map_utils, char *map_path)
+int	get_map_y(t_textures *map_info, char *map_path)
 {
 	int		i;
 	char	*str;
@@ -58,7 +58,7 @@ int	get_map_y(t_textures *map_utils, char *map_path)
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
 		quit_w_message("cannot open map");
-	str = go_to_map(fd, map_utils);
+	str = go_to_map(fd, map_info);
 	while (str)
 	{
 		free(str);
@@ -67,6 +67,8 @@ int	get_map_y(t_textures *map_utils, char *map_path)
 	}
 	free(str);
 	close(fd);
+	if (!map_info->c || !map_info->f)
+		quit_w_message("f or c doesn't exist");
 	return (i);
 }
 
@@ -100,7 +102,9 @@ void	build_map_line(char **map, int map_y, char *argv)
 
 	player = 0;
 	i = 1;
-	fd = open("map.cub", O_RDONLY);
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		quit_w_message("cannot open map");
 	map[0] = go_to_map(fd, NULL);
 	while (i <= map_y - 1)
 	{

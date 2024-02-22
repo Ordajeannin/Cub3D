@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/20 20:20:17 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:41:26 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_textures	map_info;
-	t_map_p		p_info;
 
 	if (argc != 2 || !argv[1])
 		quit_w_message("you have to put one map as argument");

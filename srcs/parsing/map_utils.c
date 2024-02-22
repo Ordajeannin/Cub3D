@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/02/22 17:20:59 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:17:58 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_tab(char **map)
 	free(map);
 }
 
-int	valide_char(char **map, int y, int x)
+int	valid_char(char **map, int y, int x)
 {
 	static int	starter;
 
@@ -94,7 +94,7 @@ char	*ft_strdupto_n(char *str, char c)
 
 	i = 0;
 	len = 0;
-	if (!str[i])
+	if (!str || !str[i])
 		return (NULL);
 	while (str[i] && str[i] != c)
 	{

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:55 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:48:15 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,42 @@ typedef struct s_textures
 	int		p_direction;
 }	t_textures;
 
-typedef struct s_map_p
+typedef struct s_inter
 {
-	int	y;
-	int	x;
-	int	p_direction;
-}	t_map_p;
+	int				pos_x;
+	int				pos_y;
+	int				grid_x;
+	int				grid_y;
+	struct s_inter	*next;
+}	t_inter;
+
+typedef struct s_grid
+{
+	int		fov;
+	int		half_fov;
+	int		proj_plan_width;
+	int		proj_plan_height;
+	int		grid_width;
+	double	angle_incr;
+	t_inter *lines;
+	t_inter *cols;
+}	t_grid;
+
+typedef struct s_player
+{
+	int pos_x;
+	int	pos_y;
+	int	orientation;
+	int	x_max;
+	int	y_max;
+}	t_player;
+
+typedef struct s_game
+{
+	t_player	*player;
+	t_grid		*grid;
+	t_textures	*textures;
+}	t_game;
 
 ///////////////Map_things///////////////////
 

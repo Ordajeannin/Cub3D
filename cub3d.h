@@ -6,14 +6,14 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/20 20:25:56 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:39:10 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "get_next_line.h"
+// # include "get_next_line.h"
 # include <stdio.h>
 
 typedef struct s_textures

@@ -6,7 +6,7 @@
 #    By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 18:02:23 by pkorsako          #+#    #+#              #
-#    Updated: 2024/02/22 17:13:14 by pkorsako         ###   ########.fr        #
+#    Updated: 2024/02/22 17:57:20 by pkorsako         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT		= -Llibft -lft
 SRC_DIR		= srcs
 OBJ_DIR		= obj
 CC			= cc
-CFLAFS		= -Wall -Wextra -Werror -g
+CFLAGS		= -g -Wall -Wextra -Werror
 
 ############### S O U R C E S #############
 

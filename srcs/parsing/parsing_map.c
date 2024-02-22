@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 17:32:44 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:33:56 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ void	set_player(t_textures *map_info, int x, int y, char p)
 
 int	check_point_e_s(char **map, int x, int y, int map_y)
 {
+	(void)map_y;
 	if (map[y][x + 1] != '1' && !is_inside(map[y][x + 1])) //teste la droite
 	{
 		printf("%c on east\n", map[y][x + 1]);
 		return (0); //mauvaise map
 	}
-	if (x <= ft_strlen(map[y + 1])) //check le sud, que si ya
+	if (x <= (int)ft_strlen(map[y + 1])) //check le sud, que si ya
 	{
 		if (map[y + 1][x] != '1' && !is_inside(map[y + 1][x]))
 		{

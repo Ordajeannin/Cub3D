@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 17:18:48 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:26:13 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,17 @@ int	*atorgb(char *str)
 	i = 0;
 	rgb = malloc(sizeof(int) * 4);
 	if (!rgb)
-	{
-		printf("malloc error\n");
-		exit (1);
-	}
+		quit_w_message("malloc error");
 	while (i < 3)
 	{
 		tmp = ft_strdupto_n(str, ',');
-		rgb[i] = atoi(str);
+		rgb[i] = ft_atoi(tmp);
 		str = ft_strchr(str, ',') + 1;
 		free(tmp);
+		if (rgb[i] < 0 || rgb[i] > 255)
+			quit_w_message("wrong color code");
+		if (str == (char *)0x1 && i < 2)
+			quit_w_message("wrong floor or celing color");
 		i ++;
 	}
 	rgb[3] = 0;
