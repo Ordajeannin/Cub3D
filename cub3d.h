@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/20 20:25:56 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/22 20:15:57 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include "get_next_line.h"
 # include <stdio.h>
+
+#define FACE_MASK 0x3
+#define TEXTURE_MASK 0x3F
+#define DIST_MASK 0xFFFFFF
+#define EAST 0
+#define NORTH 1
+#define WEST 2
+#define SOUTH 3
 
 typedef struct s_textures
 {
@@ -30,15 +38,6 @@ typedef struct s_textures
 	int		p_direction;
 }	t_textures;
 
-typedef struct s_intersections
-{
-	int				pos_x;
-	int				pos_y;
-	int				grid_x;
-	int				grid_y;
-	t_intersections *next;
-}	t_intersections;
-
 typedef struct s_grid
 {
 	int		fov;
@@ -47,15 +46,16 @@ typedef struct s_grid
 	int		proj_plan_height;
 	int		grid_width;
 	double	angle_incr;
-	t_inter *lines;
-	t_inter *cols;
+	t_textures *textures;
 }	t_grid;
 
 typedef struct s_player
 {
 	int pos_x;
 	int	pos_y;
-	int	orientation = 0;
+	int	orientation;
+	int x_max;
+	int y_max;
 }	t_player;
 
 typedef struct s_game
