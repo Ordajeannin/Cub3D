@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 19:34:47 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:44:49 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ int	get_map_y(t_textures *map_info, char *map_path)
 	}
 	free(str);
 	close(fd);
-	if (!map_info->c || !map_info->f)
-		quit_w_message("f or c doesn't exist");
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 18:33:56 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:52:19 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,22 @@ int	is_map_closed(t_textures *map_info, char **map, int map_y)
 	return (1);
 }
 
+int	texture_good(t_textures *map_info)
+{
+	if (!map_info->so || !map_info->we || !map_info->ea || !map_info->no)
+	{
+		printf("missing wall\n");
+		return (0);	
+	}
+	if (!map_info->c || !map_info->f)
+	{
+		printf("missing f or c\n");
+		return (0);
+	}
+	return (1);
+}
+
+
 /*
 pour parser, on va regarder si les 0 N S E W sont entourée de 1, sinon ca degage	
 */
@@ -125,7 +141,7 @@ int	map_parser(char *argv, t_textures *map_info)
 	build_map_line(map_info->map, map_y, argv);
 	map_ok = is_map_closed(map_info, map_info->map, map_y);
 	printf("map ok ? :%d\n", map_ok);
-	if (map_ok)
+	if (map_ok && texture_good(map_info))
 		return (1);
 	return (0);
 }
