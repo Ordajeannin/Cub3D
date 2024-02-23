@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 17:48:15 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:05:15 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "libft.h"
+
+#define FACE_MASK 0x3
+#define OFFSET_MASK 0x3F 
+#define TEXTURE_MASK 0xF
+#define DIST_MASK 0xFFFFF
+#define EAST 0
+#define NORTH 1
+#define WEST 2
+#define SOUTH 3
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 200
+
 
 typedef struct s_textures
 {
@@ -33,30 +45,20 @@ typedef struct s_textures
 	int		p_direction;
 }	t_textures;
 
-typedef struct s_inter
-{
-	int				pos_x;
-	int				pos_y;
-	int				grid_x;
-	int				grid_y;
-	struct s_inter	*next;
-}	t_inter;
-
 typedef struct s_grid
 {
-	int		fov;
-	int		half_fov;
-	int		proj_plan_width;
-	int		proj_plan_height;
-	int		grid_width;
-	double	angle_incr;
-	t_inter *lines;
-	t_inter *cols;
+	int			fov;
+	int			half_fov;
+	int			proj_plan_width;
+	int			proj_plan_height;
+	int			grid_width;
+	double		angle_incr;
+	t_textures	*textures
 }	t_grid;
 
 typedef struct s_player
 {
-	int pos_x;
+	int	pos_x;
 	int	pos_y;
 	int	orientation;
 	int	x_max;
