@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/02/23 16:09:57 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/26 19:56:36 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	print_textures(t_textures *texture)
 	if (texture->c)
 		printf("C :%d,%d,%d\n", texture->c[0],  texture->c[1],  texture->c[2]);
 	printf("player is in [%d][%d] and is lookin at %d°\n", texture->p_x, texture->p_y, texture->p_direction);
+	printf("max_y is :%d and max_x is :%d\n", texture->y_max, texture->x_max);
 }
 
 void	print_tab(char **tab)

@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/23 18:59:22 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/26 19:44:31 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,18 @@ int	get_map_y(t_textures *map_info, char *map_path)
 	}
 	free(str);
 	close(fd);
+	map_info->y_max = i;
 	return (i);
 }
 
 /*
 	avance dans le fichier .cub jusqu'a trouver la map
+	si map_utils != NULL va également rechercher les textures
 */
 char	*go_to_map(int fd, t_textures *map_utils)
 {
 	char	*str;
+	// int i = 0;
 
 	str = get_next_line(fd);
 	while (str)
@@ -101,19 +104,21 @@ char	*go_to_map(int fd, t_textures *map_utils)
 		}
 		free(str);
 		str = get_next_line(fd);
+		// printf("i :%d\tgnl return string %ld char long\n", i ++, ft_strlen(str));
 	}
 	free(str);
 	printf("no map found in file\n");
 	return (NULL);
 }
 
-int	build_map_line(char **map, int map_y, char *argv)
+int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)
 {
 	int	i;
 	int	fd;
 	int	player;
 
 	player = 0;
+	map_info->x_max = 0;
 	i = 1;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
@@ -125,6 +130,8 @@ int	build_map_line(char **map, int map_y, char *argv)
 	while (i <= map_y - 1)
 	{
 		map[i] = get_next_line(fd);
+		if (map_info->x_max < (int)ft_strlen(map[i]))
+			map_info->x_max = (int)ft_strlen(map[i]);
 		player += is_player(map[i]);
 		i ++;
 	}

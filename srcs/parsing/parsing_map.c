@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/23 17:34:03 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/26 19:51:08 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int	map_parser(char *argv, t_textures *map_info)
 	int		map_y;
 	int		map_ok;
 
+	printf("argv is :%s\n", argv);
 	map_info->ea = NULL;
 	map_info->no = NULL;
 	map_info->we = NULL;
@@ -144,7 +145,7 @@ int	map_parser(char *argv, t_textures *map_info)
 		printf("malloc failed\n");
 		return (0);
 	}
-	if (!build_map_line(map_info->map, map_y, argv))
+	if (!build_map_line(map_info, map_info->map, map_y, argv))
 		return (0);
 	map_ok = is_map_closed(map_info, map_info->map, map_y);
 	if (map_ok && texture_good(map_info))

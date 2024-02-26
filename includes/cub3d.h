@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/26 14:47:12 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/26 19:43:34 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_textures
 	int		p_y;
 	int		p_x;
 	int		p_direction;
+	int		y_max;
+	int		x_max;
 }	t_textures;
 
 typedef struct s_grid
@@ -53,7 +55,7 @@ typedef struct s_grid
 	int			proj_plan_height;
 	int			grid_width;
 	double		angle_incr;
-	t_textures	*textures
+	t_textures	*textures;
 }	t_grid;
 
 typedef struct s_player
@@ -78,7 +80,7 @@ int		map_parser(char *argv, t_textures *map_info);
 int		map_started(char *str);
 int		get_map_y(t_textures *map_utils, char *map_path);
 char	*go_to_map(int fd, t_textures *map_utils);
-int		build_map_line(char **map, int map_y, char *argv);
+int		build_map_line(t_textures *map_info, char **map, int map_y, char *argv);
 int		get_textures(char *str, t_textures *map_info);
 void	free_tab(char **map);
 void	print_textures(t_textures *texture);
