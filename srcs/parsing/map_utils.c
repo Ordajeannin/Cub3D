@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/02/22 19:17:58 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:09:57 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	quit_w_message(char *str)
+void	quit_w_message(char *str, t_textures *map_info)
 {
+	if (map_info)
+		free_textures(map_info);
 	printf("%s\n", str);
 	exit(1);
 }

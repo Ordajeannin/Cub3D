@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+         #
+#    By: paulk <paulk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 16:27:15 by ajeannin          #+#    #+#              #
-#    Updated: 2023/12/22 16:57:45 by pkorsako         ###   ########.fr        #
+#    Updated: 2024/02/23 15:42:27 by paulk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ NAME 			= libft.a
 INCLUDES		= includes
 SRC_DIR			= src/
 OBJ_DIR			= obj/
-CC				= gcc
-CFLAGS 			= -Werror -Wextra -Wall -g3 -I
+CC			= gcc
+CFLAGS 			= -Werror -Wextra -Wall -I
 
 
 ########### SOURCES ###########
@@ -72,8 +72,7 @@ SRC_FILES 		= ft_atoi			\
 			ft_lstdelone			\
 			ft_lstclear			\
 			ft_lstiter			\
-			ft_lstmap			\
-			ft_malloc
+			ft_lstmap
 
 SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -85,7 +84,6 @@ all 			: $(NAME)
 
 $(NAME) 		: $(OBJ)
 				ar -crs $(NAME) $(OBJ)
-				ctags -R .
 
 $(OBJ_DIR)%.o 		: $(SRC_DIR)%.c | $(OBJF)
 				gcc $(CFLAGS) $(INCLUDES) -c $< -o $@

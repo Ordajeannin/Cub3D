@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 19:52:19 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:34:03 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,14 +133,20 @@ int	map_parser(char *argv, t_textures *map_info)
 	map_info->so = NULL;
 	map_info->f = NULL;
 	map_info->c = NULL;
+	map_info->map = NULL;
 	map_y = get_map_y(map_info, argv);
+	if (map_y == -1)
+		return (0);
 	printf("map_y is :%d\n", map_y);
 	map_info->map = malloc(map_y * (sizeof(char *) + 4));
 	if (!map_info->map)
-		quit_w_message("malloc failed");
-	build_map_line(map_info->map, map_y, argv);
+	{
+		printf("malloc failed\n");
+		return (0);
+	}
+	if (!build_map_line(map_info->map, map_y, argv))
+		return (0);
 	map_ok = is_map_closed(map_info, map_info->map, map_y);
-	printf("map ok ? :%d\n", map_ok);
 	if (map_ok && texture_good(map_info))
 		return (1);
 	return (0);

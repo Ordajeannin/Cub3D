@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 19:53:25 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/23 18:38:18 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_textures	map_info;
 
-	if (argc != 2 || !argv[1])
-		quit_w_message("you have to put one map as argument");
-	if (!map_parser(argv[1], &map_info))
+	if (argc < 5 || !argv[1])
+		(void)argc;
+		// quit_w_message("you have to put one map as only argument", NULL);
+	if (!map_parser("map.cub", &map_info))
 	{
+		printf("PARSING ERROR\n");
 		free_tab((&map_info)->map);
 		free_textures(&map_info);
-		exit (1);		
+		return (0);	
 	}
 	print_textures(&map_info);
 	free_tab((&map_info)->map);

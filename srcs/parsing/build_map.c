@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 19:44:49 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/23 18:59:22 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,16 @@ int	get_map_y(t_textures *map_info, char *map_path)
 	i = 0;
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-		quit_w_message("cannot open map");
+	{
+		printf("cannot open map\n");
+		return (-1);
+	}
 	str = go_to_map(fd, map_info);
+	if (!str)
+	{
+		close(fd);
+		return (-1);
+	}
 	while (str)
 	{
 		free(str);
@@ -83,16 +91,23 @@ char	*go_to_map(int fd, t_textures *map_utils)
 		if (map_started(str))
 			return (str);
 		if (map_utils)
-			get_textures(str, map_utils);
+		{
+			if (!get_textures(str, map_utils))
+			{
+				printf("je renvoi 0 sur cette sting :%s\n", str);
+				free(str);
+				return (NULL);	
+			}
+		}
 		free(str);
 		str = get_next_line(fd);
 	}
 	free(str);
 	printf("no map found in file\n");
-	exit(1);
+	return (NULL);
 }
 
-void	build_map_line(char **map, int map_y, char *argv)
+int	build_map_line(char **map, int map_y, char *argv)
 {
 	int	i;
 	int	fd;
@@ -102,7 +117,10 @@ void	build_map_line(char **map, int map_y, char *argv)
 	i = 1;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
-		quit_w_message("cannot open map");
+	{
+		printf("cannot open map\n");
+		return (0);
+	}
 	map[0] = go_to_map(fd, NULL);
 	while (i <= map_y - 1)
 	{
@@ -113,8 +131,9 @@ void	build_map_line(char **map, int map_y, char *argv)
 	map[i] = NULL;
 	if (player != 1)
 	{
-		printf("number of player invalid\n");
-		exit(0);
+		printf("invalid number player\n");
+		return (0);
 	}
 	close(fd);
+	return (1);
 }
