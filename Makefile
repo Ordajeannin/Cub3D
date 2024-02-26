@@ -6,7 +6,7 @@
 #    By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 18:02:23 by pkorsako          #+#    #+#              #
-#    Updated: 2024/02/22 17:57:20 by pkorsako         ###   ########.fr        #
+#    Updated: 2024/02/26 20:57:46 by ajeannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ LIBFT		= -Llibft -lft
 SRC_DIR		= srcs
 OBJ_DIR		= obj
 CC			= cc
+MLX			= -I mlx -L./mlx -lmlx -lXext -lX11 -lm
 CFLAGS		= -g -Wall -Wextra -Werror
 
 ############### S O U R C E S #############
@@ -32,7 +33,7 @@ all				: $(NAME)
 
 $(NAME)			: $(OBJS)
 	make -s -C libft/
-	$(CC) $(OBJS) $(CFLAGS) $(INCLUDES) $(LIBFT) -o $(NAME)
+	$(CC) $(OBJS) $(MLX) $(CFLAGS) $(INCLUDES) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)/%.o	: $(SRC_DIR)/%.c
 	mkdir -p $(@D)

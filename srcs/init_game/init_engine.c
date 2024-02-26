@@ -6,37 +6,45 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/22 21:30:08 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:24:15 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_grid(t_grid *grid)
+t_grid	*init_grid(t_game *game)
 {
+	t_grid	*grid;
+
+	grid = malloc(sizeof(t_grid));
+	if (!grid)
+		return (NULL);
 	grid->fov = 60;
-	grid->half_fov = fov/2;
+	grid->half_fov = grid->fov >> 1;
 	grid->proj_plan_width = 320;
 	grid->proj_plan_height = 200;
+	grid->half_proj_plan_height = grid->proj_plan_height >> 1;
 	grid->grid_width = 64;
-	grid->angle_incr = fov/proj_plan_width;
-	t_inter *lines = NULL;
-	t_inter *col = NULL;
+	grid->projected_factor = grid->grid_width * 277;
+	grid->angle_incr = grid->fov / grid->proj_plan_width;
+	grid->textures = game->textures;
+	grid->map = game->textures->map;
+	return (grid);
 }
 
-void	init_player(t_player *player)
+t_player	*init_player(t_game *game)
 {
-	player->pos_x = 0;
-	player->pos_y = 0;
-	player->orientation = 0;
-}
+	t_player	*player;
 
-void	init_intersection(t_inter *list)
-{
-	list->grid_x = 0;
-	list->grid_y = 0;
-	list->pos_x = 0;
-	list->pos_y = 0;
-	list->next = NULL;
+	player = malloc(sizeof(t_player));
+	if (!player)
+		return (NULL);
+	player->pos_x = (game->textures->p_x * 64) + 32;
+	player->pos_y = (game->textures->p_y * 64) + 32;
+	player->orientation = (double)game->textures->p_direction;
+	player->x_max = 1000000;
+	player->y_max = 1000000;
+//	player.x_max = game->textures->x_max << 6;
+//	player.y_max = game->textures->y_max << 6;
+	return (player);
 }
-

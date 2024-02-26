@@ -6,11 +6,18 @@
 /*   By: ajeannin <ajeannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:43:49 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/23 18:51:35 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:36:19 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+double	double_modulo(double value, double modulo)
+{
+	while (value > modulo)
+		value -= modulo;
+	return (value);
+}
 
 /*
  * Permet de gerer l'appel, en boucle, de toutes les colonnes composant l'image
@@ -21,12 +28,17 @@
 */
 unsigned int *proj_plan_image(t_game *game, t_grid *grid)
 {
-	unsigned int	image[SCREEN_WIDTH];
+	unsigned int	*image;
 	int				i;
 	double			angle;
 
 	i = 0;
-	angle = (game->player->orientation + grid->half_fov) % 360;
+	image = malloc(sizeof(unsigned int) * SCREEN_WIDTH + 1);
+	if (!image)
+		return (0);
+//	angle = (game->player->orientation + grid->half_fov) % 360;
+	angle = double_modulo((game->player->orientation + grid->half_fov), 360);
+//	printf("2.1\n");
 	while (i < SCREEN_WIDTH)
 	{
 		image[i] = proj_plan_col(game, angle);
@@ -34,7 +46,9 @@ unsigned int *proj_plan_image(t_game *game, t_grid *grid)
 		if (angle < 0)
 			angle += 360;
 		i++;
+//		printf("2.x\n");
 	}
+//	printf("HEYYYYYYYYYY\n");
 	image[i] = '\0';
 	return (image);
 }

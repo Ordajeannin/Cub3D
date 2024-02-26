@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/23 17:40:10 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/26 20:52:01 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 double dtor(double degrees)
 {
-	return (radian * 0.0174533);
+	return (degrees * 0.0174533);
 }
 
 /*
@@ -43,13 +43,13 @@ int ft_dist(int x1, int y1, int x2, int y2)
 */
 int	get_value(unsigned int value, const char *flag)
 {
-	if (ft_strcmp(flag, "FACE") == 0)
+	if (ft_strncmp(flag, "FACE", 4) == 0)
 		return (value & FACE_MASK);
-	else if (ft_strcmp(flag, "OFFSET") == 0)
+	else if (ft_strncmp(flag, "OFFSET", 6) == 0)
 		return ((value >> 2) & OFFSET_MASK);
-	else if (ft_strcmp(flag, "TEXTURE") == 0)
+	else if (ft_strncmp(flag, "TEXTURE", 7) == 0)
 		return ((value >> 8) & TEXTURE_MASK);
-	else if (ft_strcmp(flag, "DISTANCE") == 0)
+	else if (ft_strncmp(flag, "DISTANCE", 8) == 0)
 		return ((value >> 12) & DIST_MASK);
 	else
 		return (-1);

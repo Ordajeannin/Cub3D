@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 19:39:50 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/23 18:23:18 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:36:28 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,21 @@ unsigned int intersection_found(double angle, int distance, char **map, int flag
 	int					face;
 
 	result = 0;
-	texture = map[pos_y % 64][pos_x % 64];
+//	printf("ok got it, value pos_y : %d | value pos_x : %d\n",pos_y, pos_x);
+//	texture = map[pos_y % 64][pos_x % 64];
+//	int y2 = pos_y % 64;
+//	int x2 = pos_x % 64;
+	texture = map[pos_y >> 6][pos_x >> 6];
+//	printf("values : y=%d x=%d\n", y2, x2);
+//	texture = map[y2][x2];
+//	printf("OMG YOU RE ALIVE\n");
 	if (!texture)
 		return (0);
 	if (angle < 180 && flag == 1)
 		face = SOUTH;
 	if (angle > 90 && angle < 270 && flag == 0)
 		face = EAST;
-	if (ange >= 180 && flag == 1)
+	if (angle >= 180 && flag == 1)
 		face = NORTH;
 	else
 		face = WEST;
@@ -67,14 +74,18 @@ unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)
 	int yi = 64;
 	unsigned int result;
 
-	angle = angle % 360;
+//	angle = angle % 360;
+//	printf("player:\npos_x = %d\npos_y = %d\n\n", player->pos_x, player->pos_y);
+	angle = double_modulo(angle, 360);
 	if (angle < 180)
-		pos_y = (player->pos_y >> 6) << 6 - 1;
+		pos_y = ((player->pos_y >> 6) << 6) - 1;
 	else
-		pos_y = (player->pos_y >> 6) << 6 + 64;
+		pos_y = ((player->pos_y >> 6) << 6) + 64;
 	pos_x = player->pos_x + (player->pos_y - pos_y) / tan(dtor(angle));
+//	printf("and here... everythin's okay?\n");
 	result = intersection_found(angle,
 			ft_dist(pos_x, pos_y, player->pos_x, player->pos_y), grid->map, 1, pos_x, pos_y);
+//	printf("does... THIS hurt?\n");
 	while (result == 0)
 	{
 		if (angle > 180 || angle < 90)
@@ -85,7 +96,7 @@ unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)
 			pos_y = pos_y - yi;
 		else
 			pos_y = pos_y + yi;
-		if (pos_x > 0 && pos_y > 0 && pos_x < x_max && pos_y < y_max)
+		if (pos_x > 0 && pos_y > 0 && pos_x < player->x_max && pos_y < player->y_max)
 			result = intersection_found(angle,
 				ft_dist(pos_x, pos_y, player->pos_x, player->pos_y), grid->map, 1, pos_x, pos_y);
 		else
@@ -111,11 +122,12 @@ unsigned int	col_intersections(t_player *player, t_grid *grid, double angle)
 	int yi = 64/tan(dtor(angle));
 	unsigned int result;
 
-	angle = angle % 360;
+//	angle = angle % 360;
+	angle = double_modulo(angle, 360);
 	if (angle < 90 || angle > 270)
-		pos_x = (player->pos_x >> 6) << 6 + 64;
+		pos_x = ((player->pos_x >> 6) << 6) + 64;
 	else
-		pos_x = (player->pos_x >> 6) << 6 -1;
+		pos_x = ((player->pos_x >> 6) << 6) -1;
 	pos_y = player->pos_y + (player->pos_x - pos_x) * tan(dtor(angle));
 	result = intersection_found(angle,
 			ft_dist(pos_x, pos_y, player->pos_x, player->pos_y), grid->map, 0, pos_x, pos_y);
@@ -154,13 +166,16 @@ unsigned int proj_plan_col(t_game *game, double angle)
 	unsigned int col;
 
 	result = 0;
+//	printf("2.1.1\n");
 	line = lines_intersections(game->player, game->grid, angle);
 	col = col_intersections(game->player, game->grid, angle);
+//	printf("2.1.2\n");
 //	if (((line >> 12) & DIST_MASK) < ((col >> 12) & DIST_MASK))
 	if (get_value(line, "DISTANCE") < get_value(col, "DISTANCE"))	
 		result = no_fish_eye(game, line, angle);
 	else
 		result = no_fish_eye(game, col, angle);
+//	printf("2.1.3\n");
 	return (result);
 }
 
