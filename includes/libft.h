@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:25:23 by ajeannin          #+#    #+#             */
-/*   Updated: 2023/12/22 16:52:50 by pkorsako         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:44:49 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -25,20 +24,11 @@
 #  define BUFFER_SIZE 1000
 # endif
 
-# define ALLOC			1
-# define FREE			0 
-
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }			t_list;
-
-typedef struct s_garbage
-{
-	void	*element;
-	void	*next;
-}	t_garbage;
 
 int		ft_isalnum(int a);
 int		ft_isalpha(int a);
@@ -105,6 +95,5 @@ char	*ft_update_stash(char *stash);
 char	*ft_is_newline(char *stash);
 char	*ft_strjoin2(char *stash, char *buffer);
 int		ft_strlen2(char *str);
-void	*ft_malloc(size_t byte_size, int action);
 
 #endif

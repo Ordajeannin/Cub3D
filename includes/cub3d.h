@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/22 17:48:15 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:11:57 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ int		map_parser(char *argv, t_textures *map_info);
 int		map_started(char *str);
 int		get_map_y(t_textures *map_utils, char *map_path);
 char	*go_to_map(int fd, t_textures *map_utils);
-void	build_map_line(char **map, int map_y, char *argv);
-void	get_textures(char *str, t_textures *map_info);
+int		build_map_line(char **map, int map_y, char *argv);
+int		get_textures(char *str, t_textures *map_info);
 void	free_tab(char **map);
 void	print_textures(t_textures *texture);
-void	quit_w_message(char *str);
+void	quit_w_message(char *str, t_textures *map_info);
 void	free_textures(t_textures *textures);
 int		is_inside(char c);
 

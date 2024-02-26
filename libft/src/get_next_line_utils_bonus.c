@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 12:46:13 by ajeannin          #+#    #+#             */
-/*   Updated: 2023/12/21 17:36:32 by ajeannin         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:43:33 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ char	*ft_strjoin2(char *stash, char *buffer)
 
 	if (!stash)
 	{
-		stash = ft_malloc(sizeof(char) * 1, ALLOC);
+		stash = malloc(sizeof(char) * 1);
 		stash[0] = '\0';
 	}
 	if (!stash || !buffer)
 		return (NULL);
-	str = ft_malloc(sizeof(char)
-			* ((ft_strlen2(stash) + ft_strlen2(buffer)) + 1), ALLOC);
+	str = malloc(sizeof(char) * ((ft_strlen2(stash) + ft_strlen2(buffer)) + 1));
 	if (!str)
 		return (NULL);
 	i = -1;
@@ -65,5 +64,6 @@ char	*ft_strjoin2(char *stash, char *buffer)
 	while (buffer[j] != '\0')
 		str[i++] = buffer[j++];
 	str[ft_strlen2(stash) + ft_strlen2(buffer)] = '\0';
+	free(stash);
 	return (str);
 }
