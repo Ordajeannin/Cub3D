@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/26 21:03:33 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:52:09 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_game		game;
 
 	if (argc != 2 || !argv[1])
-		quit_w_message("you have to put one map as argument");
+		quit_w_message("you have to put one map as argument", &map_info);
 	if (!map_parser(argv[1], &map_info) || init_game(&game, &map_info) == -1)
 	{
 		printf("PARSING ERROR\n");

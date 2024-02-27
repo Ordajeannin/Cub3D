@@ -6,11 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/02/26 19:43:34 by paulk            ###   ########.fr       */
-=======
-/*   Updated: 2024/02/26 20:45:41 by ajeannin         ###   ########.fr       */
->>>>>>> aj/engine2
+/*   Updated: 2024/02/27 20:58:17 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +61,7 @@ typedef struct s_grid
 	int			grid_width;
 	int			projected_factor;
 	double		angle_incr;
-<<<<<<< HEAD
-=======
 	char		**map;
->>>>>>> aj/engine2
 	t_textures	*textures;
 }	t_grid;
 
@@ -97,32 +90,17 @@ typedef struct s_game
 
 ///////////////Map_things///////////////////
 
-<<<<<<< HEAD
-int		map_parser(char *argv, t_textures *map_info);
-int		map_started(char *str);
-int		get_map_y(t_textures *map_utils, char *map_path);
-char	*go_to_map(int fd, t_textures *map_utils);
-int		build_map_line(t_textures *map_info, char **map, int map_y, char *argv);
-int		get_textures(char *str, t_textures *map_info);
-void	free_tab(char **map);
-void	print_textures(t_textures *texture);
-void	quit_w_message(char *str, t_textures *map_info);
-void	free_textures(t_textures *textures);
-int		is_inside(char c);
-=======
 int				map_parser(char *argv, t_textures *map_info);
 int				map_started(char *str);
 int				get_map_y(t_textures *map_utils, char *map_path);
 char			*go_to_map(int fd, t_textures *map_utils);
-void			build_map_line(char **map, int map_y, char *argv);
-void			get_textures(char *str, t_textures *map_info);
+int				build_map_line(t_textures *map_info, char **map, int map_y, char *argv);
+int			get_textures(char *str, t_textures *map_info);
 void			free_tab(char **map);
 void			print_textures(t_textures *texture);
-void			quit_w_message(char *str);
+void				quit_w_message(char *str, t_textures *map_info);
 void			free_textures(t_textures *textures);
 int				is_inside(char c);
->>>>>>> aj/engine2
-
 char			*ft_strdupto_n(char *str, char c);
 
 

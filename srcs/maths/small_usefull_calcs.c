@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/26 20:52:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:02:06 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ double dtor(double degrees)
 //  * Permet de determiner la distance absolue entre 2 points dans un repere
 //  * (ici, du joueur a une intersection)
 // */
-// int ft_dist(int x1, int y1, int x2, int y2)
-// {
-// 	return ((int)sqrt(((x2 -x1) ^ 2) + ((y2 - y1) ^ 2)));
-// }
+int ft_dist(int x1, int y1, int x2, int y2)
+{
+	return ((int)sqrt(((x2 -x1) ^ 2) + ((y2 - y1) ^ 2)));
+}
 
 /*
  * Permet d'isoler une valeur precise, pour une colonne donnee 

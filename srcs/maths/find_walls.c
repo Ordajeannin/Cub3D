@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 19:39:50 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/26 21:36:28 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:01:01 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
  * la texture (sur 4 bits)
  * la distance (a corriger, sur 20 bits)
 */
-// unsigned int intersection_found(double angle, int distance, char **map, int flag, int pos_x, int pos_y)
-// {
-// 	unsigned int		result;
-// 	char				texture;
-// 	int					face;
+unsigned int intersection_found(double angle, int distance, char **map, int flag, int pos_x, int pos_y)
+ {
+ 	unsigned int		result;
+ 	char				texture;
+ 	int					face;
 
 	result = 0;
 //	printf("ok got it, value pos_y : %d | value pos_x : %d\n",pos_y, pos_x);
@@ -66,13 +66,13 @@
 //  * :warning: true if grid_width = 64
 //  * :warning: tan return a double value, any issue with pos_x?
 // */
-// unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)
-// {
-// 	int pos_x = 0;
-// 	int pos_y = 0;
-// 	int xi = 64/tan(dtor(angle));
-// 	int yi = 64;
-// 	unsigned int result;
+unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)
+ {
+ 	int pos_x = 0;
+ 	int pos_y = 0;
+ 	int xi = 64/tan(dtor(angle));
+ 	int yi = 64;
+ 	unsigned int result;
 
 //	angle = angle % 360;
 //	printf("player:\npos_x = %d\npos_y = %d\n\n", player->pos_x, player->pos_y);
@@ -114,13 +114,13 @@
 //  * 
 //  * meme warnings que pour lines_intersections
 // */
-// unsigned int	col_intersections(t_player *player, t_grid *grid, double angle)
-// {
-// 	int	pos_x = 0;
-// 	int	pos_y = 0;
-// 	int	xi = 64;
-// 	int yi = 64/tan(dtor(angle));
-// 	unsigned int result;
+unsigned int	col_intersections(t_player *player, t_grid *grid, double angle)
+{
+ 	int	pos_x = 0;
+ 	int	pos_y = 0;
+ 	int	xi = 64;
+ 	int yi = 64/tan(dtor(angle));
+	unsigned int result;
 
 //	angle = angle % 360;
 	angle = double_modulo(angle, 360);
@@ -151,19 +151,19 @@
 	return (result);
 }
 
-// /*
-//  * Permet de fournir les valeurs necessaires a la generation d'une image,
-//  * pour une colonne de pixel.
+/*
+ * Permet de fournir les valeurs necessaires a la generation d'une image,
+  * pour une colonne de pixel.
 //  * Determine le bloc le plus proche du joueur sur la trajectoire du rayon,
 //  * corrige la distance pour eviter l'effet fish-eye, puis renvoie :
 //  * la face du bloc, la colonne de pixels de la texture (offset), 
 //  * la texture cocernee, et la distance au joueur
 // */
-// unsigned int proj_plan_col(t_game *game, double angle)
-// {
-// 	unsigned int result;
-// 	unsigned int line;
-// 	unsigned int col;
+unsigned int proj_plan_col(t_game *game, double angle)
+{
+ 	unsigned int result;
+ 	unsigned int line;
+ 	unsigned int col;
 
 	result = 0;
 //	printf("2.1.1\n");
