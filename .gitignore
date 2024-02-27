@@ -1,0 +1,5 @@
+*.o
+*.swp
+objs/
+obj/
+libft/obj/
