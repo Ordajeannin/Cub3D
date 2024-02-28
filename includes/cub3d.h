@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/27 20:58:17 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:45:47 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <math.h>
+# include <limits.h>
 # include "libft.h"
 # include "../mlx/mlx.h"
 
@@ -125,6 +126,7 @@ double			dtor(double degrees);
 double			double_modulo(double value, double modulo);
 int				ft_dist(int x1, int x2, int y1, int y2);
 int				get_value(unsigned int value, const char *flag);
+void			view_stocked_image(unsigned int *stock);
 
 
 ///////////// Mlx_things ///////////////////

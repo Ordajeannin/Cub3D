@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/26 19:51:08 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/28 16:54:26 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ int	check_point_e_s(char **map, int x, int y, int map_y)
 	(void)map_y;
 	if (map[y][x + 1] != '1' && !is_inside(map[y][x + 1])) //teste la droite
 	{
-		printf("%c on east\n", map[y][x + 1]);
+//		printf("%c on east\n", map[y][x + 1]);
 		return (0); //mauvaise map
 	}
 	if (x <= (int)ft_strlen(map[y + 1])) //check le sud, que si ya
 	{
 		if (map[y + 1][x] != '1' && !is_inside(map[y + 1][x]))
 		{
-			printf("%c on south\n", map[y + 1][x]);
+//			printf("%c on south\n", map[y + 1][x]);
 			return (0);
 		}
 	}
@@ -53,7 +53,7 @@ int	check_point_n_w(char **map, int x, int y, int map_y)
 	{
 		if (map[y - 1][x] != '1' && !is_inside(map[y - 1][x]))
 		{
-			printf("%c on north\n", map[y - 1][x]);
+//			printf("%c on north\n", map[y - 1][x]);
 			return (0); //rien au nord
 		}
 	}
@@ -63,7 +63,7 @@ int	check_point_n_w(char **map, int x, int y, int map_y)
 	{
 		if (map[y][x - 1] != '1' && !is_inside(map[y][x - 1]))//teste la gauche du point
 		{
-			printf("%c on the west\n", map[y][x - 1]);
+//			printf("%c on the west\n", map[y][x - 1]);
 			return (0); //mauvaise map
 		}
 	}
@@ -127,7 +127,7 @@ int	map_parser(char *argv, t_textures *map_info)
 	int		map_y;
 	int		map_ok;
 
-	printf("argv is :%s\n", argv);
+//	printf("argv is :%s\n", argv);
 	map_info->ea = NULL;
 	map_info->no = NULL;
 	map_info->we = NULL;
@@ -138,7 +138,7 @@ int	map_parser(char *argv, t_textures *map_info)
 	map_y = get_map_y(map_info, argv);
 	if (map_y == -1)
 		return (0);
-	printf("map_y is :%d\n", map_y);
+//	printf("map_y is :%d\n", map_y);
 	map_info->map = malloc(map_y * (sizeof(char *) + 4));
 	if (!map_info->map)
 	{

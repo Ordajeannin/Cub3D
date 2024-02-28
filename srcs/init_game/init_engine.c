@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/26 21:24:15 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:09:32 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ t_grid	*init_grid(t_game *game)
 	grid->half_proj_plan_height = grid->proj_plan_height >> 1;
 	grid->grid_width = 64;
 	grid->projected_factor = grid->grid_width * 277;
-	grid->angle_incr = grid->fov / grid->proj_plan_width;
+	printf("fov = %d | proj_plan_width = %d\n", grid->fov, grid->proj_plan_width);
+	grid->angle_incr = (float)grid->fov / grid->proj_plan_width;
+	printf("angle_incr = %f\n", grid->angle_incr);
 	grid->textures = game->textures;
 	grid->map = game->textures->map;
 	return (grid);

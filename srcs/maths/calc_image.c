@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:43:49 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/26 21:36:19 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:30:49 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,16 @@ unsigned int *proj_plan_image(t_game *game, t_grid *grid)
 //	angle = (game->player->orientation + grid->half_fov) % 360;
 	angle = double_modulo((game->player->orientation + grid->half_fov), 360);
 //	printf("2.1\n");
+	printf("SCREEN_WIDTH = %d\n", SCREEN_WIDTH);
 	while (i < SCREEN_WIDTH)
 	{
+		printf("i : %d  |  angle value : %f  |  ", i, angle);
 		image[i] = proj_plan_col(game, angle);
 		angle -= grid->angle_incr;
 		if (angle < 0)
 			angle += 360;
 		i++;
-//		printf("2.x\n");
+//		printf("WTF");
 	}
 //	printf("HEYYYYYYYYYY\n");
 	image[i] = '\0';

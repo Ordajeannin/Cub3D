@@ -6,7 +6,7 @@
 #    By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 18:02:23 by pkorsako          #+#    #+#              #
-#    Updated: 2024/02/26 20:57:46 by ajeannin         ###   ########.fr        #
+#    Updated: 2024/02/28 16:53:23 by ajeannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,12 @@ OBJS		:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 all				: $(NAME)
 
 $(NAME)			: $(OBJS)
-	make -s -C libft/
-	$(CC) $(OBJS) $(MLX) $(CFLAGS) $(INCLUDES) $(LIBFT) -o $(NAME)
+	@make -s -C libft/
+	@$(CC) $(OBJS) $(MLX) $(CFLAGS) $(INCLUDES) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)/%.o	: $(SRC_DIR)/%.c
-	mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean			:
 	$(MAKE) clean -s -C libft/

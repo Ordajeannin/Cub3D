@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/02/26 19:56:36 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/28 15:42:54 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	quit_w_message(char *str, t_textures *map_info)
 {
-	if (map_info)
+	printf("Doby don't want to be free.\n");
+	if (map_info && 1 == 2)
 		free_textures(map_info);
 	printf("%s\n", str);
 	exit(1);

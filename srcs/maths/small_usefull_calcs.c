@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/27 21:02:06 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:07:48 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ double dtor(double degrees)
 // */
 int ft_dist(int x1, int y1, int x2, int y2)
 {
-	return ((int)sqrt(((x2 -x1) ^ 2) + ((y2 - y1) ^ 2)));
+	int dx = x2 - x1;
+	int dy = y2 - y1;
+	int value = (int)sqrt((dx * dx) + (dy * dy));
+//	printf("distance from P(%d, %d) to I(%d, %d) = %d\n", x1, y1, x2, y2, value);
+	return (value);
 }
 
 /*
@@ -50,7 +54,10 @@ int	get_value(unsigned int value, const char *flag)
 	else if (ft_strncmp(flag, "TEXTURE", 7) == 0)
 		return ((value >> 8) & TEXTURE_MASK);
 	else if (ft_strncmp(flag, "DISTANCE", 8) == 0)
+	{
+//		printf("distance recuperee : %d\n", ((value >> 12) & DIST_MASK));
 		return ((value >> 12) & DIST_MASK);
+	}
 	else
 		return (-1);
 }

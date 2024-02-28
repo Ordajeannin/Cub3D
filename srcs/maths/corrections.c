@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:33:33 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/26 15:39:07 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/28 19:54:54 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ unsigned int	no_fish_eye(t_game *game, unsigned int value, double angle)
 	int		distorted;
 	int		correct;
 
+//	view_stocked_image(&value);
 	if (angle < game->player->orientation)
 		alpha = game->player->orientation - angle;
 	else
