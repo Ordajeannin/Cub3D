@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/28 18:31:08 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:11:04 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void view_stocked_image(unsigned int *stock)
         int texture = get_value(value, "TEXTURE");
         int distance = get_value(value, "DISTANCE");
 
-        printf("[%d][%d, %d, %d, %d]\n", index, face, offset, texture, distance);
+        printf("[%d][%d, %d, %d, %d]\n\n", index, face, offset, texture, distance);
         index++;
     }
 }
@@ -94,8 +94,9 @@ int	render(t_game *game)
 	i = 0;
 	printf("2\n");
 	image = proj_plan_image(game, game->grid);
-//	view_stocked_image(image);
+	//view_stocked_image(image);
 	printf("3\n");
+	exit(5);
 	while (image[i])
 	{
 		create_col(game, image[i], i);

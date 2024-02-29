@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/28 17:45:47 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:55:01 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 #define SOUTH 3
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 200
-
+#define FLOOR UINT_MAX
+#define OUTMAP UINT_MAX - 1
 
 typedef struct s_textures
 {
@@ -73,6 +74,7 @@ typedef struct s_player
 	double	orientation;
 	int		x_max;
 	int		y_max;
+	int		m_d;
 }	t_player;
 
 typedef struct s_game
@@ -127,7 +129,14 @@ double			double_modulo(double value, double modulo);
 int				ft_dist(int x1, int x2, int y1, int y2);
 int				get_value(unsigned int value, const char *flag);
 void			view_stocked_image(unsigned int *stock);
+void			max_dist(t_game *game);
 
+//////////// Maths_tests ///////////////////
+
+unsigned int	proj_plan_col_test(t_game *game, double angle);
+unsigned int	col_intersections_test(t_game *game, t_player *player, double angle);
+unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle);
+unsigned int	intersection_found_test(double angle, int dist, t_game *game, int flag, int pos_x, int pos_y);
 
 ///////////// Mlx_things ///////////////////
 

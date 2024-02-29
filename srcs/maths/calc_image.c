@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:43:49 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/28 21:30:49 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:59:41 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int *proj_plan_image(t_game *game, t_grid *grid)
 	double			angle;
 
 	i = 0;
-	image = malloc(sizeof(unsigned int) * SCREEN_WIDTH + 1);
+	image = malloc(sizeof(unsigned int) * (SCREEN_WIDTH + 1));
 	if (!image)
 		return (0);
 //	angle = (game->player->orientation + grid->half_fov) % 360;
@@ -42,8 +42,9 @@ unsigned int *proj_plan_image(t_game *game, t_grid *grid)
 	printf("SCREEN_WIDTH = %d\n", SCREEN_WIDTH);
 	while (i < SCREEN_WIDTH)
 	{
-		printf("i : %d  |  angle value : %f  |  ", i, angle);
-		image[i] = proj_plan_col(game, angle);
+		printf("___________________\ni : %d\nangle value : %f\n", i, angle);
+//		image[i] = proj_plan_col(game, angle);
+		image[i] = proj_plan_col_test(game, angle);
 		angle -= grid->angle_incr;
 		if (angle < 0)
 			angle += 360;
