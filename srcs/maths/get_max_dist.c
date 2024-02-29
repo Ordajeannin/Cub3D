@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:02:43 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/29 17:10:26 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:59:54 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	make_move_x(t_game *game, int move, int x, int y)
 		x = x + move;
 		max_dist ++;
 	}
-	game->player->m_d = (max_dist - 1) * 64;
+	game->player->m_d = max_dist * 64 + 1;
 }
 
 void	make_move_y(t_game *game, int move, int x, int y)

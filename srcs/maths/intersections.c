@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/29 19:26:32 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:03:11 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,35 @@ unsigned int	intersection_found_test(double angle, int dist, t_game *game, int f
 	return (result);
 }
 
+int		get_xi(double angle)
+{
+	int result = 0;
+
+	if (angle <= 90.0)
+		result = 64 * tan(dtor(90.0 - angle));
+	else if (angle > 90 && angle < 180)
+		result = 64 * tan(dtor(angle - 90.0));
+	else if (angle < 270)
+		result = 64 * tan(dtor(270 - angle));
+	else
+		result = 64 * tan(dtor(angle - 270));
+	return (result);
+}
+
+int	get_yi(double angle)
+{
+	int result = 0;
+	if (angle <= 90)
+		result = 64 * tan(dtor(angle));
+	else if (angle > 90 && angle < 180)
+		result = 64 * tan(dtor(180.0 - angle));
+	else if (angle < 270)
+		result = 64 * tan(dtor(angle - 180.0));
+	else
+		result = 64 * tan(dtor(360.0 - angle));
+	return (result);
+}
+
 unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle)
 {
 	int i_px = 0;
@@ -81,7 +110,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 		printf("\nline : out, angle\n");
 		return (OUTMAP);
 	}
-	xi = 64 / tan(dtor(90 - double_modulo(angle, 90)));
+//	xi = 64 * tan(dtor(90 - double_modulo(angle, 90)));
+	xi = get_xi(angle);
 	printf("line : value xi -> %d\n", xi);
 	if (angle < 180)
 		i_py = ((player->pos_y >> 6) << 6) - 1;
@@ -97,7 +127,7 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 	result = intersection_found_test(angle, dist, game, 1, i_px, i_py);
 	if (result == (OUTMAP))
 	{
-		printf("\nline : out\n");
+		printf("line : out\n");
 		return (OUTMAP);
 	}
 //	printf("line : result before loop : %d\n", get_value(result, "DISTANCE"));
@@ -135,8 +165,9 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 		return (OUTMAP);
 	}
 	xi = 64;
-	yi = 64 / tan(dtor(90 - double_modulo(angle, 90)));
-	printf("col : value de yi -> %d\n", yi);
+//	yi = 64 * tan(dtor(90 - double_modulo(angle, 90)));
+	yi = get_yi(angle);
+	printf("\ncol : value de yi -> %d\n", yi);
 	if (angle < 90 || angle > 270)
 		i_px = ((player->pos_x >> 6) << 6) + 64;
 	else
