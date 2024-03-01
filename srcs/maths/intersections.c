@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/29 20:03:11 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:57:01 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 		i_py = ((player->pos_y >> 6) << 6) - 1;
 	else
 		i_py = ((player->pos_y >> 6) << 6) + 64;
-	i_px = player->pos_x + ((player->pos_y - i_py) * tan(dtor(90 - double_modulo(angle, 90))));
+//	i_px = player->pos_x + ((player->pos_y - i_py) * tan(dtor(90 - double_modulo(angle, 90))));
+	i_px = get_ipx(player, i_py, angle);
 	dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 	printf("line i0 : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 //	if (dist < player->m_d)
@@ -172,7 +173,8 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 		i_px = ((player->pos_x >> 6) << 6) + 64;
 	else
 		i_px = ((player->pos_x >> 6) << 6) -1;
-	i_py = player->pos_y + ((player->pos_x - i_px) * tan(dtor(90 - double_modulo(angle, 90))));
+//	i_py = player->pos_y + ((player->pos_x - i_px) * tan(dtor(90 - double_modulo(angle, 90))));
+	i_py = get_ipy(player, i_px, angle);
 	dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 	printf("col i0 : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 //	printf("\nvalue dist found : %d", dist);

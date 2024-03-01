@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/29 18:55:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:55:52 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ int				ft_dist(int x1, int x2, int y1, int y2);
 int				get_value(unsigned int value, const char *flag);
 void			view_stocked_image(unsigned int *stock);
 void			max_dist(t_game *game);
+int				get_ipx(t_player *player, int i_py, double angle);
+int				get_ipy(t_player *player, int i_px, double angle);
 
 //////////// Maths_tests ///////////////////
 
