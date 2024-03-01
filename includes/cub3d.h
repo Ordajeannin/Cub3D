@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/01 15:55:52 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:53:00 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@
 #define SCREEN_HEIGHT 200
 #define FLOOR UINT_MAX
 #define OUTMAP UINT_MAX - 1
+#define DIST_WALK 5
+#define FRONT 0
+#define LEFT 90
+#define RIGHT -90
+#define BEHIND 180
+#define TURN_RATE 2.0
 
 typedef struct s_textures
 {
@@ -145,8 +151,12 @@ unsigned int	intersection_found_test(double angle, int dist, t_game *game, int f
 void			my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void			create_col(t_game *game, unsigned int value, int x);
 int				render(t_game *game);
+
+
+//////////// Hook_things ///////////////////
+//
 int				handle_close(t_game *game);
 int				handle_keypress(int keycode, t_game *game);
 int				handle_mouse(int keycode, int x, int y, t_game *game);
-
+void			player_move(t_player *player, double angle);
 #endif
