@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/26 19:51:08 by paulk            ###   ########.fr       */
+/*   Updated: 2024/03/05 15:31:04 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	set_player(t_textures *map_info, int x, int y, char p)
 		map_info->p_direction = 270;
 }
 
+
 int	check_point_e_s(char **map, int x, int y, int map_y)
 {
 	(void)map_y;
@@ -34,7 +35,7 @@ int	check_point_e_s(char **map, int x, int y, int map_y)
 		printf("%c on east\n", map[y][x + 1]);
 		return (0); //mauvaise map
 	}
-	if (x <= (int)ft_strlen(map[y + 1])) //check le sud, que si ya
+	if (map[y + 1] && x <= (int)ft_strlen(map[y + 1])) //check le sud, que si ya
 	{
 		if (map[y + 1][x] != '1' && !is_inside(map[y + 1][x]))
 		{
@@ -46,12 +47,25 @@ int	check_point_e_s(char **map, int x, int y, int map_y)
 		return (0); //rien au sud du 0;
 	return (1);
 }
+int	can_access(char **map,int limit_x,int y)
+{
+	int x;
+
+	x = 0;
+	while(map && map[y][x])
+	{
+		if (x == limit_x)
+			return (1);
+		x ++;
+	}
+	return (0);
+}
 
 int	check_point_n_w(char **map, int x, int y, int map_y)
 {
 	if (y > 0) //check le nord, si ya
 	{
-		if (map[y - 1][x] != '1' && !is_inside(map[y - 1][x]))
+		if (can_access(map, x, y - 1) && map[y - 1][x] != '1' && !is_inside(map[y - 1][x]))
 		{
 			printf("%c on north\n", map[y - 1][x]);
 			return (0); //rien au nord
@@ -94,12 +108,16 @@ int	is_map_closed(t_textures *map_info, char **map, int map_y)
 			if (is_inside(map[y][x]))
 			{
 				if (!check_point_n_w(map, x, y, map_y))
+				{
+					printf("map not closed\n");
 					return (0);
+				}
 			}
 			x ++;
 		}
 		y ++;
 	}
+	printf("map closed\n");
 	return (1);
 }
 
@@ -115,6 +133,7 @@ int	texture_good(t_textures *map_info)
 		printf("missing f or c\n");
 		return (0);
 	}
+	printf("textures are good\n");
 	return (1);
 }
 

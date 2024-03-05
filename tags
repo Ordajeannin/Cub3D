@@ -1,0 +1,226 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/mnt/nfs/homes/pkorsako/Documents/cub3dantoine/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+$(NAME)	Makefile	/^$(NAME)			: $(OBJS)$/;"	t
+$(NAME)	libft/Makefile	/^$(NAME) 		: $(OBJ)$/;"	t
+$(OBJF)	libft/Makefile	/^$(OBJF)			:$/;"	t
+$(OBJ_DIR)%.o	libft/Makefile	/^$(OBJ_DIR)%.o 		: $(SRC_DIR)%.c | $(OBJF)$/;"	t
+$(OBJ_DIR)/%.o	Makefile	/^$(OBJ_DIR)\/%.o	: $(SRC_DIR)\/%.c$/;"	t
+BUFFER_SIZE	includes/libft.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	libft/includes/libft.h	/^#  define BUFFER_SIZE /;"	d
+CC	Makefile	/^CC			= cc$/;"	m
+CC	libft/Makefile	/^CC			= gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS		= -g -Wall -Wextra -Werror$/;"	m
+CFLAGS	libft/Makefile	/^CFLAGS 			= -Werror -Wextra -Wall -I$/;"	m
+CUB3D_H	includes/cub3d.h	/^# define CUB3D_H$/;"	d
+DIST_MASK	includes/cub3d.h	/^#define DIST_MASK /;"	d
+EAST	includes/cub3d.h	/^#define EAST /;"	d
+FACE_MASK	includes/cub3d.h	/^#define FACE_MASK /;"	d
+INCLUDES	Makefile	/^INCLUDES	= -Iincludes -Ilibft$/;"	m
+INCLUDES	libft/Makefile	/^INCLUDES		= includes$/;"	m
+LIBFT	Makefile	/^LIBFT		= -Llibft -lft$/;"	m
+LIBFT_H	includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+MLX	Makefile	/^MLX			= -I mlx -L.\/mlx -lmlx -lXext -lX11 -lm$/;"	m
+NAME	Makefile	/^NAME		= cub3d$/;"	m
+NAME	libft/Makefile	/^NAME 			= libft.a $/;"	m
+NORTH	includes/cub3d.h	/^#define NORTH /;"	d
+OBJ	libft/Makefile	/^OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))$/;"	m
+OBJF	libft/Makefile	/^OBJF			= .cache_exists$/;"	m
+OBJS	Makefile	/^OBJS		:= $(patsubst $(SRC_DIR)\/%.c, $(OBJ_DIR)\/%.o, $(SRCS))$/;"	m
+OBJ_DIR	Makefile	/^OBJ_DIR		= obj$/;"	m
+OBJ_DIR	libft/Makefile	/^OBJ_DIR			= obj\/$/;"	m
+OFFSET_MASK	includes/cub3d.h	/^#define OFFSET_MASK /;"	d
+SCREEN_HEIGHT	includes/cub3d.h	/^#define SCREEN_HEIGHT /;"	d
+SCREEN_WIDTH	includes/cub3d.h	/^#define SCREEN_WIDTH /;"	d
+SOUTH	includes/cub3d.h	/^#define SOUTH /;"	d
+SRC	libft/Makefile	/^SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))$/;"	m
+SRCS	Makefile	/^SRCS		:= $(SRC_FILES)$/;"	m
+SRC_DIR	Makefile	/^SRC_DIR		= srcs$/;"	m
+SRC_DIR	libft/Makefile	/^SRC_DIR			= src\/$/;"	m
+SRC_FILES	Makefile	/^SRC_FILES	:= $(shell find $(SRC_DIR) -type f -name "*.c")$/;"	m
+SRC_FILES	libft/Makefile	/^SRC_FILES 		= ft_atoi			\\$/;"	m
+TEXTURE_MASK	includes/cub3d.h	/^#define TEXTURE_MASK /;"	d
+WEST	includes/cub3d.h	/^#define WEST /;"	d
+all	Makefile	/^all				: $(NAME)$/;"	t
+all	libft/Makefile	/^all 			: $(NAME)$/;"	t
+angle_incr	includes/cub3d.h	/^	double		angle_incr;$/;"	m	struct:s_grid	typeref:typename:double
+atorgb	srcs/parsing/get_textures.c	/^int	*atorgb(char *str)$/;"	f	typeref:typename:int *
+bpp	includes/cub3d.h	/^	int			bpp;$/;"	m	struct:s_game	typeref:typename:int
+build_map_line	srcs/parsing/build_map.c	/^int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)$/;"	f	typeref:typename:int
+c	includes/cub3d.h	/^	int		*c;$/;"	m	struct:s_textures	typeref:typename:int *
+check_point_e_s	srcs/parsing/parsing_map.c	/^int	check_point_e_s(char **map, int x, int y, int map_y)$/;"	f	typeref:typename:int
+check_point_n_w	srcs/parsing/parsing_map.c	/^int	check_point_n_w(char **map, int x, int y, int map_y)$/;"	f	typeref:typename:int
+clean	Makefile	/^clean			:$/;"	t
+clean	libft/Makefile	/^clean 			: $/;"	t
+col_intersections	srcs/maths/find_walls.c	/^unsigned int	col_intersections(t_player *player, t_grid *grid, double angle)$/;"	f	typeref:typename:unsigned int
+content	includes/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
+content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
+count_words	libft/src/ft_split.c	/^static	int	count_words(const char *str, char c)$/;"	f	typeref:typename:int	file:
+create_col	srcs/mlx_loop/image.c	/^void	create_col(t_game *game, unsigned int value, int x)$/;"	f	typeref:typename:void
+double_modulo	srcs/maths/calc_image.c	/^double	double_modulo(double value, double modulo)$/;"	f	typeref:typename:double
+dtor	srcs/maths/small_usefull_calcs.c	/^double dtor(double degrees)$/;"	f	typeref:typename:double
+ea	includes/cub3d.h	/^	char	*ea;$/;"	m	struct:s_textures	typeref:typename:char *
+endian	includes/cub3d.h	/^	int			endian;$/;"	m	struct:s_game	typeref:typename:int
+f	includes/cub3d.h	/^	int		*f;$/;"	m	struct:s_textures	typeref:typename:int *
+fclean	Makefile	/^fclean			: clean$/;"	t
+fclean	libft/Makefile	/^fclean 			: clean$/;"	t
+fov	includes/cub3d.h	/^	int			fov;$/;"	m	struct:s_grid	typeref:typename:int
+free_tab	srcs/parsing/map_utils.c	/^void	free_tab(char **map)$/;"	f	typeref:typename:void
+free_textures	srcs/parsing/get_textures.c	/^void	free_textures(t_textures *textures)$/;"	f	typeref:typename:void
+ft_atoi	libft/src/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f	typeref:typename:int
+ft_bzero	libft/src/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
+ft_calloc	libft/src/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
+ft_char_in_set	libft/src/ft_strtrim.c	/^static	int	ft_char_in_set(char c, char const *set)$/;"	f	typeref:typename:int	file:
+ft_dist	srcs/maths/small_usefull_calcs.c	/^int ft_dist(int x1, int y1, int x2, int y2)$/;"	f	typeref:typename:int
+ft_formats	libft/src/ft_printf.c	/^int	ft_formats(va_list args, const char conv)$/;"	f	typeref:typename:int
+ft_get_line	libft/src/get_next_line_bonus.c	/^char	*ft_get_line(char *stash)$/;"	f	typeref:typename:char *
+ft_is_newline	libft/src/get_next_line_utils_bonus.c	/^char	*ft_is_newline(char *str)$/;"	f	typeref:typename:char *
+ft_isalnum	libft/src/ft_isalnum.c	/^int	ft_isalnum(int a)$/;"	f	typeref:typename:int
+ft_isalpha	libft/src/ft_isalpha.c	/^int	ft_isalpha(int a)$/;"	f	typeref:typename:int
+ft_isascii	libft/src/ft_isascii.c	/^int	ft_isascii(int a)$/;"	f	typeref:typename:int
+ft_isdigit	libft/src/ft_isdigit.c	/^int	ft_isdigit(int a)$/;"	f	typeref:typename:int
+ft_isprint	libft/src/ft_isprint.c	/^int	ft_isprint(int a)$/;"	f	typeref:typename:int
+ft_itoa	libft/src/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f	typeref:typename:char *
+ft_len	libft/src/ft_itoa.c	/^static	int	ft_len(int n)$/;"	f	typeref:typename:int	file:
+ft_lstadd_back	libft/src/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
+ft_lstadd_front	libft/src/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
+ft_lstclear	libft/src/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void*))$/;"	f	typeref:typename:void
+ft_lstdelone	libft/src/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void*))$/;"	f	typeref:typename:void
+ft_lstiter	libft/src/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void*))$/;"	f	typeref:typename:void
+ft_lstlast	libft/src/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f	typeref:typename:t_list *
+ft_lstmap	libft/src/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f	typeref:typename:t_list *
+ft_lstnew	libft/src/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f	typeref:typename:t_list *
+ft_lstsize	libft/src/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f	typeref:typename:int
+ft_memchr	libft/src/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f	typeref:typename:void *
+ft_memcmp	libft/src/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f	typeref:typename:int
+ft_memcpy	libft/src/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f	typeref:typename:void *
+ft_memmove	libft/src/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t n)$/;"	f	typeref:typename:void *
+ft_memset	libft/src/ft_memset.c	/^void	*ft_memset(void *s, int c, size_t n)$/;"	f	typeref:typename:void *
+ft_minitoa	libft/src/ft_itoa.c	/^static	char	*ft_minitoa(int n)$/;"	f	typeref:typename:char *	file:
+ft_nbr_len	libft/src/ft_print_unsigned.c	/^int	ft_nbr_len(unsigned int nbr)$/;"	f	typeref:typename:int
+ft_print_char	libft/src/ft_printf.c	/^int	ft_print_char(int c)$/;"	f	typeref:typename:int
+ft_print_hexa	libft/src/ft_print_hexa.c	/^int	ft_print_hexa(unsigned long int nbr, const char conv)$/;"	f	typeref:typename:int
+ft_print_nbr	libft/src/ft_print_str_nbr.c	/^int	ft_print_nbr(int n)$/;"	f	typeref:typename:int
+ft_print_percent	libft/src/ft_print_percent.c	/^int	ft_print_percent(void)$/;"	f	typeref:typename:int
+ft_print_ptr	libft/src/ft_print_ptr.c	/^int	ft_print_ptr(unsigned long int ptr)$/;"	f	typeref:typename:int
+ft_print_str	libft/src/ft_print_str_nbr.c	/^int	ft_print_str(char *str)$/;"	f	typeref:typename:int
+ft_print_unsigned	libft/src/ft_print_unsigned.c	/^int	ft_print_unsigned(unsigned int n)$/;"	f	typeref:typename:int
+ft_printf	libft/src/ft_printf.c	/^int	ft_printf(const char *str, ...)$/;"	f	typeref:typename:int
+ft_put_in_hexa	libft/src/ft_print_hexa.c	/^int	ft_put_in_hexa(unsigned long int nbr, char *hexa)$/;"	f	typeref:typename:int
+ft_putchar_fd	libft/src/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
+ft_putendl_fd	libft/src/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_putnbr_fd	libft/src/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
+ft_putstr_fd	libft/src/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_read	libft/src/get_next_line_bonus.c	/^char	*ft_read(int fd, char *stash)$/;"	f	typeref:typename:char *
+ft_reput_ptrvalue_in_hexa	libft/src/ft_print_ptr.c	/^int	ft_reput_ptrvalue_in_hexa(unsigned long int nbr)$/;"	f	typeref:typename:int
+ft_split	libft/src/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
+ft_strchr	libft/src/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f	typeref:typename:char *
+ft_strdup	libft/src/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f	typeref:typename:char *
+ft_strdupto_n	srcs/parsing/map_utils.c	/^char	*ft_strdupto_n(char *str, char c)$/;"	f	typeref:typename:char *
+ft_striteri	libft/src/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *d))$/;"	f	typeref:typename:void
+ft_strjoin	libft/src/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
+ft_strjoin2	libft/src/get_next_line_utils_bonus.c	/^char	*ft_strjoin2(char *stash, char *buffer)$/;"	f	typeref:typename:char *
+ft_strlcat	libft/src/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
+ft_strlcpy	libft/src/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
+ft_strlen	libft/src/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f	typeref:typename:size_t
+ft_strlen2	libft/src/get_next_line_utils_bonus.c	/^int	ft_strlen2(char *str)$/;"	f	typeref:typename:int
+ft_strmapi	libft/src/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
+ft_strncmp	libft/src/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:int
+ft_strnstr	libft/src/ft_strnstr.c	/^char	*ft_strnstr(const char *ocean, const char *pearl, size_t len)$/;"	f	typeref:typename:char *
+ft_strrchr	libft/src/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f	typeref:typename:char *
+ft_strtrim	libft/src/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f	typeref:typename:char *
+ft_substr	libft/src/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
+ft_tolower	libft/src/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f	typeref:typename:int
+ft_toupper	libft/src/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
+ft_uitoa	libft/src/ft_print_unsigned.c	/^char	*ft_uitoa(unsigned int n)$/;"	f	typeref:typename:char *
+ft_update_stash	libft/src/get_next_line_bonus.c	/^char	*ft_update_stash(char *stash)$/;"	f	typeref:typename:char *
+ft_write_number	libft/src/ft_itoa.c	/^static	char	*ft_write_number(int len, int n, char *a)$/;"	f	typeref:typename:char *	file:
+get_fandc_rgb	srcs/parsing/get_textures.c	/^int	get_fandc_rgb(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
+get_map_y	srcs/parsing/build_map.c	/^int	get_map_y(t_textures *map_info, char *map_path)$/;"	f	typeref:typename:int
+get_next_line	libft/src/get_next_line_bonus.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
+get_next_textures	srcs/parsing/get_textures.c	/^int	get_next_textures(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
+get_textures	srcs/parsing/get_textures.c	/^int	get_textures(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
+get_value	srcs/maths/small_usefull_calcs.c	/^int	get_value(unsigned int value, const char *flag)$/;"	f	typeref:typename:int
+go_to_map	srcs/parsing/build_map.c	/^char	*go_to_map(int fd, t_textures *map_utils)$/;"	f	typeref:typename:char *
+grid	includes/cub3d.h	/^	t_grid		*grid;$/;"	m	struct:s_game	typeref:typename:t_grid *
+grid_width	includes/cub3d.h	/^	int			grid_width;$/;"	m	struct:s_grid	typeref:typename:int
+half_fov	includes/cub3d.h	/^	int			half_fov;$/;"	m	struct:s_grid	typeref:typename:int
+half_proj_plan_height	includes/cub3d.h	/^	int			half_proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
+handle_close	srcs/mlx_loop/mlx_hook.c	/^int	handle_close(t_game *game)$/;"	f	typeref:typename:int
+handle_keypress	srcs/mlx_loop/mlx_hook.c	/^int	handle_keypress(int keycode, t_game *game)$/;"	f	typeref:typename:int
+handle_mouse	srcs/mlx_loop/mlx_hook.c	/^int handle_mouse(int keycode, int x, int y, t_game *game)$/;"	f	typeref:typename:int
+helpsplit	libft/src/ft_split.c	/^static	char	**helpsplit(int index, char const *s, char c)$/;"	f	typeref:typename:char **	file:
+img	includes/cub3d.h	/^	void		*img;$/;"	m	struct:s_game	typeref:typename:void *
+img_addr	includes/cub3d.h	/^	void		*img_addr;$/;"	m	struct:s_game	typeref:typename:void *
+init_game	srcs/init_game/init_game.c	/^int	init_game(t_game *game, t_textures *textures)$/;"	f	typeref:typename:int
+init_grid	srcs/init_game/init_engine.c	/^t_grid	*init_grid(t_game *game)$/;"	f	typeref:typename:t_grid *
+init_player	srcs/init_game/init_engine.c	/^t_player	*init_player(t_game *game)$/;"	f	typeref:typename:t_player *
+intersection_found	srcs/maths/find_walls.c	/^unsigned int intersection_found(double angle, int distance, char **map, int flag, int pos_x, int/;"	f	typeref:typename:unsigned int
+is_inside	srcs/parsing/map_utils.c	/^int	is_inside(char c)$/;"	f	typeref:typename:int
+is_map_closed	srcs/parsing/parsing_map.c	/^int	is_map_closed(t_textures *map_info, char **map, int map_y)$/;"	f	typeref:typename:int
+is_player	srcs/parsing/build_map.c	/^int	is_player(char *str)$/;"	f	typeref:typename:int
+lines_intersections	srcs/maths/find_walls.c	/^unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)$/;"	f	typeref:typename:unsigned int
+ll	includes/cub3d.h	/^	int			ll;$/;"	m	struct:s_game	typeref:typename:int
+main	srcs/main_core/main.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
+map	includes/cub3d.h	/^	char		**map;$/;"	m	struct:s_grid	typeref:typename:char **
+map	includes/cub3d.h	/^	char	**map;$/;"	m	struct:s_textures	typeref:typename:char **
+map_parser	srcs/parsing/parsing_map.c	/^int	map_parser(char *argv, t_textures *map_info)$/;"	f	typeref:typename:int
+map_started	srcs/parsing/build_map.c	/^int	map_started(char *str)$/;"	f	typeref:typename:int
+mlx	includes/cub3d.h	/^	void		*mlx;$/;"	m	struct:s_game	typeref:typename:void *
+my_mlx_pixel_put	srcs/mlx_loop/image.c	/^void	my_mlx_pixel_put(t_game *game, int x, int y, int color)$/;"	f	typeref:typename:void
+next	includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
+next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
+no	includes/cub3d.h	/^	char	*no;$/;"	m	struct:s_textures	typeref:typename:char *
+no_fish_eye	srcs/maths/corrections.c	/^unsigned int	no_fish_eye(t_game *game, unsigned int value, double angle)$/;"	f	typeref:typename:unsigned int
+orientation	includes/cub3d.h	/^	double	orientation;$/;"	m	struct:s_player	typeref:typename:double
+p_direction	includes/cub3d.h	/^	int		p_direction;$/;"	m	struct:s_textures	typeref:typename:int
+p_x	includes/cub3d.h	/^	int		p_x;$/;"	m	struct:s_textures	typeref:typename:int
+p_y	includes/cub3d.h	/^	int		p_y;$/;"	m	struct:s_textures	typeref:typename:int
+player	includes/cub3d.h	/^	t_player	*player;$/;"	m	struct:s_game	typeref:typename:t_player *
+pos_x	includes/cub3d.h	/^	int		pos_x;$/;"	m	struct:s_player	typeref:typename:int
+pos_y	includes/cub3d.h	/^	int		pos_y;$/;"	m	struct:s_player	typeref:typename:int
+print_tab	srcs/parsing/map_utils.c	/^void	print_tab(char **tab)$/;"	f	typeref:typename:void
+print_textures	srcs/parsing/map_utils.c	/^void	print_textures(t_textures *texture)$/;"	f	typeref:typename:void
+proj_plan_col	srcs/maths/find_walls.c	/^unsigned int proj_plan_col(t_game *game, double angle)$/;"	f	typeref:typename:unsigned int
+proj_plan_height	includes/cub3d.h	/^	int			proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
+proj_plan_image	srcs/maths/calc_image.c	/^unsigned int *proj_plan_image(t_game *game, t_grid *grid)$/;"	f	typeref:typename:unsigned int *
+proj_plan_width	includes/cub3d.h	/^	int			proj_plan_width;$/;"	m	struct:s_grid	typeref:typename:int
+projected_factor	includes/cub3d.h	/^	int			projected_factor;$/;"	m	struct:s_grid	typeref:typename:int
+quit_w_message	srcs/parsing/map_utils.c	/^void	quit_w_message(char *str, t_textures *map_info)$/;"	f	typeref:typename:void
+re	Makefile	/^re				: fclean all$/;"	t
+re	libft/Makefile	/^re			: fclean all$/;"	t
+render	srcs/mlx_loop/image.c	/^int	render(t_game *game)$/;"	f	typeref:typename:int
+s_game	includes/cub3d.h	/^typedef struct s_game$/;"	s
+s_grid	includes/cub3d.h	/^typedef struct s_grid$/;"	s
+s_list	includes/libft.h	/^typedef struct s_list$/;"	s
+s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s
+s_player	includes/cub3d.h	/^typedef struct s_player$/;"	s
+s_textures	includes/cub3d.h	/^typedef struct s_textures$/;"	s
+set_player	srcs/parsing/parsing_map.c	/^void	set_player(t_textures *map_info, int x, int y, char p)$/;"	f	typeref:typename:void
+so	includes/cub3d.h	/^	char	*so;$/;"	m	struct:s_textures	typeref:typename:char *
+t_game	includes/cub3d.h	/^}	t_game;$/;"	t	typeref:struct:s_game
+t_grid	includes/cub3d.h	/^}	t_grid;$/;"	t	typeref:struct:s_grid
+t_list	includes/libft.h	/^}			t_list;$/;"	t	typeref:struct:s_list
+t_list	libft/includes/libft.h	/^}			t_list;$/;"	t	typeref:struct:s_list
+t_player	includes/cub3d.h	/^}	t_player;$/;"	t	typeref:struct:s_player
+t_textures	includes/cub3d.h	/^}	t_textures;$/;"	t	typeref:struct:s_textures
+texture_good	srcs/parsing/parsing_map.c	/^int	texture_good(t_textures *map_info)$/;"	f	typeref:typename:int
+textures	includes/cub3d.h	/^	t_textures	*textures;$/;"	m	struct:s_game	typeref:typename:t_textures *
+textures	includes/cub3d.h	/^	t_textures	*textures;$/;"	m	struct:s_grid	typeref:typename:t_textures *
+valid_char	srcs/parsing/map_utils.c	/^int	valid_char(char **map, int y, int x)$/;"	f	typeref:typename:int
+we	includes/cub3d.h	/^	char	*we;$/;"	m	struct:s_textures	typeref:typename:char *
+win	includes/cub3d.h	/^	void		*win;$/;"	m	struct:s_game	typeref:typename:void *
+word_dup	libft/src/ft_split.c	/^static	char	*word_dup(const char *str, int start, int finish)$/;"	f	typeref:typename:char *	file:
+x_max	includes/cub3d.h	/^	int		x_max;$/;"	m	struct:s_player	typeref:typename:int
+x_max	includes/cub3d.h	/^	int		x_max;$/;"	m	struct:s_textures	typeref:typename:int
+y_max	includes/cub3d.h	/^	int		y_max;$/;"	m	struct:s_player	typeref:typename:int
+y_max	includes/cub3d.h	/^	int		y_max;$/;"	m	struct:s_textures	typeref:typename:int
