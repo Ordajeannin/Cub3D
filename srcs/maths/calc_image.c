@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:43:49 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/01 17:46:52 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:23:28 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,28 @@ unsigned int *proj_plan_image(t_game *game, t_grid *grid)
 //		printf("WTF");
 	}
 //	printf("HEYYYYYYYYYY\n");
+	image[i] = '\0';
+	return (image);
+}
+
+unsigned int *proj_plan_image_test(t_game *game)
+{
+	unsigned int *image;
+	int i = 0;
+	double angle;
+
+	image = malloc(sizeof(unsigned int) * (SCREEN_WIDTH + 1));
+	if (!image)
+		return (0);
+	while (i < SCREEN_WIDTH)
+	{
+		if (i < (SCREEN_WIDTH >> 1))
+			angle = double_modulo((game->player->orientation + atan(((SCREEN_WIDTH >> 1) - i) / 277)), 360);
+		else
+			angle = double_modulo((game->player->orientation - atan((i - (SCREEN_WIDTH >> 1)) / 277)), 360);
+		image[i] = proj_plan_col_test(game, angle);
+		i++;
+	}
 	image[i] = '\0';
 	return (image);
 }
