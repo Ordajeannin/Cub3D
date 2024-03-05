@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/27 20:52:09 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:33:24 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	main(int argc, char **argv)
 		exit (1);
 	}
 	printf("hey bitch\n");
-	mlx_loop_hook(game.mlx, &render, &game);
+	render(&game);
+	//mlx_loop_hook(game.mlx, &render, &game);
+	mlx_loop_hook(game.mlx, &loop, &game);
 	mlx_hook(game.win, KeyPress, KeyPressMask,
 		&handle_keypress, &game);
 	mlx_hook(game.win, DestroyNotify, StructureNotifyMask,

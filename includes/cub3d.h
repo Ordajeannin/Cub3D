@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/01 17:53:00 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:32:19 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void			view_stocked_image(unsigned int *stock);
 void			max_dist(t_game *game);
 int				get_ipx(t_player *player, int i_py, double angle);
 int				get_ipy(t_player *player, int i_px, double angle);
+char			try_get_texture(char **map, int yt, int xt);
 
 //////////// Maths_tests ///////////////////
 
@@ -151,6 +152,7 @@ unsigned int	intersection_found_test(double angle, int dist, t_game *game, int f
 void			my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void			create_col(t_game *game, unsigned int value, int x);
 int				render(t_game *game);
+int				loop();
 
 
 //////////// Hook_things ///////////////////
@@ -159,4 +161,5 @@ int				handle_close(t_game *game);
 int				handle_keypress(int keycode, t_game *game);
 int				handle_mouse(int keycode, int x, int y, t_game *game);
 void			player_move(t_player *player, double angle);
+void			player_move_collide(t_game *game, double angle);
 #endif
