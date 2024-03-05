@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/28 16:54:50 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:47:51 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,37 @@ void	free_textures(t_textures *textures)
 		free(textures->f);
 }
 
+int	rgb_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	result;
+
+	// printf("rgb atoi received :|%d|\n", str[0]);
+	i = 0;
+	sign = 0;
+	result = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		||str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	else
+		sign = 1;
+	if (sign == -1 || str[i] == '+')
+		i++;
+	result = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+		result = (result * 10) + (str[i++] - '0');
+	if ((str[i] != 0 && str[i] != '\n') || str[0] == '\n')
+	{
+		printf("non str or alpha in color\n");
+		return (-1);
+	}
+	return (result * sign);
+}
+
+
 int	*atorgb(char *str)
 {
 	int		*rgb;
@@ -44,7 +75,7 @@ int	*atorgb(char *str)
 	while (i < 3)
 	{
 		tmp = ft_strdupto_n(str, ',');
-		rgb[i] = ft_atoi(tmp);
+		rgb[i] = rgb_atoi(tmp);
 		str = ft_strchr(str, ',') + 1;
 		free(tmp);
 		if ((rgb[i] < 0 || rgb[i] > 255) || (str == (char *)0x1 && i < 2))

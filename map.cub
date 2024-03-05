@@ -1,9 +1,17 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_textures_of_doom
-F 111,1,11
-C 225,30,0
+   WE                            textures/wolfenstein/grey_stone.xpm
+NO      textures/wolfenstein/purple_stone.xpm
+
+
+
+SO textures/wolfenstein/red_brick.xpm
+
+F      17,    38,     64
+
+EA textures/wolfenstein/wood.xpm
+
+
+
+C 218, 234, 235
 
 1111111111111111111111111
 10000000000000000000000001111111

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/02/28 15:42:54 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:48:38 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	quit_w_message(char *str, t_textures *map_info)
 {
-	printf("Doby don't want to be free.\n");
 	if (map_info && 1 == 2)
 		free_textures(map_info);
 	printf("%s\n", str);

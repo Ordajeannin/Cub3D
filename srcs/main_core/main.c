@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/27 20:52:09 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:44:54 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2 || !argv[1])
 		quit_w_message("you have to put one map as argument", &map_info);
-	if (!map_parser(argv[1], &map_info) || init_game(&game, &map_info) == -1)
+	if (!map_parser("map.cub", &map_info) || init_game(&game, &map_info) == -1)
 	{
 		printf("PARSING ERROR\n");
 		free_tab((&map_info)->map);

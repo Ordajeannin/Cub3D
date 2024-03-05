@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/26 19:44:31 by paulk            ###   ########.fr       */
+/*   Updated: 2024/02/28 17:15:28 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,11 @@ int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)
 		i ++;
 	}
 	map[i] = NULL;
+	close(fd);
 	if (player != 1)
 	{
 		printf("invalid number player\n");
 		return (0);
 	}
-	close(fd);
 	return (1);
 }
