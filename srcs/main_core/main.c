@@ -27,7 +27,9 @@ int	main(int argc, char **argv)
 		exit (1);
 	}
 	printf("hey bitch\n");
-	mlx_loop_hook(game.mlx, &render, &game);
+	render(&game);
+	//mlx_loop_hook(game.mlx, &render, &game);
+	mlx_loop_hook(game.mlx, &loop, &game);
 	mlx_hook(game.win, KeyPress, KeyPressMask,
 		&handle_keypress, &game);
 	mlx_hook(game.win, DestroyNotify, StructureNotifyMask,

@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/01 15:57:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:12:25 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,12 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 	angle = double_modulo(angle, 360);
 	if (angle == 0.0 || angle == 180.0)
 	{
-		printf("\nline : out, angle\n");
+//		printf("\nline : out, angle\n");
 		return (OUTMAP);
 	}
 //	xi = 64 * tan(dtor(90 - double_modulo(angle, 90)));
 	xi = get_xi(angle);
-	printf("line : value xi -> %d\n", xi);
+//	printf("line : value xi -> %d\n", xi);
 	if (angle < 180)
 		i_py = ((player->pos_y >> 6) << 6) - 1;
 	else
@@ -120,7 +120,7 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 //	i_px = player->pos_x + ((player->pos_y - i_py) * tan(dtor(90 - double_modulo(angle, 90))));
 	i_px = get_ipx(player, i_py, angle);
 	dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-	printf("line i0 : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
+//	printf("line i0 : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 //	if (dist < player->m_d)
 //		result = intersection_found_test(angle, dist, game, 1, i_px, i_py);
 //	else
@@ -128,7 +128,7 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 	result = intersection_found_test(angle, dist, game, 1, i_px, i_py);
 	if (result == (OUTMAP))
 	{
-		printf("line : out\n");
+//		printf("line : out\n");
 		return (OUTMAP);
 	}
 //	printf("line : result before loop : %d\n", get_value(result, "DISTANCE"));
@@ -143,10 +143,10 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 		else
 			i_py = i_py + yi;
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-		printf("iteration : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
+//		printf("iteration : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 		result = intersection_found_test(angle, dist, game, 1, i_px, i_py);
 	}
-	printf("line : result of dist : %d\n\n", get_value(result, "DISTANCE"));
+//	printf("line : result of dist : %d\n\n", get_value(result, "DISTANCE"));
 	return (result);
 }
 
@@ -162,13 +162,13 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	angle = double_modulo(angle, 360);
 	if (angle == 90.0 || angle == 270.0)
 	{
-		printf("\ncol : out, angle\n");
+//		printf("\ncol : out, angle\n");
 		return (OUTMAP);
 	}
 	xi = 64;
 //	yi = 64 * tan(dtor(90 - double_modulo(angle, 90)));
 	yi = get_yi(angle);
-	printf("\ncol : value de yi -> %d\n", yi);
+//	printf("\ncol : value de yi -> %d\n", yi);
 	if (angle < 90 || angle > 270)
 		i_px = ((player->pos_x >> 6) << 6) + 64;
 	else
@@ -176,7 +176,7 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 //	i_py = player->pos_y + ((player->pos_x - i_px) * tan(dtor(90 - double_modulo(angle, 90))));
 	i_py = get_ipy(player, i_px, angle);
 	dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-	printf("col i0 : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
+//	printf("col i0 : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 //	printf("\nvalue dist found : %d", dist);
 //	if (dist < player->m_d)
 //		result = intersection_found_test(angle, dist, game, 0, i_px, i_py);
@@ -185,7 +185,7 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	result = intersection_found_test(angle, dist, game, 0, i_px, i_py);
 	if (result == (OUTMAP))
 	{
-		printf("\ncol : out\n");
+//		printf("\ncol : out\n");
 		return (OUTMAP);
 	}
 	while (result == FLOOR)
@@ -199,10 +199,10 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 		else
 			i_py = i_py + yi;
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-		printf("iteration : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
+//		printf("iteration : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 		result = intersection_found_test(angle, dist, game, 0, i_px, i_py);
 	}
-	printf("col : result of dist : %d\n", get_value(result, "DISTANCE"));
+//	printf("col : result of dist : %d\n", get_value(result, "DISTANCE"));
 	return (result);
 }
 
@@ -221,7 +221,7 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 		result = no_fish_eye(game, line, angle);
 	else
 		result = no_fish_eye(game, col, angle);
-	view_stocked_image(&result);
+//	view_stocked_image(&result);
 	return (result);
 }
 

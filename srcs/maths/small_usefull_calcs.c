@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/29 19:28:13 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:16:23 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int ft_dist(int x1, int y1, int x2, int y2)
 */
 int	get_value(unsigned int value, const char *flag)
 {
+	int result = 0;
 	if (ft_strncmp(flag, "FACE", 4) == 0)
 		return (value & FACE_MASK);
 	else if (ft_strncmp(flag, "OFFSET", 6) == 0)
@@ -55,8 +56,13 @@ int	get_value(unsigned int value, const char *flag)
 		return ((value >> 8) & TEXTURE_MASK);
 	else if (ft_strncmp(flag, "DISTANCE", 8) == 0)
 	{
+		result = (value >> 12) & DIST_MASK;
+		if (result != 0)
+			return result;
+		else
+			return (1);
 //		printf("distance recuperee : %d\n", ((value >> 12) & DIST_MASK));
-		return ((value >> 12) & DIST_MASK);
+//		return ((value >> 12) & DIST_MASK);
 	}
 	else
 		return (-1);
