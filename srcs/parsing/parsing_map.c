@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/05 15:48:18 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:13:33 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,20 @@ int	is_map_closed(t_textures *map_info, char **map, int map_y)
 }
 
 int	texture_good(t_textures *map_info)
-{
+{	
+	int i;
+	
+	i = 0;
 	if (!map_info->so || !map_info->we || !map_info->ea || !map_info->no)
 	{
 		printf("missing wall\n");
 		return (0);	
 	}
+	if (!check_end_of_filename(map_info->ea, ".xpm")
+		||	!check_end_of_filename(map_info->so, ".xpm")
+		|| !check_end_of_filename(map_info->we, ".xpm")
+		|| !check_end_of_filename(map_info->no, ".xpm"))
+		return (0);
 	if (!map_info->c || !map_info->f)
 	{
 		printf("missing f or c\n");
@@ -138,6 +146,35 @@ int	texture_good(t_textures *map_info)
 }
 
 
+void	set_null_map(t_textures *map_info)
+{
+	map_info->ea = NULL;
+	map_info->no = NULL;
+	map_info->we = NULL;
+	map_info->so = NULL;
+	map_info->f = NULL;
+	map_info->c = NULL;
+	map_info->map = NULL;
+}
+
+int	check_end_of_filename(char const *filename, const char *end)
+{
+	size_t i;
+
+	i = ft_strlen(filename) - 4;
+	// printf("filename - 4 :%c\n", filename[i]);
+	if (filename[i ++] != end[0])
+		return (0);
+	if (filename[i ++] != end[1])
+		return (0);
+	if (filename[i ++] != end[2])
+		return (0);
+	if (filename[i ++] != end[3])
+		return (0);
+	printf("NICE FILENAME\n");
+	return (1);
+}
+
 /*
 pour parser, on va regarder si les 0 N S E W sont entourée de 1, sinon ca degage	
 */
@@ -146,18 +183,10 @@ int	map_parser(char *argv, t_textures *map_info)
 	int		map_y;
 	int		map_ok;
 
-//	printf("argv is :%s\n", argv);
-	map_info->ea = NULL;
-	map_info->no = NULL;
-	map_info->we = NULL;
-	map_info->so = NULL;
-	map_info->f = NULL;
-	map_info->c = NULL;
-	map_info->map = NULL;
+	
 	map_y = get_map_y(map_info, argv);
-	if (map_y == -1)
+	if (map_y == -1 || !check_end_of_filename(argv, ".cub"))
 		return (0);
-//	printf("map_y is :%d\n", map_y);
 	map_info->map = malloc(map_y * (sizeof(char *) + 4));
 	if (!map_info->map)
 	{
@@ -171,29 +200,3 @@ int	map_parser(char *argv, t_textures *map_info)
 		return (1);
 	return (0);
 }
-
-/*condition :
-	if map[0] pas tester nord
-	if map[y][x + 1] = \n limite x++
-	if map[limite basse] pas tester sud
-	if map[y][x], avant de tester sud, check strlen de la ligne d'apres
-*/
-
-// char **map_for_parsing(char **map, int map_y)//inutile en fait
-// {
-// 	int	x;
-// 	int	y;
-
-// 	x = 0;
-// 	y = 0;
-// 	while (y < map_y - 1)
-// 	{
-// 		while (map[y][x] != 0)
-// 		{
-// 			if (!valide_char(map, y, x))
-// 				return (0);
-// 		}
-// 		printf("%s", map[y]);
-// 	}
-// 	return (map);
-// }

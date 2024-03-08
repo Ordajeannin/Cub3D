@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/05 20:25:12 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:18:23 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,14 @@ int				map_started(char *str);
 int				get_map_y(t_textures *map_utils, char *map_path);
 char			*go_to_map(int fd, t_textures *map_utils);
 int				build_map_line(t_textures *map_info, char **map, int map_y, char *argv);
-int			get_textures(char *str, t_textures *map_info);
+int				get_textures(char *str, t_textures *map_info);
 void			free_tab(char **map);
 void			print_textures(t_textures *texture);
-void				quit_w_message(char *str, t_textures *map_info);
+void			quit_w_message(char *str, t_textures *map_info);
 void			free_textures(t_textures *textures);
 int				is_inside(char c);
 char			*ft_strdupto_n(char *str, char c);
-
+int				check_end_of_filename(char const *filename, const char *end);
 
 ///////////// Init_things //////////////////
 
