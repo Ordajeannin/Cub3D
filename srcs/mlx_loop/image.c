@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/05 20:26:10 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:06:51 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	create_col(t_game *game, unsigned int value, int x)
 	projected = (game->grid->projected_factor / get_value(value, "DISTANCE")) >> 1;
 	if (projected >= (SCREEN_HEIGHT >> 1))
 	{
-		printf("projected = %d\n", projected);
+//		printf("projected = %d\n", projected);
 		while (y < SCREEN_HEIGHT)
 			my_mlx_pixel_put(game, x, y++, 0x00000000);
 	}
@@ -54,7 +54,7 @@ void	create_col(t_game *game, unsigned int value, int x)
 		y_end = game->grid->half_proj_plan_height + projected;
 //		printf("projected factor = %d\n", game->grid->projected_factor);
 //		printf("distance = %d  |  ", get_value(value, "DISTANCE"));
-		printf("projected = %d  |  y_start = %d  |  y_end = %d\n", projected, y_start, y_end);
+//		printf("projected = %d  |  y_start = %d  |  y_end = %d\n", projected, y_start, y_end);
 		while (y < y_start)
 			my_mlx_pixel_put(game, x, y++, *(game->textures->c));
 //		printf("...\n");
@@ -98,9 +98,9 @@ int	render(t_game *game)
 	i = 0;
 //	printf("2\n");
 //	printf("orientation theorique du joueur : %f\n", game->player->orientation);
-	image = proj_plan_image(game, game->grid);
-//	image = proj_plan_image_test(game);
-//	view_stocked_image(image);
+	image = proj_plan_image_test(game, game->player->orientation);
+//	image = proj_plan_image(game, game->grid);
+	view_stocked_image(image);
 	printf("2 | ");
 	while (image[i])
 	{

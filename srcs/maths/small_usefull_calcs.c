@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/05 18:16:23 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:54:41 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 double dtor(double degrees)
 {
 	return (degrees * 0.0174533);
+}
+
+double rtod(double radian)
+{
+	return (radian * 57.2958);
 }
 
 // /*

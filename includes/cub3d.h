@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/08 15:18:23 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:33:10 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 #define WEST 2
 #define SOUTH 3
 #define SCREEN_WIDTH 640
+#define HALF_WIDTH 320
 #define SCREEN_HEIGHT 400
 #define FLOOR UINT_MAX
 #define OUTMAP UINT_MAX - 1
@@ -131,6 +132,7 @@ unsigned int	lines_intersections(t_player *player,
 unsigned int	col_intersections(t_player *player, t_grid *grid, double angle);
 unsigned int	proj_plan_col(t_game *game, double angle);
 double			dtor(double degrees);
+double			rtod(double radian);
 double			double_modulo(double value, double modulo);
 int				ft_dist(int x1, int x2, int y1, int y2);
 int				get_value(unsigned int value, const char *flag);
@@ -146,7 +148,7 @@ unsigned int	proj_plan_col_test(t_game *game, double angle);
 unsigned int	col_intersections_test(t_game *game, t_player *player, double angle);
 unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle);
 unsigned int	intersection_found_test(double angle, int dist, t_game *game, int flag, int pos_x, int pos_y);
-unsigned int	*proj_plan_image_test(t_game *game);
+unsigned int	*proj_plan_image_test(t_game *game, double orientation);
 
 ///////////// Mlx_things ///////////////////
 
