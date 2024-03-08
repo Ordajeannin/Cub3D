@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/01 17:12:25 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:59:23 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,11 +217,12 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 //	printf("\nvalue max_dist : %d", game->player->m_d);
 	line = lines_intersections_test(game, game->player, angle);
 	col = col_intersections_test(game, game->player, angle);
+	printf("line : %d  |  col : %d  |  ", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
 	if (get_value(line, "DISTANCE") < get_value(col, "DISTANCE"))
 		result = no_fish_eye(game, line, angle);
 	else
 		result = no_fish_eye(game, col, angle);
-//	view_stocked_image(&result);
+	view_stocked_col(result);
 	return (result);
 }
 

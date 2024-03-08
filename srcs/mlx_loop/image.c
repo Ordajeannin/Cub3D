@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/08 18:06:51 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:56:13 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,17 @@ void	create_col(t_game *game, unsigned int value, int x)
 	}
 }
 
+
+void view_stocked_col(unsigned int stock)
+{
+    unsigned int value = stock;
+    int face = get_value(value, "FACE");
+    int offset = get_value(value, "OFFSET");
+    int texture = get_value(value, "TEXTURE");
+    int distance = get_value(value, "DISTANCE");
+    printf("[%d, %d, %d, %d]\n", face, offset, texture, distance);
+}
+
 //debug function
 void view_stocked_image(unsigned int *stock)
 {
@@ -100,11 +111,11 @@ int	render(t_game *game)
 //	printf("orientation theorique du joueur : %f\n", game->player->orientation);
 	image = proj_plan_image_test(game, game->player->orientation);
 //	image = proj_plan_image(game, game->grid);
-	view_stocked_image(image);
+//	view_stocked_image(image);
 	printf("2 | ");
 	while (image[i])
 	{
-//		printf("index = %d  |  ", i);
+		//printf("index = %d  |  ", i);
 		create_col(game, image[i], i);
 		i++;
 	}
