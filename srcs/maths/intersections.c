@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/08 19:59:23 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/11 20:09:15 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ unsigned int	intersection_found_test(double angle, int dist, t_game *game, int f
 
 	result = 0;
 	//texture = game->grid->map[pos_y >> 6][pos_x >> 6];
+//	texture = try_get_texture(game->grid->map, pos_y >> 6, pos_x >> 6);
 	texture = try_get_texture(game->grid->map, pos_y >> 6, pos_x >> 6);
 	if (texture == '0')
 		return (FLOOR);
@@ -131,6 +132,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 //		printf("line : out\n");
 		return (OUTMAP);
 	}
+	printf("iteration line (%d, %d)(%d, %d): ",i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
+	view_stocked_col(result);
 //	printf("line : result before loop : %d\n", get_value(result, "DISTANCE"));
 	while (result == FLOOR)
 	{
@@ -145,6 +148,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 //		printf("iteration : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 		result = intersection_found_test(angle, dist, game, 1, i_px, i_py);
+		printf("iteration line (%d, %d)(%d, %d): ", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
+		view_stocked_col(result);
 	}
 //	printf("line : result of dist : %d\n\n", get_value(result, "DISTANCE"));
 	return (result);
@@ -172,7 +177,7 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	if (angle < 90 || angle > 270)
 		i_px = ((player->pos_x >> 6) << 6) + 64;
 	else
-		i_px = ((player->pos_x >> 6) << 6) -1;
+		i_px = ((player->pos_x >> 6) << 6) - 1;
 //	i_py = player->pos_y + ((player->pos_x - i_px) * tan(dtor(90 - double_modulo(angle, 90))));
 	i_py = get_ipy(player, i_px, angle);
 	dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
@@ -188,6 +193,8 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 //		printf("\ncol : out\n");
 		return (OUTMAP);
 	}
+	printf("iteration col (%d, %d)(%d, %d): ", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
+	view_stocked_col(result);
 	while (result == FLOOR)
 	{
 		if (angle > 270 || angle < 90)
@@ -199,8 +206,10 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 		else
 			i_py = i_py + yi;
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-//		printf("iteration : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
+		//printf("\niteration : (%d, %d) | (%d, %d) | %d\n", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1, dist);
 		result = intersection_found_test(angle, dist, game, 0, i_px, i_py);
+		printf("iteration col (%d, %d)(%d, %d): ", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
+		view_stocked_col(result);
 	}
 //	printf("col : result of dist : %d\n", get_value(result, "DISTANCE"));
 	return (result);
@@ -217,26 +226,12 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 //	printf("\nvalue max_dist : %d", game->player->m_d);
 	line = lines_intersections_test(game, game->player, angle);
 	col = col_intersections_test(game, game->player, angle);
-	printf("line : %d  |  col : %d  |  ", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
+	printf("line : %d  |  col : %d\n", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
 	if (get_value(line, "DISTANCE") < get_value(col, "DISTANCE"))
 		result = no_fish_eye(game, line, angle);
 	else
 		result = no_fish_eye(game, col, angle);
+	printf("value : ");
 	view_stocked_col(result);
 	return (result);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

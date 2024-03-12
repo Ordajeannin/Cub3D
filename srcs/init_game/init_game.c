@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:53 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/01 17:05:18 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/11 20:18:37 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	init_game(t_game *game, t_textures *textures)
 	if (game->mlx == NULL)
 		return (-1);
 	game->win = NULL;
-	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
+	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D debbug");
 	if (game->win == NULL)
 	{
 		free(game->mlx);

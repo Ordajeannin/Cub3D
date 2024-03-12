@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/08 19:53:45 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:49:28 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 #define SCREEN_WIDTH 640
 #define HALF_WIDTH 320
 #define SCREEN_HEIGHT 400
-#define FLOOR UINT_MAX
+#define FLOOR 0
 #define OUTMAP UINT_MAX - 1
 #define DIST_WALK 5
 #define FRONT 0

@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:49:58 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/05 17:53:19 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:27:56 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	player_move_collide(t_game *game, double angle)
 		game->player->pos_x = temp_x;
 		game->player->pos_y = temp_y;
 	}
-//	printf("pos(y,x)  |  temp(%d, %d)  |  actual(%d, %d)\n", temp_y >> 6, temp_x >> 6, game->player->pos_y >> 6, game->player->pos_x >> 6);
+//	printf("angle = %f  |  try(%d, %d)  |  actual(%d, %d)\n", angle, temp_y >> 6, temp_x >> 6, game->player->pos_y >> 6, game->player->pos_x >> 6);
 }
 
 void	player_move(t_player *player, double angle)
@@ -83,7 +83,7 @@ void	player_move(t_player *player, double angle)
 		player->pos_x += dist * sin(dtor(angle - 270.0));
 		player->pos_y += dist * cos(dtor(angle - 270.0));
 	}
-	printf("pos(y,x)  |  new(%d, %d)  |  grid(%d, %d)\n", player->pos_y, player->pos_x, player->pos_y >> 6, player->pos_x >> 6);
+//	printf("pos(y,x)  |  new(%d, %d)  |  grid(%d, %d)\n", player->pos_y, player->pos_x, player->pos_y >> 6, player->pos_x >> 6);
 }
 
 //typiquement, gestion de la position du joueur avec les fleches
