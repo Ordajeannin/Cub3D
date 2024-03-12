@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/08 19:56:13 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:40:03 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	create_col(t_game *game, unsigned int value, int x)
 
 	y = 0;
 //	printf("wow, it s dark here\n");
-	projected = (game->grid->projected_factor / get_value(value, "DISTANCE")) >> 1;
-	if (projected >= (SCREEN_HEIGHT >> 1))
+	projected = (game->grid->projected_factor / get_value(value, "DISTANCE"));
+	if (projected >= SCREEN_HEIGHT)
 	{
 //		printf("projected = %d\n", projected);
 		while (y < SCREEN_HEIGHT)
@@ -50,8 +50,8 @@ void	create_col(t_game *game, unsigned int value, int x)
 //		projected = SCREEN_HEIGHT >> 1;
 	else
 	{
-		y_start = game->grid->half_proj_plan_height - projected;
-		y_end = game->grid->half_proj_plan_height + projected;
+		y_start = game->grid->half_proj_plan_height - (projected >> 1);
+		y_end = game->grid->half_proj_plan_height + (projected >> 1);
 //		printf("projected factor = %d\n", game->grid->projected_factor);
 //		printf("distance = %d  |  ", get_value(value, "DISTANCE"));
 //		printf("projected = %d  |  y_start = %d  |  y_end = %d\n", projected, y_start, y_end);
@@ -109,8 +109,8 @@ int	render(t_game *game)
 	i = 0;
 //	printf("2\n");
 //	printf("orientation theorique du joueur : %f\n", game->player->orientation);
-	image = proj_plan_image_test(game, game->player->orientation);
-//	image = proj_plan_image(game, game->grid);
+//	image = proj_plan_image_test(game, game->player->orientation);
+	image = proj_plan_image(game, game->grid);
 //	view_stocked_image(image);
 	printf("2 | ");
 	while (image[i])

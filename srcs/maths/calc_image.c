@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:43:49 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/11 19:15:12 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:09:31 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,16 @@ unsigned int *proj_plan_image(t_game *game, t_grid *grid)
 	image = malloc(sizeof(unsigned int) * (SCREEN_WIDTH + 1));
 	if (!image)
 		return (0);
-//	angle = (game->player->orientation + grid->half_fov) % 360;
 	angle = double_modulo((game->player->orientation + grid->half_fov), 360);
-//	printf("2.1\n");
-//	printf("SCREEN_WIDTH = %d\n", SCREEN_WIDTH);
 	while (i < SCREEN_WIDTH)
 	{
 		printf("___________________\ni : %d\nangle value : %f\n", i, angle);
-//		image[i] = proj_plan_col(game, angle);
 		image[i] = proj_plan_col_test(game, angle);
 		angle -= grid->angle_incr;
 		if (angle < 0)
 			angle += 360;
 		i++;
-//		printf("WTF");
 	}
-//	printf("HEYYYYYYYYYY\n");
 	image[i] = '\0';
 	return (image);
 }
@@ -105,7 +99,6 @@ unsigned int *proj_plan_image_test(t_game *game, double orientation)
 {
 	unsigned int *image;
 	double dist;
-//	double dist_incr;
 	int i = 0;
 	double angle;
 
@@ -113,7 +106,6 @@ unsigned int *proj_plan_image_test(t_game *game, double orientation)
 	if (!image)
 		return (0);
 	dist = 0;
-//	dist_incr = (tan(dtor(game->grid->half_fov)) * 277) / HALF_WIDTH;
 	while (i < SCREEN_WIDTH)
 	{
 //		printf("i = %d  |  ", i);
@@ -122,7 +114,7 @@ unsigned int *proj_plan_image_test(t_game *game, double orientation)
 //			dist = (HALF_WIDTH - i) * dist_incr;
 			dist = (HALF_WIDTH - i) * 0.5;
 //			printf("dist = %f  |  ", dist);
-			angle = double_modulo(orientation + rtod(atan(itod(dist, 277))), 360);
+			angle = double_modulo(orientation + rtod(atan(itod(dist, game->grid->dist_proj_plan))), 360);
 	//		printf("atan(%f) = %f  |  ", itod(dist, 277), rtod(atan(itod(dist, 277))));
 		}
 		else
@@ -130,7 +122,7 @@ unsigned int *proj_plan_image_test(t_game *game, double orientation)
 //			dist = (i - HALF_WIDTH) * dist_incr;
 			dist = (i - HALF_WIDTH) * 0.5;
 //			printf("dist = %f  |  ", dist);
-			angle = double_modulo(orientation - rtod(atan(itod(dist, 277))), 360);
+			angle = double_modulo(orientation - rtod(atan(itod(dist, game->grid->dist_proj_plan))), 360);
 	//		printf("atan(%f) = %f  |  ", itod(dist, 277), rtod(atan(itod(dist, 277))));
 		}
 //		printf("angle = %f\n", angle);

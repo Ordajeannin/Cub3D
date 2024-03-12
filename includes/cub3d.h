@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/11 18:49:28 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:13:26 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_grid
 	int			proj_plan_height;
 	int			half_proj_plan_height;
 	int			grid_width;
+	int			dist_proj_plan;
 	int			projected_factor;
 	double		angle_incr;
 	char		**map;

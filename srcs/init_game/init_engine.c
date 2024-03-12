@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/05 19:29:31 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:17:14 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_grid	*init_grid(t_game *game)
 	grid = malloc(sizeof(t_grid));
 	if (!grid)
 		return (NULL);
-	grid->fov = 60;
+	grid->fov = 120;
 	grid->half_fov = grid->fov >> 1;
 //	grid->proj_plan_width = 320;
 //	grid->proj_plan_height = 200;
@@ -27,7 +27,8 @@ t_grid	*init_grid(t_game *game)
 	grid->proj_plan_height = SCREEN_HEIGHT;
 	grid->half_proj_plan_height = grid->proj_plan_height >> 1;
 	grid->grid_width = 64;
-	grid->projected_factor = grid->grid_width * 277;
+	grid->dist_proj_plan = round((SCREEN_WIDTH >> 1) / tan(dtor(grid->half_fov)));
+	grid->projected_factor = grid->grid_width * grid->dist_proj_plan;
 //	printf("fov = %d | proj_plan_width = %d\n", grid->fov, grid->proj_plan_width);
 	grid->angle_incr = (float)grid->fov / grid->proj_plan_width;
 //	printf("angle_incr = %f\n", grid->angle_incr);
