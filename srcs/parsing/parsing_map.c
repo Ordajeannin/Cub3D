@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/05 19:13:33 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:22:45 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ int	map_parser(char *argv, t_textures *map_info)
 	int		map_y;
 	int		map_ok;
 
-	
+	set_null_map(map_info);
 	map_y = get_map_y(map_info, argv);
 	if (map_y == -1 || !check_end_of_filename(argv, ".cub"))
 		return (0);

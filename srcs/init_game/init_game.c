@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:53 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/11 20:18:37 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:26:04 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int	init_game(t_game *game, t_textures *textures)
 	game->textures = textures;
 	game->player = init_player(game);
 	game->grid = init_grid(game);
+	if (!init_textures(game, textures))
+		return (-1);
 	return (0);
 }
