@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/05 20:26:10 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:00:42 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ void	create_col(t_game *game, unsigned int value, int x)
 			my_mlx_pixel_put(game, x, y++, *(game->textures->c));
 //		printf("...\n");
 		while (y < y_end)
-			my_mlx_pixel_put(game, x, y++, 0x00000000);
+		{
+			my_mlx_pixel_put(game, x, y, get_texture_pixel(projected, value, game, y, y - y_start));
+			y++;
+		}
 //		printf("...!!!");
 		while (y < SCREEN_HEIGHT)
 			my_mlx_pixel_put(game, x, y++, *(game->textures->f));

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/08 15:19:24 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/11 20:04:10 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	}
 	printf("PARSING PASSED\n");
 	render(&game);
-	//mlx_loop_hook(game.mlx, &render, &game);
+	mlx_loop_hook(game.mlx, &render, &game);
 	mlx_loop_hook(game.mlx, &loop, &game);
 	mlx_hook(game.win, KeyPress, KeyPressMask,
 		&handle_keypress, &game);

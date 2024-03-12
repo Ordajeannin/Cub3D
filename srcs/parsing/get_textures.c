@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/05 15:47:51 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:20:56 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ int	get_textures(char *str, t_textures *map_info)
 //	printf("this line is tested :%s\n", str);
 	if (str && !strncmp(str, "NO ", 3))
 	{
-		if (map_info->no)
+		if (map_info && map_info->no)
 		{
 			printf("texture error\n");
 			return (0);
