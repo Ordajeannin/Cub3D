@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/12 20:13:19 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:57:08 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int kk, i
 	while (index > 0 && tex->next)
 		tex = tex->next;
 	x = get_value(value, "OFFSET") % 64;
-	y = round(i * (64.0 / (projected * 2)));
+	y = round(i * (64.0 / (projected)));
 	index = y * tex->image[get_value(value, "FACE")].line_size + x * (tex->image[get_value(value, "FACE")].bpp >> 3);
 	pixel = tex->image[get_value(value, "FACE")].im_addr + index;
 	return (*(unsigned int *)pixel);
