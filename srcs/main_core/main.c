@@ -6,11 +6,18 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/08 15:19:24 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:28:22 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	print_debbug_values(t_grid *grid)
+{
+	printf("\n\nWidth = %d  |  ", grid->proj_plan_width);
+	printf("FOV = %d  |  ", grid->fov);
+	printf("DPP = %d\n", grid->dist_proj_plan);
+}
 
 int	main(int argc, char **argv)
 {
@@ -39,6 +46,7 @@ int	main(int argc, char **argv)
 		&handle_mouse, &game);
 	mlx_loop(game.mlx);
 	mlx_destroy_display(game.mlx);
+	print_debbug_values(game.grid);
 	free(game.mlx);
 	print_textures(&map_info);
 	free_tab((&map_info)->map);

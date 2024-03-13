@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/12 19:40:03 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:15:17 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ int	render(t_game *game)
 	i = 0;
 //	printf("2\n");
 //	printf("orientation theorique du joueur : %f\n", game->player->orientation);
-//	image = proj_plan_image_test(game, game->player->orientation);
-	image = proj_plan_image(game, game->grid);
+	image = proj_plan_image_test(game, game->player->orientation);
+//	image = proj_plan_image(game, game->grid);
 //	view_stocked_image(image);
 	printf("2 | ");
 	while (image[i])
