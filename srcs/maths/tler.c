@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:32:16 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 16:47:45 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:38:38 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 //
 //have to find beta from alpha (angle of the ray), so we could use * and not /
 //(use less ressources)
-int get_ipx(t_player *p, int i_py, double angle)
+int get_ipx(t_player *p, double i_py, double angle)
 {
 	int	i_px;
 	int i_px2;
-	int i_px3;
+	double i_px3;
 	double res;
 
 	i_px = 0;
@@ -68,15 +68,15 @@ int get_ipx(t_player *p, int i_py, double angle)
 		res = (((double)i_py - (double)p->pos_y) * tan(dtor(angle - 270.0)));
 		i_px = p->pos_x + (int)res;
 	}
-	return (i_px2);
+	return (i_px3);
 }
 
 //same for coll
-int get_ipy(t_player *p, int i_px, double angle)
+int get_ipy(t_player *p, double i_px, double angle)
 {
 	int	i_py;
 	int i_py2;
-	int i_py3;
+	double i_py3;
 	double res;
 
 	i_py = 0;
@@ -123,6 +123,6 @@ int get_ipy(t_player *p, int i_px, double angle)
 		i_py = p->pos_y + (int)res;
 	}
 //	printf("old = %d | new = %d\n", i_py2, i_py);
-	return (i_py2);
+	return (i_py3);
 }
 

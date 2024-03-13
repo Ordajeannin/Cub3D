@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:43:49 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 16:34:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:09:42 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ unsigned int *proj_plan_image_test(t_game *game, double orientation)
 	//		printf("atan(%f) = %f  |  ", itod(dist, 277), rtod(atan(itod(dist, 277))));
 		}
 //		printf("angle = %f\n", angle);
-		printf("\nindex : %d  |  ", i);
-		printf("angle : %f  |  ", angle);
-		printf("player(%d, %d)\n", (game->player->pos_y >> 6) + 1, (game->player->pos_x >> 6) + 1);
+		printf("\n\nindex : %d  |  ", i);
+		printf("angle : %f\n", angle);
+	//	printf("player(%d, %d)\n", (game->player->pos_y >> 6) + 1, (game->player->pos_x >> 6) + 1);
 		image[i] = proj_plan_col_test(game, angle);
 		i++;
 	}

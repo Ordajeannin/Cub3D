@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:02:43 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/29 20:59:54 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:44:28 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	max_dist(t_game *game)
 
 	axe = define_axe(game->player->orientation);
 	move = define_move(game->player->orientation);
-	x = game->player->pos_x >> 6;
-	y = game->player->pos_y >> 6;
+	x = game->player->pos_x / 64;
+	y = game->player->pos_y / 64;
 //	printf("\naxe :%c\tmove :%d\n", axe, move);
 	if (axe == 'x')
 		make_move_x(game, move, x, y);
