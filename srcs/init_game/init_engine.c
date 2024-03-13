@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/12 20:17:14 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:09:24 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_grid	*init_grid(t_game *game)
 	grid = malloc(sizeof(t_grid));
 	if (!grid)
 		return (NULL);
-	grid->fov = 120;
+	grid->fov = 60;
 	grid->half_fov = grid->fov >> 1;
 //	grid->proj_plan_width = 320;
 //	grid->proj_plan_height = 200;
