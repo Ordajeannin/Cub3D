@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:33:33 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/12 20:19:41 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:13:40 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ unsigned int	no_fish_eye(t_game *game, unsigned int value, double angle)
 	double	alpha;
 	int		distorted;
 	int		correct;
+	static int prev = 0;
+	static int prev_prev = 0;
+	static int prev_prev_prev = 0;
 
 //	view_stocked_image(&value);
 	if (angle < game->player->orientation)
@@ -28,8 +31,32 @@ unsigned int	no_fish_eye(t_game *game, unsigned int value, double angle)
 	else
 		alpha = double_modulo(angle - game->player->orientation, 360);
 	distorted = (value >> 12) & DIST_MASK;
-	//correct = round(distorted * cos(dtor(alpha)));
-	correct = distorted * cos(dtor(alpha));
+	correct = round(distorted * cos(dtor(alpha)));
+//	correct = distorted * cos(dtor(alpha));
+	if (correct == prev + 1 || correct == prev - 1)
+	{
+		if (prev == prev_prev || prev == prev_prev_prev)
+			correct = prev;
+	}
+	value &= ~(DIST_MASK << 12);
+	value |= (correct & DIST_MASK) << 12;
+	prev_prev_prev = prev_prev;
+	prev_prev = prev;
+	prev = correct;
+	return (value);
+}
+
+unsigned int no_fish_eye_test(t_game *game, unsigned int value, double angle)
+{
+	int distorted;
+	int correct;
+
+	if (angle < game->player->orientation)
+		angle = double_modulo(game->player->orientation - angle, 360);
+	else
+		angle = double_modulo(angle - game->player->orientation, 360);
+	distorted = (value >> 12) & DIST_MASK;
+	correct = round(game->grid->projected_factor / (distorted * cos(dtor(angle))));
 	value &= ~(DIST_MASK << 12);
 	value |= (correct & DIST_MASK) << 12;
 	return (value);

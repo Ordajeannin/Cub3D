@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:32:16 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/12 17:01:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:47:45 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int get_ipx(t_player *p, int i_py, double angle)
 		res = (((double)i_py - (double)p->pos_y) * tan(dtor(angle - 270.0)));
 		i_px = p->pos_x + (int)res;
 	}
-	return (i_px3);
+	return (i_px2);
 }
 
 //same for coll
@@ -123,6 +123,6 @@ int get_ipy(t_player *p, int i_px, double angle)
 		i_py = p->pos_y + (int)res;
 	}
 //	printf("old = %d | new = %d\n", i_py2, i_py);
-	return (i_py3);
+	return (i_py2);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 16:15:17 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:20:59 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	create_col(t_game *game, unsigned int value, int x)
 
 	y = 0;
 //	printf("wow, it s dark here\n");
-	projected = (game->grid->projected_factor / get_value(value, "DISTANCE"));
+//	projected = (game->grid->projected_factor / get_value(value, "DISTANCE"));
+	projected = round((game->grid->projected_factor / get_value(value, "DISTANCE")));
 	if (projected >= SCREEN_HEIGHT)
 	{
 //		printf("projected = %d\n", projected);
@@ -66,6 +67,32 @@ void	create_col(t_game *game, unsigned int value, int x)
 	}
 }
 
+void	create_col_test(t_game *game, unsigned int value, int x)
+{
+	int y;
+	int y_start;
+	int y_end;
+	int projected;
+
+	y = 0;
+	projected = get_value(value, "DISTANCE");
+	if (projected >= SCREEN_HEIGHT)
+	{
+		while (y < SCREEN_HEIGHT)
+			my_mlx_pixel_put(game, x, y++, 0x00000000);
+	}
+	else
+	{
+		y_start = game->grid->half_proj_plan_height - (projected >> 1);
+		y_end = game->grid->half_proj_plan_height + (projected >> 1);
+		while (y < y_start)
+			my_mlx_pixel_put(game, x, y++, *(game->textures->c));
+		while (y < y_end)
+			my_mlx_pixel_put(game, x, y++, 0x00000000);
+		while (y < SCREEN_HEIGHT)
+			my_mlx_pixel_put(game, x, y++, *(game->textures->f));
+	}
+}
 
 void view_stocked_col(unsigned int stock)
 {
@@ -74,7 +101,7 @@ void view_stocked_col(unsigned int stock)
     int offset = get_value(value, "OFFSET");
     int texture = get_value(value, "TEXTURE");
     int distance = get_value(value, "DISTANCE");
-    printf("[%d, %d, %d, %d]\n", face, offset, texture, distance);
+    printf("[%d, %d, %d, %d]", face, offset, texture, distance);
 }
 
 //debug function
@@ -116,7 +143,8 @@ int	render(t_game *game)
 	while (image[i])
 	{
 		//printf("index = %d  |  ", i);
-		create_col(game, image[i], i);
+	//	create_col(game, image[i], i);
+		create_col_test(game, image[i], i);
 		i++;
 	}
 	printf("3 | ");

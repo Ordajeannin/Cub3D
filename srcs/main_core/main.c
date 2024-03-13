@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/13 16:28:22 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:13:35 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	print_debbug_values(t_grid *grid)
 {
 	printf("\n\nWidth = %d  |  ", grid->proj_plan_width);
 	printf("FOV = %d  |  ", grid->fov);
-	printf("DPP = %d\n", grid->dist_proj_plan);
+	printf("DPP = %d  |  ", grid->dist_proj_plan);
+	printf("P_F = %d\n", grid->projected_factor);
 }
 
 int	main(int argc, char **argv)
