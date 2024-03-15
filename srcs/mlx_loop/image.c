@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/12 20:26:15 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:20:37 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	create_col(t_game *game, unsigned int value, int x)
 //		printf("distance = %d  |  ", get_value(value, "DISTANCE"));
 //		printf("projected = %d  |  y_start = %d  |  y_end = %d\n", projected, y_start, y_end);
 		while (y < y_start)
-			my_mlx_pixel_put(game, x, y++, *(game->textures->c));
+			my_mlx_pixel_put(game, x, y++, game->textures->c);
 //		printf("...\n");
 		while (y < y_end)
 		{
@@ -65,7 +65,7 @@ void	create_col(t_game *game, unsigned int value, int x)
 		}
 //		printf("...!!!");
 		while (y < SCREEN_HEIGHT)
-			my_mlx_pixel_put(game, x, y++, *(game->textures->f));
+			my_mlx_pixel_put(game, x, y++, game->textures->f);
 	}
 }
 

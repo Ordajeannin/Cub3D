@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/03/05 15:48:38 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:21:16 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	print_textures(t_textures *texture)
 {
 	printf("NO :%s\nSO :%s\nWE :%s\nEA :%s\n", texture->no, texture->so, texture->we, texture->ea);
 	if (texture->f)
-		printf("F :%d,%d,%d\n", texture->f[0],  texture->f[1],  texture->f[2]);	
+		printf("F :%d\n", texture->f);	
 	if (texture->c)
-		printf("C :%d,%d,%d\n", texture->c[0],  texture->c[1],  texture->c[2]);
+		printf("C :%d\n", texture->c);
 	printf("player is in [%d][%d] and is lookin at %d°\n", texture->p_x, texture->p_y, texture->p_direction);
 	printf("max_y is :%d and max_x is :%d\n", texture->y_max, texture->x_max);
 }

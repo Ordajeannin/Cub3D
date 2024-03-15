@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/08 17:22:45 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:28:47 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int	texture_good(t_textures *map_info)
 		|| !check_end_of_filename(map_info->we, ".xpm")
 		|| !check_end_of_filename(map_info->no, ".xpm"))
 		return (0);
-	if (!map_info->c || !map_info->f)
+	if (map_info->c == -1 || map_info->f == -1)
 	{
 		printf("missing f or c\n");
 		return (0);
@@ -152,8 +152,8 @@ void	set_null_map(t_textures *map_info)
 	map_info->no = NULL;
 	map_info->we = NULL;
 	map_info->so = NULL;
-	map_info->f = NULL;
-	map_info->c = NULL;
+	map_info->f = 0;
+	map_info->c = 0;
 	map_info->map = NULL;
 }
 
