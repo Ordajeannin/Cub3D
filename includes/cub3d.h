@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/13 15:54:27 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:17:00 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_textures
 	char *so;
 	char *we;
 	char *ea;
-	int *f;
-	int *c;
+	int f;
+	int c;
 	char **map;
 	int p_y;
 	int p_x;
@@ -92,23 +92,23 @@ typedef struct s_tex
 	void	*next;
 }	t_tex;
 
-typedef struct s_walls
-{
-	void 	*no_side_im;
-	char 	*no_side_addr;
-	int		no_im_width;
-	int		no_im_height;
-	int		no_bpp;
-	int		no_endian;
-	int		no_l_size;
-	void 	*so_side_im;
-	char 	*so_side_addr;
-	void	*ea_side_im;
-	char 	*ea_side_addr;
-	void	*we_side_im;
-	char 	*we_side_addr;
-	// void	*next;
-} t_walls;
+// typedef struct s_walls
+// {
+// 	void 	*no_side_im;
+// 	char 	*no_side_addr;
+// 	int		no_im_width;
+// 	int		no_im_height;
+// 	int		no_bpp;
+// 	int		no_endian;
+// 	int		no_l_size;
+// 	void 	*so_side_im;
+// 	char 	*so_side_addr;
+// 	void	*ea_side_im;
+// 	char 	*ea_side_addr;
+// 	void	*we_side_im;
+// 	char 	*we_side_addr;
+// 	// void	*next;
+// } t_walls;
 
 typedef struct s_player
 {
@@ -129,7 +129,7 @@ typedef struct s_game
 	int bpp;
 	int ll;
 	int endian;
-	t_walls	*walls;
+	// t_walls	*walls;
 	t_tex	*tex;
 	t_player *player;
 	t_grid *grid;
@@ -151,6 +151,8 @@ void free_textures(t_textures *textures);
 int is_inside(char c);
 char *ft_strdupto_n(char *str, char c);
 int check_end_of_filename(char const *filename, const char *end);
+void	print_tab(char **tab);
+void	free_tex(t_game *game);
 
 ///////////// Init_things //////////////////
 

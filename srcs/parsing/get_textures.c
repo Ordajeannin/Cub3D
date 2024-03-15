@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/08 17:20:56 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:00:58 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,22 @@ void	free_textures(t_textures *textures)
 		free(textures->ea);
 	if (textures->we)
 		free(textures->we);
-	if (textures->c)
-		free(textures->c);
-	if (textures->f)
-		free(textures->f);
 }
 
-int	rgb_atoi(const char *str)
+int	rgb_atoi(char *str)
 {
 	int	i;
 	int	sign;
 	int	result;
 
-	// printf("rgb atoi received :|%d|\n", str[0]);
+	// printf("rgb atoi received :|%s|\n", str);
 	i = 0;
 	sign = 0;
 	result = 0;
+	if (!str)
+		return (-1);
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		||str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
 		i++;
 	if (str[i] == '-')
 		sign = -1;
@@ -53,61 +51,90 @@ int	rgb_atoi(const char *str)
 	if ((str[i] != 0 && str[i] != '\n') || str[0] == '\n')
 	{
 		printf("non str or alpha in color\n");
+		free(str);
 		return (-1);
 	}
+	free(str);
 	return (result * sign);
 }
 
-
-int	*atorgb(char *str)
+char	*strcp_to_n(const char *str, char n)
 {
-	int		*rgb;
 	int		i;
-	char	*tmp;
+	char	*cp;
 
 	i = 0;
-	rgb = malloc(sizeof(int) * 4);
-	if (!rgb)
-	{
-		printf("malloc error\n");
+	cp = malloc(sizeof(char) * 4);
+	if (!str || !cp)
 		return (NULL);
-	}
-	while (i < 3)
+	ft_bzero(cp, 4);
+	while (str[i] && str[i] != n)
 	{
-		tmp = ft_strdupto_n(str, ',');
-		rgb[i] = rgb_atoi(tmp);
-		str = ft_strchr(str, ',') + 1;
-		free(tmp);
-		if ((rgb[i] < 0 || rgb[i] > 255) || (str == (char *)0x1 && i < 2))
-		{
-			free(rgb);
+		// printf("cp building :%s\tthen\t", cp);
+		if (i == 4)
 			return (NULL);
-		}
+		cp[i] = str[i];
 		i ++;
 	}
-	rgb[3] = 0;
-	return (rgb);
+	cp[3] = 0;
+	// printf("\nfinally |%s| is geting out of strcp to n\n", cp);
+	return (cp);
+}
+
+int	atorgb(char *str)
+{
+	int	color;
+	int	tmp;
+	int	i;
+
+	tmp = 0;
+	i = 0;
+	color = 0;
+	while (i < 3)
+	{
+		tmp = rgb_atoi(strcp_to_n(str, ','));
+		str = ft_strchr(str, ',');
+		if (str && str[0] == ',')
+			str ++;
+		if (tmp < 0)
+			return (-1);
+		printf("color before bitshift :%d\n", color);
+		color += tmp;
+		i ++;
+		if (i < 3)
+			color = color << 8;
+	}
+	printf("last color value :%d\n", color);
+	printf("\n");
+	return (color);
 }
 
 int	get_fandc_rgb(char *str, t_textures *map_info)
 {
+	static int	floor;
+	static int	celling;
+	
 	if (str && !ft_strncmp(str, "F ", 2))
 	{
-		if (map_info->f)
+		if (floor)
 		{
 			printf("floor error\n");
 			return (0);
 		}
+		floor = 1;
 		map_info->f = atorgb(str + 2);
+		printf("map_info->f :%d\n", map_info->f);
 	}
 	if (str && !strncmp(str, "C ", 2))
 	{
-		if (map_info->c)
+		if (celling)
 		{
 			printf("celing error\n");
 			return (0);
 		}
+		celling = 1;
 		map_info->c = atorgb(str + 2);
+		printf("map_info->c :%d\n", map_info->c);
 	}
 	return (1);
 }

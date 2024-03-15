@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/13 17:13:35 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:12:44 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, ButtonPress, ButtonPressMask,
 		&handle_mouse, &game);
 	mlx_loop(game.mlx);
-	mlx_destroy_display(game.mlx);
-	print_debbug_values(game.grid);
-	free(game.mlx);
 	print_textures(&map_info);
 	free_tab((&map_info)->map);
 	free_textures(&map_info);
+	free_tex(&game);
+	mlx_destroy_display(game.mlx);
+	free(game.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 20:20:17 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:15:16 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	create_col(t_game *game, unsigned int value, int x)
 //		printf("distance = %d  |  ", get_value(value, "DISTANCE"));
 //		printf("projected = %d  |  y_start = %d  |  y_end = %d\n", projected, y_start, y_end);
 		while (y < y_start)
-			my_mlx_pixel_put(game, x, y++, *(game->textures->c));
+			my_mlx_pixel_put(game, x, y++, game->textures->c);
 //		printf("...\n");
 		while (y < y_end)
 		{
@@ -66,7 +66,7 @@ void	create_col(t_game *game, unsigned int value, int x)
 		}
 //		printf("...!!!");
 		while (y < SCREEN_HEIGHT)
-			my_mlx_pixel_put(game, x, y++, *(game->textures->f));
+			my_mlx_pixel_put(game, x, y++, game->textures->f);
 	}
 }
 
@@ -89,11 +89,11 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 		y_start = game->grid->half_proj_plan_height - (projected >> 1);
 		y_end = game->grid->half_proj_plan_height + (projected >> 1);
 		while (y < y_start)
-			my_mlx_pixel_put(game, x, y++, *(game->textures->c));
+			my_mlx_pixel_put(game, x, y++, game->textures->c);
 		while (y < y_end)
 			my_mlx_pixel_put(game, x, y++, 0x00000000);
 		while (y < SCREEN_HEIGHT)
-			my_mlx_pixel_put(game, x, y++, *(game->textures->f));
+			my_mlx_pixel_put(game, x, y++, game->textures->f);
 	}
 }
 
