@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/15 17:15:16 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:10:26 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	render(t_game *game)
 	int				i;
 	unsigned int	*image;
 
-//	printf("1 | ");
+	printf("1 | ");
 	if (game->win == NULL)
 		return (1);
 	i = 0;
@@ -142,18 +142,18 @@ int	render(t_game *game)
 	image = proj_plan_image_test(game, game->player->orientation);
 //	image = proj_plan_image(game, game->grid);
 //	view_stocked_image(image);
-//	printf("2 | ");
+	printf("2 | ");
 	while (image[i])
 	{
 		//printf("index = %d  |  ", i);
-		create_col(game, image[i], i);
-	//	create_col_test(game, image[i], i);
+	//	create_col(game, image[i], i);
+		create_col_test(game, image[i], i);
 		i++;
 	}
-//	printf("3 | ");
+	printf("3 | ");
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	free(image);
-//	printf("4\n");
+	printf("4\n");
 	return (0);
 }
 
