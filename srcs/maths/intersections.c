@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/15 19:24:18 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:15:16 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	try_get_texture(char **map,int yt,int xt)
 	return (map[yi][xi]);
 }
 
-unsigned int	intersection_found_test(double angle, int dist, t_game *game, int flag, int pos_x, int pos_y)
+unsigned int	intersection_found_test(double angle, double dist, t_game *game, int flag, int pos_x, int pos_y)
 {
 	unsigned int	result;
 	char			texture;
@@ -53,7 +53,7 @@ unsigned int	intersection_found_test(double angle, int dist, t_game *game, int f
 	else
 		result |= ((pos_y % 64) & OFFSET_MASK) << 2;
 	result |= (texture & TEXTURE_MASK) << 8;
-	result |= (dist & DIST_MASK) << 12;
+	result |= ((int)dist & DIST_MASK) << 12;
 	return (result);
 }
 
@@ -115,7 +115,7 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 	double xi = 0;
 	double yi = 64;
 	unsigned int result;
-	int dist = 0;
+	double dist = 0;
 
 	angle = double_modulo(angle, 360);
 	if (angle == 0.0 || angle == 180.0)
@@ -160,7 +160,7 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	double xi = 0;
 	double yi = 0;
 	unsigned int result;
-	int dist = 0;
+	double dist = 0;
 
 	angle = double_modulo(angle, 360);
 	if (angle == 90.0 || angle == 270.0)

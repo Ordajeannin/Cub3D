@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/15 17:56:37 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:15:47 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ unsigned int	proj_plan_col(t_game *game, double angle);
 double			dtor(double degrees);
 double			rtod(double radian);
 double			double_modulo(double value, double modulo);
-int				ft_dist(double x1, double x2, double y1, double y2);
+double			ft_dist(double x1, double x2, double y1, double y2);
 int				get_value(unsigned int value, const char *flag);
 void			view_stocked_image(unsigned int *stock);
 void			view_stocked_col(unsigned int stock);
@@ -186,7 +186,7 @@ char			try_get_texture(char **map, int yt, int xt);
 unsigned int	proj_plan_col_test(t_game *game, double angle);
 unsigned int	col_intersections_test(t_game *game, t_player *player, double angle);
 unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle);
-unsigned int	intersection_found_test(double angle, int dist, t_game *game, int flag, int pos_x, int pos_y);
+unsigned int	intersection_found_test(double angle, double dist, t_game *game, int flag, int pos_x, int pos_y);
 unsigned int	*proj_plan_image_test(t_game *game, double orientation);
 unsigned int	no_fish_eye_test(t_game *game, unsigned int value, double angle);
 
