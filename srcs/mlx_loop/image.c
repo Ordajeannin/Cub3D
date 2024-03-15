@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 20:20:17 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:09:36 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,8 @@ int	render(t_game *game)
 	while (image[i])
 	{
 		//printf("index = %d  |  ", i);
-		create_col(game, image[i], i);
-	//	create_col_test(game, image[i], i);
+	//	create_col(game, image[i], i);
+		create_col_test(game, image[i], i);
 		i++;
 	}
 //	printf("3 | ");

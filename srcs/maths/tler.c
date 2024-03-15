@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:32:16 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 19:38:38 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:56:14 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 //
 //have to find beta from alpha (angle of the ray), so we could use * and not /
 //(use less ressources)
-int get_ipx(t_player *p, double i_py, double angle)
+double get_ipx(t_player *p, double i_py, double angle)
 {
 	int	i_px;
 	int i_px2;
@@ -72,7 +72,7 @@ int get_ipx(t_player *p, double i_py, double angle)
 }
 
 //same for coll
-int get_ipy(t_player *p, double i_px, double angle)
+double get_ipy(t_player *p, double i_px, double angle)
 {
 	int	i_py;
 	int i_py2;
