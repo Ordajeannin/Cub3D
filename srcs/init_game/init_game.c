@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:53 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/12 20:26:04 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:08:13 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	init_game(t_game *game, t_textures *textures)
 	game->textures = textures;
 	game->player = init_player(game);
 	game->grid = init_grid(game);
-	if (!init_textures(game, textures))
-		return (-1);
+//	if (!init_textures(game, textures))
+//		return (-1);
 	return (0);
 }

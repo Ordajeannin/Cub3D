@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:49:58 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/11 16:27:56 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:02:38 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	handle_close(t_game *game)
 void	player_move_collide(t_game *game, double angle)
 {
 	int dist = DIST_WALK;
-	int temp_x = game->player->pos_x;
-	int temp_y = game->player->pos_y;
+	double temp_x = game->player->pos_x;
+	double temp_y = game->player->pos_y;
 
 	if (angle < 90)
 	{
@@ -48,7 +48,7 @@ void	player_move_collide(t_game *game, double angle)
 		temp_x += dist * sin(dtor(angle - 270.0));
 		temp_y += dist * cos(dtor(angle - 270.0));
 	}
-	char c = try_get_texture(game->grid->map, temp_y >> 6, temp_x >> 6);
+	char c = try_get_texture(game->grid->map, temp_y / 64, temp_x / 64);
 	if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
 		game->player->pos_x = temp_x;

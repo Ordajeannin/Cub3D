@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/08 16:54:41 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:46:44 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@ double dtor(double degrees)
 
 double rtod(double radian)
 {
-	return (radian * 57.2958);
+	return (radian * 57.2957795);
 }
 
 // /*
 //  * Permet de determiner la distance absolue entre 2 points dans un repere
 //  * (ici, du joueur a une intersection)
 // */
-int ft_dist(int x1, int y1, int x2, int y2)
+int ft_dist(double x1, double y1, double x2, double y2)
 {
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-	int value = (int)sqrt((dx * dx) + (dy * dy));
-//	printf("distance from P(%d, %d) to I(%d, %d) = %d\n", x1, y1, x2, y2, value);
+	double dx = x2 - x1;
+	double dy = y2 - y1;
+	//int value = (int)sqrt((dx * dx) + (dy * dy));
+	int value = round(sqrt((dx * dx) + (dy * dy)));
+	//	printf("distance from P(%d, %d) to I(%d, %d) = %d\n", x1, y1, x2, y2, value);
 	return (value);
 }
 

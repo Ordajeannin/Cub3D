@@ -112,13 +112,13 @@ typedef struct s_walls
 
 typedef struct s_player
 {
-	int pos_x;
-	int pos_y;
-	double orientation;
-	int x_max;
-	int y_max;
-	int m_d;
-} t_player;
+	double		pos_x;
+	double		pos_y;
+	double	orientation;
+	int		x_max;
+	int		y_max;
+	int		m_d;
+}	t_player;
 
 typedef struct s_game
 {
@@ -172,13 +172,13 @@ unsigned int	proj_plan_col(t_game *game, double angle);
 double			dtor(double degrees);
 double			rtod(double radian);
 double			double_modulo(double value, double modulo);
-int				ft_dist(int x1, int x2, int y1, int y2);
+int				ft_dist(double x1, double x2, double y1, double y2);
 int				get_value(unsigned int value, const char *flag);
 void			view_stocked_image(unsigned int *stock);
 void			view_stocked_col(unsigned int stock);
 void			max_dist(t_game *game);
-int				get_ipx(t_player *player, int i_py, double angle);
-int				get_ipy(t_player *player, int i_px, double angle);
+int				get_ipx(t_player *player, double i_py, double angle);
+int				get_ipy(t_player *player, double i_px, double angle);
 char			try_get_texture(char **map, int yt, int xt);
 
 //////////// Maths_tests ///////////////////
@@ -188,6 +188,7 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle);
 unsigned int	intersection_found_test(double angle, int dist, t_game *game, int flag, int pos_x, int pos_y);
 unsigned int	*proj_plan_image_test(t_game *game, double orientation);
+unsigned int	no_fish_eye_test(t_game *game, unsigned int value, double angle);
 
 ///////////// Mlx_things ///////////////////
 

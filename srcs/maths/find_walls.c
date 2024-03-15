@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 19:39:50 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/01 17:10:19 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:46:24 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
  * la texture (sur 4 bits)
  * la distance (a corriger, sur 20 bits)
 */
+/*
 unsigned int intersection_found(double angle, int distance, char **map, int flag, int pos_x, int pos_y)
  {
  	unsigned int		result;
@@ -58,7 +59,7 @@ unsigned int intersection_found(double angle, int distance, char **map, int flag
 	result |= (distance & DIST_MASK) << 12;
 	return (result);
 }
-
+*/
 // /*
 //  * Permet de determiner les intersections lignes/colonnes
 //  * Calculs de la position de la premiere intersection,
@@ -68,6 +69,7 @@ unsigned int intersection_found(double angle, int distance, char **map, int flag
 //  * :warning: true if grid_width = 64
 //  * :warning: tan return a double value, any issue with pos_x?
 // */
+/*
 unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)
  {
  	int pos_x = 0;
@@ -108,7 +110,7 @@ unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)
 	}
 	return (result);
 }
-
+*/
 // /*
 //  * Permet de determiner les intersections rayon/colonnes
 //  * Calculs de la position de la premiere intersecion,
@@ -118,6 +120,7 @@ unsigned int	lines_intersections(t_player *player, t_grid *grid, double angle)
 //  * 
 //  * meme warnings que pour lines_intersections
 // */
+/*
 unsigned int	col_intersections(t_player *player, t_grid *grid, double angle)
 {
  	int	pos_x = 0;
@@ -156,7 +159,7 @@ unsigned int	col_intersections(t_player *player, t_grid *grid, double angle)
 	}
 	return (result);
 }
-
+*/
 /*
  * Permet de fournir les valeurs necessaires a la generation d'une image,
   * pour une colonne de pixel.
@@ -165,6 +168,7 @@ unsigned int	col_intersections(t_player *player, t_grid *grid, double angle)
 //  * la face du bloc, la colonne de pixels de la texture (offset), 
 //  * la texture cocernee, et la distance au joueur
 // */
+/*
 unsigned int proj_plan_col(t_game *game, double angle)
 {
  	unsigned int result;
@@ -185,7 +189,7 @@ unsigned int proj_plan_col(t_game *game, double angle)
 //	view_stocked_image(&result);
 	return (result);
 }
-
+*/
 //main, gere l'affichage (hook)
 ////boucle, fonction qui gere une image plan de proj (tableau de struct, distance + texture)
 //////boucle, appelle de fonction gerant une colonne (return une struct dist + texture)

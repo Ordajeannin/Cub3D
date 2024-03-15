@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/13 15:57:08 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:09:14 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int kk, i
 	char	*pixel;
 	t_tex	*tex;
 
+	return (0);
 	(void)kk;
 	tex = game->tex;
 	index = get_value(value, "TEXTURE") - 1;
