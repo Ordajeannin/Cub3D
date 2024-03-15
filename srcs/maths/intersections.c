@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/15 21:15:16 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:57:18 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ char	try_get_texture(char **map,int yt,int xt)
 		return ('a');
 	return (map[yi][xi]);
 }
+
+int	from_dist_to_projected(t_game *game, double angle, double dist)
+{
+	int result = 0;
+
+	if (angle < game->player->orientation)
+		angle = double_modulo(game->player->orientation - angle, 360);
+	else
+		angle = double_modulo(angle - game->player->orientation, 360);
+	result = round(game->grid->projected_factor / (dist * cos(dtor(angle))));
+//	printf("  |  dist = %f  |  projected = %d  |  angle = %f\n", dist, result, angle);
+	return result;
+}
+
 
 unsigned int	intersection_found_test(double angle, double dist, t_game *game, int flag, int pos_x, int pos_y)
 {
@@ -53,7 +67,8 @@ unsigned int	intersection_found_test(double angle, double dist, t_game *game, in
 	else
 		result |= ((pos_y % 64) & OFFSET_MASK) << 2;
 	result |= (texture & TEXTURE_MASK) << 8;
-	result |= ((int)dist & DIST_MASK) << 12;
+//	result |= ((int)dist & DIST_MASK) << 12;
+	result |= (from_dist_to_projected(game, angle, dist) & DIST_MASK) << 12;
 	return (result);
 }
 
@@ -208,16 +223,25 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 	line = lines_intersections_test(game, game->player, angle);
 	col = col_intersections_test(game, game->player, angle);
 	printf("\nline : %d  |  col : %d\n", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
-	if (get_value(line, "DISTANCE") < get_value(col, "DISTANCE"))
-	{
-	//	result = no_fish_eye(game, line, angle);
-		result = no_fish_eye_test(game, line, angle);
-	}
+//	if (get_value(line, "DISTANCE") < get_value(col, "DISTANCE"))
+//	{
+//	//	result = no_fish_eye(game, line, angle);
+//		result = no_fish_eye_test(game, line, angle);
+//	}
+//	else
+//	{
+//		//result = no_fish_eye(game, col, angle);
+//		result = no_fish_eye_test(game, col, angle);
+//	}
+
+	if (line == OUTMAP)
+		line = 0;
+	if (col == OUTMAP)
+		col = 0;
+	if (get_value(line, "DISTANCE") > get_value(col, "DISTANCE"))
+		result = line;
 	else
-	{
-		//result = no_fish_eye(game, col, angle);
-		result = no_fish_eye_test(game, col, angle);
-	}
+		result = col;
 	printf("value : ");
 	view_stocked_col(result);
 	return (result);
