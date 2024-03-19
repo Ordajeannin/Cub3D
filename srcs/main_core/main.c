@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/15 17:28:28 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:27:51 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 		free_textures(&map_info);
 		exit (1);
 	}
+	// print_tab(map_info.map);
 	printf("PARSING PASSED\n");
 	render(&game);
 	mlx_loop_hook(game.mlx, &render, &game);

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 16:43:28 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:44:38 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_image	get_tex_image(t_game *game, char *path)
 {
 	t_image	image;
 
-	printf("J'ALLOUE\n");
+	// printf("J'ALLOUE\n");
 	image.im_ptr = mlx_xpm_file_to_image(game->mlx, path, &image.im_width, &image.im_height);
 	if (!image.im_ptr)
 	{
@@ -36,7 +36,7 @@ int	init_textures(t_game *game, t_textures *texture)
 	tex = malloc((sizeof(t_tex)));
 	if (!tex)
 		return (0);
-	printf("JE SUIS PASSER ICI\n");
+	// printf("JE SUIS PASSER ICI\n");
 	tex->image[EAST] = get_tex_image(game, texture->ea);
 	tex->image[NORTH] = get_tex_image(game, texture->no);
 	tex->image[WEST] = get_tex_image(game, texture->we);

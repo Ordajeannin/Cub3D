@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 16:35:00 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:20:25 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ char *ft_strdupto_n(char *str, char c);
 int check_end_of_filename(char const *filename, const char *end);
 void	print_tab(char **tab);
 void	free_tex(t_game *game);
+void	set_player(t_textures *map_info, int x, int y, char p);
 
 ///////////// Init_things //////////////////
 

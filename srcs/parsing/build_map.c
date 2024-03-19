@@ -6,13 +6,13 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/02/28 17:15:28 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:22:50 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_player(char *str)
+int	is_player(char *str, t_textures *map_info, int y)
 {
 	int	i;
 	int	player;
@@ -23,7 +23,11 @@ int	is_player(char *str)
 	{
 		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E'
 			|| str[i] == 'W')
+		{
 			player ++;
+			set_player(map_info, i, y, str[i]);
+			str[i] = '0';
+		}
 		i ++;
 	}
 	return (player);
@@ -132,7 +136,7 @@ int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)
 		map[i] = get_next_line(fd);
 		if (map_info->x_max < (int)ft_strlen(map[i]))
 			map_info->x_max = (int)ft_strlen(map[i]);
-		player += is_player(map[i]);
+		player += is_player(map[i], map_info, i);
 		i ++;
 	}
 	map[i] = NULL;

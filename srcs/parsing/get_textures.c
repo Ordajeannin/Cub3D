@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 16:31:28 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:46:56 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,15 @@ void	free_textures(t_textures *textures)
 char	*ft_str_rm_spaces(char *str)
 {
 	char	*new;
-	int		i;
-	int		new_lenght;
 	int		end;
 
-	i = 0;
-	end = ft_strlen(str);
-	new_lenght = 0;
-	while (str && str[i] && ft_isspace(str[i]))
-		i++;
-	while(str && end >= 0 && ft_isspace(str[end]))
+	while (str && *str && ft_isspace(*str))
+	 	str ++;
+	end = ft_strlen(str) - 1;
+	while (str && end >= 0 && ft_isspace(str[end]))
 		end --;
-	new = malloc(sizeof(char) * end - i);
-	ft_strlcpy(new, str + i, end - i);
+	new = malloc(sizeof(char) * end + 2);
+	ft_strlcpy(new, str, end + 2);
 	return (new);
 }
 
@@ -140,7 +136,7 @@ int	get_fandc_rgb(char *str, t_textures *map_info)
 			return (0);
 		}
 		floor = 1;
-		map_info->f = atorgb(str + 2);
+		map_info->f = atorgb(ft_str_rm_spaces(str + 1));
 		printf("map_info->f :%d\n", map_info->f);
 	}
 	if (str && !strncmp(str, "C ", 2))
@@ -151,7 +147,7 @@ int	get_fandc_rgb(char *str, t_textures *map_info)
 			return (0);
 		}
 		celling = 1;
-		map_info->c = atorgb(str + 2);
+		map_info->c = atorgb(ft_str_rm_spaces(str + 1));
 		printf("map_info->c :%d\n", map_info->c);
 	}
 	return (1);
@@ -166,8 +162,7 @@ int	get_next_textures(char *str, t_textures *map_info)
 			printf("texture error\n");
 			return (0);
 		}
-		map_info->we = ft_strdup(str + 3);
-		map_info->we[ft_strlen(map_info->we) - 1] = 0;
+		map_info->we = ft_str_rm_spaces(str + 2);
 	}
 	if (str && !strncmp(str, "EA ", 3))
 	{
@@ -176,8 +171,7 @@ int	get_next_textures(char *str, t_textures *map_info)
 			printf("texture error\n");
 			return (0);
 		}
-		map_info->ea = ft_strdup(str + 3);
-		map_info->ea[ft_strlen(map_info->ea) - 1] = 0;
+		map_info->ea = ft_str_rm_spaces(str + 2);
 	}
 	if (!get_fandc_rgb(str, map_info))
 		return (0);
@@ -186,35 +180,8 @@ int	get_next_textures(char *str, t_textures *map_info)
 
 int	get_textures(char *str, t_textures *map_info)
 {
-//	printf("this line is tested :%s\n", str);
-	if (str && !strncmp(str, "NO ", 3))
-	{
-		if (map_info && map_info->no)
-		{
-			printf("texture error\n");
-			return (0);
-		}
-		map_info->no = ft_strdup(str + 3);
-		map_info->no[ft_strlen(map_info->no) - 1] = 0;
-	}
-	if (str && !strncmp(str, "SO ", 3))
-	{
-		if (map_info->so)
-		{
-			printf("texture error\n");
-			return (0);
-		}
-		map_info->so = ft_strdup(str + 3);
-		map_info->so[ft_strlen(map_info->so) - 1] = 0;
-	}
-	if (!get_next_textures(str, map_info))
-		return (0);
-	return (1);
-}
-int	get_texturesN(char *str, t_textures *map_info)
-{
-//	printf("this line is tested :%s\n", str);
-	if (str && !strncmp(str, "NO", 2) && ft_isspace(str[3]))
+	// printf("this line is tested :%s\n", str);
+	if (str && !strncmp(str, "NO", 2) && ft_isspace(str[2]))
 	{
 		if (map_info && map_info->no)
 		{
@@ -222,19 +189,15 @@ int	get_texturesN(char *str, t_textures *map_info)
 			return (0);
 		}
 		map_info->no = ft_str_rm_spaces(str + 2);
-		printf("map_indo->no :%s\n", map_info->no);
-		// map_info->no = ft_strdup(str + 3);
-		// map_info->no[ft_strlen(map_info->no) - 1] = 0;
 	}
-	if (str && !strncmp(str, "SO ", 3) && ft_isspace(str[3]))
+	if (str && !strncmp(str, "SO ", 3) && ft_isspace(str[2]))
 	{
 		if (map_info->so)
 		{
 			printf("texture error\n");
 			return (0);
 		}
-		map_info->so = ft_strdup(str + 3);
-		map_info->so[ft_strlen(map_info->so) - 1] = 0;
+		map_info->so = ft_str_rm_spaces(str + 2);
 	}
 	if (!get_next_textures(str, map_info))
 		return (0);
