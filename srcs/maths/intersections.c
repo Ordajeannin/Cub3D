@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/19 16:06:56 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:29:58 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 		return (OUTMAP);
 	xi = get_xi(angle);
 	if (angle < 180)
-		i_py = (floor(player->pos_y / 64) * 64) - 0.1;
+		i_py = (floor(player->pos_y / 64) * 64) - 0.000001;
 	else
 		i_py = (floor(player->pos_y / 64) * 64) + 64;
 	i_px = get_ipx(player, i_py, angle);
@@ -187,7 +187,7 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	if (angle < 90 || angle > 270)
 		i_px = (floor(player->pos_x / 64) * 64) + 64;
 	else
-		i_px = (floor(player->pos_x / 64) * 64) - 0.1;
+		i_px = (floor(player->pos_x / 64) * 64) - 0.000001;
 	i_py = get_ipy(player, i_px, angle);
 	dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 	result = intersection_found_test(angle, dist, game, 0, i_px, i_py);
