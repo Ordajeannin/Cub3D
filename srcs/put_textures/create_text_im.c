@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/15 17:13:05 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:56:33 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ t_image	get_tex_image(t_game *game, char *path)
 	printf("J'ALLOUE\n");
 	image.im_ptr = mlx_xpm_file_to_image(game->mlx, path, &image.im_width, &image.im_height);
 	if (!image.im_ptr)
+	{
+		printf("cannot convert .xpm\n");
 		return (image);
+	}
 	image.im_addr = mlx_get_data_addr(image.im_ptr, &image.bpp, &image.line_size, &image.endian);
 	// free(image.im_ptr);
 	return (image);
@@ -53,14 +56,18 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int kk, i
 	char	*pixel;
 	t_tex	*tex;
 
-	return (0);
+	static size_t o;
+
 	(void)kk;
 	tex = game->tex;
 	index = get_value(value, "TEXTURE") - 1;
 	while (index > 0 && tex->next)
 		tex = tex->next;
+	if (o % 50 == 0)
+		printf("offset :%d\n", get_value(value, "OFFSET"));
+	o ++;
 	x = get_value(value, "OFFSET");
-	y = round(i * (64.0 / (projected)));
+	y = round(i * (64.0 / projected));
 	index = y * tex->image[get_value(value, "FACE")].line_size + x * (tex->image[get_value(value, "FACE")].bpp >> 3);
 	pixel = tex->image[get_value(value, "FACE")].im_addr + index;
 	return (*(unsigned int *)pixel);

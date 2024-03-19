@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/15 16:00:58 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:31:28 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@ void	free_textures(t_textures *textures)
 		free(textures->ea);
 	if (textures->we)
 		free(textures->we);
+}
+
+char	*ft_str_rm_spaces(char *str)
+{
+	char	*new;
+	int		i;
+	int		new_lenght;
+	int		end;
+
+	i = 0;
+	end = ft_strlen(str);
+	new_lenght = 0;
+	while (str && str[i] && ft_isspace(str[i]))
+		i++;
+	while(str && end >= 0 && ft_isspace(str[end]))
+		end --;
+	new = malloc(sizeof(char) * end - i);
+	ft_strlcpy(new, str + i, end - i);
+	return (new);
 }
 
 int	rgb_atoi(char *str)
@@ -98,14 +117,13 @@ int	atorgb(char *str)
 			str ++;
 		if (tmp < 0)
 			return (-1);
-		printf("color before bitshift :%d\n", color);
+		// printf("color before bitshift :%d\n", color);
 		color += tmp;
 		i ++;
 		if (i < 3)
 			color = color << 8;
 	}
-	printf("last color value :%d\n", color);
-	printf("\n");
+	// printf("last color value :%d\n", color);
 	return (color);
 }
 
@@ -180,6 +198,35 @@ int	get_textures(char *str, t_textures *map_info)
 		map_info->no[ft_strlen(map_info->no) - 1] = 0;
 	}
 	if (str && !strncmp(str, "SO ", 3))
+	{
+		if (map_info->so)
+		{
+			printf("texture error\n");
+			return (0);
+		}
+		map_info->so = ft_strdup(str + 3);
+		map_info->so[ft_strlen(map_info->so) - 1] = 0;
+	}
+	if (!get_next_textures(str, map_info))
+		return (0);
+	return (1);
+}
+int	get_texturesN(char *str, t_textures *map_info)
+{
+//	printf("this line is tested :%s\n", str);
+	if (str && !strncmp(str, "NO", 2) && ft_isspace(str[3]))
+	{
+		if (map_info && map_info->no)
+		{
+			printf("texture error\n");
+			return (0);
+		}
+		map_info->no = ft_str_rm_spaces(str + 2);
+		printf("map_indo->no :%s\n", map_info->no);
+		// map_info->no = ft_strdup(str + 3);
+		// map_info->no[ft_strlen(map_info->no) - 1] = 0;
+	}
+	if (str && !strncmp(str, "SO ", 3) && ft_isspace(str[3]))
 	{
 		if (map_info->so)
 		{

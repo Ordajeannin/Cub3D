@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 20:28:30 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:35:52 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 	if (result == (OUTMAP))
 		return (OUTMAP);
 //	printf("iteration line (%d, %d)(%d, %d): ",i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
-	printf("iteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
-	view_stocked_col(result);
+	// printf("iteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
+	// view_stocked_col(result);
 	while (result == FLOOR)
 	{
 		if (angle > 270 || angle < 90)
@@ -147,8 +147,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 		//result = intersection_found_test(angle, dist, game, 1, ceil(i_px), ceil(i_py));
 		result = intersection_found_test(angle, dist, game, 1, i_px, i_py);
-		printf("\niteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
-		view_stocked_col(result);
+		// printf("\niteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
+		// view_stocked_col(result);
 	}
 	return (result);
 }
@@ -177,8 +177,8 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	if (result == (OUTMAP))
 		return (OUTMAP);
 //	printf("iteration col (%d, %d)(%d, %d): ", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
-	printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
-	view_stocked_col(result);
+	// printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
+	// view_stocked_col(result);
 	while (result == FLOOR)
 	{
 		if (angle > 270 || angle < 90)
@@ -192,8 +192,8 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 		result = intersection_found_test(angle, dist, game, 0, i_px, i_py);
 //		printf("iteration col (%d, %d)(%d, %d): ", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
-		printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
-		view_stocked_col(result);
+		// printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)ceil(i_py / 64) + 1, (int)ceil(i_px / 64) + 1);
+		// view_stocked_col(result);
 	}
 	return (result);
 }
@@ -207,7 +207,7 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 	result = 0;
 	line = lines_intersections_test(game, game->player, angle);
 	col = col_intersections_test(game, game->player, angle);
-	printf("\nline : %d  |  col : %d\n", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
+	// printf("\nline : %d  |  col : %d\n", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
 	if (get_value(line, "DISTANCE") < get_value(col, "DISTANCE"))
 	{
 		result = no_fish_eye(game, line, angle);
@@ -218,7 +218,7 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 		result = no_fish_eye(game, col, angle);
 		//result = no_fish_eye_test(game, col, angle);
 	}
-	printf("value : ");
-	view_stocked_col(result);
+	// printf("value : ");
+	// view_stocked_col(result);
 	return (result);
 }

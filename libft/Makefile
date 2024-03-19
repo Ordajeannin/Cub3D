@@ -6,7 +6,7 @@
 #    By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 16:27:15 by ajeannin          #+#    #+#              #
-#    Updated: 2024/02/28 20:00:42 by pkorsako         ###   ########.fr        #
+#    Updated: 2024/03/18 18:09:03 by pkorsako         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ SRC_FILES 		= ft_atoi			\
 			ft_lstdelone			\
 			ft_lstclear			\
 			ft_lstiter			\
-			ft_lstmap
+			ft_lstmap			\
+			ft_isspace
 
 SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

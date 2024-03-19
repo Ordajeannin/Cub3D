@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:25:23 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/02/28 19:24:49 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:08:28 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ft_isalnum(int a);
 int		ft_isalpha(int a);
 int		ft_isascii(int a);
 int		ft_isdigit(int a);
+int		ft_isspace(int c);
 int		ft_isprint(int a);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
