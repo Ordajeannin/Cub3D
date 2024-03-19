@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 16:35:00 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:59:17 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,8 +186,8 @@ char			try_get_texture(char **map, int yt, int xt);
 //////////// Maths_tests ///////////////////
 
 unsigned int	proj_plan_col_test(t_game *game, double angle);
-unsigned int	col_intersections_test(t_game *game, t_player *player, double angle);
-unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle);
+unsigned int	col_intersections_test(t_game *game, t_player *player, double angle, double *dist);
+unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle, double *dist);
 unsigned int	intersection_found_test(double angle, double dist, t_game *game, int flag, int pos_x, int pos_y);
 unsigned int	*proj_plan_image_test(t_game *game, double orientation);
 unsigned int	no_fish_eye_test(t_game *game, unsigned int value, double angle);

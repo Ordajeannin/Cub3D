@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/19 16:41:37 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:20:32 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 
 	y = 0;
 	projected = get_value(value, "DISTANCE");
+//	if (projected % 2 == 1)
+//		projected += 1;
 	if (projected >= SCREEN_HEIGHT)
 	{
 		y_start = game->grid->half_proj_plan_height - (projected >> 1);
