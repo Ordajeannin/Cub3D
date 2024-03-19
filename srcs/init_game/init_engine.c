@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/13 15:56:12 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:59:01 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_player	*init_player(t_game *game)
 	player = malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
+//	printf("p_x = %d  |  p_y = %d  |  orientation = %d\n", game->textures->p_x, game->textures->p_y, game->textures->p_direction);
 	player->pos_x = (game->textures->p_x * 64) + 32;
 	player->pos_y = (game->textures->p_y * 64) + 32;
 	player->orientation = (double)game->textures->p_direction;

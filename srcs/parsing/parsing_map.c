@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/15 13:28:47 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:54:35 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	set_player(t_textures *map_info, int x, int y, char p)
 {
+	printf("wtf, am i here? x = %d | y = %d\n", x, y);
 	map_info->p_x = x;
 	map_info->p_y = y;
 	if (p == 'N')
@@ -24,6 +25,7 @@ void	set_player(t_textures *map_info, int x, int y, char p)
 		map_info->p_direction = 180;
 	if (p == 'S')
 		map_info->p_direction = 270;
+	printf("ok, c est bizarre.\np_x = %d  |  p_y = %d  |  angle = %d\n", map_info->p_x, map_info->p_y, map_info->p_direction);
 }
 
 

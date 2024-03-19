@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/15 22:13:50 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:06:56 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	try_get_texture(char **map,int yt,int xt)
 	int yi = 0;
 	int xi = 0;
 
+//	printf("yt = %d  |  xt = %d\n", yt, xt);
 	while (yi != yt && map[yi] != NULL)
 		yi++;
 	if (yi != yt || map[yi] == NULL)
@@ -132,6 +133,7 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 	unsigned int result;
 	double dist = 0;
 
+//	printf("1  | wtffff");
 	angle = double_modulo(angle, 360);
 	if (angle == 0.0 || angle == 180.0)
 		return (OUTMAP);
@@ -147,8 +149,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 	if (result == (OUTMAP))
 		return (OUTMAP);
 //	printf("iteration line (%d, %d)(%d, %d): ",i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
-	printf("iteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
-	view_stocked_col(result);
+//	printf("iteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
+//	view_stocked_col(result);
 	while (result == FLOOR)
 	{
 		if (angle > 270 || angle < 90)
@@ -162,8 +164,8 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player, double ang
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 		//result = intersection_found_test(angle, dist, game, 1, ceil(i_px), ceil(i_py));
 		result = intersection_found_test(angle, dist, game, 1, i_px, i_py);
-		printf("\niteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
-		view_stocked_col(result);
+//		printf("\niteration line (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
+	//	view_stocked_col(result);
 	}
 	return (result);
 }
@@ -192,8 +194,8 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	if (result == (OUTMAP))
 		return (OUTMAP);
 //	printf("iteration col (%d, %d)(%d, %d): ", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
-	printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
-	view_stocked_col(result);
+//	printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
+	//view_stocked_col(result);
 	while (result == FLOOR)
 	{
 		if (angle > 270 || angle < 90)
@@ -207,8 +209,8 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 		dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
 		result = intersection_found_test(angle, dist, game, 0, i_px, i_py);
 //		printf("iteration col (%d, %d)(%d, %d): ", i_py, i_px, (i_py >> 6) + 1, (i_px >> 6) + 1);
-		printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
-		view_stocked_col(result);
+//		printf("\niteration col (%f, %f)  |  (%d, %d)  |   ", i_py, i_px, (int)floor(i_py / 64) + 1, (int)floor(i_px / 64) + 1);
+	//	view_stocked_col(result);
 	}
 	return (result);
 }
@@ -220,11 +222,14 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 	unsigned int col;
 
 	result = 0;
-	printf("WTF je segfault ici?\n");
+//	printf("WTF je segfault ici?\n");
+//	printf("position du joueur : (%f, %f)\n", game->player->pos_y, game->player->pos_x);
+//	printf("angle du joueur : %f\n", game->player->orientation);
+//	printf("angle du rayon : %f\n", angle);
 	line = lines_intersections_test(game, game->player, angle);
-	printf("la?");
+//	printf("la?");
 	col = col_intersections_test(game, game->player, angle);
-	printf("\nline : %d  |  col : %d\n", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
+//	printf("\nline : %d  |  col : %d\n", get_value(line, "DISTANCE"), get_value(col, "DISTANCE"));
 //	if (get_value(line, "DISTANCE") < get_value(col, "DISTANCE"))
 //	{
 //	//	result = no_fish_eye(game, line, angle);
@@ -244,7 +249,7 @@ unsigned int proj_plan_col_test(t_game *game, double angle)
 		result = line;
 	else
 		result = col;
-	printf("value : ");
-	view_stocked_col(result);
+//	printf("value : ");
+//	view_stocked_col(result);
 	return (result);
 }
