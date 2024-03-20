@@ -6,12 +6,11 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:11:20 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 13:14:36 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:19:48 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 //deplacement constant? trigo? si droit ou diagonale, distance variable?
 void	ft_moove_pos(int key_x, int key_y, t_game *game)
@@ -37,9 +36,11 @@ void	ft_moove_view(t_player *player, int key_x, int key_y)
 	if (key_x != 0)
 	{
 		if (key_x == 65361)
-			player->orientation = double_modulo(player->orientation + TURN_RATE, 360);
+			player->orientation = double_modulo(player->orientation
+					+ TURN_RATE, 360);
 		else
-			player->orientation = double_modulo(player->orientation - TURN_RATE, 360);
+			player->orientation = double_modulo(player->orientation
+					- TURN_RATE, 360);
 	}
 	if (key_y != 0)
 		return ;
