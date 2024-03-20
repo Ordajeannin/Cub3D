@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/19 16:41:37 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:18:18 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,57 +19,37 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 	char	*pixel;
 	int		index;
 
-//	printf("i");
-
 	index = (y * game->ll + x * (game->bpp >> 3));
 	pixel = game->img_addr + index;
 	*(unsigned int *) pixel = color;
 }
 
-/*
- * :warning: les murs sont en noir par defaut, il faudra calculer quel pixel de
- * la texture doit etre affiche, base sur l'offset... mais pas que?
-*/
-void	create_col(t_game *game, unsigned int value, int x)
+void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 {
 	int	y;
-	int y_start;
+	int	y_start;
 	int	y_end;
-	int	projected;
 
 	y = 0;
-	projected = round((game->grid->projected_factor / get_value(value, "DISTANCE")));
-	if (projected >= SCREEN_HEIGHT)
-	{	y_start = game->grid->half_proj_plan_height - (projected >> 1);
-//		printf("projected = %d\n", projected);
-		while (y < SCREEN_HEIGHT)
-		{
-			my_mlx_pixel_put(game, x, y, get_texture_pixel(projected, value, game, y, y - y_start));
-			y ++;
-		}
-	}
-	else
+	y_start = game->grid->half_proj_plan_height - (projected >> 1);
+	y_end = game->grid->half_proj_plan_height + (projected >> 1) - 1;
+	while (y < y_start)
+		my_mlx_pixel_put(game, x, y++, game->textures->c);
+	while (y < y_end)
 	{
-		y_start = game->grid->half_proj_plan_height - (projected >> 1);
-		y_end = game->grid->half_proj_plan_height + (projected >> 1);
-		while (y < y_start)
-			my_mlx_pixel_put(game, x, y++, game->textures->c);
-		while (y < y_end)
-		{
-			my_mlx_pixel_put(game, x, y, get_texture_pixel(projected, value, game, y, y - y_start));
-			y++;
-		}
-		while (y < SCREEN_HEIGHT)
-			my_mlx_pixel_put(game, x, y++, game->textures->f);
+		my_mlx_pixel_put(game, x, y,
+			get_texture_pixel(projected, value, game, y, y - y_start));
+		y++;
 	}
+	while (y < SCREEN_HEIGHT)
+		my_mlx_pixel_put(game, x, y++, game->textures->f);
 }
 
 void	create_col_test(t_game *game, unsigned int value, int x)
 {
-	int y;
-	int y_start;
-	int y_end;
-	int projected;
+	int	y;
+	int	y_start;
+	int	projected;
 
 	y = 0;
 	projected = get_value(value, "DISTANCE");
@@ -78,55 +58,13 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 		y_start = game->grid->half_proj_plan_height - (projected >> 1);
 		while (y < SCREEN_HEIGHT)
 		{
-			y ++;
-			my_mlx_pixel_put(game, x, y, get_texture_pixel(projected, value, game, y, y - y_start));
+			my_mlx_pixel_put(game, x, y,
+				get_texture_pixel(projected, value, game, y, y - y_start));
+			y++;
 		}
 	}
 	else
-	{
-		y_start = game->grid->half_proj_plan_height - (projected >> 1);
-		y_end = game->grid->half_proj_plan_height + (projected >> 1);
-		while (y < y_start)
-			my_mlx_pixel_put(game, x, y++, game->textures->c);
-		while (y < y_end)
-		{
-			y ++;
-			my_mlx_pixel_put(game, x, y, get_texture_pixel(projected, value, game, y, y - y_start));
-		}
-		while (y < SCREEN_HEIGHT)
-			my_mlx_pixel_put(game, x, y++, game->textures->f);
-	}
-}
-
-void view_stocked_col(unsigned int stock)
-{
-    unsigned int value = stock;
-    int face = get_value(value, "FACE");
-    int offset = get_value(value, "OFFSET");
-    int texture = get_value(value, "TEXTURE");
-    int distance = get_value(value, "DISTANCE");
-    printf("[%d, %d, %d, %d]", face, offset, texture, distance);
-}
-
-//debug function
-void view_stocked_image(unsigned int *stock)
-{
-    if (stock == NULL) {
-        printf("The stock is empty.\n");
-        return;
-    }
-    int index = 0;
-    while (stock[index] != 0)
-	{
-        unsigned int value = stock[index];
-        int face = get_value(value, "FACE");
-        int offset = get_value(value, "OFFSET");
-        int texture = get_value(value, "TEXTURE");
-        int distance = get_value(value, "DISTANCE");
-
-        printf("[%d][%d, %d, %d, %d]\n", index, face, offset, texture, distance);
-        index++;
-    }
+		create_col_norme(game, projected, value, x);
 }
 
 int	render(t_game *game)
@@ -137,11 +75,10 @@ int	render(t_game *game)
 	if (game->win == NULL)
 		return (1);
 	i = 0;
+	ft_moove(game->player, game);
 	image = proj_plan_image_test(game, game->player->orientation);
-//	view_stocked_image(image);
 	while (image[i])
 	{
-	//	printf("index = %d  |  ", i);
 		create_col_test(game, image[i], i);
 		i++;
 	}
@@ -150,9 +87,9 @@ int	render(t_game *game)
 	return (0);
 }
 
-int	loop()
+int	loop(void)
 {
 	while (1 != 1)
-		break;
+		break ;
 	return (1);
 }

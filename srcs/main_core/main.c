@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 17:27:51 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:47:50 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ int	main(int argc, char **argv)
 	// print_tab(map_info.map);
 	printf("PARSING PASSED\n");
 	render(&game);
-	mlx_loop_hook(game.mlx, &render, &game);
-	mlx_loop_hook(game.mlx, &loop, &game);
+//	mlx_loop_hook(game.mlx, &render, &game);
+//	mlx_loop_hook(game.mlx, &loop, &game);
 	mlx_hook(game.win, KeyPress, KeyPressMask,
-		&handle_keypress, &game);
+		&handle_keypress_test, &game);
+	mlx_hook(game.win, KeyRelease, KeyReleaseMask,
+		&handle_keyrelease, &game);
 	mlx_hook(game.win, DestroyNotify, StructureNotifyMask,
 		&handle_close, &game);
-	mlx_hook(game.win, ButtonPress, ButtonPressMask,
-		&handle_mouse, &game);
+//	mlx_hook(game.win, ButtonPress, ButtonPressMask,
+//		&handle_mouse, &game);
+	mlx_loop_hook(game.mlx, &render, &game);
 	mlx_loop(game.mlx);
 	print_textures(&map_info);
 	free_tab((&map_info)->map);

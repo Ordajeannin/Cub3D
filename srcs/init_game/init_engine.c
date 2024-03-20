@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/19 15:59:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:12:22 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ t_player	*init_player(t_game *game)
 	player->x_max = 1000000;
 	player->y_max = 1000000;
 	player->m_d = 1;
+	player->moove[0] = 0;
+	player->moove[1] = 0;
+	player->moove[2] = 0;
+	player->moove[3] = 0;
+	player->moove[4] = '\0';
+	view_stocked_input(player->moove);
 //	player.x_max = game->textures->x_max << 6;
 //	player.y_max = game->textures->y_max << 6;
 	return (player);

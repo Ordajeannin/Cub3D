@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 17:20:25 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:52:46 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_player
 	int		x_max;
 	int		y_max;
 	int		m_d;
+	int		moove[5];
 }	t_player;
 
 typedef struct s_game
@@ -187,8 +188,8 @@ char			try_get_texture(char **map, int yt, int xt);
 //////////// Maths_tests ///////////////////
 
 unsigned int	proj_plan_col_test(t_game *game, double angle);
-unsigned int	col_intersections_test(t_game *game, t_player *player, double angle);
-unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle);
+unsigned int	col_intersections_test(t_game *game, t_player *player, double angle, double *dist);
+unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle, double *dist);
 unsigned int	intersection_found_test(double angle, double dist, t_game *game, int flag, int pos_x, int pos_y);
 unsigned int	*proj_plan_image_test(t_game *game, double orientation);
 unsigned int	no_fish_eye_test(t_game *game, unsigned int value, double angle);
@@ -202,10 +203,17 @@ int		get_texture_pixel(int projected, unsigned int value, t_game *game, int y, i
 int loop();
 
 //////////// Hook_things ///////////////////
-//
+
 int handle_close(t_game *game);
 int handle_keypress(int keycode, t_game *game);
+int handle_keyrelease(int keycode, t_game *game);
 int handle_mouse(int keycode, int x, int y, t_game *game);
 void player_move(t_player *player, double angle);
 void player_move_collide(t_game *game, double angle);
+void ft_moove(t_player *player, t_game *game);
+void view_stocked_input(int *moove);
+
+/////////// Hook_tests ////////////////////
+
+int handle_keypress_test(int keycode, t_game *game);
 #endif
