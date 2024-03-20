@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/15 21:13:10 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:42:53 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,36 @@
  * Permet de convertir une variable de degrees a radian
  * (necessaire pour les fonctions trigo)
 */
-double dtor(double degrees)
+double	dtor(double degrees)
 {
 	return (degrees * 0.0174533);
 }
 
-double rtod(double radian)
+double	rtod(double radian)
 {
 	return (radian * 57.2957795);
 }
 
-// /*
-//  * Permet de determiner la distance absolue entre 2 points dans un repere
-//  * (ici, du joueur a une intersection)
-// */
-double ft_dist(double x1, double y1, double x2, double y2)
+/*
+ * Permet de determiner la distance absolue entre 2 points dans un repere
+ * (ici, du joueur a une intersection)
+*/
+double	ft_dist(double x1, double y1, double x2, double y2)
 {
-	double dx = x2 - x1;
-	double dy = y2 - y1;
-	//int value = (int)sqrt((dx * dx) + (dy * dy));
-	double value = sqrt((dx * dx) + (dy * dy));
-	//	printf("distance from P(%d, %d) to I(%d, %d) = %d\n", x1, y1, x2, y2, value);
+	double	dx;
+	double	dy;
+	double	value;
+
+	dx = x2 - x1;
+	dy = y2 - y1;
+	value = sqrt((dx * dx) + (dy * dy));
 	return (value);
 }
 
 /*
- * Permet d'isoler une valeur precise, pour une colonne donnee 
+ * Permet d'isoler une valeur precise, pour une colonne donnee
  * A une colonne corespond un unsigned int, ordonnee ainsi :
- * 
+ *
  * Face (du block), sur 2 bits (4 faces)
  * Offset (colonne de la texture a considerer), sur 6 bits (0->63)
  * Texture (sprite du block), sur 4 bits (16 textures dispo, on est large)
@@ -53,7 +55,9 @@ double ft_dist(double x1, double y1, double x2, double y2)
 */
 int	get_value(unsigned int value, const char *flag)
 {
-	int result = 0;
+	int	result;
+
+	result = 0;
 	if (ft_strncmp(flag, "FACE", 4) == 0)
 		return (value & FACE_MASK);
 	else if (ft_strncmp(flag, "OFFSET", 6) == 0)
@@ -64,11 +68,9 @@ int	get_value(unsigned int value, const char *flag)
 	{
 		result = (value >> 12) & DIST_MASK;
 		if (result != 0)
-			return result;
+			return (result);
 		else
 			return (1);
-//		printf("distance recuperee : %d\n", ((value >> 12) & DIST_MASK));
-//		return ((value >> 12) & DIST_MASK);
 	}
 	else
 		return (-1);

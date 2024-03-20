@@ -6,74 +6,45 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:33:33 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/15 19:34:27 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:08:05 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/*
- * Permet de corriger l'effet fish-eye, qui deformerait l'image sinon.
- * extrait la distance, effectue les calculs, et remplace par la valeur correcte
-*/
-unsigned int	no_fish_eye(t_game *game, unsigned int value, double angle)
+char	try_get_texture(char **map, int yt, int xt)
 {
-	double	alpha;
-	int		distorted;
-	int		correct;
-	static int prev = 0;
-	static int prev_prev = 0;
-//	static int prev_prev_prev = 0;
+	int	yi;
+	int	xi;
 
-//	view_stocked_image(&value);
-	if (angle < game->player->orientation)
-		alpha = double_modulo(game->player->orientation - angle, 360);
-	else
-		alpha = double_modulo(angle - game->player->orientation, 360);
-	distorted = (value >> 12) & DIST_MASK;
-	correct = round(distorted * cos(dtor(alpha)));
-//	correct = distorted * cos(dtor(alpha));
-//	if (correct == prev + 1 || correct == prev - 1)
-//	{
-//		if (prev == prev_prev || prev == prev_prev_prev)
-//			correct = prev;
-//	}
-	if (correct == prev + 1 || correct == prev - 1)
-	{
-		if (prev == prev_prev)
-			correct = prev;
-	}
-	value &= ~(DIST_MASK << 12);
-	value |= (correct & DIST_MASK) << 12;
-//	prev_prev_prev = prev_prev;
-	prev_prev = prev;
-	prev = correct;
-	return (value);
+	yi = 0;
+	xi = 0;
+	while (yi != yt && map[yi] != NULL)
+		yi++;
+	if (yi != yt || map[yi] == NULL)
+		return ('a');
+	while (xi != xt && map[yi][xi] != '\0')
+		xi++;
+	if (xt != xi)
+		return ('a');
+	return (map[yi][xi]);
 }
 
-unsigned int no_fish_eye_test(t_game *game, unsigned int value, double angle)
+int	from_dist_to_projected(t_game *game, double angle,
+		double i_px, double i_py)
 {
-	int distorted;
-	int correct;
-//	static int prev = 0;
-//	static int prev_prev = 0;
-//	static int prev_prev_prev = 0;
+	int		result;
+	double	dist;
 
+	dist = ft_dist(i_px, i_py, game->player->pos_x, game->player->pos_y);
 	if (angle < game->player->orientation)
 		angle = double_modulo(game->player->orientation - angle, 360);
 	else
 		angle = double_modulo(angle - game->player->orientation, 360);
-	distorted = get_value(value, "DISTANCE");
-	correct = round(game->grid->projected_factor / (distorted * cos(dtor(angle))));
-//	if (correct == prev + 1 || correct == prev - 1)
-//	{
-//		if (prev == prev_prev || prev == prev_prev_prev)
-//			correct = prev;
-//	}
-	value &= ~(DIST_MASK << 12);
-	value |= (correct & DIST_MASK) << 12;
-//	prev_prev_prev = prev_prev;
-//	prev_prev = prev;
-//	prev = correct;
-	return (value);
+	result = round(game->grid->projected_factor / (dist * cos(dtor(angle))));
+	if (game->flag == 0)
+		game->dist_c = dist;
+	else
+		game->dist_l = dist;
+	return (result);
 }

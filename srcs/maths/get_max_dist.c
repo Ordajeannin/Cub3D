@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:02:43 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/13 19:44:28 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:39:47 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	make_move_x(t_game *game, int move, int x, int y)
 	int	max_dist;
 
 	max_dist = 0;
-//	printf("value of map : %c\n", game->grid->map[y][x]);
 	while (game->grid->map[y][x] != '1')
 	{
 		x = x + move;
@@ -66,7 +65,6 @@ void	max_dist(t_game *game)
 	move = define_move(game->player->orientation);
 	x = game->player->pos_x / 64;
 	y = game->player->pos_y / 64;
-//	printf("\naxe :%c\tmove :%d\n", axe, move);
 	if (axe == 'x')
 		make_move_x(game, move, x, y);
 	else

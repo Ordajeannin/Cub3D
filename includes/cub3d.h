@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 16:41:37 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:40:37 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,9 @@ typedef struct s_game
 	int bpp;
 	int ll;
 	int endian;
+	int flag;
+	double	dist_l;
+	double	dist_c;
 	// t_walls	*walls;
 	t_tex	*tex;
 	t_player *player;
@@ -191,16 +194,24 @@ void			view_stocked_col(unsigned int stock);
 void			max_dist(t_game *game);
 double				get_ipx(t_player *player, double i_py, double angle);
 double				get_ipy(t_player *player, double i_px, double angle);
+double				get_xi(double angle);
+double				get_yi(double angle);
 char			try_get_texture(char **map, int yt, int xt);
 
 //////////// Maths_tests ///////////////////
 
 unsigned int	proj_plan_col_test(t_game *game, double angle);
-unsigned int	col_intersections_test(t_game *game, t_player *player, double angle, double *dist);
-unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle, double *dist);
-unsigned int	intersection_found_test(double angle, double dist, t_game *game, int flag, int pos_x, int pos_y);
+unsigned int	col_intersections_test(t_game *game, t_player *player, double angle);
+unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle);
+unsigned int	intersection_found_test(double angle, t_game *game, double pos_x, double pos_y);
 unsigned int	*proj_plan_image_test(t_game *game, double orientation);
 unsigned int	no_fish_eye_test(t_game *game, unsigned int value, double angle);
+int				from_dist_to_projected(t_game *game, double angle, double x, double y);
+void			set_value1(double *y, double *x, double angle, int flag);
+void			set_value2lines(double *y, double *x, t_player *player, double angle);
+void			set_value2col(double *y, double *x, t_player *player, double angle);
+void			update_ipx(double *ipx, double xi, double angle);
+void			update_ipy(double *ipy, double yi, double angle);
 
 ///////////// Mlx_things ///////////////////
 

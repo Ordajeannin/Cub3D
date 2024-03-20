@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:53 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 14:26:00 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:17:37 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	init_game(t_game *game, t_textures *textures)
 	game->bpp = 0;
 	game->ll = 0;
 	game->endian = 0;
-	game->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);//a securiser ?
+	game->flag = 0;
+	game->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img_addr = mlx_get_data_addr(game->img, &game->bpp,
 		&game->ll, &game->endian);
 	game->textures = textures;

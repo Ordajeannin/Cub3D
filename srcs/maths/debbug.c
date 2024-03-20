@@ -6,12 +6,12 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:29:29 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 14:02:58 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:38:37 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/*
 void view_stocked_col(unsigned int stock)
 {
     unsigned int value = stock;
@@ -57,3 +57,4 @@ void view_stocked_input(int *moove)
 		i++;
 	}
 }
+*/
