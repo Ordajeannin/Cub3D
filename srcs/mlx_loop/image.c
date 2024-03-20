@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/19 17:20:32 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:18:12 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,17 @@ void view_stocked_image(unsigned int *stock)
     }
 }
 
+void view_stocked_input(int *moove)
+{
+	int i = 0;
+
+	while (i < 4)
+	{
+		printf("moove[%d] = %d\n", i, moove[i]);
+		i++;
+	}
+}
+
 int	render(t_game *game)
 {
 	int				i;
@@ -139,6 +150,8 @@ int	render(t_game *game)
 	if (game->win == NULL)
 		return (1);
 	i = 0;
+//	view_stocked_input(game->player->moove);
+	ft_moove(game->player, game);
 	image = proj_plan_image_test(game, game->player->orientation);
 //	view_stocked_image(image);
 	while (image[i])

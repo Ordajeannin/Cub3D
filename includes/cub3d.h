@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 17:59:17 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:12:04 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_player
 	int		x_max;
 	int		y_max;
 	int		m_d;
+	int		moove[5];
 }	t_player;
 
 typedef struct s_game
@@ -201,10 +202,17 @@ int		get_texture_pixel(int projected, unsigned int value, t_game *game, int y, i
 int loop();
 
 //////////// Hook_things ///////////////////
-//
+
 int handle_close(t_game *game);
 int handle_keypress(int keycode, t_game *game);
+int handle_keyrelease(int keycode, t_game *game);
 int handle_mouse(int keycode, int x, int y, t_game *game);
 void player_move(t_player *player, double angle);
 void player_move_collide(t_game *game, double angle);
+void ft_moove(t_player *player, t_game *game);
+void view_stocked_input(int *moove);
+
+/////////// Hook_tests ////////////////////
+
+int handle_keypress_test(int keycode, t_game *game);
 #endif
