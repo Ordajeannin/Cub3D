@@ -6,13 +6,13 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 17:22:50 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:01:29 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_player(char *str, t_textures *map_info, int y)
+int	is_player_in_line(char *str, t_textures *map_info, int y)
 {
 	int	i;
 	int	player;
@@ -34,22 +34,6 @@ int	is_player(char *str, t_textures *map_info, int y)
 }
 
 /*
-	si un 1 est au début de ligne
-	(sans les whitespace), la map commence
-*/
-int	map_started(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t') //isspace, sans \n
-		i ++;
-	if (str[i] == '1' || str[i] == '0')
-		return (1);
-	return (0);
-}
-
-/*
 	récupère la hauteur de la map
 */
 int	get_map_y(t_textures *map_info, char *map_path)
@@ -59,12 +43,8 @@ int	get_map_y(t_textures *map_info, char *map_path)
 	int		fd;
 
 	i = 0;
-	fd = open(map_path, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("cannot open map\n");
+	if (!ft_open(&fd, map_path))
 		return (-1);
-	}
 	str = go_to_map(fd, map_info);
 	if (!str)
 	{
@@ -90,7 +70,6 @@ int	get_map_y(t_textures *map_info, char *map_path)
 char	*go_to_map(int fd, t_textures *map_utils)
 {
 	char	*str;
-	// int i = 0;
 
 	str = get_next_line(fd);
 	while (str)
@@ -103,12 +82,11 @@ char	*go_to_map(int fd, t_textures *map_utils)
 			{
 				printf("je renvoi 0 sur cette sting :%s\n", str);
 				free(str);
-				return (NULL);	
+				return (NULL);
 			}
 		}
 		free(str);
 		str = get_next_line(fd);
-		// printf("i :%d\tgnl return string %ld char long\n", i ++, ft_strlen(str));
 	}
 	free(str);
 	printf("no map found in file\n");
@@ -121,22 +99,16 @@ int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)
 	int	fd;
 	int	player;
 
-	player = 0;
-	map_info->x_max = 0;
-	i = 1;
-	fd = open(argv, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("cannot open map\n");
+	if (!init_map(&i, &fd, &player, argv))
 		return (0);
-	}
+	map_info->x_max = 0;
 	map[0] = go_to_map(fd, NULL);
 	while (i <= map_y - 1)
 	{
 		map[i] = get_next_line(fd);
 		if (map_info->x_max < (int)ft_strlen(map[i]))
 			map_info->x_max = (int)ft_strlen(map[i]);
-		player += is_player(map[i], map_info, i);
+		player += is_player_in_line(map[i], map_info, i);
 		i ++;
 	}
 	map[i] = NULL;

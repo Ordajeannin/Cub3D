@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/19 17:44:38 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:25:53 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,16 @@ int	init_textures(t_game *game, t_textures *texture)
 	tex = malloc((sizeof(t_tex)));
 	if (!tex)
 		return (0);
-	// printf("JE SUIS PASSER ICI\n");
+	game->tex = tex;
+	game->tex->next = NULL;
 	tex->image[EAST] = get_tex_image(game, texture->ea);
 	tex->image[NORTH] = get_tex_image(game, texture->no);
 	tex->image[WEST] = get_tex_image(game, texture->we);
 	tex->image[SOUTH] = get_tex_image(game, texture->so);
 	if (!tex->image[EAST].im_ptr || !tex->image[NORTH].im_ptr || !tex->image[WEST].im_ptr || !tex->image[SOUTH].im_ptr)
+	{
 		return (0);
-	game->tex = tex;
-	game->tex->next = NULL;
+	}
 	return (1);
 }
 
@@ -56,16 +57,11 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int kk, i
 	char	*pixel;
 	t_tex	*tex;
 
-	// static size_t o;
-
 	(void)kk;
 	tex = game->tex;
 	index = get_value(value, "TEXTURE") - 1;
 	while (index > 0 && tex->next)
 		tex = tex->next;
-	// if (o % 50 == 0)
-	// 	printf("offset :%d\n", get_value(value, "OFFSET"));
-	// o ++;
 	x = get_value(value, "OFFSET");
 	y = round(i * (64.0 / projected));
 	index = y * tex->image[get_value(value, "FACE")].line_size + x * (tex->image[get_value(value, "FACE")].bpp >> 3);
@@ -83,10 +79,8 @@ void	free_tex(t_game *game)
 		i = 0;
 		while(i < 4)
 		{
-			// free(tex->image[i].im_addr); //faut pas free ca ?!?!?
-			// printf("free i :%d\n", i);
-			// free(game->tex->image[i].im_ptr);
-			mlx_destroy_image(game->mlx, game->tex->image[i].im_ptr);
+			if (game->tex->image[i].im_ptr)
+				mlx_destroy_image(game->mlx, game->tex->image[i].im_ptr);
 			i ++;
 		}
 		tmp = game->tex;
@@ -94,4 +88,3 @@ void	free_tex(t_game *game)
 		free(tmp);
 	}
 }
-

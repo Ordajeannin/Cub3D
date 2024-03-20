@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/19 16:41:37 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/19 20:22:50 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 		y_start = game->grid->half_proj_plan_height - (projected >> 1);
 		while (y < SCREEN_HEIGHT)
 		{
-			y ++;
 			my_mlx_pixel_put(game, x, y, get_texture_pixel(projected, value, game, y, y - y_start));
+			y ++;
 		}
 	}
 	else
@@ -90,8 +90,8 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 			my_mlx_pixel_put(game, x, y++, game->textures->c);
 		while (y < y_end)
 		{
-			y ++;
 			my_mlx_pixel_put(game, x, y, get_texture_pixel(projected, value, game, y, y - y_start));
+			y ++;
 		}
 		while (y < SCREEN_HEIGHT)
 			my_mlx_pixel_put(game, x, y++, game->textures->f);
