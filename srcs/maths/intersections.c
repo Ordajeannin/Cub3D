@@ -6,103 +6,52 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 16:04:31 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:42:59 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	try_get_texture(char **map, int yt, int xt)
+int	find_face(t_game *game, double angle)
 {
-	int	yi;
-	int	xi;
+	int	face;
 
-	yi = 0;
-	xi = 0;
-	while (yi != yt && map[yi] != NULL)
-		yi++;
-	if (yi != yt || map[yi] == NULL)
-		return ('a');
-	while (xi != xt && map[yi][xi] != '\0')
-		xi++;
-	if (xt != xi)
-		return ('a');
-	return (map[yi][xi]);
+	face = WEST;
+	if (angle < 180 && game->flag)
+		face = SOUTH;
+	else if (game->flag)
+		face = NORTH;
+	else if (angle > 90 && angle < 270)
+		face = EAST;
+	return (face);
 }
 
-int	from_dist_to_projected(t_game *game, double angle, double dist)
-{
-	int	result;
-
-	if (angle < game->player->orientation)
-		angle = double_modulo(game->player->orientation - angle, 360);
-	else
-		angle = double_modulo(angle - game->player->orientation, 360);
-	result = round(game->grid->projected_factor / (dist * cos(dtor(angle))));
-	return (result);
-}
-
-unsigned int	intersection_found_test(double angle, double dist, t_game *game, int flag, int pos_x, int pos_y)
+unsigned int	intersection_found_test(double angle, t_game *game,
+		double pos_x, double pos_y)
 {
 	unsigned int	result;
 	char			texture;
-	int				face;
 
 	result = 0;
-	texture = try_get_texture(game->grid->map, pos_y >> 6, pos_x >> 6);
+	texture = try_get_texture(game->grid->map,
+			(int)pos_y >> 6, (int)pos_x >> 6);
 	if (texture == '0')
 		return (FLOOR);
 	else if (texture == 'a')
 		return (OUTMAP);
-	face = WEST;
-	if (angle < 180 && flag)
-		face = SOUTH;
-	else if (flag)
-		face = NORTH;
-	else if (angle > 90 && angle < 270)
-		face = EAST;
-	result |= (face & FACE_MASK);
-	if (flag)
-		result |= ((pos_x % 64) & OFFSET_MASK) << 2;
+	result |= (find_face(game, angle) & FACE_MASK);
+	if (game->flag)
+		result |= (((int)pos_x % 64) & OFFSET_MASK) << 2;
 	else
-		result |= ((pos_y % 64) & OFFSET_MASK) << 2;
+		result |= (((int)pos_y % 64) & OFFSET_MASK) << 2;
 	result |= (texture & TEXTURE_MASK) << 8;
-	result |= (from_dist_to_projected(game, angle, dist) & DIST_MASK) << 12;
+	result |= (from_dist_to_projected(game, angle, pos_x, pos_y)
+			& DIST_MASK) << 12;
 	return (result);
 }
 
-double	get_xi(double angle)
-{
-	double	result;
-
-	if (angle <= 90.0)
-		result = 64 * tan(dtor(90.0 - angle));
-	else if (angle > 90 && angle < 180)
-		result = 64 * tan(dtor(angle - 90.0));
-	else if (angle < 270)
-		result = 64 * tan(dtor(270 - angle));
-	else
-		result = 64 * tan(dtor(angle - 270));
-	return (result);
-}
-
-double	get_yi(double angle)
-{
-	double	result;
-
-	if (angle <= 90)
-		result = 64 * tan(dtor(angle));
-	else if (angle > 90 && angle < 180)
-		result = 64 * tan(dtor(180.0 - angle));
-	else if (angle < 270)
-		result = 64 * tan(dtor(angle - 180.0));
-	else
-		result = 64 * tan(dtor(360.0 - angle));
-	return (result);
-}
-
-unsigned int	lines_intersections_test(t_game *game, t_player *player,
-		double angle, double *dist)
+unsigned int	lines_intersections_test(t_game *game,
+		t_player *player, double angle)
 {
 	double			i_px;
 	double			i_py;
@@ -110,37 +59,26 @@ unsigned int	lines_intersections_test(t_game *game, t_player *player,
 	double			yi;
 	unsigned int	result;
 
+	game->flag = 1;
 	angle = double_modulo(angle, 360);
 	if (angle == 0.0 || angle == 180.0)
 		return (OUTMAP);
-	xi = get_xi(angle);
-	yi = 64;
-	if (angle < 180)
-		i_py = (floor(player->pos_y / 64) * 64) - 0.000001;
-	else
-		i_py = (floor(player->pos_y / 64) * 64) + 64;
-	i_px = get_ipx(player, i_py, angle);
-	*dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-	result = intersection_found_test(angle, *dist, game, 1, i_px, i_py);
+	set_value1(&xi, &yi, angle, game->flag);
+	set_value2lines(&i_py, &i_px, player, angle);
+	result = intersection_found_test(angle, game, i_px, i_py);
 	if (result == (OUTMAP))
 		return (OUTMAP);
 	while (result == FLOOR)
 	{
-		if (angle > 270 || angle < 90)
-			i_px = i_px + xi;
-		else
-			i_px = i_px - xi;
-		if (angle < 180)
-			i_py = i_py - yi;
-		else
-			i_py = i_py + yi;
-		*dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-		result = intersection_found_test(angle, *dist, game, 1, i_px, i_py);
+		update_ipx(&i_px, xi, angle);
+		update_ipy(&i_py, yi, angle);
+		result = intersection_found_test(angle, game, i_px, i_py);
 	}
 	return (result);
 }
 
-unsigned int	col_intersections_test(t_game *game, t_player *player, double angle, double *dist)
+unsigned int	col_intersections_test(t_game *game,
+		t_player *player, double angle)
 {
 	double			i_px;
 	double			i_py;
@@ -148,32 +86,20 @@ unsigned int	col_intersections_test(t_game *game, t_player *player, double angle
 	double			yi;
 	unsigned int	result;
 
+	game->flag = 0;
 	angle = double_modulo(angle, 360);
 	if (angle == 90.0 || angle == 270.0)
 		return (OUTMAP);
-	xi = 64;
-	yi = get_yi(angle);
-	if (angle < 90 || angle > 270)
-		i_px = (floor(player->pos_x / 64) * 64) + 64;
-	else
-		i_px = (floor(player->pos_x / 64) * 64) - 0.000001;
-	i_py = get_ipy(player, i_px, angle);
-	*dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-	result = intersection_found_test(angle, *dist, game, 0, i_px, i_py);
+	set_value1(&xi, &yi, angle, game->flag);
+	set_value2col(&i_py, &i_px, player, angle);
+	result = intersection_found_test(angle, game, i_px, i_py);
 	if (result == (OUTMAP))
 		return (OUTMAP);
 	while (result == FLOOR)
 	{
-		if (angle > 270 || angle < 90)
-			i_px = i_px + xi;
-		else
-			i_px = i_px - xi;
-		if (angle < 180)
-			i_py = i_py - yi;
-		else
-			i_py = i_py + yi;
-		*dist = ft_dist(i_px, i_py, player->pos_x, player->pos_y);
-		result = intersection_found_test(angle, *dist, game, 0, i_px, i_py);
+		update_ipx(&i_px, xi, angle);
+		update_ipy(&i_py, yi, angle);
+		result = intersection_found_test(angle, game, i_px, i_py);
 	}
 	return (result);
 }
@@ -183,19 +109,17 @@ unsigned int	proj_plan_col_test(t_game *game, double angle)
 	unsigned int	result;
 	unsigned int	line;
 	unsigned int	col;
-	double			dist_l;
-	double			dist_c;
 
 	result = 0;
-	line = lines_intersections_test(game, game->player, angle, &dist_l);
-	col = col_intersections_test(game, game->player, angle, &dist_c);
+	line = lines_intersections_test(game, game->player, angle);
+	col = col_intersections_test(game, game->player, angle);
 	if (line == OUTMAP)
 		line = 0;
 	if (col == OUTMAP)
 		col = 0;
 	if (get_value(line, "DISTANCE") == get_value(col, "DISTANCE"))
 	{
-		if (dist_l > dist_c)
+		if (game->dist_l > game->dist_c)
 			result = col;
 		else
 			result = line;

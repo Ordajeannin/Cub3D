@@ -6,11 +6,41 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:32:16 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 15:47:09 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:09:07 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+double	get_xi(double angle)
+{
+	double	result;
+
+	if (angle <= 90.0)
+		result = 64 * tan(dtor(90.0 - angle));
+	else if (angle > 90 && angle < 180)
+		result = 64 * tan(dtor(angle - 90.0));
+	else if (angle < 270)
+		result = 64 * tan(dtor(270 - angle));
+	else
+		result = 64 * tan(dtor(angle - 270));
+	return (result);
+}
+
+double	get_yi(double angle)
+{
+	double	result;
+
+	if (angle <= 90)
+		result = 64 * tan(dtor(angle));
+	else if (angle > 90 && angle < 180)
+		result = 64 * tan(dtor(180.0 - angle));
+	else if (angle < 270)
+		result = 64 * tan(dtor(angle - 180.0));
+	else
+		result = 64 * tan(dtor(360.0 - angle));
+	return (result);
+}
 
 double	get_ipx(t_player *p, double i_py, double angle)
 {
