@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 13:52:46 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:41:37 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ typedef struct s_game
 	t_textures *textures;
 } t_game;
 
-///////////////Map_things///////////////////
+///////////////Parsing_things///////////////////
 
 int map_parser(char *argv, t_textures *map_info);
 int map_started(char *str);
@@ -155,6 +155,14 @@ int check_end_of_filename(char const *filename, const char *end);
 void	print_tab(char **tab);
 void	free_tex(t_game *game);
 void	set_player(t_textures *map_info, int x, int y, char p);
+int		get_f_and_c(char *str, t_textures *map_info);
+char	*ft_str_rm_spaces(char *str);
+int		atorgb(char *str);
+int	init_map(int *i, int *fd, int *player, char *argv);
+int	map_started(char *str);
+int	ft_open(int *fd, char *path);
+void	set_null_map(t_textures *map_info);
+int	texture_good(t_textures *map_info);
 
 ///////////// Init_things //////////////////
 

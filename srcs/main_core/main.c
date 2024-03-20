@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 14:47:50 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:38:56 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	main(int argc, char **argv)
 	free_tab((&map_info)->map);
 	free_textures(&map_info);
 	free_tex(&game);
+	free(game.grid);
+	free(game.player);
 	mlx_destroy_display(game.mlx);
 	free(game.mlx);
 	return (0);
