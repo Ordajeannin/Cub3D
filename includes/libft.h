@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:25:23 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/18 18:08:37 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/21 19:33:43 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,10 @@ char	*ft_update_stash(char *stash);
 char	*ft_is_newline(char *stash);
 char	*ft_strjoin2(char *stash, char *buffer);
 int		ft_strlen2(char *str);
+char	*gft_strjoin(char *s1, char *s2);
+char	*gft_strdup(char *s);
+size_t	gft_strlcpy(char *dst, char *src, size_t dstsize);
+int		gft_strlen(char *str);
+int		gft_strchr(char *str, int c);
 
 #endif
