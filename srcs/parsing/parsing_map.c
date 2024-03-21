@@ -6,15 +6,14 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 16:18:03 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:22:07 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_point_e_s(char **map, int x, int y, int map_y)
+int	check_point_e_s(char **map, int x, int y)
 {
-	(void)map_y;
 	if (map[y][x + 1] != '1' && !is_inside(map[y][x + 1]))
 		return (0);
 	if (map[y + 1] && x <= (int)ft_strlen(map[y + 1]))
@@ -41,7 +40,7 @@ int	can_access(char **map, int limit_x, int y)
 	return (0);
 }
 
-int	check_point_n_w(char **map, int x, int y, int map_y)
+int	check_point_n_w(char **map, int x, int y)
 {
 	if (y > 0)
 	{
@@ -58,7 +57,7 @@ int	check_point_n_w(char **map, int x, int y, int map_y)
 	}
 	else
 		return (0);
-	if (!check_point_e_s(map, x, y, map_y))
+	if (!check_point_e_s(map, x, y))
 		return (0);
 	return (1);
 }
@@ -66,14 +65,13 @@ int	check_point_n_w(char **map, int x, int y, int map_y)
 /*
 map info est la juste pour le P position et direction
 */
-int	is_map_closed(t_textures *map_info, char **map, int map_y)
+int	is_map_closed(char **map, int map_y)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	(void)map_info;
 	while (y <= map_y - 1)
 	{
 		x = 0;
@@ -81,7 +79,7 @@ int	is_map_closed(t_textures *map_info, char **map, int map_y)
 		{
 			if (is_inside(map[y][x]))
 			{
-				if (!check_point_n_w(map, x, y, map_y))
+				if (!check_point_n_w(map, x, y))
 				{
 					printf("map not closed\n");
 					return (0);
@@ -115,7 +113,7 @@ int	map_parser(char *argv, t_textures *map_info)
 	}
 	if (!build_map_line(map_info, map_info->map, map_y, argv))
 		return (0);
-	map_ok = is_map_closed(map_info, map_info->map, map_y);
+	map_ok = is_map_closed(map_info->map, map_y);
 	if (map_ok && texture_good(map_info))
 		return (1);
 	return (0);

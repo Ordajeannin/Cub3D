@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 14:25:53 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:39:46 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ t_image	get_tex_image(t_game *game, char *path)
 {
 	t_image	image;
 
-	// printf("J'ALLOUE\n");
-	image.im_ptr = mlx_xpm_file_to_image(game->mlx, path, &image.im_width, &image.im_height);
+	image.im_ptr = mlx_xpm_file_to_image(game->mlx, path, &image.im_width,
+			&image.im_height);
 	if (!image.im_ptr)
 	{
 		printf("cannot convert .xpm\n");
 		return (image);
 	}
-	image.im_addr = mlx_get_data_addr(image.im_ptr, &image.bpp, &image.line_size, &image.endian);
-	// free(image.im_ptr);
+	image.im_addr = mlx_get_data_addr(image.im_ptr, &image.bpp,
+			&image.line_size, &image.endian);
 	return (image);
 }
 
@@ -32,7 +32,6 @@ int	init_textures(t_game *game, t_textures *texture)
 {
 	t_tex	*tex;
 
-	(void)texture;
 	tex = malloc((sizeof(t_tex)));
 	if (!tex)
 		return (0);
@@ -42,42 +41,43 @@ int	init_textures(t_game *game, t_textures *texture)
 	tex->image[NORTH] = get_tex_image(game, texture->no);
 	tex->image[WEST] = get_tex_image(game, texture->we);
 	tex->image[SOUTH] = get_tex_image(game, texture->so);
-	if (!tex->image[EAST].im_ptr || !tex->image[NORTH].im_ptr || !tex->image[WEST].im_ptr || !tex->image[SOUTH].im_ptr)
+	if (!tex->image[EAST].im_ptr || !tex->image[NORTH].im_ptr
+		|| !tex->image[WEST].im_ptr || !tex->image[SOUTH].im_ptr)
 	{
 		return (0);
 	}
 	return (1);
 }
 
-int	get_texture_pixel(int projected, unsigned int value, t_game *game, int kk, int i)
+int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
 {
-	int	x;
-	int	y;
-	int	index;
+	int		x;
+	int		y;
+	int		index;
 	char	*pixel;
 	t_tex	*tex;
 
-	(void)kk;
 	tex = game->tex;
 	index = get_value(value, "TEXTURE") - 1;
 	while (index > 0 && tex->next)
 		tex = tex->next;
 	x = get_value(value, "OFFSET");
-	y = round(i * (64.0 / projected));
-	index = y * tex->image[get_value(value, "FACE")].line_size + x * (tex->image[get_value(value, "FACE")].bpp >> 3);
+	y = round(i * (63.0 / projected));
+	index = y * tex->image[get_value(value, "FACE")].line_size + x
+		* (tex->image[get_value(value, "FACE")].bpp >> 3);
 	pixel = tex->image[get_value(value, "FACE")].im_addr + index;
 	return (*(unsigned int *)pixel);
 }
 
 void	free_tex(t_game *game)
 {
-	int	i;
+	int		i;
 	t_tex	*tmp;
 
 	while (game->tex)
 	{
 		i = 0;
-		while(i < 4)
+		while (i < 4)
 		{
 			if (game->tex->image[i].im_ptr)
 				mlx_destroy_image(game->mlx, game->tex->image[i].im_ptr);
