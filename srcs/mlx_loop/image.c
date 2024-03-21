@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 16:40:57 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:14:38 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 	while (y < y_end)
 	{
 		my_mlx_pixel_put(game, x, y,
-			get_texture_pixel(projected, value, game, y, y - y_start));
+			get_texture_pixel(projected, value, game, y - y_start));
 		y++;
 	}
 	while (y < SCREEN_HEIGHT)
@@ -59,7 +59,7 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 		while (y < SCREEN_HEIGHT)
 		{
 			my_mlx_pixel_put(game, x, y,
-				get_texture_pixel(projected, value, game, y, y - y_start));
+				get_texture_pixel(projected, value, game, y - y_start));
 			y++;
 		}
 	}
