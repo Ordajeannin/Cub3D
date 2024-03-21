@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/21 18:22:07 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/21 20:22:34 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,30 @@ int	check_point_e_s(char **map, int x, int y)
 	return (1);
 }
 
-int	can_access(char **map, int limit_x, int y)
+int    can_access(char **map, int dest_x, int dest_y)
 {
-	int	x;
+    int    x;
+    int    y;
 
-	x = 0;
-	while (map && map[y][x])
-	{
-		if (x == limit_x)
-			return (1);
-		x ++;
-	}
-	return (0);
+    y = 0;
+    x = 0;
+    if (dest_y < 0 || dest_x < 0)
+        return (0);
+    while (map && map[y])//parcoure les y
+    {
+        if (y == dest_y)
+            break;
+        y ++;
+    }
+    if (y != dest_y)
+        return (0);
+    while (map[y][x])//parcour les x
+    {
+        if (x == dest_x)
+            return (1);
+        x ++;
+    }
+    return (0);
 }
 
 int	check_point_n_w(char **map, int x, int y)

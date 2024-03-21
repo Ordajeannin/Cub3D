@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/21 18:56:37 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/21 20:24:42 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ t_grid			*init_grid(t_game *game);
 t_player		*init_player(t_game *game);
 int				init_textures(t_game *game, t_textures *textures);
 void			free_game(t_game *game, t_textures *map_info);
+int				can_access(char **map, int x, int y);
+int				is_wall(char **map, int y, int x);
 
 ///////////// Maths_things /////////////////
 

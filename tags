@@ -14,6 +14,7 @@ $(NAME)	libft/Makefile	/^$(NAME) 		: $(OBJ)$/;"	t
 $(NAME)	mlx/Makefile.mk	/^$(NAME)	: $(OBJ)$/;"	t
 $(NAME)	mlx/test/Makefile.mk	/^$(NAME): $(OBJ)$/;"	t
 $(OBJF)	libft/Makefile	/^$(OBJF)			:$/;"	t
+$(OBJ_BONUS)/%.o	Makefile	/^$(OBJ_BONUS)\/%.o: $(SRC_BONUS)\/%.c$/;"	t
 $(OBJ_DIR)%.o	libft/Makefile	/^$(OBJ_DIR)%.o 		: $(SRC_DIR)%.c | $(OBJF)$/;"	t
 $(OBJ_DIR)/%.o	Makefile	/^$(OBJ_DIR)\/%.o	: $(SRC_DIR)\/%.c$/;"	t
 $(OBJ_DIR)/%.o	mlx/Makefile.mk	/^$(OBJ_DIR)\/%.o: %.c$/;"	t
@@ -27,7 +28,8 @@ AUTHOR	mlx/man/man3/mlx_loop.3	/^.SH AUTHOR$/;"	s	title:MiniLibX
 AUTHOR	mlx/man/man3/mlx_new_image.3	/^.SH AUTHOR$/;"	s	title:MiniLibX
 AUTHOR	mlx/man/man3/mlx_new_window.3	/^.SH AUTHOR$/;"	s	title:MiniLibX
 AUTHOR	mlx/man/man3/mlx_pixel_put.3	/^.SH AUTHOR$/;"	s	title:MiniLibX
-BEHIND	includes/cub3d.h	/^#define BEHIND /;"	d
+BEHIND	includes/cub3d.h	/^# define BEHIND /;"	d
+BEHIND	includes/cub3d_bonus.h	/^# define BEHIND /;"	d
 BUFFER_SIZE	includes/libft.h	/^#  define BUFFER_SIZE /;"	d
 BUFFER_SIZE	libft/includes/libft.h	/^#  define BUFFER_SIZE /;"	d
 CC	Makefile	/^CC			= cc$/;"	m
@@ -42,7 +44,8 @@ CFLAGS	mlx/Makefile.mk	/^CFLAGS	= -O3 -I$(INC)$/;"	m
 CFLAGS	mlx/test/Makefile.mk	/^CFLAGS= -I$(INC) -O3 -I.. -g$/;"	m
 COLOR	mlx/man/man1/mlx_pixel_put.1	/^.SH COLOR MANAGEMENT$/;"	s	title:MiniLibX
 COLOR	mlx/man/man3/mlx_pixel_put.3	/^.SH COLOR MANAGEMENT$/;"	s	title:MiniLibX
-CUB3D_H	includes/cub3d.h	/^#define CUB3D_H$/;"	d
+CUB3D_BONUS_H	includes/cub3d_bonus.h	/^# define CUB3D_BONUS_H$/;"	d
+CUB3D_H	includes/cub3d.h	/^# define CUB3D_H$/;"	d
 DESCRIPTION	mlx/man/man1/mlx.1	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man1/mlx_loop.1	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man1/mlx_new_image.1	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
@@ -53,18 +56,25 @@ DESCRIPTION	mlx/man/man3/mlx_loop.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man3/mlx_new_image.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man3/mlx_new_window.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man3/mlx_pixel_put.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
-DIST_MASK	includes/cub3d.h	/^#define DIST_MASK /;"	d
-DIST_WALK	includes/cub3d.h	/^#define DIST_WALK /;"	d
-EAST	includes/cub3d.h	/^#define EAST /;"	d
+DIST_MASK	includes/cub3d.h	/^# define DIST_MASK /;"	d
+DIST_MASK	includes/cub3d_bonus.h	/^# define DIST_MASK /;"	d
+DIST_WALK	includes/cub3d.h	/^# define DIST_WALK /;"	d
+DIST_WALK	includes/cub3d_bonus.h	/^# define DIST_WALK /;"	d
+EAST	includes/cub3d.h	/^# define EAST /;"	d
+EAST	includes/cub3d_bonus.h	/^# define EAST /;"	d
 ENV_DISPLAY	mlx/mlx_int.h	/^# define ENV_DISPLAY /;"	d
 EOF	mlx/configure	/^cat <<EOF$/;"	h
 ERR_NO_TRUECOLOR	mlx/mlx_int.h	/^# define ERR_NO_TRUECOLOR /;"	d
-FACE_MASK	includes/cub3d.h	/^#define FACE_MASK /;"	d
-FLOOR	includes/cub3d.h	/^#define FLOOR /;"	d
-FRONT	includes/cub3d.h	/^#define FRONT /;"	d
+FACE_MASK	includes/cub3d.h	/^# define FACE_MASK /;"	d
+FACE_MASK	includes/cub3d_bonus.h	/^# define FACE_MASK /;"	d
+FLOOR	includes/cub3d.h	/^# define FLOOR /;"	d
+FLOOR	includes/cub3d_bonus.h	/^# define FLOOR /;"	d
+FRONT	includes/cub3d.h	/^# define FRONT /;"	d
+FRONT	includes/cub3d_bonus.h	/^# define FRONT /;"	d
 GOING	mlx/man/man1/mlx_loop.1	/^.SH GOING FURTHER WITH EVENTS$/;"	s	title:MiniLibX
 GOING	mlx/man/man3/mlx_loop.3	/^.SH GOING FURTHER WITH EVENTS$/;"	s	title:MiniLibX
-HALF_WIDTH	includes/cub3d.h	/^#define HALF_WIDTH /;"	d
+HALF_WIDTH	includes/cub3d.h	/^# define HALF_WIDTH /;"	d
+HALF_WIDTH	includes/cub3d_bonus.h	/^# define HALF_WIDTH /;"	d
 IM1_SX	mlx/test/main.c	/^#define	IM1_SX	/;"	d	file:
 IM1_SY	mlx/test/main.c	/^#define	IM1_SY	/;"	d	file:
 IM3_SX	mlx/test/main.c	/^#define	IM3_SX	/;"	d	file:
@@ -76,13 +86,15 @@ INCLUDE	mlx/man/man1/mlx.1	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDE	mlx/man/man3/mlx.3	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDES	Makefile	/^INCLUDES	= -Iincludes -Ilibft$/;"	m
 INCLUDES	libft/Makefile	/^INCLUDES		= includes$/;"	m
-LEFT	includes/cub3d.h	/^#define LEFT /;"	d
+LEFT	includes/cub3d.h	/^# define LEFT /;"	d
+LEFT	includes/cub3d_bonus.h	/^# define LEFT /;"	d
 LFLAGS	mlx/test/Makefile.mk	/^LFLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm$/;"	m
 LIBFT	Makefile	/^LIBFT		= -Llibft -lft$/;"	m
 LIBFT_H	includes/libft.h	/^# define LIBFT_H$/;"	d
 LIBFT_H	libft/includes/libft.h	/^# define LIBFT_H$/;"	d
 LIBRARY	mlx/man/man1/mlx.1	/^.SH LIBRARY FUNCTIONS$/;"	s	title:MiniLibX
 LIBRARY	mlx/man/man3/mlx.3	/^.SH LIBRARY FUNCTIONS$/;"	s	title:MiniLibX
+LIBS	Makefile	/^LIBS		= -Llibft -lft -Lmlx -lmlx -lXext -lX11 -lm$/;"	m
 LINKING	mlx/man/man1/mlx.1	/^.SH LINKING MiniLibX$/;"	s	title:MiniLibX
 LINKING	mlx/man/man3/mlx.3	/^.SH LINKING MiniLibX$/;"	s	title:MiniLibX
 LOCALHOST	mlx/mlx_int.h	/^# define LOCALHOST /;"	d
@@ -117,18 +129,24 @@ NAME	mlx/man/man3/mlx_new_image.3	/^.SH NAME$/;"	s	title:MiniLibX
 NAME	mlx/man/man3/mlx_new_window.3	/^.SH NAME$/;"	s	title:MiniLibX
 NAME	mlx/man/man3/mlx_pixel_put.3	/^.SH NAME$/;"	s	title:MiniLibX
 NAME	mlx/test/Makefile.mk	/^NAME= mlx-test$/;"	m
+NAME_BONUS	Makefile	/^NAME_BONUS	= cub3d_bonus$/;"	m
 NAME_UNAME	mlx/Makefile.mk	/^NAME_UNAME	= libmlx_$(UNAME).a$/;"	m
-NORTH	includes/cub3d.h	/^#define NORTH /;"	d
+NORTH	includes/cub3d.h	/^# define NORTH /;"	d
+NORTH	includes/cub3d_bonus.h	/^# define NORTH /;"	d
 OBJ	libft/Makefile	/^OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))$/;"	m
 OBJ	mlx/Makefile.mk	/^OBJ	= $(addprefix $(OBJ_DIR)\/,$(SRC:%.c=%.o))$/;"	m
 OBJ	mlx/test/Makefile.mk	/^OBJ = $(SRC:%.c=%.o)$/;"	m
 OBJF	libft/Makefile	/^OBJF			= .cache_exists$/;"	m
-OBJS	Makefile	/^OBJS		:= $(patsubst $(SRC_DIR)\/%.c, $(OBJ_DIR)\/%.o, $(SRCS))$/;"	m
+OBJS	Makefile	/^OBJS			:= $(patsubst $(SRC_DIR)\/%.c, $(OBJ_DIR)\/%.o, $(SRCS))$/;"	m
+OBJS_BONUS	Makefile	/^OBJS_BONUS		= $(SRCS_BONUS:$(SRC_BONUS)\/%.c=$(OBJ_BONUS)\/%.o)$/;"	m
+OBJ_BONUS	Makefile	/^OBJ_BONUS	= obj_bonus$/;"	m
 OBJ_DIR	Makefile	/^OBJ_DIR		= obj$/;"	m
 OBJ_DIR	libft/Makefile	/^OBJ_DIR			= obj\/$/;"	m
 OBJ_DIR	mlx/Makefile.mk	/^OBJ_DIR = obj$/;"	m
-OFFSET_MASK	includes/cub3d.h	/^#define OFFSET_MASK /;"	d
-OUTMAP	includes/cub3d.h	/^#define OUTMAP /;"	d
+OFFSET_MASK	includes/cub3d.h	/^# define OFFSET_MASK /;"	d
+OFFSET_MASK	includes/cub3d_bonus.h	/^# define OFFSET_MASK /;"	d
+OUTMAP	includes/cub3d.h	/^# define OUTMAP /;"	d
+OUTMAP	includes/cub3d_bonus.h	/^# define OUTMAP /;"	d
 RETURN	mlx/man/man1/mlx.1	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/man/man1/mlx_new_image.1	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/man/man1/mlx_new_window.1	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
@@ -136,9 +154,12 @@ RETURN	mlx/man/man3/mlx.3	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/man/man3/mlx_new_image.3	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/man/man3/mlx_new_window.3	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
-RIGHT	includes/cub3d.h	/^#define RIGHT /;"	d
-SCREEN_HEIGHT	includes/cub3d.h	/^#define SCREEN_HEIGHT /;"	d
-SCREEN_WIDTH	includes/cub3d.h	/^#define SCREEN_WIDTH /;"	d
+RIGHT	includes/cub3d.h	/^# define RIGHT /;"	d
+RIGHT	includes/cub3d_bonus.h	/^# define RIGHT /;"	d
+SCREEN_HEIGHT	includes/cub3d.h	/^# define SCREEN_HEIGHT /;"	d
+SCREEN_HEIGHT	includes/cub3d_bonus.h	/^# define SCREEN_HEIGHT /;"	d
+SCREEN_WIDTH	includes/cub3d.h	/^# define SCREEN_WIDTH /;"	d
+SCREEN_WIDTH	includes/cub3d_bonus.h	/^# define SCREEN_WIDTH /;"	d
 SEE	mlx/man/man1/mlx.1	/^.SH SEE ALSO$/;"	s	title:MiniLibX
 SEE	mlx/man/man1/mlx_loop.1	/^.SH SEE ALSO$/;"	s	title:MiniLibX
 SEE	mlx/man/man1/mlx_new_image.1	/^.SH SEE ALSO$/;"	s	title:MiniLibX
@@ -149,14 +170,17 @@ SEE	mlx/man/man3/mlx_loop.3	/^.SH SEE ALSO$/;"	s	title:MiniLibX
 SEE	mlx/man/man3/mlx_new_image.3	/^.SH SEE ALSO$/;"	s	title:MiniLibX
 SEE	mlx/man/man3/mlx_new_window.3	/^.SH SEE ALSO$/;"	s	title:MiniLibX
 SEE	mlx/man/man3/mlx_pixel_put.3	/^.SH SEE ALSO$/;"	s	title:MiniLibX
-SOUTH	includes/cub3d.h	/^#define SOUTH /;"	d
+SOUTH	includes/cub3d.h	/^# define SOUTH /;"	d
+SOUTH	includes/cub3d_bonus.h	/^# define SOUTH /;"	d
 SRC	libft/Makefile	/^SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))$/;"	m
 SRC	mlx/Makefile.mk	/^SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \\$/;"	m
 SRC	mlx/test/Makefile.mk	/^SRC = main.c$/;"	m
-SRCS	Makefile	/^SRCS		:= $(SRC_FILES)$/;"	m
+SRCS	Makefile	/^SRCS			:= $(SRC_FILES)$/;"	m
+SRCS_BONUS	Makefile	/^SRCS_BONUS		= $(shell find $(SRC_BONUS) -name "*.c")$/;"	m
+SRC_BONUS	Makefile	/^SRC_BONUS	= srcs_bonus$/;"	m
 SRC_DIR	Makefile	/^SRC_DIR		= srcs$/;"	m
 SRC_DIR	libft/Makefile	/^SRC_DIR			= src\/$/;"	m
-SRC_FILES	Makefile	/^SRC_FILES	:= $(shell find $(SRC_DIR) -type f -name "*.c")$/;"	m
+SRC_FILES	Makefile	/^SRC_FILES		:= $(shell find $(SRC_DIR) -type f -name "*.c")$/;"	m
 SRC_FILES	libft/Makefile	/^SRC_FILES 		= ft_atoi			\\$/;"	m
 STORING	mlx/man/man1/mlx_new_image.1	/^.SH STORING COLOR INSIDE IMAGES$/;"	s	title:MiniLibX
 STORING	mlx/man/man3/mlx_new_image.3	/^.SH STORING COLOR INSIDE IMAGES$/;"	s	title:MiniLibX
@@ -170,12 +194,15 @@ SYNOPSYS	mlx/man/man3/mlx_loop.3	/^.SH SYNOPSYS$/;"	s	title:MiniLibX
 SYNOPSYS	mlx/man/man3/mlx_new_image.3	/^.SH SYNOPSYS$/;"	s	title:MiniLibX
 SYNOPSYS	mlx/man/man3/mlx_new_window.3	/^.SH SYNOPSYS$/;"	s	title:MiniLibX
 SYNOPSYS	mlx/man/man3/mlx_pixel_put.3	/^.SH SYNOPSYS$/;"	s	title:MiniLibX
-TEXTURE_MASK	includes/cub3d.h	/^#define TEXTURE_MASK /;"	d
-TURN_RATE	includes/cub3d.h	/^#define TURN_RATE /;"	d
+TEXTURE_MASK	includes/cub3d.h	/^# define TEXTURE_MASK /;"	d
+TEXTURE_MASK	includes/cub3d_bonus.h	/^# define TEXTURE_MASK /;"	d
+TURN_RATE	includes/cub3d.h	/^# define TURN_RATE /;"	d
+TURN_RATE	includes/cub3d_bonus.h	/^# define TURN_RATE /;"	d
 UNAME	mlx/Makefile.mk	/^UNAME = $(shell uname)$/;"	m
 UNAME	mlx/test/Makefile.mk	/^UNAME := $(shell uname)$/;"	m
 WARN_SHM_ATTACH	mlx/mlx_int.h	/^# define WARN_SHM_ATTACH /;"	d
-WEST	includes/cub3d.h	/^#define WEST /;"	d
+WEST	includes/cub3d.h	/^# define WEST /;"	d
+WEST	includes/cub3d_bonus.h	/^# define WEST /;"	d
 WIN1_SX	mlx/test/main.c	/^#define	WIN1_SX	/;"	d	file:
 WIN1_SY	mlx/test/main.c	/^#define	WIN1_SY	/;"	d	file:
 X-WINDOW	mlx/man/man1/mlx.1	/^.SH X-WINDOW CONCEPT$/;"	s	title:MiniLibX
@@ -190,23 +217,42 @@ all	libft/Makefile	/^all 			: $(NAME)$/;"	t
 all	mlx/Makefile	/^all	: do_configure$/;"	t
 all	mlx/Makefile.mk	/^all	: $(NAME)$/;"	t
 all	mlx/test/Makefile.mk	/^all: $(NAME)$/;"	t
-angle_incr	includes/cub3d.h	/^	double angle_incr;$/;"	m	struct:s_grid	typeref:typename:double
+angle_180	srcs/maths/collisions.c	/^void	angle_180(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_180	srcs_bonus/maths/collisions.c	/^void	angle_180(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_270	srcs/maths/collisions.c	/^void	angle_270(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_270	srcs_bonus/maths/collisions.c	/^void	angle_270(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_360	srcs/maths/collisions.c	/^void	angle_360(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_360	srcs_bonus/maths/collisions.c	/^void	angle_360(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_90	srcs/maths/collisions.c	/^void	angle_90(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_90	srcs_bonus/maths/collisions.c	/^void	angle_90(double *x, double *y, double angle)$/;"	f	typeref:typename:void
+angle_incr	includes/cub3d.h	/^	double		angle_incr;$/;"	m	struct:s_grid	typeref:typename:double
+angle_incr	includes/cub3d_bonus.h	/^	double		angle_incr;$/;"	m	struct:s_grid	typeref:typename:double
 at_exit	mlx/test/run_tests.sh	/^at_exit() {$/;"	f
-atorgb	srcs/parsing/get_textures.c	/^int	*atorgb(char *str)$/;"	f	typeref:typename:int *
+atorgb	srcs/parsing/floor_celling.c	/^int	atorgb(char *str)$/;"	f	typeref:typename:int
+atorgb	srcs_bonus/parsing/floor_celling.c	/^int	atorgb(char *str)$/;"	f	typeref:typename:int
+bonus	Makefile	/^bonus			: $(OBJS_BONUS)$/;"	t
+bpp	includes/cub3d.h	/^	int			bpp;$/;"	m	struct:s_game	typeref:typename:int
 bpp	includes/cub3d.h	/^	int		bpp;$/;"	m	struct:s_image	typeref:typename:int
-bpp	includes/cub3d.h	/^	int bpp;$/;"	m	struct:s_game	typeref:typename:int
+bpp	includes/cub3d_bonus.h	/^	int			bpp;$/;"	m	struct:s_game	typeref:typename:int
+bpp	includes/cub3d_bonus.h	/^	int		bpp;$/;"	m	struct:s_image	typeref:typename:int
 bpp	mlx/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img	typeref:typename:int
 bpp1	mlx/test/main.c	/^int	bpp1;$/;"	v	typeref:typename:int
 bpp2	mlx/test/main.c	/^int	bpp2;$/;"	v	typeref:typename:int
 bpp3	mlx/test/main.c	/^int	bpp3;$/;"	v	typeref:typename:int
 bpp4	mlx/test/main.c	/^int	bpp4;$/;"	v	typeref:typename:int
 build_map_line	srcs/parsing/build_map.c	/^int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)$/;"	f	typeref:typename:int
-c	includes/cub3d.h	/^	int *c;$/;"	m	struct:s_textures	typeref:typename:int *
-can_access	srcs/parsing/parsing_map.c	/^int	can_access(char **map,int limit_x,int y)$/;"	f	typeref:typename:int
+build_map_line	srcs_bonus/parsing/build_map.c	/^int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)$/;"	f	typeref:typename:int
+c	includes/cub3d.h	/^	int		c;$/;"	m	struct:s_textures	typeref:typename:int
+c	includes/cub3d_bonus.h	/^	int		c;$/;"	m	struct:s_textures	typeref:typename:int
+can_access	srcs/parsing/parsing_map.c	/^int	can_access(char **map, int limit_x, int y)$/;"	f	typeref:typename:int
+can_access	srcs_bonus/parsing/parsing_map.c	/^int	can_access(char **map, int limit_x, int y)$/;"	f	typeref:typename:int
 check	mlx/Makefile.mk	/^check: all$/;"	t
-check_end_of_filename	srcs/parsing/parsing_map.c	/^int	check_end_of_filename(char const *filename, const char *end)$/;"	f	typeref:typename:int
-check_point_e_s	srcs/parsing/parsing_map.c	/^int	check_point_e_s(char **map, int x, int y, int map_y)$/;"	f	typeref:typename:int
-check_point_n_w	srcs/parsing/parsing_map.c	/^int	check_point_n_w(char **map, int x, int y, int map_y)$/;"	f	typeref:typename:int
+check_end_of_filename	srcs/parsing/parsing_textures.c	/^int	check_end_of_filename(char const *filename, const char *end)$/;"	f	typeref:typename:int
+check_end_of_filename	srcs_bonus/parsing/parsing_textures.c	/^int	check_end_of_filename(char const *filename, const char *end)$/;"	f	typeref:typename:int
+check_point_e_s	srcs/parsing/parsing_map.c	/^int	check_point_e_s(char **map, int x, int y)$/;"	f	typeref:typename:int
+check_point_e_s	srcs_bonus/parsing/parsing_map.c	/^int	check_point_e_s(char **map, int x, int y)$/;"	f	typeref:typename:int
+check_point_n_w	srcs/parsing/parsing_map.c	/^int	check_point_n_w(char **map, int x, int y)$/;"	f	typeref:typename:int
+check_point_n_w	srcs_bonus/parsing/parsing_map.c	/^int	check_point_n_w(char **map, int x, int y)$/;"	f	typeref:typename:int
 clean	Makefile	/^clean			:$/;"	t
 clean	libft/Makefile	/^clean 			: $/;"	t
 clean	mlx/Makefile	/^clean	:$/;"	t
@@ -215,15 +261,18 @@ clean	mlx/configure	/^clean(){$/;"	f
 clean	mlx/test/Makefile.mk	/^clean:$/;"	t
 cmap	mlx/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar	typeref:typename:Colormap
 col	mlx/mlx_int.h	/^	int		col;$/;"	m	struct:s_xpm_col	typeref:typename:int
-col_intersections_test	srcs/maths/intersections.c	/^unsigned int	col_intersections_test(t_game *game, t_player *player, double angle)$/;"	f	typeref:typename:unsigned int
+col_intersections_test	srcs/maths/intersections.c	/^unsigned int	col_intersections_test(t_game *game,$/;"	f	typeref:typename:unsigned int
+col_intersections_test	srcs_bonus/maths/intersections.c	/^unsigned int	col_intersections_test(t_game *game,$/;"	f	typeref:typename:unsigned int
 color	mlx/mlx_int.h	/^	int		color;$/;"	m	struct:s_col_name	typeref:typename:int
 color_map_1	mlx/test/main.c	/^int	color_map_1(void *win,int w,int h)$/;"	f	typeref:typename:int
 color_map_2	mlx/test/main.c	/^int	color_map_2(unsigned char *data,int bpp,int sl,int w,int h,int endian, int type)$/;"	f	typeref:typename:int
 content	includes/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
 content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
 count_words	libft/src/ft_split.c	/^static	int	count_words(const char *str, char c)$/;"	f	typeref:typename:int	file:
-create_col	srcs/mlx_loop/image.c	/^void	create_col(t_game *game, unsigned int value, int x)$/;"	f	typeref:typename:void
+create_col_norme	srcs/mlx_loop/image.c	/^void	create_col_norme(t_game *game, int projected, unsigned int value, int x)$/;"	f	typeref:typename:void
+create_col_norme	srcs_bonus/mlx_loop/image.c	/^void	create_col_norme(t_game *game, int projected, unsigned int value, int x)$/;"	f	typeref:typename:void
 create_col_test	srcs/mlx_loop/image.c	/^void	create_col_test(t_game *game, unsigned int value, int x)$/;"	f	typeref:typename:void
+create_col_test	srcs_bonus/mlx_loop/image.c	/^void	create_col_test(t_game *game, unsigned int value, int x)$/;"	f	typeref:typename:void
 data	mlx/mlx_int.h	/^	char			*data;$/;"	m	struct:s_img	typeref:typename:char *
 data1	mlx/test/main.c	/^char	*data1;$/;"	v	typeref:typename:char *
 data2	mlx/test/main.c	/^char	*data2;$/;"	v	typeref:typename:char *
@@ -231,21 +280,31 @@ data3	mlx/test/main.c	/^char	*data3;$/;"	v	typeref:typename:char *
 data4	mlx/test/main.c	/^char	*data4;$/;"	v	typeref:typename:char *
 decrgb	mlx/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar	typeref:typename:int[6]
 define_axe	srcs/maths/get_max_dist.c	/^char	define_axe(double orientation)$/;"	f	typeref:typename:char
+define_axe	srcs_bonus/maths/get_max_dist.c	/^char	define_axe(double orientation)$/;"	f	typeref:typename:char
 define_move	srcs/maths/get_max_dist.c	/^int	define_move(double orientation)$/;"	f	typeref:typename:int
+define_move	srcs_bonus/maths/get_max_dist.c	/^int	define_move(double orientation)$/;"	f	typeref:typename:int
 depth	mlx/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
 display	mlx/mlx_int.h	/^	Display		*display;$/;"	m	struct:s_xvar	typeref:typename:Display *
-dist_proj_plan	includes/cub3d.h	/^	int		dist_proj_plan;$/;"	m	struct:s_grid	typeref:typename:int
+dist_c	includes/cub3d.h	/^	double		dist_c;$/;"	m	struct:s_game	typeref:typename:double
+dist_c	includes/cub3d_bonus.h	/^	double		dist_c;$/;"	m	struct:s_game	typeref:typename:double
+dist_l	includes/cub3d.h	/^	double		dist_l;$/;"	m	struct:s_game	typeref:typename:double
+dist_l	includes/cub3d_bonus.h	/^	double		dist_l;$/;"	m	struct:s_game	typeref:typename:double
+dist_proj_plan	includes/cub3d.h	/^	int			dist_proj_plan;$/;"	m	struct:s_grid	typeref:typename:int
+dist_proj_plan	includes/cub3d_bonus.h	/^	int			dist_proj_plan;$/;"	m	struct:s_grid	typeref:typename:int
 do_a_flip	libft/src/get_next_line_utils_bonus.c	/^char	*do_a_flip(char *string, int i, int fd)$/;"	f	typeref:typename:char *
 do_configure	mlx/Makefile	/^do_configure	:$/;"	t
 do_flush	mlx/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar	typeref:typename:int
 double_modulo	srcs/maths/calc_image.c	/^double	double_modulo(double value, double modulo)$/;"	f	typeref:typename:double
-dtor	srcs/maths/small_usefull_calcs.c	/^double dtor(double degrees)$/;"	f	typeref:typename:double
-ea	includes/cub3d.h	/^	char *ea;$/;"	m	struct:s_textures	typeref:typename:char *
-ea_side_addr	includes/cub3d.h	/^	char 	*ea_side_addr;$/;"	m	struct:s_walls	typeref:typename:char *
-ea_side_im	includes/cub3d.h	/^	void	*ea_side_im;$/;"	m	struct:s_walls	typeref:typename:void *
+double_modulo	srcs_bonus/maths/calc_image.c	/^double	double_modulo(double value, double modulo)$/;"	f	typeref:typename:double
+dtor	srcs/maths/small_usefull_calcs.c	/^double	dtor(double degrees)$/;"	f	typeref:typename:double
+dtor	srcs_bonus/maths/small_usefull_calcs.c	/^double	dtor(double degrees)$/;"	f	typeref:typename:double
+ea	includes/cub3d.h	/^	char	*ea;$/;"	m	struct:s_textures	typeref:typename:char *
+ea	includes/cub3d_bonus.h	/^	char	*ea;$/;"	m	struct:s_textures	typeref:typename:char *
 end_loop	mlx/mlx_int.h	/^	int 		end_loop;$/;"	m	struct:s_xvar	typeref:typename:int
+endian	includes/cub3d.h	/^	int			endian;$/;"	m	struct:s_game	typeref:typename:int
 endian	includes/cub3d.h	/^	int		endian;$/;"	m	struct:s_image	typeref:typename:int
-endian	includes/cub3d.h	/^	int endian;$/;"	m	struct:s_game	typeref:typename:int
+endian	includes/cub3d_bonus.h	/^	int			endian;$/;"	m	struct:s_game	typeref:typename:int
+endian	includes/cub3d_bonus.h	/^	int		endian;$/;"	m	struct:s_image	typeref:typename:int
 endian1	mlx/test/main.c	/^int	endian1;$/;"	v	typeref:typename:int
 endian2	mlx/test/main.c	/^int	endian2;$/;"	v	typeref:typename:int
 endian3	mlx/test/main.c	/^int	endian3;$/;"	v	typeref:typename:int
@@ -254,27 +313,45 @@ expose_hook	mlx/mlx_int.h	/^	int					(*expose_hook)();$/;"	m	struct:s_win_list	t
 expose_param	mlx/mlx_int.h	/^	void				*expose_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 expose_win1	mlx/test/main.c	/^int	expose_win1(void *p)$/;"	f	typeref:typename:int
 expose_win2	mlx/test/main.c	/^int	expose_win2(void *p)$/;"	f	typeref:typename:int
-f	includes/cub3d.h	/^	int *f;$/;"	m	struct:s_textures	typeref:typename:int *
+f	includes/cub3d.h	/^	int		f;$/;"	m	struct:s_textures	typeref:typename:int
+f	includes/cub3d_bonus.h	/^	int		f;$/;"	m	struct:s_textures	typeref:typename:int
 fclean	Makefile	/^fclean			: clean$/;"	t
 fclean	libft/Makefile	/^fclean 			: clean$/;"	t
 files.associations	.vscode/settings.json	/^	"files.associations": {$/;"	o
+find_face	srcs/maths/intersections.c	/^int	find_face(t_game *game, double angle)$/;"	f	typeref:typename:int
+find_face	srcs_bonus/maths/intersections.c	/^int	find_face(t_game *game, double angle)$/;"	f	typeref:typename:int
+flag	includes/cub3d.h	/^	int			flag;$/;"	m	struct:s_game	typeref:typename:int
+flag	includes/cub3d_bonus.h	/^	int			flag;$/;"	m	struct:s_game	typeref:typename:int
 format	mlx/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
-fov	includes/cub3d.h	/^	int fov;$/;"	m	struct:s_grid	typeref:typename:int
+fov	includes/cub3d.h	/^	int			fov;$/;"	m	struct:s_grid	typeref:typename:int
+fov	includes/cub3d_bonus.h	/^	int			fov;$/;"	m	struct:s_grid	typeref:typename:int
 free_dup	libft/src/get_next_line_utils_bonus.c	/^void	free_dup(char **f, char **dup)$/;"	f	typeref:typename:void
+free_game	srcs/main_core/main.c	/^void	free_game(t_game *game, t_textures *map_info)$/;"	f	typeref:typename:void
+free_game	srcs_bonus/main_core/main.c	/^void	free_game(t_game *game, t_textures *map_info)$/;"	f	typeref:typename:void
+free_init	srcs/init_game/init_game.c	/^int	free_init(t_game *game)$/;"	f	typeref:typename:int
+free_init	srcs_bonus/init_game/init_game.c	/^int	free_init(t_game *game)$/;"	f	typeref:typename:int
 free_str	libft/src/get_next_line_utils_bonus.c	/^char	*free_str(char *str)$/;"	f	typeref:typename:char *
 free_tab	srcs/parsing/map_utils.c	/^void	free_tab(char **map)$/;"	f	typeref:typename:void
+free_tab	srcs_bonus/parsing/map_utils.c	/^void	free_tab(char **map)$/;"	f	typeref:typename:void
+free_tex	srcs/put_textures/create_text_im.c	/^void	free_tex(t_game *game)$/;"	f	typeref:typename:void
+free_tex	srcs_bonus/put_textures/create_text_im.c	/^void	free_tex(t_game *game)$/;"	f	typeref:typename:void
 free_textures	srcs/parsing/get_textures.c	/^void	free_textures(t_textures *textures)$/;"	f	typeref:typename:void
+free_textures	srcs_bonus/parsing/get_textures.c	/^void	free_textures(t_textures *textures)$/;"	f	typeref:typename:void
+from_dist_to_projected	srcs/maths/corrections.c	/^int	from_dist_to_projected(t_game *game, double angle,$/;"	f	typeref:typename:int
+from_dist_to_projected	srcs_bonus/maths/corrections.c	/^int	from_dist_to_projected(t_game *game, double angle,$/;"	f	typeref:typename:int
 ft_atoi	libft/src/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f	typeref:typename:int
 ft_bzero	libft/src/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
 ft_calloc	libft/src/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
 ft_char_in_set	libft/src/ft_strtrim.c	/^static	int	ft_char_in_set(char c, char const *set)$/;"	f	typeref:typename:int	file:
-ft_dist	srcs/maths/small_usefull_calcs.c	/^int ft_dist(double x1, double y1, double x2, double y2)$/;"	f	typeref:typename:int
+ft_dist	srcs/maths/small_usefull_calcs.c	/^double	ft_dist(double x1, double y1, double x2, double y2)$/;"	f	typeref:typename:double
+ft_dist	srcs_bonus/maths/small_usefull_calcs.c	/^double	ft_dist(double x1, double y1, double x2, double y2)$/;"	f	typeref:typename:double
 ft_formats	libft/src/ft_printf.c	/^int	ft_formats(va_list args, const char conv)$/;"	f	typeref:typename:int
 ft_isalnum	libft/src/ft_isalnum.c	/^int	ft_isalnum(int a)$/;"	f	typeref:typename:int
 ft_isalpha	libft/src/ft_isalpha.c	/^int	ft_isalpha(int a)$/;"	f	typeref:typename:int
 ft_isascii	libft/src/ft_isascii.c	/^int	ft_isascii(int a)$/;"	f	typeref:typename:int
 ft_isdigit	libft/src/ft_isdigit.c	/^int	ft_isdigit(int a)$/;"	f	typeref:typename:int
 ft_isprint	libft/src/ft_isprint.c	/^int	ft_isprint(int a)$/;"	f	typeref:typename:int
+ft_isspace	libft/src/ft_isspace.c	/^int	ft_isspace(int c)$/;"	f	typeref:typename:int
 ft_itoa	libft/src/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f	typeref:typename:char *
 ft_len	libft/src/ft_itoa.c	/^static	int	ft_len(int n)$/;"	f	typeref:typename:int	file:
 ft_lstadd_back	libft/src/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
@@ -292,7 +369,15 @@ ft_memcpy	libft/src/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, si
 ft_memmove	libft/src/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t n)$/;"	f	typeref:typename:void *
 ft_memset	libft/src/ft_memset.c	/^void	*ft_memset(void *s, int c, size_t n)$/;"	f	typeref:typename:void *
 ft_minitoa	libft/src/ft_itoa.c	/^static	char	*ft_minitoa(int n)$/;"	f	typeref:typename:char *	file:
+ft_moove	srcs/mlx_loop/moove.c	/^void	ft_moove(t_player *player, t_game *game)$/;"	f	typeref:typename:void
+ft_moove	srcs_bonus/mlx_loop/moove.c	/^void	ft_moove(t_player *player, t_game *game)$/;"	f	typeref:typename:void
+ft_moove_pos	srcs/mlx_loop/moove.c	/^void	ft_moove_pos(int key_x, int key_y, t_game *game)$/;"	f	typeref:typename:void
+ft_moove_pos	srcs_bonus/mlx_loop/moove.c	/^void	ft_moove_pos(int key_x, int key_y, t_game *game)$/;"	f	typeref:typename:void
+ft_moove_view	srcs/mlx_loop/moove.c	/^void	ft_moove_view(t_player *player, int key_x, int key_y)$/;"	f	typeref:typename:void
+ft_moove_view	srcs_bonus/mlx_loop/moove.c	/^void	ft_moove_view(t_player *player, int key_x, int key_y)$/;"	f	typeref:typename:void
 ft_nbr_len	libft/src/ft_print_unsigned.c	/^int	ft_nbr_len(unsigned int nbr)$/;"	f	typeref:typename:int
+ft_open	srcs/parsing/build_map_utils.c	/^int	ft_open(int *fd, char *path)$/;"	f	typeref:typename:int
+ft_open	srcs_bonus/parsing/build_map_utils.c	/^int	ft_open(int *fd, char *path)$/;"	f	typeref:typename:int
 ft_print_char	libft/src/ft_printf.c	/^int	ft_print_char(int c)$/;"	f	typeref:typename:int
 ft_print_hexa	libft/src/ft_print_hexa.c	/^int	ft_print_hexa(unsigned long int nbr, const char conv)$/;"	f	typeref:typename:int
 ft_print_nbr	libft/src/ft_print_str_nbr.c	/^int	ft_print_nbr(int n)$/;"	f	typeref:typename:int
@@ -308,9 +393,12 @@ ft_putnbr_fd	libft/src/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	t
 ft_putstr_fd	libft/src/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
 ft_reput_ptrvalue_in_hexa	libft/src/ft_print_ptr.c	/^int	ft_reput_ptrvalue_in_hexa(unsigned long int nbr)$/;"	f	typeref:typename:int
 ft_split	libft/src/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
+ft_str_rm_spaces	srcs/parsing/get_textures.c	/^char	*ft_str_rm_spaces(char *str)$/;"	f	typeref:typename:char *
+ft_str_rm_spaces	srcs_bonus/parsing/get_textures.c	/^char	*ft_str_rm_spaces(char *str)$/;"	f	typeref:typename:char *
 ft_strchr	libft/src/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f	typeref:typename:char *
 ft_strdup	libft/src/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f	typeref:typename:char *
 ft_strdupto_n	srcs/parsing/map_utils.c	/^char	*ft_strdupto_n(char *str, char c)$/;"	f	typeref:typename:char *
+ft_strdupto_n	srcs_bonus/parsing/map_utils.c	/^char	*ft_strdupto_n(char *str, char c)$/;"	f	typeref:typename:char *
 ft_striteri	libft/src/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *d))$/;"	f	typeref:typename:void
 ft_strjoin	libft/src/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
 ft_strlcat	libft/src/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
@@ -329,33 +417,51 @@ ft_write_number	libft/src/ft_itoa.c	/^static	char	*ft_write_number(int len, int 
 gc	mlx/mlx_int.h	/^	GC					gc;$/;"	m	struct:s_win_list	typeref:typename:GC
 gc	mlx/mlx_int.h	/^	GC				gc;$/;"	m	struct:s_img	typeref:typename:GC
 gere_mouse	mlx/test/new_win.c	/^int gere_mouse(int x,int y,int button,void*toto)$/;"	f	typeref:typename:int
-get_fandc_rgb	srcs/parsing/get_textures.c	/^int	get_fandc_rgb(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
-get_ipx	srcs/maths/tler.c	/^int get_ipx(t_player *p, double i_py, double angle)$/;"	f	typeref:typename:int
-get_ipy	srcs/maths/tler.c	/^int get_ipy(t_player *p, double i_px, double angle)$/;"	f	typeref:typename:int
+get_f_and_c	srcs/parsing/get_textures.c	/^int	get_f_and_c(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
+get_f_and_c	srcs_bonus/parsing/get_textures.c	/^int	get_f_and_c(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
+get_ipx	srcs/maths/tler.c	/^double	get_ipx(t_player *p, double i_py, double angle)$/;"	f	typeref:typename:double
+get_ipx	srcs_bonus/maths/tler.c	/^double	get_ipx(t_player *p, double i_py, double angle)$/;"	f	typeref:typename:double
+get_ipy	srcs/maths/tler.c	/^double	get_ipy(t_player *p, double i_px, double angle)$/;"	f	typeref:typename:double
+get_ipy	srcs_bonus/maths/tler.c	/^double	get_ipy(t_player *p, double i_px, double angle)$/;"	f	typeref:typename:double
 get_map_y	srcs/parsing/build_map.c	/^int	get_map_y(t_textures *map_info, char *map_path)$/;"	f	typeref:typename:int
+get_map_y	srcs_bonus/parsing/build_map.c	/^int	get_map_y(t_textures *map_info, char *map_path)$/;"	f	typeref:typename:int
 get_next_line	libft/src/get_next_line_utils_bonus.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
 get_next_textures	srcs/parsing/get_textures.c	/^int	get_next_textures(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
+get_next_textures	srcs_bonus/parsing/get_textures.c	/^int	get_next_textures(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
 get_tex_image	srcs/put_textures/create_text_im.c	/^t_image	get_tex_image(t_game *game, char *path)$/;"	f	typeref:typename:t_image
-get_texture_pixel	srcs/put_textures/create_text_im.c	/^int	get_texture_pixel(int projected, unsigned int value, t_game *game, int kk, int i)$/;"	f	typeref:typename:int
-get_texture_pixel_old	srcs/put_textures/create_text_im.c	/^int	get_texture_pixel_old(int projected, unsigned int value, t_game *game, int y_old, int i)$/;"	f	typeref:typename:int
+get_tex_image	srcs_bonus/put_textures/create_text_im.c	/^t_image	get_tex_image(t_game *game, char *path)$/;"	f	typeref:typename:t_image
+get_texture_pixel	srcs/put_textures/create_text_im.c	/^int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)$/;"	f	typeref:typename:int
+get_texture_pixel	srcs_bonus/put_textures/create_text_im.c	/^int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)$/;"	f	typeref:typename:int
 get_textures	srcs/parsing/get_textures.c	/^int	get_textures(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
+get_textures	srcs_bonus/parsing/get_textures.c	/^int	get_textures(char *str, t_textures *map_info)$/;"	f	typeref:typename:int
 get_value	srcs/maths/small_usefull_calcs.c	/^int	get_value(unsigned int value, const char *flag)$/;"	f	typeref:typename:int
-get_xi	srcs/maths/intersections.c	/^int		get_xi(double angle)$/;"	f	typeref:typename:int
+get_value	srcs_bonus/maths/small_usefull_calcs.c	/^int	get_value(unsigned int value, const char *flag)$/;"	f	typeref:typename:int
+get_xi	srcs/maths/tler.c	/^double	get_xi(double angle)$/;"	f	typeref:typename:double
+get_xi	srcs_bonus/maths/tler.c	/^double	get_xi(double angle)$/;"	f	typeref:typename:double
 get_xlib_include_path	mlx/configure	/^get_xlib_include_path(){$/;"	f
-get_yi	srcs/maths/intersections.c	/^int	get_yi(double angle)$/;"	f	typeref:typename:int
-gft_strchr	libft/src/get_next_line_utils_bonus.c	/^int	gft_strchr(char *str, int c)$/;"	f	typeref:typename:int
-gft_strdup	libft/src/get_next_line_utils_bonus.c	/^char	*gft_strdup(char *s)$/;"	f	typeref:typename:char *
-gft_strjoin	libft/src/get_next_line_utils_bonus.c	/^char	*gft_strjoin(char *s1, char *s2)$/;"	f	typeref:typename:char *
-gft_strlcpy	libft/src/get_next_line_utils_bonus.c	/^size_t	gft_strlcpy(char *dst, char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
-gft_strlen	libft/src/get_next_line_utils_bonus.c	/^int	gft_strlen(char *str)$/;"	f	typeref:typename:int
+get_yi	srcs/maths/tler.c	/^double	get_yi(double angle)$/;"	f	typeref:typename:double
+get_yi	srcs_bonus/maths/tler.c	/^double	get_yi(double angle)$/;"	f	typeref:typename:double
+gft_strchr	libft/src/get_next_line_bonus.c	/^int	gft_strchr(char *str, int c)$/;"	f	typeref:typename:int
+gft_strdup	libft/src/get_next_line_bonus.c	/^char	*gft_strdup(char *s)$/;"	f	typeref:typename:char *
+gft_strjoin	libft/src/get_next_line_bonus.c	/^char	*gft_strjoin(char *s1, char *s2)$/;"	f	typeref:typename:char *
+gft_strlcpy	libft/src/get_next_line_bonus.c	/^size_t	gft_strlcpy(char *dst, char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
+gft_strlen	libft/src/get_next_line_bonus.c	/^int	gft_strlen(char *str)$/;"	f	typeref:typename:int
 go_to_map	srcs/parsing/build_map.c	/^char	*go_to_map(int fd, t_textures *map_utils)$/;"	f	typeref:typename:char *
-grid	includes/cub3d.h	/^	t_grid *grid;$/;"	m	struct:s_game	typeref:typename:t_grid *
-grid_width	includes/cub3d.h	/^	int grid_width;$/;"	m	struct:s_grid	typeref:typename:int
-half_fov	includes/cub3d.h	/^	int half_fov;$/;"	m	struct:s_grid	typeref:typename:int
-half_proj_plan_height	includes/cub3d.h	/^	int half_proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
+go_to_map	srcs_bonus/parsing/build_map.c	/^char	*go_to_map(int fd, t_textures *map_utils)$/;"	f	typeref:typename:char *
+grid	includes/cub3d.h	/^	t_grid		*grid;$/;"	m	struct:s_game	typeref:typename:t_grid *
+grid	includes/cub3d_bonus.h	/^	t_grid		*grid;$/;"	m	struct:s_game	typeref:typename:t_grid *
+grid_width	includes/cub3d.h	/^	int			grid_width;$/;"	m	struct:s_grid	typeref:typename:int
+grid_width	includes/cub3d_bonus.h	/^	int			grid_width;$/;"	m	struct:s_grid	typeref:typename:int
+half_fov	includes/cub3d.h	/^	int			half_fov;$/;"	m	struct:s_grid	typeref:typename:int
+half_fov	includes/cub3d_bonus.h	/^	int			half_fov;$/;"	m	struct:s_grid	typeref:typename:int
+half_proj_plan_height	includes/cub3d.h	/^	int			half_proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
+half_proj_plan_height	includes/cub3d_bonus.h	/^	int			half_proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
 handle_close	srcs/mlx_loop/mlx_hook.c	/^int	handle_close(t_game *game)$/;"	f	typeref:typename:int
-handle_keypress	srcs/mlx_loop/mlx_hook.c	/^int	handle_keypress(int keycode, t_game *game)$/;"	f	typeref:typename:int
-handle_mouse	srcs/mlx_loop/mlx_hook.c	/^int handle_mouse(int keycode, int x, int y, t_game *game)$/;"	f	typeref:typename:int
+handle_close	srcs_bonus/mlx_loop/mlx_hook.c	/^int	handle_close(t_game *game)$/;"	f	typeref:typename:int
+handle_keypress_test	srcs/mlx_loop/mlx_hook.c	/^int	handle_keypress_test(int keycode, t_game *game)$/;"	f	typeref:typename:int
+handle_keypress_test	srcs_bonus/mlx_loop/mlx_hook.c	/^int	handle_keypress_test(int keycode, t_game *game)$/;"	f	typeref:typename:int
+handle_keyrelease	srcs/mlx_loop/mlx_hook.c	/^int	handle_keyrelease(int keycode, t_game *game)$/;"	f	typeref:typename:int
+handle_keyrelease	srcs_bonus/mlx_loop/mlx_hook.c	/^int	handle_keyrelease(int keycode, t_game *game)$/;"	f	typeref:typename:int
 height	mlx/mlx_int.h	/^	int				height;$/;"	m	struct:s_img	typeref:typename:int
 helpsplit	libft/src/ft_split.c	/^static	char	**helpsplit(int index, char const *s, char c)$/;"	f	typeref:typename:char **	file:
 hook	mlx/mlx_int.h	/^	int		(*hook)();$/;"	m	struct:s_event_list	typeref:typename:int (*)()
@@ -365,31 +471,53 @@ im2	mlx/test/main.c	/^void	*im2;$/;"	v	typeref:typename:void *
 im3	mlx/test/main.c	/^void	*im3;$/;"	v	typeref:typename:void *
 im4	mlx/test/main.c	/^void	*im4;$/;"	v	typeref:typename:void *
 im_addr	includes/cub3d.h	/^	char	*im_addr;$/;"	m	struct:s_image	typeref:typename:char *
+im_addr	includes/cub3d_bonus.h	/^	char	*im_addr;$/;"	m	struct:s_image	typeref:typename:char *
 im_height	includes/cub3d.h	/^	int		im_height;$/;"	m	struct:s_image	typeref:typename:int
+im_height	includes/cub3d_bonus.h	/^	int		im_height;$/;"	m	struct:s_image	typeref:typename:int
 im_ptr	includes/cub3d.h	/^	void	*im_ptr;$/;"	m	struct:s_image	typeref:typename:void *
+im_ptr	includes/cub3d_bonus.h	/^	void	*im_ptr;$/;"	m	struct:s_image	typeref:typename:void *
 im_width	includes/cub3d.h	/^	int		im_width;$/;"	m	struct:s_image	typeref:typename:int
+im_width	includes/cub3d_bonus.h	/^	int		im_width;$/;"	m	struct:s_image	typeref:typename:int
 image	includes/cub3d.h	/^	t_image	image[4];$/;"	m	struct:s_tex	typeref:typename:t_image[4]
+image	includes/cub3d_bonus.h	/^	t_image	image[4];$/;"	m	struct:s_tex	typeref:typename:t_image[4]
 image	mlx/mlx_int.h	/^	XImage			*image;$/;"	m	struct:s_img	typeref:typename:XImage *
-img	includes/cub3d.h	/^	void *img;$/;"	m	struct:s_game	typeref:typename:void *
-img_addr	includes/cub3d.h	/^	void *img_addr;$/;"	m	struct:s_game	typeref:typename:void *
+img	includes/cub3d.h	/^	void		*img;$/;"	m	struct:s_game	typeref:typename:void *
+img	includes/cub3d_bonus.h	/^	void		*img;$/;"	m	struct:s_game	typeref:typename:void *
+img_addr	includes/cub3d.h	/^	void		*img_addr;$/;"	m	struct:s_game	typeref:typename:void *
+img_addr	includes/cub3d_bonus.h	/^	void		*img_addr;$/;"	m	struct:s_game	typeref:typename:void *
+init_atorgb	srcs/parsing/floor_celling.c	/^void	init_atorgb(int *color, int *tmp, int *i)$/;"	f	typeref:typename:void
+init_atorgb	srcs_bonus/parsing/floor_celling.c	/^void	init_atorgb(int *color, int *tmp, int *i)$/;"	f	typeref:typename:void
 init_game	srcs/init_game/init_game.c	/^int	init_game(t_game *game, t_textures *textures)$/;"	f	typeref:typename:int
+init_game	srcs_bonus/init_game/init_game.c	/^int	init_game(t_game *game, t_textures *textures)$/;"	f	typeref:typename:int
 init_grid	srcs/init_game/init_engine.c	/^t_grid	*init_grid(t_game *game)$/;"	f	typeref:typename:t_grid *
+init_grid	srcs_bonus/init_game/init_engine.c	/^t_grid	*init_grid(t_game *game)$/;"	f	typeref:typename:t_grid *
+init_map	srcs/parsing/build_map_utils.c	/^int	init_map(int *i, int *fd, int *player, char *argv)$/;"	f	typeref:typename:int
+init_map	srcs_bonus/parsing/build_map_utils.c	/^int	init_map(int *i, int *fd, int *player, char *argv)$/;"	f	typeref:typename:int
 init_player	srcs/init_game/init_engine.c	/^t_player	*init_player(t_game *game)$/;"	f	typeref:typename:t_player *
+init_player	srcs_bonus/init_game/init_engine.c	/^t_player	*init_player(t_game *game)$/;"	f	typeref:typename:t_player *
 init_textures	srcs/put_textures/create_text_im.c	/^int	init_textures(t_game *game, t_textures *texture)$/;"	f	typeref:typename:int
-init_textures_old	srcs/put_textures/create_text_im.c	/^int	init_textures_old(t_game *game, t_textures *texture)$/;"	f	typeref:typename:int
-intersection_found_test	srcs/maths/intersections.c	/^unsigned int	intersection_found_test(double angle, int dist, t_game *game, int flag, int pos_x, /;"	f	typeref:typename:unsigned int
+init_textures	srcs_bonus/put_textures/create_text_im.c	/^int	init_textures(t_game *game, t_textures *texture)$/;"	f	typeref:typename:int
+intersection_found_test	srcs/maths/intersections.c	/^unsigned int	intersection_found_test(double angle, t_game *game,$/;"	f	typeref:typename:unsigned int
+intersection_found_test	srcs_bonus/maths/intersections.c	/^unsigned int	intersection_found_test(double angle, t_game *game,$/;"	f	typeref:typename:unsigned int
 is_inside	srcs/parsing/map_utils.c	/^int	is_inside(char c)$/;"	f	typeref:typename:int
-is_map_closed	srcs/parsing/parsing_map.c	/^int	is_map_closed(t_textures *map_info, char **map, int map_y)$/;"	f	typeref:typename:int
-is_player	srcs/parsing/build_map.c	/^int	is_player(char *str)$/;"	f	typeref:typename:int
-itod	srcs/maths/calc_image.c	/^double itod(double i, int p_d)$/;"	f	typeref:typename:double
+is_inside	srcs_bonus/parsing/map_utils.c	/^int	is_inside(char c)$/;"	f	typeref:typename:int
+is_map_closed	srcs/parsing/parsing_map.c	/^int	is_map_closed(char **map, int map_y)$/;"	f	typeref:typename:int
+is_map_closed	srcs_bonus/parsing/parsing_map.c	/^int	is_map_closed(char **map, int map_y)$/;"	f	typeref:typename:int
+is_player_in_line	srcs/parsing/build_map.c	/^int	is_player_in_line(char *str, t_textures *map_info, int y)$/;"	f	typeref:typename:int
+is_player_in_line	srcs_bonus/parsing/build_map.c	/^int	is_player_in_line(char *str, t_textures *map_info, int y)$/;"	f	typeref:typename:int
+itod	srcs/maths/calc_image.c	/^double	itod(double i, int p_d)$/;"	f	typeref:typename:double
+itod	srcs_bonus/maths/calc_image.c	/^double	itod(double i, int p_d)$/;"	f	typeref:typename:double
 key_hook	mlx/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 key_param	mlx/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 key_win1	mlx/test/main.c	/^int	key_win1(int key,void *p)$/;"	f	typeref:typename:int
 key_win2	mlx/test/main.c	/^int	key_win2(int key,void *p)$/;"	f	typeref:typename:int
 key_win3	mlx/test/main.c	/^int	key_win3(int key,void *p)$/;"	f	typeref:typename:int
 line_size	includes/cub3d.h	/^	int		line_size;$/;"	m	struct:s_image	typeref:typename:int
-lines_intersections_test	srcs/maths/intersections.c	/^unsigned int	lines_intersections_test(t_game *game, t_player *player, double angle)$/;"	f	typeref:typename:unsigned int
-ll	includes/cub3d.h	/^	int ll;$/;"	m	struct:s_game	typeref:typename:int
+line_size	includes/cub3d_bonus.h	/^	int		line_size;$/;"	m	struct:s_image	typeref:typename:int
+lines_intersections_test	srcs/maths/intersections.c	/^unsigned int	lines_intersections_test(t_game *game,$/;"	f	typeref:typename:unsigned int
+lines_intersections_test	srcs_bonus/maths/intersections.c	/^unsigned int	lines_intersections_test(t_game *game,$/;"	f	typeref:typename:unsigned int
+ll	includes/cub3d.h	/^	int			ll;$/;"	m	struct:s_game	typeref:typename:int
+ll	includes/cub3d_bonus.h	/^	int			ll;$/;"	m	struct:s_game	typeref:typename:int
 local_endian	mlx/test/main.c	/^int	local_endian;$/;"	v	typeref:typename:int
 log_error	mlx/configure	/^log_error(){$/;"	f
 log_error	mlx/test/run_tests.sh	/^log_error(){$/;"	f
@@ -397,25 +525,36 @@ log_info	mlx/configure	/^log_info(){$/;"	f
 log_info	mlx/test/run_tests.sh	/^log_info(){$/;"	f
 logging	mlx/configure	/^logging(){$/;"	f
 logging	mlx/test/run_tests.sh	/^logging(){$/;"	f
-loop	srcs/mlx_loop/image.c	/^int	loop()$/;"	f	typeref:typename:int
+loop	srcs/mlx_loop/image.c	/^int	loop(void)$/;"	f	typeref:typename:int
+loop	srcs_bonus/mlx_loop/image.c	/^int	loop(void)$/;"	f	typeref:typename:int
 loop_hook	mlx/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typename:int (*)()
 loop_param	mlx/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
-m_d	includes/cub3d.h	/^	int		m_d;$/;"	m	struct:s_player	typeref:typename:int
+m_d	includes/cub3d.h	/^	int			m_d;$/;"	m	struct:s_player	typeref:typename:int
+m_d	includes/cub3d_bonus.h	/^	int			m_d;$/;"	m	struct:s_player	typeref:typename:int
 main	mlx/configure	/^main(){$/;"	f
 main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int
 main	mlx/test/new_win.c	/^int main()$/;"	f	typeref:typename:int
 main	mlx/test/run_tests.sh	/^main(){$/;"	f
 main	srcs/main_core/main.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
+main	srcs_bonus/main_core/main.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
 make_move_x	srcs/maths/get_max_dist.c	/^void	make_move_x(t_game *game, int move, int x, int y)$/;"	f	typeref:typename:void
+make_move_x	srcs_bonus/maths/get_max_dist.c	/^void	make_move_x(t_game *game, int move, int x, int y)$/;"	f	typeref:typename:void
 make_move_y	srcs/maths/get_max_dist.c	/^void	make_move_y(t_game *game, int move, int x, int y)$/;"	f	typeref:typename:void
+make_move_y	srcs_bonus/maths/get_max_dist.c	/^void	make_move_y(t_game *game, int move, int x, int y)$/;"	f	typeref:typename:void
 make_stash	libft/src/get_next_line_utils_bonus.c	/^char	*make_stash(int j, char *string)$/;"	f	typeref:typename:char *
-map	includes/cub3d.h	/^	char **map;$/;"	m	struct:s_grid	typeref:typename:char **
-map	includes/cub3d.h	/^	char **map;$/;"	m	struct:s_textures	typeref:typename:char **
+map	includes/cub3d.h	/^	char		**map;$/;"	m	struct:s_grid	typeref:typename:char **
+map	includes/cub3d.h	/^	char	**map;$/;"	m	struct:s_textures	typeref:typename:char **
+map	includes/cub3d_bonus.h	/^	char		**map;$/;"	m	struct:s_grid	typeref:typename:char **
+map	includes/cub3d_bonus.h	/^	char	**map;$/;"	m	struct:s_textures	typeref:typename:char **
 map_parser	srcs/parsing/parsing_map.c	/^int	map_parser(char *argv, t_textures *map_info)$/;"	f	typeref:typename:int
-map_started	srcs/parsing/build_map.c	/^int	map_started(char *str)$/;"	f	typeref:typename:int
+map_parser	srcs_bonus/parsing/parsing_map.c	/^int	map_parser(char *argv, t_textures *map_info)$/;"	f	typeref:typename:int
+map_started	srcs/parsing/build_map_utils.c	/^int	map_started(char *str)$/;"	f	typeref:typename:int
+map_started	srcs_bonus/parsing/build_map_utils.c	/^int	map_started(char *str)$/;"	f	typeref:typename:int
 mask	mlx/mlx_int.h	/^	int		mask;$/;"	m	struct:s_event_list	typeref:typename:int
 max_dist	srcs/maths/get_max_dist.c	/^void	max_dist(t_game *game)$/;"	f	typeref:typename:void
-mlx	includes/cub3d.h	/^	void *mlx;$/;"	m	struct:s_game	typeref:typename:void *
+max_dist	srcs_bonus/maths/get_max_dist.c	/^void	max_dist(t_game *game)$/;"	f	typeref:typename:void
+mlx	includes/cub3d.h	/^	void		*mlx;$/;"	m	struct:s_game	typeref:typename:void *
+mlx	includes/cub3d_bonus.h	/^	void		*mlx;$/;"	m	struct:s_game	typeref:typename:void *
 mlx	mlx/test/main.c	/^void	*mlx;$/;"	v	typeref:typename:void *
 mlx	mlx/test/new_win.c	/^void *mlx;$/;"	v	typeref:typename:void *
 mlx_X_error	mlx/mlx_new_image.c	/^int	mlx_X_error;$/;"	v	typeref:typename:int
@@ -486,79 +625,116 @@ mlx_xpm_file_to_image	mlx/mlx_lib_xpm.c	/^void	*mlx_xpm_file_to_image(t_xvar *xv
 mlx_xpm_file_to_image	mlx/mlx_xpm.c	/^void	*mlx_xpm_file_to_image(t_xvar *xvar,char *file,int *width,int *height)$/;"	f	typeref:typename:void *
 mlx_xpm_to_image	mlx/mlx_lib_xpm.c	/^void	*mlx_xpm_to_image(t_xvar *xvar,char **data,int *width,int *height)$/;"	f	typeref:typename:void *
 mlx_xpm_to_image	mlx/mlx_xpm.c	/^void	*mlx_xpm_to_image(t_xvar *xvar,char **xpm_data,int *width,int *height)$/;"	f	typeref:typename:void *
+moove	includes/cub3d.h	/^	int			moove[5];$/;"	m	struct:s_player	typeref:typename:int[5]
+moove	includes/cub3d_bonus.h	/^	int			moove[5];$/;"	m	struct:s_player	typeref:typename:int[5]
 mouse_hook	mlx/mlx_int.h	/^	int					(*mouse_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 mouse_param	mlx/mlx_int.h	/^	void				*mouse_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 mouse_win1	mlx/test/main.c	/^int	mouse_win1(int button,int x,int y, void *p)$/;"	f	typeref:typename:int
 mouse_win2	mlx/test/main.c	/^int	mouse_win2(int button,int x,int y, void *p)$/;"	f	typeref:typename:int
 mouse_win3	mlx/test/main.c	/^int	mouse_win3(int x,int y, void *p)$/;"	f	typeref:typename:int
 my_mlx_pixel_put	srcs/mlx_loop/image.c	/^void	my_mlx_pixel_put(t_game *game, int x, int y, int color)$/;"	f	typeref:typename:void
+my_mlx_pixel_put	srcs_bonus/mlx_loop/image.c	/^void	my_mlx_pixel_put(t_game *game, int x, int y, int color)$/;"	f	typeref:typename:void
 name	mlx/mlx_int.h	/^	char	*name;$/;"	m	struct:s_col_name	typeref:typename:char *
 name	mlx/mlx_int.h	/^	int		name;$/;"	m	struct:s_xpm_col	typeref:typename:int
 next	includes/cub3d.h	/^	void	*next;$/;"	m	struct:s_tex	typeref:typename:void *
+next	includes/cub3d_bonus.h	/^	void	*next;$/;"	m	struct:s_tex	typeref:typename:void *
 next	includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
 next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
 next	mlx/mlx_int.h	/^	struct s_win_list	*next;$/;"	m	struct:s_win_list	typeref:struct:s_win_list *
-no	includes/cub3d.h	/^	char *no;$/;"	m	struct:s_textures	typeref:typename:char *
-no_bpp	includes/cub3d.h	/^	int		no_bpp;$/;"	m	struct:s_walls	typeref:typename:int
-no_endian	includes/cub3d.h	/^	int		no_endian;$/;"	m	struct:s_walls	typeref:typename:int
-no_fish_eye	srcs/maths/corrections.c	/^unsigned int	no_fish_eye(t_game *game, unsigned int value, double angle)$/;"	f	typeref:typename:unsigned int
-no_fish_eye_test	srcs/maths/corrections.c	/^unsigned int no_fish_eye_test(t_game *game, unsigned int value, double angle)$/;"	f	typeref:typename:unsigned int
-no_im_height	includes/cub3d.h	/^	int		no_im_height;$/;"	m	struct:s_walls	typeref:typename:int
-no_im_width	includes/cub3d.h	/^	int		no_im_width;$/;"	m	struct:s_walls	typeref:typename:int
-no_l_size	includes/cub3d.h	/^	int		no_l_size;$/;"	m	struct:s_walls	typeref:typename:int
-no_side_addr	includes/cub3d.h	/^	char 	*no_side_addr;$/;"	m	struct:s_walls	typeref:typename:char *
-no_side_im	includes/cub3d.h	/^	void 	*no_side_im;$/;"	m	struct:s_walls	typeref:typename:void *
-orientation	includes/cub3d.h	/^	double	orientation;$/;"	m	struct:s_player	typeref:typename:double
-p_direction	includes/cub3d.h	/^	int p_direction;$/;"	m	struct:s_textures	typeref:typename:int
-p_x	includes/cub3d.h	/^	int p_x;$/;"	m	struct:s_textures	typeref:typename:int
-p_y	includes/cub3d.h	/^	int p_y;$/;"	m	struct:s_textures	typeref:typename:int
+no	includes/cub3d.h	/^	char	*no;$/;"	m	struct:s_textures	typeref:typename:char *
+no	includes/cub3d_bonus.h	/^	char	*no;$/;"	m	struct:s_textures	typeref:typename:char *
+orientation	includes/cub3d.h	/^	double		orientation;$/;"	m	struct:s_player	typeref:typename:double
+orientation	includes/cub3d_bonus.h	/^	double		orientation;$/;"	m	struct:s_player	typeref:typename:double
+p_direction	includes/cub3d.h	/^	int		p_direction;$/;"	m	struct:s_textures	typeref:typename:int
+p_direction	includes/cub3d_bonus.h	/^	int		p_direction;$/;"	m	struct:s_textures	typeref:typename:int
+p_x	includes/cub3d.h	/^	int		p_x;$/;"	m	struct:s_textures	typeref:typename:int
+p_x	includes/cub3d_bonus.h	/^	int		p_x;$/;"	m	struct:s_textures	typeref:typename:int
+p_y	includes/cub3d.h	/^	int		p_y;$/;"	m	struct:s_textures	typeref:typename:int
+p_y	includes/cub3d_bonus.h	/^	int		p_y;$/;"	m	struct:s_textures	typeref:typename:int
 param	mlx/mlx_int.h	/^	void	*param;$/;"	m	struct:s_event_list	typeref:typename:void *
 parse_args	mlx/configure	/^parse_args(){$/;"	f
 pix	mlx/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img	typeref:typename:Pixmap
-player	includes/cub3d.h	/^	t_player *player;$/;"	m	struct:s_game	typeref:typename:t_player *
-player_move	srcs/mlx_loop/mlx_hook.c	/^void	player_move(t_player *player, double angle)$/;"	f	typeref:typename:void
-player_move_collide	srcs/mlx_loop/mlx_hook.c	/^void	player_move_collide(t_game *game, double angle)$/;"	f	typeref:typename:void
+player	includes/cub3d.h	/^	t_player	*player;$/;"	m	struct:s_game	typeref:typename:t_player *
+player	includes/cub3d_bonus.h	/^	t_player	*player;$/;"	m	struct:s_game	typeref:typename:t_player *
+player_move_collide	srcs/maths/collisions.c	/^void	player_move_collide(t_game *game, double angle)$/;"	f	typeref:typename:void
+player_move_collide	srcs_bonus/maths/collisions.c	/^void	player_move_collide(t_game *game, double angle)$/;"	f	typeref:typename:void
 pos_x	includes/cub3d.h	/^	double		pos_x;$/;"	m	struct:s_player	typeref:typename:double
+pos_x	includes/cub3d_bonus.h	/^	double		pos_x;$/;"	m	struct:s_player	typeref:typename:double
 pos_y	includes/cub3d.h	/^	double		pos_y;$/;"	m	struct:s_player	typeref:typename:double
+pos_y	includes/cub3d_bonus.h	/^	double		pos_y;$/;"	m	struct:s_player	typeref:typename:double
 print_debbug_values	srcs/main_core/main.c	/^void	print_debbug_values(t_grid *grid)$/;"	f	typeref:typename:void
-print_tab	srcs/parsing/map_utils.c	/^void	print_tab(char **tab)$/;"	f	typeref:typename:void
-print_textures	srcs/parsing/map_utils.c	/^void	print_textures(t_textures *texture)$/;"	f	typeref:typename:void
+print_debbug_values	srcs_bonus/main_core/main.c	/^void	print_debbug_values(t_grid *grid)$/;"	f	typeref:typename:void
+print_tab	srcs/parsing/debogue_map.c	/^void	print_tab(char **tab)$/;"	f	typeref:typename:void
+print_tab	srcs_bonus/parsing/debogue_map.c	/^void	print_tab(char **tab)$/;"	f	typeref:typename:void
+print_textures	srcs/parsing/debogue_map.c	/^void	print_textures(t_textures *texture)$/;"	f	typeref:typename:void
+print_textures	srcs_bonus/parsing/debogue_map.c	/^void	print_textures(t_textures *texture)$/;"	f	typeref:typename:void
 private_cmap	mlx/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar	typeref:typename:int
-proj_plan_col_test	srcs/maths/intersections.c	/^unsigned int proj_plan_col_test(t_game *game, double angle)$/;"	f	typeref:typename:unsigned int
-proj_plan_height	includes/cub3d.h	/^	int proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
-proj_plan_image	srcs/maths/calc_image.c	/^unsigned int *proj_plan_image(t_game *game, t_grid *grid)$/;"	f	typeref:typename:unsigned int *
-proj_plan_image_test	srcs/maths/calc_image.c	/^unsigned int *proj_plan_image_test(t_game *game, double orientation)$/;"	f	typeref:typename:unsigned int *
-proj_plan_width	includes/cub3d.h	/^	int proj_plan_width;$/;"	m	struct:s_grid	typeref:typename:int
-projected_factor	includes/cub3d.h	/^	int projected_factor;$/;"	m	struct:s_grid	typeref:typename:int
+proj_plan_col_test	srcs/maths/intersections.c	/^unsigned int	proj_plan_col_test(t_game *game, double angle)$/;"	f	typeref:typename:unsigned int
+proj_plan_col_test	srcs_bonus/maths/intersections.c	/^unsigned int	proj_plan_col_test(t_game *game, double angle)$/;"	f	typeref:typename:unsigned int
+proj_plan_height	includes/cub3d.h	/^	int			proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
+proj_plan_height	includes/cub3d_bonus.h	/^	int			proj_plan_height;$/;"	m	struct:s_grid	typeref:typename:int
+proj_plan_image	srcs/maths/calc_image.c	/^unsigned int	*proj_plan_image(t_game *game, t_grid *grid)$/;"	f	typeref:typename:unsigned int *
+proj_plan_image	srcs_bonus/maths/calc_image.c	/^unsigned int	*proj_plan_image(t_game *game, t_grid *grid)$/;"	f	typeref:typename:unsigned int *
+proj_plan_image_norme	srcs/maths/calc_image.c	/^double	proj_plan_image_norme(int i, double orientation, t_game *game)$/;"	f	typeref:typename:double
+proj_plan_image_norme	srcs_bonus/maths/calc_image.c	/^double	proj_plan_image_norme(int i, double orientation, t_game *game)$/;"	f	typeref:typename:double
+proj_plan_image_test	srcs/maths/calc_image.c	/^unsigned int	*proj_plan_image_test(t_game *game, double orientation)$/;"	f	typeref:typename:unsigned int *
+proj_plan_image_test	srcs_bonus/maths/calc_image.c	/^unsigned int	*proj_plan_image_test(t_game *game, double orientation)$/;"	f	typeref:typename:unsigned int *
+proj_plan_width	includes/cub3d.h	/^	int			proj_plan_width;$/;"	m	struct:s_grid	typeref:typename:int
+proj_plan_width	includes/cub3d_bonus.h	/^	int			proj_plan_width;$/;"	m	struct:s_grid	typeref:typename:int
+projected_factor	includes/cub3d.h	/^	int			projected_factor;$/;"	m	struct:s_grid	typeref:typename:int
+projected_factor	includes/cub3d_bonus.h	/^	int			projected_factor;$/;"	m	struct:s_grid	typeref:typename:int
 pshm_format	mlx/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar	typeref:typename:int
+quick_free	srcs/init_game/init_game.c	/^int	quick_free(t_game *game)$/;"	f	typeref:typename:int
+quick_free	srcs_bonus/init_game/init_game.c	/^int	quick_free(t_game *game)$/;"	f	typeref:typename:int
 quit_w_message	srcs/parsing/map_utils.c	/^void	quit_w_message(char *str, t_textures *map_info)$/;"	f	typeref:typename:void
+quit_w_message	srcs_bonus/parsing/map_utils.c	/^void	quit_w_message(char *str, t_textures *map_info)$/;"	f	typeref:typename:void
 re	Makefile	/^re				: fclean all$/;"	t
 re	libft/Makefile	/^re			: fclean all$/;"	t
 re	mlx/Makefile	/^re	: clean all$/;"	t
 re	mlx/test/Makefile.mk	/^re: clean all$/;"	t
 render	srcs/mlx_loop/image.c	/^int	render(t_game *game)$/;"	f	typeref:typename:int
-rgb_atoi	srcs/parsing/get_textures.c	/^int	rgb_atoi(const char *str)$/;"	f	typeref:typename:int
+render	srcs_bonus/mlx_loop/image.c	/^int	render(t_game *game)$/;"	f	typeref:typename:int
+rgb_atoi	srcs/parsing/floor_celling.c	/^int	rgb_atoi(char *str)$/;"	f	typeref:typename:int
+rgb_atoi	srcs_bonus/parsing/floor_celling.c	/^int	rgb_atoi(char *str)$/;"	f	typeref:typename:int
+rgb_atoi_help	srcs/parsing/floor_celling.c	/^int	rgb_atoi_help(char *str)$/;"	f	typeref:typename:int
+rgb_atoi_help	srcs_bonus/parsing/floor_celling.c	/^int	rgb_atoi_help(char *str)$/;"	f	typeref:typename:int
 root	mlx/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar	typeref:typename:Window
-rtod	srcs/maths/small_usefull_calcs.c	/^double rtod(double radian)$/;"	f	typeref:typename:double
+rtod	srcs/maths/small_usefull_calcs.c	/^double	rtod(double radian)$/;"	f	typeref:typename:double
+rtod	srcs_bonus/maths/small_usefull_calcs.c	/^double	rtod(double radian)$/;"	f	typeref:typename:double
 s_col_name	mlx/mlx_int.h	/^struct	s_col_name$/;"	s
 s_event_list	mlx/mlx_int.h	/^typedef struct	s_event_list$/;"	s
 s_game	includes/cub3d.h	/^typedef struct s_game$/;"	s
+s_game	includes/cub3d_bonus.h	/^typedef struct s_game$/;"	s
 s_grid	includes/cub3d.h	/^typedef struct s_grid$/;"	s
+s_grid	includes/cub3d_bonus.h	/^typedef struct s_grid$/;"	s
 s_image	includes/cub3d.h	/^typedef struct s_image$/;"	s
+s_image	includes/cub3d_bonus.h	/^typedef struct s_image$/;"	s
 s_img	mlx/mlx_int.h	/^typedef struct	s_img$/;"	s
 s_list	includes/libft.h	/^typedef struct s_list$/;"	s
 s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s
 s_player	includes/cub3d.h	/^typedef struct s_player$/;"	s
+s_player	includes/cub3d_bonus.h	/^typedef struct s_player$/;"	s
 s_tex	includes/cub3d.h	/^typedef struct s_tex$/;"	s
+s_tex	includes/cub3d_bonus.h	/^typedef struct s_tex$/;"	s
 s_textures	includes/cub3d.h	/^typedef struct s_textures$/;"	s
-s_walls	includes/cub3d.h	/^typedef struct s_walls$/;"	s
+s_textures	includes/cub3d_bonus.h	/^typedef struct s_textures$/;"	s
 s_win_list	mlx/mlx_int.h	/^typedef struct	s_win_list$/;"	s
 s_xpm_col	mlx/mlx_int.h	/^typedef	struct	s_xpm_col$/;"	s
 s_xvar	mlx/mlx_int.h	/^typedef struct	s_xvar$/;"	s
 saved_mode	mlx/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v	typeref:typename:RRMode
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
-set_null_map	srcs/parsing/parsing_map.c	/^void	set_null_map(t_textures *map_info)$/;"	f	typeref:typename:void
-set_player	srcs/parsing/parsing_map.c	/^void	set_player(t_textures *map_info, int x, int y, char p)$/;"	f	typeref:typename:void
+set_init_game	srcs/init_game/init_game.c	/^void	set_init_game(t_game *game)$/;"	f	typeref:typename:void
+set_init_game	srcs_bonus/init_game/init_game.c	/^void	set_init_game(t_game *game)$/;"	f	typeref:typename:void
+set_null_map	srcs/parsing/build_map_utils.c	/^void	set_null_map(t_textures *map_info)$/;"	f	typeref:typename:void
+set_null_map	srcs_bonus/parsing/build_map_utils.c	/^void	set_null_map(t_textures *map_info)$/;"	f	typeref:typename:void
+set_player	srcs/parsing/build_map_utils.c	/^void	set_player(t_textures *map_info, int x, int y, char p)$/;"	f	typeref:typename:void
+set_player	srcs_bonus/parsing/build_map_utils.c	/^void	set_player(t_textures *map_info, int x, int y, char p)$/;"	f	typeref:typename:void
+set_value1	srcs/maths/norme_intersections.c	/^void	set_value1(double *xi, double *yi, double angle, int flag)$/;"	f	typeref:typename:void
+set_value1	srcs_bonus/maths/norme_intersections.c	/^void	set_value1(double *xi, double *yi, double angle, int flag)$/;"	f	typeref:typename:void
+set_value2col	srcs/maths/norme_intersections.c	/^void	set_value2col(double *i_py, double *i_px,$/;"	f	typeref:typename:void
+set_value2col	srcs_bonus/maths/norme_intersections.c	/^void	set_value2col(double *i_py, double *i_px,$/;"	f	typeref:typename:void
+set_value2lines	srcs/maths/norme_intersections.c	/^void	set_value2lines(double *i_py, double *i_px,$/;"	f	typeref:typename:void
+set_value2lines	srcs_bonus/maths/norme_intersections.c	/^void	set_value2lines(double *i_py, double *i_px,$/;"	f	typeref:typename:void
 shm	mlx/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo
 shm_att_pb	mlx/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/;"	f	typeref:typename:int
 show	mlx/Makefile.mk	/^show:$/;"	t
@@ -570,43 +746,56 @@ sl1	mlx/test/main.c	/^int	sl1;$/;"	v	typeref:typename:int
 sl2	mlx/test/main.c	/^int	sl2;$/;"	v	typeref:typename:int
 sl3	mlx/test/main.c	/^int	sl3;$/;"	v	typeref:typename:int
 sl4	mlx/test/main.c	/^int	sl4;$/;"	v	typeref:typename:int
-so	includes/cub3d.h	/^	char *so;$/;"	m	struct:s_textures	typeref:typename:char *
-so_side_addr	includes/cub3d.h	/^	char 	*so_side_addr;$/;"	m	struct:s_walls	typeref:typename:char *
-so_side_im	includes/cub3d.h	/^	void 	*so_side_im;$/;"	m	struct:s_walls	typeref:typename:void *
+so	includes/cub3d.h	/^	char	*so;$/;"	m	struct:s_textures	typeref:typename:char *
+so	includes/cub3d_bonus.h	/^	char	*so;$/;"	m	struct:s_textures	typeref:typename:char *
 stdlib.h	.vscode/settings.json	/^		"stdlib.h": "c"$/;"	s	object:files.associations
+strcp_to_n	srcs/parsing/floor_celling.c	/^char	*strcp_to_n(const char *str, char n)$/;"	f	typeref:typename:char *
+strcp_to_n	srcs_bonus/parsing/floor_celling.c	/^char	*strcp_to_n(const char *str, char n)$/;"	f	typeref:typename:char *
 strlcpy_is_not_posix	mlx/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char *src, unsigned int size)$/;"	f	typeref:typename:unsigned int
 t_event_list	mlx/mlx_int.h	/^}				t_event_list;$/;"	t	typeref:struct:s_event_list
-t_game	includes/cub3d.h	/^} t_game;$/;"	t	typeref:struct:s_game
-t_grid	includes/cub3d.h	/^} t_grid;$/;"	t	typeref:struct:s_grid
+t_game	includes/cub3d.h	/^}	t_game;$/;"	t	typeref:struct:s_game
+t_game	includes/cub3d_bonus.h	/^}	t_game;$/;"	t	typeref:struct:s_game
+t_grid	includes/cub3d.h	/^}	t_grid;$/;"	t	typeref:struct:s_grid
+t_grid	includes/cub3d_bonus.h	/^}	t_grid;$/;"	t	typeref:struct:s_grid
 t_image	includes/cub3d.h	/^}	t_image;$/;"	t	typeref:struct:s_image
+t_image	includes/cub3d_bonus.h	/^}	t_image;$/;"	t	typeref:struct:s_image
 t_img	mlx/mlx_int.h	/^}				t_img;$/;"	t	typeref:struct:s_img
 t_list	includes/libft.h	/^}			t_list;$/;"	t	typeref:struct:s_list
 t_list	libft/includes/libft.h	/^}			t_list;$/;"	t	typeref:struct:s_list
 t_player	includes/cub3d.h	/^}	t_player;$/;"	t	typeref:struct:s_player
+t_player	includes/cub3d_bonus.h	/^}	t_player;$/;"	t	typeref:struct:s_player
 t_tex	includes/cub3d.h	/^}	t_tex;$/;"	t	typeref:struct:s_tex
-t_textures	includes/cub3d.h	/^} t_textures;$/;"	t	typeref:struct:s_textures
-t_walls	includes/cub3d.h	/^} t_walls;$/;"	t	typeref:struct:s_walls
+t_tex	includes/cub3d_bonus.h	/^}	t_tex;$/;"	t	typeref:struct:s_tex
+t_textures	includes/cub3d.h	/^}	t_textures;$/;"	t	typeref:struct:s_textures
+t_textures	includes/cub3d_bonus.h	/^}	t_textures;$/;"	t	typeref:struct:s_textures
 t_win_list	mlx/mlx_int.h	/^}				t_win_list;$/;"	t	typeref:struct:s_win_list
 t_xpm_col	mlx/mlx_int.h	/^}				t_xpm_col;$/;"	t	typeref:struct:s_xpm_col
 t_xvar	mlx/mlx_int.h	/^}				t_xvar;$/;"	t	typeref:struct:s_xvar
 test_default_main	mlx/test/run_tests.sh	/^test_default_main(){$/;"	f
-tex	includes/cub3d.h	/^	t_tex	*tex;$/;"	m	struct:s_game	typeref:typename:t_tex *
-texture_good	srcs/parsing/parsing_map.c	/^int	texture_good(t_textures *map_info)$/;"	f	typeref:typename:int
-textures	includes/cub3d.h	/^	t_textures *textures;$/;"	m	struct:s_game	typeref:typename:t_textures *
-textures	includes/cub3d.h	/^	t_textures *textures;$/;"	m	struct:s_grid	typeref:typename:t_textures *
-try_get_texture	srcs/maths/intersections.c	/^char	try_get_texture(char **map,int yt,int xt)$/;"	f	typeref:typename:char
+tex	includes/cub3d.h	/^	t_tex		*tex;$/;"	m	struct:s_game	typeref:typename:t_tex *
+tex	includes/cub3d_bonus.h	/^	t_tex		*tex;$/;"	m	struct:s_game	typeref:typename:t_tex *
+texture_good	srcs/parsing/parsing_textures.c	/^int	texture_good(t_textures *map_info)$/;"	f	typeref:typename:int
+texture_good	srcs_bonus/parsing/parsing_textures.c	/^int	texture_good(t_textures *map_info)$/;"	f	typeref:typename:int
+textures	includes/cub3d.h	/^	t_textures	*textures;$/;"	m	struct:s_game	typeref:typename:t_textures *
+textures	includes/cub3d.h	/^	t_textures	*textures;$/;"	m	struct:s_grid	typeref:typename:t_textures *
+textures	includes/cub3d_bonus.h	/^	t_textures	*textures;$/;"	m	struct:s_game	typeref:typename:t_textures *
+textures	includes/cub3d_bonus.h	/^	t_textures	*textures;$/;"	m	struct:s_grid	typeref:typename:t_textures *
+try_get_texture	srcs/maths/corrections.c	/^char	try_get_texture(char **map, int yt, int xt)$/;"	f	typeref:typename:char
+try_get_texture	srcs_bonus/maths/corrections.c	/^char	try_get_texture(char **map, int yt, int xt)$/;"	f	typeref:typename:char
 type	mlx/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
+update_ipx	srcs/maths/norme_intersections.c	/^void	update_ipx(double *ipx, double xi, double angle)$/;"	f	typeref:typename:void
+update_ipx	srcs_bonus/maths/norme_intersections.c	/^void	update_ipx(double *ipx, double xi, double angle)$/;"	f	typeref:typename:void
+update_ipy	srcs/maths/norme_intersections.c	/^void	update_ipy(double *ipy, double yi, double angle)$/;"	f	typeref:typename:void
+update_ipy	srcs_bonus/maths/norme_intersections.c	/^void	update_ipy(double *ipy, double yi, double angle)$/;"	f	typeref:typename:void
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
 valid_char	srcs/parsing/map_utils.c	/^int	valid_char(char **map, int y, int x)$/;"	f	typeref:typename:int
-view_stocked_col	srcs/mlx_loop/image.c	/^void view_stocked_col(unsigned int stock)$/;"	f	typeref:typename:void
-view_stocked_image	srcs/mlx_loop/image.c	/^void view_stocked_image(unsigned int *stock)$/;"	f	typeref:typename:void
+valid_char	srcs_bonus/parsing/map_utils.c	/^int	valid_char(char **map, int y, int x)$/;"	f	typeref:typename:int
 visual	mlx/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar	typeref:typename:Visual *
-walls	includes/cub3d.h	/^	t_walls	*walls;$/;"	m	struct:s_game	typeref:typename:t_walls *
-we	includes/cub3d.h	/^	char *we;$/;"	m	struct:s_textures	typeref:typename:char *
-we_side_addr	includes/cub3d.h	/^	char 	*we_side_addr;$/;"	m	struct:s_walls	typeref:typename:char *
-we_side_im	includes/cub3d.h	/^	void	*we_side_im;$/;"	m	struct:s_walls	typeref:typename:void *
+we	includes/cub3d.h	/^	char	*we;$/;"	m	struct:s_textures	typeref:typename:char *
+we	includes/cub3d_bonus.h	/^	char	*we;$/;"	m	struct:s_textures	typeref:typename:char *
 width	mlx/mlx_int.h	/^	int				width;$/;"	m	struct:s_img	typeref:typename:int
-win	includes/cub3d.h	/^	void *win;$/;"	m	struct:s_game	typeref:typename:void *
+win	includes/cub3d.h	/^	void		*win;$/;"	m	struct:s_game	typeref:typename:void *
+win	includes/cub3d_bonus.h	/^	void		*win;$/;"	m	struct:s_game	typeref:typename:void *
 win1	mlx/test/main.c	/^void	*win1;$/;"	v	typeref:typename:void *
 win1	mlx/test/new_win.c	/^void *win1;$/;"	v	typeref:typename:void *
 win2	mlx/test/main.c	/^void    *win2;$/;"	v	typeref:typename:void *
@@ -618,9 +807,13 @@ window	mlx/mlx_int.h	/^	Window				window;$/;"	m	struct:s_win_list	typeref:typena
 wm_delete_window	mlx/mlx_int.h	/^	Atom		wm_delete_window;$/;"	m	struct:s_xvar	typeref:typename:Atom
 wm_protocols	mlx/mlx_int.h	/^	Atom		wm_protocols;$/;"	m	struct:s_xvar	typeref:typename:Atom
 word_dup	libft/src/ft_split.c	/^static	char	*word_dup(const char *str, int start, int finish)$/;"	f	typeref:typename:char *	file:
-x_max	includes/cub3d.h	/^	int		x_max;$/;"	m	struct:s_player	typeref:typename:int
-x_max	includes/cub3d.h	/^	int x_max;$/;"	m	struct:s_textures	typeref:typename:int
+x_max	includes/cub3d.h	/^	int			x_max;$/;"	m	struct:s_player	typeref:typename:int
+x_max	includes/cub3d.h	/^	int		x_max;$/;"	m	struct:s_textures	typeref:typename:int
+x_max	includes/cub3d_bonus.h	/^	int			x_max;$/;"	m	struct:s_player	typeref:typename:int
+x_max	includes/cub3d_bonus.h	/^	int		x_max;$/;"	m	struct:s_textures	typeref:typename:int
 xpm1_x	mlx/test/main.c	/^int	xpm1_x;$/;"	v	typeref:typename:int
 xpm1_y	mlx/test/main.c	/^int	xpm1_y;$/;"	v	typeref:typename:int
-y_max	includes/cub3d.h	/^	int		y_max;$/;"	m	struct:s_player	typeref:typename:int
-y_max	includes/cub3d.h	/^	int y_max;$/;"	m	struct:s_textures	typeref:typename:int
+y_max	includes/cub3d.h	/^	int			y_max;$/;"	m	struct:s_player	typeref:typename:int
+y_max	includes/cub3d.h	/^	int		y_max;$/;"	m	struct:s_textures	typeref:typename:int
+y_max	includes/cub3d_bonus.h	/^	int			y_max;$/;"	m	struct:s_player	typeref:typename:int
+y_max	includes/cub3d_bonus.h	/^	int		y_max;$/;"	m	struct:s_textures	typeref:typename:int

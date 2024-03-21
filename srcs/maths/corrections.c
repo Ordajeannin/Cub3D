@@ -6,11 +6,21 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:33:33 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 17:08:05 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/21 20:24:01 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_wall(char **map, int y, int x)
+{
+	if (can_access(map, x, y - 1))
+		if (can_access(map, x, y + 1))
+			if (can_access(map, x - 1, y))
+				if (can_access(map, x + 1, y))
+					return (0);
+	return (1);
+}
 
 char	try_get_texture(char **map, int yt, int xt)
 {
