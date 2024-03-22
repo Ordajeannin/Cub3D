@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 18:02:23 by pkorsako          #+#    #+#              #
-#    Updated: 2024/03/21 18:29:52 by ajeannin         ###   ########.fr        #
+#    Updated: 2024/03/22 15:49:05 by ajeannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,3 +64,5 @@ re				: fclean all
 bonus			: $(OBJS_BONUS)
 	@make -s -C libft/
 	@$(CC) $(OBJS_BONUS) $(LIBS) -o $(NAME_BONUS)
+
+re_bonus		: fclean bonus

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/21 19:03:20 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:33:48 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ typedef struct s_player
 	double		pos_x;
 	double		pos_y;
 	double		orientation;
+	int			view_y;
+	int			moove_head;
 	int			x_max;
 	int			y_max;
 	int			m_d;

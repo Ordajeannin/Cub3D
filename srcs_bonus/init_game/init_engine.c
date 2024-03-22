@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/21 19:01:37 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:34:09 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ t_player	*init_player(t_game *game)
 	player->x_max = 1000000;
 	player->y_max = 1000000;
 	player->m_d = 1;
+	player->view_y = SCREEN_HEIGHT >> 1;
+	player->moove_head = SCREEN_HEIGHT / 20;
 	player->moove[0] = 0;
 	player->moove[1] = 0;
 	player->moove[2] = 0;
