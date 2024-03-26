@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/26 18:30:25 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:04:01 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	ceiling_or_sky(t_game *game, char c)
 	int	i = -1;
 
 	while (game->ceiling[++i])
-		if (game->ceiling[i] == 'c')
+		if (game->ceiling[i] == c)
 			return (c);
 	return (0);
 }
@@ -113,27 +113,27 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 	int	y_end;
 
 	y = 0;
-	printf("wtf");
+//	printf("wtf");
 	y_start = game->player->view_y - (projected >> 1);
 	y_end = game->player->view_y + (projected >> 1) - 1;
-	printf("bite");
+//	printf("bite");
 	while (y < y_start && y_start > 0)
 	{
-			render_ceiling_sky(game, x, y++);
-		//my_mlx_pixel_put(game, x, y++, game->textures->c);
+		//	render_ceiling_sky(game, x, y++);
+		my_mlx_pixel_put(game, x, y++, game->textures->c);
 	}
-	printf("bite");
+//	printf("bite");
 	while (y < y_end && y < SCREEN_HEIGHT)
 	{
 		my_mlx_pixel_put(game, x, y,
 			get_texture_pixel(projected, value, game, y - y_start));
 		y++;
 	}
-	printf("bite");
+//	printf("bite");
 	while (y < SCREEN_HEIGHT)
 	{
-		render_floor(game, x, y++);
-		//my_mlx_pixel_put(game, x, y++, game->textures->f);
+		//render_floor(game, x, y++);
+		my_mlx_pixel_put(game, x, y++, game->textures->f);
 	}
 }
 
@@ -161,7 +161,7 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 	}
 	else
 		*/
-	printf("AYA?\n");
+//	printf("AYA?\n");
 	create_col_norme(game, projected, value, x);
 }
 
@@ -173,17 +173,17 @@ int	render(t_game *game)
 	if (game->win == NULL)
 		return (1);
 	i = 0;
-	printf("1\n");
+//	printf("1\n");
 	ft_moove(game->player, game);
-	printf("2\n");
+//	printf("2\n");
 	image = proj_plan_image_test(game, game->player->orientation);
-	printf("3\n");
+//	printf("3\n");
 	while (image[i])
 	{
 		create_col_test(game, image[i], i);
 		i++;
 	}
-	printf("4\n");
+//	printf("4\n");
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	free(image);
 	return (0);

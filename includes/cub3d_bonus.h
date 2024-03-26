@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/26 18:19:24 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:32:43 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 # define FACE_MASK 0x3
 # define OFFSET_MASK 0x3F
-# define TEXTURE_MASK 0xF
-# define DIST_MASK 0xFFFFF
+# define TEXTURE_MASK 0xFF
+# define DIST_MASK 0xFFFF
 # define EAST 0
 # define NORTH 1
 # define WEST 2

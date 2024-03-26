@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 17:42:59 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:31:13 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ unsigned int	intersection_found_test(double angle, t_game *game,
 		result |= (((int)pos_y % 64) & OFFSET_MASK) << 2;
 	result |= (texture & TEXTURE_MASK) << 8;
 	result |= (from_dist_to_projected(game, angle, pos_x, pos_y)
-			& DIST_MASK) << 12;
+			& DIST_MASK) << 16;
 	return (result);
 }
 
