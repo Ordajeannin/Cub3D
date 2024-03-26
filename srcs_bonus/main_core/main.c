@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/21 17:56:28 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/26 18:20:58 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 		free_textures(&map_info);
 		exit (1);
 	}
+//	printf("BIIIIIIIITE\n");
 	render(&game);
 	mlx_hook(game.win, KeyPress, KeyPressMask,
 		&handle_keypress_test, &game);

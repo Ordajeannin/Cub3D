@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/22 15:33:48 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/26 18:19:24 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,11 @@ typedef struct s_game
 	int			flag;
 	double		dist_l;
 	double		dist_c;
+	double		angle[SCREEN_WIDTH];
+	char		floor[10];
+	char		ceiling[10];
+	int			floor_x;
+	int			floor_y;
 	t_tex		*tex;
 	t_player	*player;
 	t_grid		*grid;
