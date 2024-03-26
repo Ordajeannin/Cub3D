@@ -6,11 +6,12 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 17:39:46 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:09:12 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
 
 t_image	get_tex_image(t_game *game, char *path)
 {
@@ -28,39 +29,101 @@ t_image	get_tex_image(t_game *game, char *path)
 	return (image);
 }
 
-int	init_textures(t_game *game, t_textures *texture)
+
+t_tex    *build_tex_tab(t_game *game, char *path_to_tex_dir)
 {
 	t_tex	*tex;
+	char	*path;
 
+	printf("%s have been validated ", path_to_tex_dir);
 	tex = malloc((sizeof(t_tex)));
 	if (!tex)
-		return (0);
-	game->tex = tex;
-	game->tex->next = NULL;
-	tex->image[EAST] = get_tex_image(game, texture->ea);
-	tex->image[NORTH] = get_tex_image(game, texture->no);
-	tex->image[WEST] = get_tex_image(game, texture->we);
-	tex->image[SOUTH] = get_tex_image(game, texture->so);
-	if (!tex->image[EAST].im_ptr || !tex->image[NORTH].im_ptr
-		|| !tex->image[WEST].im_ptr || !tex->image[SOUTH].im_ptr)
+		return (NULL);
+	path = ft_strjoin(path_to_tex_dir, "ea.xpm");
+	tex->image[EAST] = get_tex_image(game, path);
+	free(path);
+	path = ft_strjoin(path_to_tex_dir, "no.xpm");
+	tex->image[NORTH] = get_tex_image(game, path);
+	free(path);
+	path = ft_strjoin(path_to_tex_dir, "we.xpm");
+	tex->image[WEST] = get_tex_image(game, path);
+	free(path);
+	path = ft_strjoin(path_to_tex_dir, "so.xpm");
+	tex->image[SOUTH] = get_tex_image(game, path);
+	free(path);
+	tex->next = NULL;
+	return (tex);
+}
+
+char	*built_texture_path(char dir_nb, const char *map_name)
+{
+    char	*path;
+    char	*tmp;
+    char	*itoa_dir;
+    char	*map_name_clean;
+	char	little_string[2];
+
+	little_string[1] = 0;
+	little_string[0] = dir_nb;
+	if(!ft_isalnum(dir_nb))
+		return (NULL);
+    tmp = ft_strtrim(map_name, ".cub");
+    map_name_clean = ft_strjoin(tmp, "/");
+    free(tmp);
+
+    itoa_dir = ft_strjoin(little_string, "/");
+
+    tmp = ft_strjoin(map_name_clean, itoa_dir);
+    free(itoa_dir);
+
+    path = ft_strjoin("textures/", tmp);
+    free(tmp);
+    return (path);
+}
+
+
+int    great_mighty_init_tex(t_game *game)
+{
+    char	dir_nm;
+    char	*path_to_tex_dir;
+    t_tex	*tex;
+	t_tex	*first;
+
+    dir_nm = '0';
+	first = NULL;
+	tex = NULL;
+	while (dir_nm <= 'z')
 	{
-		return (0);
+		path_to_tex_dir = built_texture_path(dir_nm, game->map_used);
+		// printf("path to tex dir :%s\n", path_to_tex_dir);
+		if (path_to_tex_dir && !access(path_to_tex_dir, F_OK | R_OK))
+		{
+			tex = build_tex_tab(game, path_to_tex_dir);
+			tex->name = dir_nm;
+			printf("his name is :%c\n", dir_nm);
+		}
+		if (!first && tex)
+			first = tex;
+		dir_nm ++;
 	}
-	return (1);
+	game->tex = first;
+    return (1);
 }
 
 int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
 {
 	int		x;
 	int		y;
-	int		index;
+	char	index;
 	char	*pixel;
 	t_tex	*tex;
 
 	tex = game->tex;
 	index = get_value(value, "TEXTURE") - 1;
-	while (index > 0 && tex->next)
+	while (tex && index != tex->name)
 		tex = tex->next;
+	if (!tex)
+		return (0);
 	x = get_value(value, "OFFSET");
 	y = round(i * (63.0 / projected));
 	index = y * tex->image[get_value(value, "FACE")].line_size + x

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/21 19:03:20 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/26 18:48:05 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_image
 
 typedef struct s_tex
 {
+	char	name;
 	t_image	image[4];
 	void	*next;
 }	t_tex;
@@ -115,6 +116,7 @@ typedef struct s_game
 	int			flag;
 	double		dist_l;
 	double		dist_c;
+	char		*map_used;
 	t_tex		*tex;
 	t_player	*player;
 	t_grid		*grid;
@@ -148,6 +150,8 @@ int				map_started(char *str);
 int				ft_open(int *fd, char *path);
 void			set_null_map(t_textures *map_info);
 int				texture_good(t_textures *map_info);
+int				great_mighty_init_tex(t_game *game);
+
 
 ///////////// Init_things //////////////////
 
