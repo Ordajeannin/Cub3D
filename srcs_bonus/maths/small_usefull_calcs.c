@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:32:36 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 15:42:53 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:31:44 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	get_value(unsigned int value, const char *flag)
 		return ((value >> 8) & TEXTURE_MASK);
 	else if (ft_strncmp(flag, "DISTANCE", 8) == 0)
 	{
-		result = (value >> 12) & DIST_MASK;
+		result = (value >> 16) & DIST_MASK;
 		if (result != 0)
 			return (result);
 		else

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/26 18:48:05 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:32:43 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 # define FACE_MASK 0x3
 # define OFFSET_MASK 0x3F
-# define TEXTURE_MASK 0xF
-# define DIST_MASK 0xFFFFF
+# define TEXTURE_MASK 0xFF
+# define DIST_MASK 0xFFFF
 # define EAST 0
 # define NORTH 1
 # define WEST 2
@@ -98,6 +98,8 @@ typedef struct s_player
 	double		pos_x;
 	double		pos_y;
 	double		orientation;
+	int			view_y;
+	int			moove_head;
 	int			x_max;
 	int			y_max;
 	int			m_d;
@@ -117,6 +119,11 @@ typedef struct s_game
 	double		dist_l;
 	double		dist_c;
 	char		*map_used;
+	double		angle[SCREEN_WIDTH];
+	char		floor[10];
+	char		ceiling[10];
+	int			floor_x;
+	int			floor_y;
 	t_tex		*tex;
 	t_player	*player;
 	t_grid		*grid;

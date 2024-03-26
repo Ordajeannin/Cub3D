@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:26:05 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 14:56:23 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:07:21 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@ void	angle_360(double *x, double *y, double angle)
 	*y += dist * cos(dtor(angle - 270.0));
 }
 
+int	is_floor(t_game *game, char c)
+{
+	int	i;
+
+	i = -1;
+//	printf("c = %c  |  floor[0] = %d\n", c, game->floor[1]);
+	while (game->floor[++i])
+		if (game->floor[i] == c)
+			return (0);
+	return (c);
+}
+
 void	player_move_collide(t_game *game, double angle)
 {
 	double	temp_x;
@@ -57,15 +69,27 @@ void	player_move_collide(t_game *game, double angle)
 	temp_x = game->player->pos_x;
 	temp_y = game->player->pos_y;
 	if (angle < 90)
+	{
 		angle_90(&temp_x, &temp_y, angle);
+//		c = try_get_texture(game->grid->map, (temp_y - 10) / 64, (temp_x + 10) / 64);
+	}
 	else if (angle < 180)
+	{
 		angle_180(&temp_x, &temp_y, angle);
+//		c = try_get_texture(game->grid->map, (temp_y - 10) / 64, (temp_x - 10) / 64);
+	}
 	else if (angle < 270)
+	{
 		angle_270(&temp_x, &temp_y, angle);
+//		c = try_get_texture(game->grid->map, (temp_y + 10) / 64, (temp_x - 10) / 64);
+	}
 	else
+	{
 		angle_360(&temp_x, &temp_y, angle);
+//		c = try_get_texture(game->grid->map, (temp_y + 10) / 64, (temp_x + 10) / 64);
+	}
 	c = try_get_texture(game->grid->map, temp_y / 64, temp_x / 64);
-	if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	if (is_floor(game, c) == 0)
 	{
 		game->player->pos_x = temp_x;
 		game->player->pos_y = temp_y;
