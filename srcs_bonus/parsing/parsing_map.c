@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/21 18:22:07 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:07:45 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ int	map_parser(char *argv, t_textures *map_info)
 		return (0);
 	}
 	if (!build_map_line(map_info, map_info->map, map_y, argv))
-		return (0);
+		return (1);
 	map_ok = is_map_closed(map_info->map, map_y);
 	if (map_ok && texture_good(map_info))
 		return (1);
-	return (0);
+	return (1);
 }
