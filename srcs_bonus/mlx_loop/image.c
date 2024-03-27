@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/26 20:04:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:00:51 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,31 @@ void	render_floor(t_game *game, int x, int y)
 
 }
 
+void	render_floor_test(t_game *game, int x, int y)
+{
+	double	dist_ground;
+	double	angle_y;
+	double	angle_x;
+
+	angle_y = atan((double)game->grid->dist_proj_plan / (double)(y - game->grid->half_proj_plan_height));
+	angle_x = fabs(game->angle[x] - game->player->orientation);
+	dist_ground = (game->player->view_y * tan(angle_y)) * cos(dtor(angle_x));
+	//attention, depend de l'angle!!)
+	game->floor_x = (int)(game->player->pos_x - (dist_ground * sin(dtor(angle_x))));
+	game->floor_y = (int)(game->player->pos_y - (dist_ground * cos(dtor(angle_x))));
+	if (x == 300)
+	{
+		printf("y = %d  |  ", y);
+	//	printf("dist_pp = %d  |  half_height = %d\n", game->grid->dist_proj_plan, game->grid->half_proj_plan_height);
+		printf("dist = %f  |  ", dist_ground);
+		printf("floor (%d, %d)\n", game->floor_y, game->floor_x);
+	//	printf("angles (%f, %f)\n", rtod(angle_y), angle_x);
+	}
+	my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "FLOOR",
+			try_get_texture(game->grid->map,
+				game->floor_x >> 6, game->floor_y >> 6)));
+}
+
 void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 {
 	int	y;
@@ -119,8 +144,8 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 //	printf("bite");
 	while (y < y_start && y_start > 0)
 	{
-		//	render_ceiling_sky(game, x, y++);
-		my_mlx_pixel_put(game, x, y++, game->textures->c);
+			render_ceiling_sky(game, x, y++);
+		//my_mlx_pixel_put(game, x, y++, game->textures->c);
 	}
 //	printf("bite");
 	while (y < y_end && y < SCREEN_HEIGHT)
@@ -133,7 +158,8 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 	while (y < SCREEN_HEIGHT)
 	{
 		//render_floor(game, x, y++);
-		my_mlx_pixel_put(game, x, y++, game->textures->f);
+		render_floor_test(game, x, y++);
+		//my_mlx_pixel_put(game, x, y++, game->textures->f);
 	}
 }
 
