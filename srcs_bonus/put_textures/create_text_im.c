@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/26 19:09:12 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:29:12 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_image	get_tex_image(t_game *game, char *path)
 }
 
 
-t_tex    *build_tex_tab(t_game *game, char *path_to_tex_dir)
+t_tex    *build_tex_tab(t_game *game, char *path_to_tex_dir, char dir_nm)
 {
 	t_tex	*tex;
 	char	*path;
@@ -39,6 +39,7 @@ t_tex    *build_tex_tab(t_game *game, char *path_to_tex_dir)
 	tex = malloc((sizeof(t_tex)));
 	if (!tex)
 		return (NULL);
+	tex->name = dir_nm;
 	path = ft_strjoin(path_to_tex_dir, "ea.xpm");
 	tex->image[EAST] = get_tex_image(game, path);
 	free(path);
@@ -98,8 +99,13 @@ int    great_mighty_init_tex(t_game *game)
 		// printf("path to tex dir :%s\n", path_to_tex_dir);
 		if (path_to_tex_dir && !access(path_to_tex_dir, F_OK | R_OK))
 		{
-			tex = build_tex_tab(game, path_to_tex_dir);
-			tex->name = dir_nm;
+			if (!tex && !first)
+				tex = build_tex_tab(game, path_to_tex_dir, dir_nm);
+			else
+			{
+				tex->next = build_tex_tab(game, path_to_tex_dir, dir_nm);
+				tex = tex->next;
+			}
 			printf("his name is :%c\n", dir_nm);
 		}
 		if (!first && tex)
@@ -114,16 +120,22 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
 {
 	int		x;
 	int		y;
-	char	index;
+	int		index;
 	char	*pixel;
 	t_tex	*tex;
 
 	tex = game->tex;
-	index = get_value(value, "TEXTURE") - 1;
-	while (tex && index != tex->name)
+//	printf("value = %d\n", get_value(value, "TEXTURE"));
+	index = get_value(value, "TEXTURE");
+//	printf("index value : %d\n", index);
+	while (tex && (char)index != tex->name)
+	{
+//		printf("index = %d  |  tex->name = %d\n", index, tex->name);
 		tex = tex->next;
+	}
 	if (!tex)
 		return (0);
+//	printf("index = %c  |  tex->name = %c\n", index, tex->name);
 	x = get_value(value, "OFFSET");
 	y = round(i * (63.0 / projected));
 	index = y * tex->image[get_value(value, "FACE")].line_size + x
