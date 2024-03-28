@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/27 21:00:51 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:05:09 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,48 @@ void	render_floor_test(t_game *game, int x, int y)
 				game->floor_x >> 6, game->floor_y >> 6)));
 }
 
+void	render_floor_test_test(t_game *game, int x, int y)
+{
+	double	dist;
+	double	beta;
+	double	alpha;
+	double	hyp;
+
+	alpha = game->angle[x];
+	beta = fabs(game->angle[x] - game->player->orientation);
+	dist = (double)(32 * game->grid->dist_proj_plan) / (double)(y - game->player->view_y);
+	hyp = dist / cos(dtor(beta));
+	game->floor_x = game->player->pos_x + (cos(dtor(alpha)) * hyp);
+	game->floor_y = game->player->pos_y - (sin(dtor(alpha)) * hyp);
+	my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "FLOOR",
+			try_get_texture(game->grid->map,
+				game->floor_x >> 6, game->floor_y >> 6)));
+}
+
+void	render_ceiling_sky_test_test(t_game *game, int x, int y)
+{
+	double	dist;
+	double	beta;
+	double	alpha;
+	double	hyp;
+
+	alpha = game->angle[x];
+	beta = fabs(game->angle[x] - game->player->orientation);
+	dist = (double)(32 * game->grid->dist_proj_plan) / (double)(game->player->view_y - y);
+	hyp = dist / cos(dtor(beta));
+	game->floor_x = game->player->pos_x + (cos(dtor(alpha)) * hyp);
+	game->floor_y = game->player->pos_y - (sin(dtor(alpha)) * hyp);
+	if (ceiling_or_sky(game, try_get_texture(game->grid->map,
+					game->floor_x >> 6, game->floor_y >> 6)) == 0)
+		my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "SKY",
+				try_get_texture(game->grid->map,
+					game->floor_x >> 6, game->floor_y >> 6)));
+	else
+		my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "CEILING",
+					try_get_texture(game->grid->map,
+						game->floor_x >> 6, game->floor_y >> 6)));
+}
+
 void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 {
 	int	y;
@@ -144,8 +186,9 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 //	printf("bite");
 	while (y < y_start && y_start > 0)
 	{
-			render_ceiling_sky(game, x, y++);
+		//	render_ceiling_sky(game, x, y++);
 		//my_mlx_pixel_put(game, x, y++, game->textures->c);
+		render_ceiling_sky_test_test(game, x, y++);
 	}
 //	printf("bite");
 	while (y < y_end && y < SCREEN_HEIGHT)
@@ -158,7 +201,8 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 	while (y < SCREEN_HEIGHT)
 	{
 		//render_floor(game, x, y++);
-		render_floor_test(game, x, y++);
+		//render_floor_test(game, x, y++);
+		render_floor_test_test(game, x, y++);
 		//my_mlx_pixel_put(game, x, y++, game->textures->f);
 	}
 }
