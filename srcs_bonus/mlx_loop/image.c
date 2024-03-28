@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 16:07:28 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:23:31 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,55 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 	*(unsigned int *) pixel = color;
 }
 
+/*
+ * WIP
+ * fonction qui permettra de gerer les affichages de floor sky et ceiling
+ * sous la forme
+ * node
+ *   name = texture
+ *   image[0] = text.floor
+ *   image[1] = text.ceiling or text.sky
+ *
+ * :warning: pour sky, il va falloir modulo la position par les dimensions de
+ * la texture sky, sinon bah... on va avoir des dalles de sky quoi
+ * et c'est pas vraiment l'idee d un ciel
+ *
+ * pour l'instant, segfault car pas de texture correspondante? (pq pas de return wtf?)
+*/
 unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 {
 	int		index;
 	char	*pixel;
 	int		x;
 	int		y;
+	t_tex	*tex;
 
 	x = game->floor_x % 64;
 	y = game->floor_y % 64;
-	texture = 1;
+	index = texture;
+	tex = game->tex;
+	printf("BITE\n");
+	while (tex && (char)index != tex->name)
+		tex = tex->next;
+	if (!tex)
+		return (0);
 	if (ft_strncmp(text, "FLOOR", 5) == 0)
 	{
-		index = y * game->tex->image[texture].line_size + x
-			* (game->tex->image[texture].bpp >> 3);
-		pixel = game->tex->image[texture].im_addr + index;
+		index = y * tex->image[0].line_size + x * (tex->image[0].bpp >> 3);
+		pixel = tex->image[0].im_addr + index;
 	}
 	else if (ft_strncmp(text, "SKY", 3) == 0)
 	{
-		index = y * game->tex->image[texture].line_size + x
-			* (game->tex->image[texture].bpp >> 3);
-		pixel = game->tex->image[texture].im_addr + index;
+		x = game->floor_x % 800;
+		y = game->floor_y % 600;
+		index = y * tex->image[1].line_size + x * (tex->image[1].bpp >> 3);
+		pixel = tex->image[1].im_addr + index;
 	}
 	else
 	{
-		index = y * game->tex->image[texture].line_size + x
-			* (game->tex->image[texture].bpp >> 3);
-		pixel = game->tex->image[texture].im_addr + index;
+		index = y * tex->image[1].line_size + x
+			* (game->tex->image[1].bpp >> 3);
+		pixel = game->tex->image[1].im_addr + index;
 	}
 	return (*(unsigned int *)pixel);
 }
