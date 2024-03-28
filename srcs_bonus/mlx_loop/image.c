@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 17:23:31 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:45:19 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
  *
  * pour l'instant, segfault car pas de texture correspondante? (pq pas de return wtf?)
 */
-unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
+unsigned int	get_texture_fsci_test(t_game *game, char *text, int texture)
 {
 	int		index;
 	char	*pixel;
@@ -76,6 +76,40 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 	}
 	return (*(unsigned int *)pixel);
 }
+
+unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
+{
+	int		index;
+	char	*pixel;
+	int		x;
+	int		y;
+
+	x = game->floor_x % 64;
+	y = game->floor_y % 64;
+	texture = 1;
+	if (ft_strncmp(text, "FLOOR", 5) == 0)
+	{
+		index = y * game->tex->image[texture].line_size + x
+			* (game->tex->image[texture].bpp >> 3);
+		pixel = game->tex->image[texture].im_addr + index;
+	}
+	else if (ft_strncmp(text, "SKY", 3) == 0)
+	{
+//		x = game->floor_x % 600;
+//		y = game->floor_y % 600;
+		index = y * game->tex->image[texture].line_size + x
+			* (game->tex->image[texture].bpp >> 3);
+		pixel = game->tex->image[texture].im_addr + index;
+	}
+	else
+	{
+		index = y * game->tex->image[texture].line_size + x
+			* (game->tex->image[texture].bpp >> 3);
+		pixel = game->tex->image[texture].im_addr + index;
+	}
+	return (*(unsigned int *)pixel);
+}
+
 
 char	ceiling_or_sky(t_game *game, char c)
 {
