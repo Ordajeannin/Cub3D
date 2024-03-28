@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/26 20:27:52 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:31:21 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)
 	if (player != 1)
 	{
 		printf("invalid number player\n");
-		return (0);
+		return (1);
+		//return (0);
 	}
 	return (1);
 }

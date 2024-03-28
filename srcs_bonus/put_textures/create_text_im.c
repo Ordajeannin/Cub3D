@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/26 21:05:10 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:03:28 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_tex    *build_tex_tab(t_game *game, char *path_to_tex_dir, char dir_nm)
 	tex = malloc((sizeof(t_tex)));
 	if (!tex)
 		return (NULL);
+	tex->name = dir_nm;
 	path = ft_strjoin(path_to_tex_dir, "ea.xpm");
 	tex->image[EAST] = get_tex_image(game, path);
 	free(path);
@@ -116,6 +117,7 @@ int    great_mighty_init_tex(t_game *game)
     return (1);
 }
 
+/*
 int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
 {
 	int		x;
@@ -135,12 +137,36 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
 	}
 	if (!tex)
 		return (0);
+	printf("index = %c  |  tex->name = %c\n", index, tex->name);
 	x = get_value(value, "OFFSET");
 	y = round(i * (63.0 / projected));
 	index = y * tex->image[get_value(value, "FACE")].line_size + x
 		* (tex->image[get_value(value, "FACE")].bpp >> 3);
 	pixel = tex->image[get_value(value, "FACE")].im_addr + index;
 	// printf("pixel :%d", *pixel);
+	return (*(unsigned int *)pixel);
+}
+*/
+
+int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
+{
+	int	x;
+	int	y;
+	int	index;
+	char *pixel;
+	t_tex	*tex;
+
+	tex = game->tex;
+	index = get_value(value, "TEXTURE");
+	while (tex && (char)index != tex->name)
+		tex = tex->next;
+	if (!tex)
+		return (0);
+	x = get_value(value, "OFFSET");
+	y = round(i * (63.0 / projected));
+	index = y * tex->image[get_value(value, "FACE")].line_size + x
+		* (tex->image[get_value(value, "FACE")].bpp >> 3);
+	pixel = tex->image[get_value(value, "FACE")].im_addr + index;
 	return (*(unsigned int *)pixel);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:26:05 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/26 20:07:21 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:24:30 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ int	is_floor(t_game *game, char c)
 	int	i;
 
 	i = -1;
-//	printf("c = %c  |  floor[0] = %d\n", c, game->floor[1]);
 	while (game->floor[++i])
+	{
+//		printf("c = %c  |  floor[%d] = %c\n", c, i, game->floor[i]);
 		if (game->floor[i] == c)
 			return (0);
+	}
 	return (c);
 }
 
