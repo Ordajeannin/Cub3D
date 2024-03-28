@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/26 20:26:01 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:22:42 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,7 @@ void			set_value2col(double *y, double *x, t_player *player,
 					double angle);
 void			update_ipx(double *ipx, double xi, double angle);
 void			update_ipy(double *ipy, double yi, double angle);
+int				is_floor(t_game *game, char c);
 
 ///////////// Mlx_things ///////////////////
 

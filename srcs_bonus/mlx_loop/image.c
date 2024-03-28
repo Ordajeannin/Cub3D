@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 16:05:09 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:07:28 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,72 +65,6 @@ char	ceiling_or_sky(t_game *game, char c)
 	return (0);
 }
 
-void	render_ceiling_sky(t_game *game, int x, int y)
-{
-	double	beta;
-	double	dist;
-	double	hyp;
-
-	beta = fabs(game->angle[x] - game->player->orientation);
-	dist = ((game->player->view_y * game->grid->dist_proj_plan) / (y - (SCREEN_HEIGHT >> 1)));
-	hyp = dist / cos(dtor(beta));
-	game->floor_x = (int)(game->player->pos_x + cos(dtor(game->angle[x])));
-	game->floor_y = (int)(game->player->pos_y - sin(dtor(game->angle[x])));
-	if (ceiling_or_sky(game, try_get_texture(game->grid->map,
-					game->floor_x >> 6, game->floor_y >> 6)) == 0)
-		my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "SKY",
-				try_get_texture(game->grid->map,
-					game->floor_x >> 6, game->floor_y >> 6)));
-	else
-		my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "CEILING",
-					try_get_texture(game->grid->map,
-						game->floor_x >> 6, game->floor_y >> 6)));
-}
-
-//https://wynnliam.github.io/raycaster/news/tutorial/2019/04/09/raycaster-part-03.html
-//+cf brouillon
-void	render_floor(t_game *game, int x, int y)
-{
-	double	beta;
-	double	dist;
-	double	hyp;
-
-	beta = fabs(game->angle[x] - game->player->orientation);
-	dist = ((game->player->view_y * game->grid->dist_proj_plan) / (y - (SCREEN_HEIGHT >> 1)));
-	hyp = dist / cos(dtor(beta));
-	game->floor_x = (int)(game->player->pos_x + cos(dtor(game->angle[x])));
-	game->floor_y = (int)(game->player->pos_y - sin(dtor(game->angle[x])));
-	my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "FLOOR",
-			try_get_texture(game->grid->map,
-				game->floor_x >> 6, game->floor_y >> 6)));
-
-}
-
-void	render_floor_test(t_game *game, int x, int y)
-{
-	double	dist_ground;
-	double	angle_y;
-	double	angle_x;
-
-	angle_y = atan((double)game->grid->dist_proj_plan / (double)(y - game->grid->half_proj_plan_height));
-	angle_x = fabs(game->angle[x] - game->player->orientation);
-	dist_ground = (game->player->view_y * tan(angle_y)) * cos(dtor(angle_x));
-	//attention, depend de l'angle!!)
-	game->floor_x = (int)(game->player->pos_x - (dist_ground * sin(dtor(angle_x))));
-	game->floor_y = (int)(game->player->pos_y - (dist_ground * cos(dtor(angle_x))));
-	if (x == 300)
-	{
-		printf("y = %d  |  ", y);
-	//	printf("dist_pp = %d  |  half_height = %d\n", game->grid->dist_proj_plan, game->grid->half_proj_plan_height);
-		printf("dist = %f  |  ", dist_ground);
-		printf("floor (%d, %d)\n", game->floor_y, game->floor_x);
-	//	printf("angles (%f, %f)\n", rtod(angle_y), angle_x);
-	}
-	my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "FLOOR",
-			try_get_texture(game->grid->map,
-				game->floor_x >> 6, game->floor_y >> 6)));
-}
-
 void	render_floor_test_test(t_game *game, int x, int y)
 {
 	double	dist;
@@ -180,30 +114,21 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 	int	y_end;
 
 	y = 0;
-//	printf("wtf");
 	y_start = game->player->view_y - (projected >> 1);
 	y_end = game->player->view_y + (projected >> 1) - 1;
-//	printf("bite");
 	while (y < y_start && y_start > 0)
 	{
-		//	render_ceiling_sky(game, x, y++);
-		//my_mlx_pixel_put(game, x, y++, game->textures->c);
 		render_ceiling_sky_test_test(game, x, y++);
 	}
-//	printf("bite");
 	while (y < y_end && y < SCREEN_HEIGHT)
 	{
 		my_mlx_pixel_put(game, x, y,
 			get_texture_pixel(projected, value, game, y - y_start));
 		y++;
 	}
-//	printf("bite");
 	while (y < SCREEN_HEIGHT)
 	{
-		//render_floor(game, x, y++);
-		//render_floor_test(game, x, y++);
 		render_floor_test_test(game, x, y++);
-		//my_mlx_pixel_put(game, x, y++, game->textures->f);
 	}
 }
 
@@ -243,17 +168,13 @@ int	render(t_game *game)
 	if (game->win == NULL)
 		return (1);
 	i = 0;
-//	printf("1\n");
 	ft_moove(game->player, game);
-//	printf("2\n");
 	image = proj_plan_image_test(game, game->player->orientation);
-//	printf("3\n");
 	while (image[i])
 	{
 		create_col_test(game, image[i], i);
 		i++;
 	}
-//	printf("4\n");
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	free(image);
 	return (0);
