@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 17:45:19 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:09:34 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
  *
  * pour l'instant, segfault car pas de texture correspondante? (pq pas de return wtf?)
 */
-unsigned int	get_texture_fsci_test(t_game *game, char *text, int texture)
+unsigned int	get_texture_fsc_test(t_game *game, char *text, int texture)
 {
 	int		index;
 	char	*pixel;
