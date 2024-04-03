@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 18:09:34 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/03 18:36:13 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
  *
  * pour l'instant, segfault car pas de texture correspondante? (pq pas de return wtf?)
 */
-unsigned int	get_texture_fsc_test(t_game *game, char *text, int texture)
+unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 {
 	int		index;
 	char	*pixel;
@@ -51,7 +51,7 @@ unsigned int	get_texture_fsc_test(t_game *game, char *text, int texture)
 	y = game->floor_y % 64;
 	index = texture;
 	tex = game->tex;
-	printf("BITE\n");
+//	printf("BITE\n");
 	while (tex && (char)index != tex->name)
 		tex = tex->next;
 	if (!tex)
@@ -63,8 +63,8 @@ unsigned int	get_texture_fsc_test(t_game *game, char *text, int texture)
 	}
 	else if (ft_strncmp(text, "SKY", 3) == 0)
 	{
-		x = game->floor_x % 800;
-		y = game->floor_y % 600;
+//		x = game->floor_x % 800;
+//		y = game->floor_y % 600;
 		index = y * tex->image[1].line_size + x * (tex->image[1].bpp >> 3);
 		pixel = tex->image[1].im_addr + index;
 	}
@@ -77,7 +77,8 @@ unsigned int	get_texture_fsc_test(t_game *game, char *text, int texture)
 	return (*(unsigned int *)pixel);
 }
 
-unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
+/*
+unsigned int	get_texture_fsc_test(t_game *game, char *text, int texture)
 {
 	int		index;
 	char	*pixel;
@@ -109,7 +110,7 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 	}
 	return (*(unsigned int *)pixel);
 }
-
+*/
 
 char	ceiling_or_sky(t_game *game, char c)
 {
