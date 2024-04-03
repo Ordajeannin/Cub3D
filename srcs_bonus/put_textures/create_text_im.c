@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/28 18:03:28 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:12:23 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_image	get_tex_image(t_game *game, char *path)
 	}
 	image.im_addr = mlx_get_data_addr(image.im_ptr, &image.bpp,
 			&image.line_size, &image.endian);
+	printf("bpp : %d, line_size : %d\n", image.bpp, image.line_size);
 	return (image);
 }
 
@@ -35,7 +36,7 @@ t_tex    *build_tex_tab(t_game *game, char *path_to_tex_dir, char dir_nm)
 	t_tex	*tex;
 	char	*path;
 
-	printf("%s have been validated ", path_to_tex_dir);
+	printf("%s have been validated \n", path_to_tex_dir);
 	tex = malloc((sizeof(t_tex)));
 	if (!tex)
 		return (NULL);
@@ -107,7 +108,7 @@ int    great_mighty_init_tex(t_game *game)
 				tex->next = build_tex_tab(game, path_to_tex_dir, dir_nm);
 				tex = tex->next;
 			}
-			printf("his name is :%c\n", dir_nm);
+			printf("\nhis name is :%c\n", dir_nm);
 		}
 		if (!first && tex)
 			first = tex;
