@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/04 16:11:14 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:39:00 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 	}
 	else if (ft_strncmp(text, "SKY", 3) == 0)
 	{
-	//	x = (int)game->floor_x % 800;
-	//	y = (int)game->floor_y % 600;
+		x = (int)game->floor_x % 800;
+		y = (int)game->floor_y % 600;
 		index = y * tex->image[1].line_size + x * (tex->image[1].bpp >> 3);
 	//	printf("value of maybe max int : %d\n", y * tex->image[1].line_size);
 		pixel = tex->image[1].im_addr + index;
@@ -79,41 +79,6 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 //	printf("pixel = %s\n", pixel);
 	return (*(unsigned int *)pixel);
 }
-
-/*
-unsigned int	get_texture_fsc_test(t_game *game, char *text, int texture)
-{
-	int		index;
-	char	*pixel;
-	int		x;
-	int		y;
-
-	x = game->floor_x % 64;
-	y = game->floor_y % 64;
-	texture = 1;
-	if (ft_strncmp(text, "FLOOR", 5) == 0)
-	{
-		index = y * game->tex->image[texture].line_size + x
-			* (game->tex->image[texture].bpp >> 3);
-		pixel = game->tex->image[texture].im_addr + index;
-	}
-	else if (ft_strncmp(text, "SKY", 3) == 0)
-	{
-//		x = game->floor_x % 600;
-//		y = game->floor_y % 600;
-		index = y * game->tex->image[texture].line_size + x
-			* (game->tex->image[texture].bpp >> 3);
-		pixel = game->tex->image[texture].im_addr + index;
-	}
-	else
-	{
-		index = y * game->tex->image[texture].line_size + x
-			* (game->tex->image[texture].bpp >> 3);
-		pixel = game->tex->image[texture].im_addr + index;
-	}
-	return (*(unsigned int *)pixel);
-}
-*/
 
 char	ceiling_or_sky(t_game *game, char c)
 {
@@ -158,9 +123,7 @@ void	render_ceiling_sky_test_test(t_game *game, int x, int y)
 	game->floor_y = game->player->pos_y - (sin(dtor(alpha)) * hyp);
 	if (ceiling_or_sky(game, try_get_texture(game->grid->map,
 					(int)game->floor_y >> 6, (int)game->floor_x >> 6)) == 0)
-		my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "SKY",
-				try_get_texture(game->grid->map,
-					(int)game->floor_y >> 6, (int)game->floor_x >> 6)));
+		my_mlx_pixel_put(game, x, y, get_sky(game, x, y));
 	else
 		my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "CEILING",
 					try_get_texture(game->grid->map,
@@ -192,31 +155,26 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 	}
 }
 
+unsigned int get_sky(t_game *game, int x, int y)
+{
+	int index;
+	char *pixel;
+	t_tex *tex;
+
+	y = y % SKY_HEIGHT;
+	tex = game->tex;
+	while (tex->name != '2')
+		tex = tex->next;
+	index = y * tex->image[1].line_size + ((int)round((game->angle[x] * SKY_WIDTH / 360.0)) % SCREEN_WIDTH) * (tex->image[1].bpp >> 3);
+	pixel = tex->image[1].im_addr + index;
+	return (*(unsigned int *)pixel);
+}
+
 void	create_col_test(t_game *game, unsigned int value, int x)
 {
-//	int	y;
-//	int	y_start;
-//	int y_end;
 	int	projected;
-
-//	y = 0;
+	
 	projected = get_value(value, "DISTANCE");
-//	y_start = game->player->view_y - (projected >> 1);
-//	y_end = game->player->view_y + (projected >> 1) - 1;
-	/*if (projected >= SCREEN_HEIGHT)
-	{
-		printf("BIIIIIITE, %d\n", projected);
-		y_start = game->grid->half_proj_plan_height - (projected >> 1);
-		while (y < SCREEN_HEIGHT)
-		{
-			my_mlx_pixel_put(game, x, y,
-				get_texture_pixel(projected, value, game, y - y_start));
-			y++;
-		}
-	}
-	else
-		*/
-//	printf("AYA?\n");
 	create_col_norme(game, projected, value, x);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/04 15:57:11 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:31:32 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
 # define NORTH 1
 # define WEST 2
 # define SOUTH 3
-# define SCREEN_WIDTH 640
-# define HALF_WIDTH 320
-# define SCREEN_HEIGHT 400
+# define SCREEN_WIDTH 1280
+# define HALF_WIDTH 640
+# define SCREEN_HEIGHT 800
 # define FLOOR 0
 # define OUTMAP 4294967294
 # define DIST_WALK 5
@@ -44,6 +44,8 @@
 # define RIGHT -90
 # define BEHIND 180
 # define TURN_RATE 2.0
+# define SKY_WIDTH 800.0
+# define SKY_HEIGHT 600
 
 typedef struct s_textures
 {
@@ -225,6 +227,7 @@ void			set_value2col(double *y, double *x, t_player *player,
 void			update_ipx(double *ipx, double xi, double angle);
 void			update_ipy(double *ipy, double yi, double angle);
 int				is_floor(t_game *game, char c);
+unsigned int	get_sky(t_game *game, int x, int y);
 
 ///////////// Mlx_things ///////////////////
 

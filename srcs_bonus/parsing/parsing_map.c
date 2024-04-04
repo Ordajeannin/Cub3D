@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/04 15:52:11 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:44:05 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	check_point_n_w(char **map, int x, int y, t_game *game)
 {
 	if (y > 0)
 	{
-		printf("can_access :%d\tis_in_list :%d\tis_inside :%d\n", can_access(map, x, y - 1), !is_in_list(map[y - 1][x], game->wall), !is_inside(map[y - 1][x], game));
 		if (can_access(map, x, y - 1) && !is_in_list(map[y - 1][x], game->wall)
 			&& !is_inside(map[y - 1][x], game))
 			return (0);
@@ -117,7 +116,7 @@ void	init_floor_ceiling_wall(t_game *game)
 	game->floor[1] = '2';
 	game->floor[2] = '\0';
 	game->ceiling[0] = '0';
-	game->ceiling[1] = '2';
+	game->ceiling[1] = '0';
 	game->ceiling[2] = '\0';
 	game->wall[0] = '1';
 	game->wall[1] = '7';
