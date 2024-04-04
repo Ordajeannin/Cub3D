@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/04 15:57:40 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:11:14 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 //	if (texture == 'a')
 		while (tex && (char)texture != tex->name)
 			tex = tex->next;
-	if (!tex)
+	if (!tex || tex->image[0].im_ptr == NULL || tex->image[1].im_ptr == NULL)
 		return (0);
 //	printf("texture = %c  |  tex->name = %c\n", (char)texture, tex->name);
 	if (ft_strncmp(text, "FLOOR", 5) == 0)
