@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:53 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 16:14:52 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:48:06 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,6 @@ int	quick_free(t_game *game)
 	return (-1);
 }
 
-void	init_floor_ceiling_wall(t_game *game)
-{
-	game->floor[0] = '0';
-	game->floor[1] = '2';
-	game->floor[2] = '\0';
-	game->ceiling[0] = '0';
-	game->ceiling[1] = '2';
-	game->ceiling[2] = '\0';
-	game->wall[0] = '1';
-	game->wall[1] = '\0';
-	game->wall[2] = '\0';
-}
 
 int	init_game(t_game *game, t_textures *textures)
 {
@@ -77,6 +65,5 @@ int	init_game(t_game *game, t_textures *textures)
 	game->grid = init_grid(game);
 	if (!great_mighty_init_tex(game))
 		return (free_init(game));
-	init_floor_ceiling_wall(game);
 	return (0);
 }

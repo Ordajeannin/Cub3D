@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 18:09:34 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:33:22 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,13 @@ int	render(t_game *game)
 {
 	int				i;
 	unsigned int	*image;
+	struct timeval	time;
+	static size_t	frame;
 
+	gettimeofday(&time, NULL);
+	if (labs(time.tv_usec - game->time.tv_usec) < 33333)
+		usleep(33333 - labs(time.tv_usec - game->time.tv_usec));
+	gettimeofday(&game->time, NULL);
 	if (game->win == NULL)
 		return (1);
 	i = 0;
@@ -233,6 +239,7 @@ int	render(t_game *game)
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	free(image);
+	frame ++;
 	return (0);
 }
 

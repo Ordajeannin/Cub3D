@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/27 21:00:15 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:52:29 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	if (argc != 2 || !argv[1])
 		quit_w_message("you have to put one map as argument", &map_info);
 	game.map_used = argv[1];
-	if (!map_parser(argv[1], &map_info) || init_game(&game, &map_info) == -1)
+	if (!map_parser(argv[1], &map_info, &game) || init_game(&game, &map_info) == -1)
 	{
 		printf("PARSING OR INIT ERROR\n");
 		free_tab((&map_info)->map);
@@ -47,6 +47,11 @@ int	main(int argc, char **argv)
 		exit (1);
 	}
 //	printf("BIIIIIIIITE\n");
+	if (gettimeofday(&game.time, NULL))
+	{
+		free_game(&game, &map_info);
+		return (0);		
+	}
 	render(&game);
 	mlx_hook(game.win, KeyPress, KeyPressMask,
 		&handle_keypress_test, &game);

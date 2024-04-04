@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/03/20 16:02:52 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:18:03 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,11 @@ int	valid_char(char **map, int y, int x)
 		return (0);
 }
 
-int	is_inside(char c)
+int	is_inside(char c, t_game *game)
 {
-	if (c == '0' )
+	if (is_in_list(c, game->floor) || is_in_list(c, game->ceiling))
+		return (1);
+	if (c == '0')
 		return (1);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (2);
