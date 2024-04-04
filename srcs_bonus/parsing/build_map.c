@@ -6,13 +6,13 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/26 20:31:21 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:26:13 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	is_player_in_line(char *str, t_textures *map_info, int y)
+int	is_player_in_line(char *str, t_textures *map_info, int y, t_game *game)
 {
 	int	i;
 	int	player;
@@ -30,8 +30,9 @@ int	is_player_in_line(char *str, t_textures *map_info, int y)
 		}
 		if (str[i] != 'N' & str[i] != 'S' && str[i] != 'E'//ICI
 			&& str[i] != 'W' && str[i] != '0' && str[i] != '1'
-			&& str[i] != ' ' && str[i] != '\n')
-			player = 9999;
+			&& str[i] != ' ' && str[i] != '\n' && !is_in_list(str[i], game->ceiling)
+			&& !is_in_list(str[i], game->floor) && !is_in_list(str[i], game->wall))
+			player = 9999;//sois on accepte isalpha, sois uniquement les textures attendue
 		i ++;
 	}
 	return (player);
@@ -97,7 +98,7 @@ char	*go_to_map(int fd, t_textures *map_utils)
 	return (NULL);
 }
 
-int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)
+int	build_map_line(t_textures *map_info, int map_y, char *argv, t_game *game)
 {
 	int	i;
 	int	fd;
@@ -106,22 +107,21 @@ int	build_map_line(t_textures *map_info, char **map, int map_y, char *argv)
 	if (!init_map(&i, &fd, &player, argv))
 		return (0);
 	map_info->x_max = 0;
-	map[0] = go_to_map(fd, NULL);
+	map_info->map[0] = go_to_map(fd, NULL);
 	while (i <= map_y - 1)
 	{
-		map[i] = get_next_line(fd);
-		if (map_info->x_max < (int)ft_strlen(map[i]))
-			map_info->x_max = (int)ft_strlen(map[i]);
-		player += is_player_in_line(map[i], map_info, i);
+		map_info->map[i] = get_next_line(fd);
+		if (map_info->x_max < (int)ft_strlen(map_info->map[i]))
+			map_info->x_max = (int)ft_strlen(map_info->map[i]);
+		player += is_player_in_line(map_info->map[i], map_info, i, game);
 		i ++;
 	}
-	map[i] = NULL;
+	map_info->map[i] = NULL;
 	close(fd);
 	if (player != 1)
 	{
 		printf("invalid number player\n");
-		return (1);
-		//return (0);
+		return (0);
 	}
 	return (1);
 }

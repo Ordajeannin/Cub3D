@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/03 18:38:55 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:57:11 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <X11/X.h>
 # include <math.h>
 # include <limits.h>
+# include <sys/time.h>
 # include "libft.h"
 # include "../mlx/mlx.h"
 
@@ -106,6 +107,12 @@ typedef struct s_player
 	int			moove[5];
 }	t_player;
 
+typedef	struct s_sprite
+{
+	t_image	pacman[8];
+}	t_sprite;
+
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -125,6 +132,8 @@ typedef struct s_game
 	char		wall[10];
 	double			floor_x;
 	double			floor_y;
+	struct timeval	time;
+	t_sprite	*sprite;
 	t_tex		*tex;
 	t_player	*player;
 	t_grid		*grid;
@@ -133,18 +142,18 @@ typedef struct s_game
 
 ///////////////Parsing_things///////////////////
 
-int				map_parser(char *argv, t_textures *map_info);
+int				map_parser(char *argv, t_textures *map_info, t_game *game);
 int				map_started(char *str);
 int				get_map_y(t_textures *map_utils, char *map_path);
 char			*go_to_map(int fd, t_textures *map_utils);
-int				build_map_line(t_textures *map_info, char **map,
-					int map_y, char *argv);
+int				build_map_line(t_textures *map_info, int map_y,
+					char *argv, t_game *game);
 int				get_textures(char *str, t_textures *map_info);
 void			free_tab(char **map);
 void			print_textures(t_textures *texture);
 void			quit_w_message(char *str, t_textures *map_info);
 void			free_textures(t_textures *textures);
-int				is_inside(char c);
+int				is_inside(char c, t_game *game);
 char			*ft_strdupto_n(char *str, char c);
 int				check_end_of_filename(char const *filename, const char *end);
 void			print_tab(char **tab);
@@ -160,6 +169,7 @@ void			set_null_map(t_textures *map_info);
 int				texture_good(t_textures *map_info);
 int				great_mighty_init_tex(t_game *game);
 
+int				is_in_list(const char c, const char *list);
 
 ///////////// Init_things //////////////////
 
@@ -168,6 +178,8 @@ t_grid			*init_grid(t_game *game);
 t_player		*init_player(t_game *game);
 int				init_textures(t_game *game, t_textures *textures);
 void			free_game(t_game *game, t_textures *map_info);
+int				init_sprites(t_game *game);
+t_image			xpm_to_image(t_game *game, char *path);
 
 ///////////// Maths_things /////////////////
 

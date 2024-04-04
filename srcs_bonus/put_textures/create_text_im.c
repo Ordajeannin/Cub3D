@@ -6,14 +6,14 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/03 20:12:23 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:59:52 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
 
-t_image	get_tex_image(t_game *game, char *path)
+t_image	xpm_to_image(t_game *game, char *path)//pas securiser
 {
 	t_image	image;
 
@@ -26,7 +26,9 @@ t_image	get_tex_image(t_game *game, char *path)
 	}
 	image.im_addr = mlx_get_data_addr(image.im_ptr, &image.bpp,
 			&image.line_size, &image.endian);
-	printf("bpp : %d, line_size : %d\n", image.bpp, image.line_size);
+	// printf("bpp : %d, line_size : %d\n", image.bpp, image.line_size);
+	// if (!image.im_addr)
+	// 	return (NULL);
 	return (image);
 }
 
@@ -42,16 +44,16 @@ t_tex    *build_tex_tab(t_game *game, char *path_to_tex_dir, char dir_nm)
 		return (NULL);
 	tex->name = dir_nm;
 	path = ft_strjoin(path_to_tex_dir, "ea.xpm");
-	tex->image[EAST] = get_tex_image(game, path);
+	tex->image[EAST] = xpm_to_image(game, path);
 	free(path);
 	path = ft_strjoin(path_to_tex_dir, "no.xpm");
-	tex->image[NORTH] = get_tex_image(game, path);
+	tex->image[NORTH] = xpm_to_image(game, path);
 	free(path);
 	path = ft_strjoin(path_to_tex_dir, "we.xpm");
-	tex->image[WEST] = get_tex_image(game, path);
+	tex->image[WEST] = xpm_to_image(game, path);
 	free(path);
 	path = ft_strjoin(path_to_tex_dir, "so.xpm");
-	tex->image[SOUTH] = get_tex_image(game, path);
+	tex->image[SOUTH] = xpm_to_image(game, path);
 	free(path);
 	tex->name = dir_nm;
 	tex->next = NULL;
@@ -129,7 +131,7 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
 	t_tex	*tex;
 
 	tex = game->tex;
-	name = (char)get_value(value, "TEXTURE") + '0';
+	name = (char)get_value(value, "TEXTURE");
 	// printf("tex name :%c\tindex :%c\n", tex->name, name);
 	while (tex && name != tex->name)
 	{
