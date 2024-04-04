@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/04 18:39:00 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:45:49 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,20 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 	y = (int)game->floor_y % 64;
 	index = texture;
 	tex = game->tex;
-//	printf("BITE\n");
-//	if (texture == 'a')
 		while (tex && (char)texture != tex->name)
 			tex = tex->next;
 	if (!tex || tex->image[0].im_ptr == NULL || tex->image[1].im_ptr == NULL)
 		return (0);
-//	printf("texture = %c  |  tex->name = %c\n", (char)texture, tex->name);
 	if (ft_strncmp(text, "FLOOR", 5) == 0)
 	{
 		index = y * tex->image[0].line_size + x * (tex->image[0].bpp >> 3);
 		pixel = tex->image[0].im_addr + index;
-	}
-	else if (ft_strncmp(text, "SKY", 3) == 0)
-	{
-		x = (int)game->floor_x % 800;
-		y = (int)game->floor_y % 600;
-		index = y * tex->image[1].line_size + x * (tex->image[1].bpp >> 3);
-	//	printf("value of maybe max int : %d\n", y * tex->image[1].line_size);
-		pixel = tex->image[1].im_addr + index;
 	}
 	else
 	{
 		index = y * tex->image[1].line_size + x * (tex->image[1].bpp >> 3);
 		pixel = tex->image[1].im_addr + index;
 	}
-//	printf("pixel = %s\n", pixel);
 	return (*(unsigned int *)pixel);
 }
 
@@ -165,7 +153,7 @@ unsigned int get_sky(t_game *game, int x, int y)
 	tex = game->tex;
 	while (tex->name != '2')
 		tex = tex->next;
-	index = y * tex->image[1].line_size + ((int)round((game->angle[x] * SKY_WIDTH / 360.0)) % SCREEN_WIDTH) * (tex->image[1].bpp >> 3);
+	index = y * tex->image[1].line_size + ((int)round((game->angle[x] * SKY_WIDTH / 360.0))) * (tex->image[1].bpp >> 3);
 	pixel = tex->image[1].im_addr + index;
 	return (*(unsigned int *)pixel);
 }

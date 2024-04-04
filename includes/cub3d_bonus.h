@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/04 18:31:32 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:43:14 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
 # define NORTH 1
 # define WEST 2
 # define SOUTH 3
-# define SCREEN_WIDTH 1280
-# define HALF_WIDTH 640
-# define SCREEN_HEIGHT 800
+# define SCREEN_WIDTH 640
+# define HALF_WIDTH 320
+# define SCREEN_HEIGHT 400
 # define FLOOR 0
 # define OUTMAP 4294967294
 # define DIST_WALK 5
