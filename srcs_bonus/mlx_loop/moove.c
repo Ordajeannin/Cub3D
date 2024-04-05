@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:11:20 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/22 15:40:38 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/05 15:09:36 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ void	ft_moove_view(t_player *player, int key_x, int key_y)
 				player->view_y -= player->moove_head;
 		}
 	}
-
-//	if (key_y != 0)
-//		return ;
 }
 
 void	ft_moove(t_player *player, t_game *game)
