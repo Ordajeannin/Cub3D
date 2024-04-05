@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/04 18:43:14 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:59:06 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ void			update_ipx(double *ipx, double xi, double angle);
 void			update_ipy(double *ipy, double yi, double angle);
 int				is_floor(t_game *game, char c);
 unsigned int	get_sky(t_game *game, int x, int y);
+int				is_floor(t_game *game, char c);
 
 ///////////// Mlx_things ///////////////////
 

@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:33:33 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/03 19:01:39 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:59:58 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,11 @@ char	try_get_texture(char **map, int yt, int xt)
 	while (yi != yt && map[yi] != NULL)
 		yi++;
 	if (yi != yt || map[yi] == NULL)
-	{
-//		printf("yi = %d  |  yt = %d  |  ", yi, yt);
 		return ('a');
-	}
 	while (xi != xt && map[yi][xi] != '\0')
 		xi++;
 	if (xt != xi)
-	{
-//		printf("xi = %d  |  xt = %d  |  ", xi, xt);
 		return ('a');
-	}
 	return (map[yi][xi]);
 }
 

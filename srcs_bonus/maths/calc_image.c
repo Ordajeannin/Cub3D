@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:43:49 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/26 21:05:59 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:56:10 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ unsigned int	*proj_plan_image_test(t_game *game, double orientation)
 {
 	unsigned int	*image;
 	int				i;
-//	double			angle;
 
 	i = 0;
 	image = malloc(sizeof(unsigned int) * (SCREEN_WIDTH + 1));
@@ -101,7 +100,6 @@ unsigned int	*proj_plan_image_test(t_game *game, double orientation)
 		image[i] = proj_plan_col_test(game, game->angle[i]);
 		i++;
 	}
-//	view_stocked_image(image);
 	image[i] = '\0';
 	return (image);
 }
