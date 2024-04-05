@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 17:56:19 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:32:33 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_player_in_line(char *str, t_textures *map_info, int y)
 			set_player(map_info, i, y, str[i]);
 			str[i] = '0';
 		}
-		if (str[i] != 'N' & str[i] != 'S' && str[i] != 'E'
+		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'E'
 			&& str[i] != 'W' && str[i] != '0' && str[i] != '1'
 			&& str[i] != ' ' && str[i] != '\n')
 			player = 9999;
