@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/05 16:26:06 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:02:27 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,9 @@ typedef struct s_game
 	double		dist_c;
 	char		*map_used;
 	double		angle[SCREEN_WIDTH];
-	char		floor[10];
-	char		ceiling[10];
-	char		wall[10];
+	char		*floor;
+	char		*ceiling;
+	char		*wall;
 	double			floor_x;
 	double			floor_y;
 	struct timeval	time;
@@ -146,9 +146,10 @@ typedef struct s_game
 ///////////////Parsing_things///////////////////
 
 int				map_parser(char *argv, t_textures *map_info, t_game *game);
-int				map_started(char *str);
-int				get_map_y(t_textures *map_utils, char *map_path);
-char			*go_to_map(int fd, t_textures *map_utils);
+int				map_started(char *str, t_game *game);
+int				get_map_y(t_textures *map_utils, char *map_path, t_game *game);
+char			*go_to_map(int fd, t_game *game, int flag);
+int				build_texture_list(char *str, t_game *game);
 int				build_map_line(t_textures *map_info, int map_y,
 					char *argv, t_game *game);
 int				get_textures(char *str, t_textures *map_info);
@@ -166,12 +167,11 @@ int				get_f_and_c(char *str, t_textures *map_info);
 char			*ft_str_rm_spaces(char *str);
 int				atorgb(char *str);
 int				init_map(int *i, int *fd, int *player, char *argv);
-int				map_started(char *str);
 int				ft_open(int *fd, char *path);
 void			set_null_map(t_textures *map_info);
 int				texture_good(t_textures *map_info);
 int				great_mighty_init_tex(t_game *game);
-
+int	check_point_n_w(char **map, int x, int y, t_game *game);
 int				is_in_list(const char c, const char *list);
 
 ///////////// Init_things //////////////////

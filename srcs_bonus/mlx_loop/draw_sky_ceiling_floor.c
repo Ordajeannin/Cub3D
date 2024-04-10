@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sky_ceiling_floor.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeannin <ajeannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:34:07 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/05 16:22:47 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:46:55 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,15 @@ unsigned int	get_sky(t_game *game, int x, int y)
 	char	*pixel;
 	t_tex	*tex;
 
-	y = y % SKY_HEIGHT;
+	// y = y % SKY_HEIGHT;
+	y = y % 64;//si pas de texture sky valide
 	tex = game->tex;
 	while (tex->name != '2')
 		tex = tex->next;
+	if (!tex)
+		return (0);
 	index = y * tex->image[1].line_size
-		+ ((int)round((game->angle[x] * SKY_WIDTH / 360.0)))
+		+ ((int)round((game->angle[x] * 64 /*SKY_WIDTH*/ / 360.0)))// 64 selon texture sky valide
 		* (tex->image[1].bpp >> 3);
 	pixel = tex->image[1].im_addr + index;
 	return (*(unsigned int *)pixel);

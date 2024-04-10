@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:54:43 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 16:17:48 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:47:54 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int	ft_open(int *fd, char *path)
 	return (1);
 }
 
-int	map_started(char *str)
+int	map_started(char *str, t_game *game)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] == ' ' || str[i] == '\t')
 		i ++;
-	if (str[i] == '1' || str[i] == '0')
+	if (str[i] == '1' || str[i] == '0' || is_in_list(str[i], game->wall))
 		return (1);
 	return (0);
 }

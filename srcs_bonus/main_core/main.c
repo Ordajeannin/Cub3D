@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/02 16:52:29 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:00:40 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@ void	print_debbug_values(t_grid *grid)
 void	free_game(t_game *game, t_textures *map_info)
 {
 	free_tab(map_info->map);
-	free_textures(map_info);
+	// free_textures(map_info);
 	free_tex(game);
 	free(game->grid);
 	free(game->player);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+}
+
+void	wrong_start(t_textures *map_info)
+{
+	printf("PARSING OR INIT ERROR\n");
+	free_tab((map_info)->map);
+	// free_textures(map_info);
+	exit (1);
 }
 
 int	main(int argc, char **argv)
@@ -41,12 +49,13 @@ int	main(int argc, char **argv)
 	game.map_used = argv[1];
 	if (!map_parser(argv[1], &map_info, &game) || init_game(&game, &map_info) == -1)
 	{
-		printf("PARSING OR INIT ERROR\n");
-		free_tab((&map_info)->map);
-		free_textures(&map_info);
-		exit (1);
+		wrong_start(&map_info);
+		// printf("PARSING OR INIT ERROR\n");
+		// free_tab((&map_info)->map);
+		// free_textures(&map_info);
+		// exit (1);
 	}
-//	printf("BIIIIIIIITE\n");
+	printf("game start\n");
 	if (gettimeofday(&game.time, NULL))
 	{
 		free_game(&game, &map_info);

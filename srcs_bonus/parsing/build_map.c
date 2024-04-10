@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/05 14:32:59 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:09:49 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,21 @@ int	is_player_in_line(char *str, t_textures *map_info, int y, t_game *game)
 	player = 0;
 	while (str && str[i])
 	{
-		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E'
-			|| str[i] == 'W')
+		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
 		{
 			player ++;
 			set_player(map_info, i, y, str[i]);
 			str[i] = '0';
 		}
-		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'E'//ICI
-			&& str[i] != 'W' && str[i] != '0' && str[i] != '1'
-			&& str[i] != ' ' && str[i] != '\n' && !is_in_list(str[i], game->ceiling)
-			&& !is_in_list(str[i], game->floor) && !is_in_list(str[i], game->wall))
-			player = 9999;//sois on accepte isalpha, sois uniquement les textures attendue
+		if (str[i] != 'N' & str[i] != 'S' && str[i] != 'E' && str[i] != 'W'
+			&& str[i] != '0' && str[i] != '1' && str[i] != ' ' && str[i] != '\n'
+			&& !is_in_list(str[i], game->ceiling)
+			&& !is_in_list(str[i], game->floor)
+			&& !is_in_list(str[i], game->wall))
+		{
+			printf("unidentified token in map \n");
+			player = 42;
+		}
 		i ++;
 	}
 	return (player);
@@ -41,7 +44,7 @@ int	is_player_in_line(char *str, t_textures *map_info, int y, t_game *game)
 /*
 	récupère la hauteur de la map
 */
-int	get_map_y(t_textures *map_info, char *map_path)
+int	get_map_y(t_textures *map_info, char *map_path, t_game *game)
 {
 	int		i;
 	char	*str;
@@ -50,7 +53,7 @@ int	get_map_y(t_textures *map_info, char *map_path)
 	i = 0;
 	if (!ft_open(&fd, map_path))
 		return (-1);
-	str = go_to_map(fd, map_info);
+	str = go_to_map(fd, game, 1);
 	if (!str)
 	{
 		close(fd);
@@ -67,23 +70,29 @@ int	get_map_y(t_textures *map_info, char *map_path)
 	map_info->y_max = i;
 	return (i);
 }
+int	w_f_c_set(t_game *game)
+{
+	if (game->ceiling && game->wall && game->floor)
+		return (1);
+	return (0);
+}
 
 /*
 	avance dans le fichier .cub jusqu'a trouver la map
 	si map_utils != NULL va également rechercher les textures
 */
-char	*go_to_map(int fd, t_textures *map_utils)
+char	*go_to_map(int fd, t_game *game, int flag)
 {
 	char	*str;
 
 	str = get_next_line(fd);
 	while (str)
 	{
-		if (map_started(str))
+		if (w_f_c_set(game) && map_started(str, game))
 			return (str);
-		if (map_utils)
+		if (flag == 1)//doit construire 
 		{
-			if (!get_textures(str, map_utils))
+			if (!build_texture_list(str, game))
 			{
 				printf("je renvoi 0 sur cette sting :%s\n", str);
 				free(str);
@@ -107,7 +116,7 @@ int	build_map_line(t_textures *map_info, int map_y, char *argv, t_game *game)
 	if (!init_map(&i, &fd, &player, argv))
 		return (0);
 	map_info->x_max = 0;
-	map_info->map[0] = go_to_map(fd, NULL);
+	map_info->map[0] = go_to_map(fd, game, 0);
 	while (i <= map_y - 1)
 	{
 		map_info->map[i] = get_next_line(fd);
