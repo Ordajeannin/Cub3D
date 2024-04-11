@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/10 19:09:49 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:13:43 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_player_in_line(char *str, t_textures *map_info, int y, t_game *game)
 			set_player(map_info, i, y, str[i]);
 			str[i] = '0';
 		}
-		if (str[i] != 'N' & str[i] != 'S' && str[i] != 'E' && str[i] != 'W'
+		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W'
 			&& str[i] != '0' && str[i] != '1' && str[i] != ' ' && str[i] != '\n'
 			&& !is_in_list(str[i], game->ceiling)
 			&& !is_in_list(str[i], game->floor)

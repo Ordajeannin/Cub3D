@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/10 19:02:27 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:22:01 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,8 @@ int				build_map_line(t_textures *map_info, int map_y,
 int				get_textures(char *str, t_textures *map_info);
 void			free_tab(char **map);
 void			print_textures(t_textures *texture);
-void			quit_w_message(char *str, t_textures *map_info);
-void			free_textures(t_textures *textures);
+void			quit_w_message(char *str);
+void			free_textures(t_game *game);
 int				is_inside(char c, t_game *game);
 char			*ft_strdupto_n(char *str, char c);
 int				check_end_of_filename(char const *filename, const char *end);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:30:11 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/04 17:30:41 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:59:56 by paulk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,17 @@ char	*built_texture_path(char dir_nb, const char *map_name)
 		return (NULL);
 	tmp = ft_strtrim(map_name, ".cub");
 	map_name_clean = ft_strjoin(tmp, "/");
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	itoa_dir = ft_strjoin(little_string, "/");
 	tmp = ft_strjoin(map_name_clean, itoa_dir);
-	free(itoa_dir);
-	free(map_name_clean);
+	if (itoa_dir)
+		free(itoa_dir);
+	if (map_name_clean)
+		free(map_name_clean);
 	path = ft_strjoin("textures/", tmp);
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (path);
 }
 
