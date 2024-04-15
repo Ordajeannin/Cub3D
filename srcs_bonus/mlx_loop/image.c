@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/05 16:22:31 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:06:02 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	create_col_norme(t_game *game, int projected, unsigned int value, int x)
 
 	y = 0;
 	y_start = game->player->view_y - (projected >> 1);
-	y_end = game->player->view_y + (projected >> 1) - 1;
+	y_end = game->player->view_y + (projected >> 1);
 	while (y < y_start && y_start > 0)
 	{
 		render_ceiling_sky(game, x, y++);
 	}
-	while (y < y_end && y < SCREEN_HEIGHT)
+	while (y <= y_end && y < SCREEN_HEIGHT)
 	{
 		my_mlx_pixel_put(game, x, y,
 			get_texture_pixel(projected, value, game, y - y_start));
