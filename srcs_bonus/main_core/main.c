@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/11 14:35:26 by paulk            ###   ########.fr       */
+/*   Updated: 2024/04/15 16:30:08 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int	main(int argc, char **argv)
 	game.map_used = argv[1];
 	if (!map_parser(argv[1], &map_info, &game) || init_game(&game, &map_info) == -1)
 		wrong_start(&map_info, &game);
-	printf("game start\n");
 	if (gettimeofday(&game.time, NULL))
 	{
 		free_game(&game, &map_info);
 		return (0);		
 	}
+	printf("game start\n");
 	render(&game);
 	mlx_hook(game.win, KeyPress, KeyPressMask,
 		&handle_keypress_test, &game);

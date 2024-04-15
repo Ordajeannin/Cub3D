@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:34:07 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/10 17:46:55 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:53:16 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,15 +100,15 @@ unsigned int	get_sky(t_game *game, int x, int y)
 	char	*pixel;
 	t_tex	*tex;
 
-	// y = y % SKY_HEIGHT;
-	y = y % 64;//si pas de texture sky valide
 	tex = game->tex;
 	while (tex->name != '2')
 		tex = tex->next;
 	if (!tex)
 		return (0);
+	// y = y % SKY_HEIGHT;
+	y = y % tex->image[1].im_height;//ICI donne plusieur platypus je pense
 	index = y * tex->image[1].line_size
-		+ ((int)round((game->angle[x] * 64 /*SKY_WIDTH*/ / 360.0)))// 64 selon texture sky valide
+		+ ((int)round((game->angle[x] * tex->image[1].im_width/*SKY_WIDTH*/ / 360.0)))// 64 selon texture sky valide
 		* (tex->image[1].bpp >> 3);
 	pixel = tex->image[1].im_addr + index;
 	return (*(unsigned int *)pixel);

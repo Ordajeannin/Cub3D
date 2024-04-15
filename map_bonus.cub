@@ -1,0 +1,17 @@
+WALL=1;2
+FLOOR=0;a;b
+CEILING=0
+
+            22222222222222222222222222222222222
+            2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+            2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+            2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+            2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+1111111111111aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+1000000000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+1000000000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+1000000000000bbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+1000000000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+10000E0000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+1000000000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+11111111111112222222222222222222222222222222222

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/10 19:10:41 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:19:05 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ void	init_floor_ceiling_wall(t_game *game)
 	game->ceiling = NULL;
 	game->floor = NULL;
 	game->wall = NULL;
-	// ft_bzero(game->floor, 10);
-	// ft_bzero(game->ceiling, 10);
-	// ft_bzero(game->wall, 10);
-	// game->floor[0] = '0';
-	// game->floor[1] = '2';
-	// game->floor[2] = '\0';
-	// game->ceiling[0] = '0';
-	// game->ceiling[1] = '0';
-	// game->ceiling[2] = '\0';
-	// game->wall[0] = '1';
-	// game->wall[1] = '7';
-	// game->wall[2] = '8';
 }
 
 /*

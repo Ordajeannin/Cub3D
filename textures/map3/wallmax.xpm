@@ -1,5 +1,5 @@
 /* XPM */
-static char * wall_xpm[] = {
+static char * wallmax_xpm[] = {
 "512 512 3161 2",
 "  	c #5D4A42",
 ". 	c #614E45",

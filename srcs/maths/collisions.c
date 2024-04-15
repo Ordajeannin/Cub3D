@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collisions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:26:05 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/21 20:25:14 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:58:02 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	player_move_collide(t_game *game, double angle)
 		angle_360(&temp_x, &temp_y, angle);
 	c = try_get_texture(game->grid->map, temp_y / 64, temp_x / 64);
 	if (c == '0' || is_wall(game->grid->map,
-				temp_y / 64, temp_x / 64) == 0)
+			temp_y / 64, temp_x / 64) == 0)
 	{
 		game->player->pos_x = temp_x;
 		game->player->pos_y = temp_y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corrections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:33:33 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/05 14:59:58 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:03:15 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ char	try_get_texture(char **map, int yt, int xt)
 	while (yi != yt && map[yi] != NULL)
 		yi++;
 	if (yi != yt || map[yi] == NULL)
-		return ('a');
+		return ('&');
 	while (xi != xt && map[yi][xi] != '\0')
 		xi++;
 	if (xt != xi)
-		return ('a');
+		return ('&');
+	if (map[yi][xi] == ' ' || map[yi][xi] == '\t')
+		return ('&');
 	return (map[yi][xi]);
 }
 

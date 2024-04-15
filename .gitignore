@@ -4,5 +4,4 @@ objs/
 obj/
 libft/obj/
 *.out
-*.cub
 tags

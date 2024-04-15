@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:10:09 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/28 16:23:36 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:09:12 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned int	intersection_found_test(double angle, t_game *game,
 			(int)pos_y >> 6, (int)pos_x >> 6);
 	if (is_floor(game, texture) == 0)
 		return (FLOOR);
-	else if (texture == 'a')
+	else if (texture == '&')
 		return (OUTMAP);
 	result |= (find_face(game, angle) & FACE_MASK);
 	if (game->flag)

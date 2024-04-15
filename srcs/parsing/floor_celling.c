@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:34:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 15:07:08 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:57:40 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@ char	*strcp_to_n(const char *str, char n)
 	i = 0;
 	cp = malloc(sizeof(char) * 4);
 	if (!str || !cp)
+	{
+		if (cp)
+			free(cp);
 		return (NULL);
+	}
 	ft_bzero(cp, 4);
 	while (str[i] && str[i] != n)
 	{
-		if (i == 4)
+		if (i == 3)
+		{
+			free(cp);
 			return (NULL);
+		}
 		cp[i] = str[i];
 		i ++;
 	}
@@ -90,7 +97,7 @@ int	atorgb(char *str)
 		str = ft_strchr(str, ',');
 		if (str && str[0] == ',')
 			str ++;
-		if (tmp < 0)
+		if (tmp < 0 || tmp > 255)
 		{
 			free(saved);
 			return (-1);
