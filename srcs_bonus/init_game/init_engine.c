@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/16 19:57:03 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:14:21 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ t_player	*init_player(t_game *game)
 	player->moove[1] = 0;
 	player->moove[2] = 0;
 	player->moove[3] = 0;
-	player->moove[4] = '\0';
+	player->moove[4] = 0;
+	player->moove[5] = 0;
+	player->speed = DIST_WALK;
 	return (player);
 }

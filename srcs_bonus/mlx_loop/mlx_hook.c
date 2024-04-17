@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:49:58 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 14:27:39 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:57:33 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ int	handle_keypress_test(int keycode, t_game *game)
 		game->player->moove[2] = keycode;
 	if (game->player->moove[3] == 0 && (keycode == XK_w || keycode == XK_s))
 		game->player->moove[3] = keycode;
+	if (game->player->moove[4] == 0 && keycode == 65505)
+		game->player->moove[4] = keycode;
+	if (keycode == XK_r)
+		game->player->moove[5] = abs(game->player->moove[5] - XK_r);
 	return (0);
 }
 
@@ -53,7 +57,7 @@ int	handle_keyrelease(int keycode, t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i <= 4)
 	{
 		if (game->player->moove[i] == keycode)
 			game->player->moove[i] = 0;
@@ -61,27 +65,3 @@ int	handle_keyrelease(int keycode, t_game *game)
 	}
 	return (0);
 }
-
-/*
-//gestion du point de vue du jouer, sur base d'un vecteur? oldxy / newxy?
-int handle_mouse(int keycode, int x, int y, t_game *game)
-{
-	if (keycode == 1)
-	   game->textures->p_y = x - y;
-	else
-		return (0);
-	render(game);
-	return (0);
-}
-*/
-/*
- Le programme affiche l’image dans une fenêtre et respecte les règles suivantes :
-◦ Les touches flèches du gauche et droite du clavier doivent permettre de faire
-une rotation de la caméra (regarder a gauche et a droite)
-◦ Les touches W, A, S et D doivent permettre de déplacer la caméra (déplacement
-du personnage)
-◦ Appuyer sur la touche ESC doit fermer la fenêtre et quitter le programme
-proprement
-◦ Cliquer sur la croix rouge de la fenêtre doit fermer la fenêtre et quitter le
-programme proprement
-*/

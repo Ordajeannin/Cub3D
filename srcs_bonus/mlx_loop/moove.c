@@ -6,32 +6,11 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:11:20 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/16 17:24:08 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:22:49 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-/*
-//deplacement constant? trigo? si droit ou diagonale, distance variable?
-void	ft_moove_pos(int key_x, int key_y, t_game *game)
-{
-	if (key_x != 0)
-	{
-		if (key_x == XK_a)
-			player_move_collide(game, game->player->orientation + LEFT);
-		else
-			player_move_collide(game, game->player->orientation + RIGHT);
-	}
-	if (key_y != 0)
-	{
-		if (key_y == XK_w)
-			player_move_collide(game, game->player->orientation + FRONT);
-		else
-			player_move_collide(game, game->player->orientation + BEHIND);
-	}
-}
-*/
 
 void	ft_moove_pos(int key_x, int key_y, t_game *game)
 {
@@ -82,8 +61,18 @@ void	ft_moove_view(t_player *player, int key_x, int key_y)
 	}
 }
 
+void	ft_is_running(t_player *player, int key_run, int key_fast)
+{
+	if (key_run)
+		player->speed = DIST_WALK * SPEED_UP;
+	if (key_fast)
+		player->speed = DIST_WALK * SPEED_UP;
+}
+
 void	ft_moove(t_player *player, t_game *game)
 {
+	player->speed = DIST_WALK;
+	ft_is_running(player, player->moove[4], player->moove[5]);
 	ft_moove_view(player, player->moove[0], player->moove[1]);
 	ft_moove_pos(player->moove[2], player->moove[3], game);
 }

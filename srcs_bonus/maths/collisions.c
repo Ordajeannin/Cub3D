@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:26:05 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/17 17:58:47 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:19:18 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	collision_wall(t_game *game, double x, double y)
 	int		dist;
 
 	dist = ft_dist(x, y, game->player->pos_x, game->player->pos_y);
-	if (dist > DIST_WALK)
-		return (DIST_WALK);
+	if (dist > game->player->speed)
+		return (game->player->speed);
 	texture = try_get_texture(game->grid->map, (int)y >> 6, (int)x >> 6);
 	if (is_floor(game, texture) == 0)
-		return (DIST_WALK);
+		return (game->player->speed);
 	else if (texture == '&')
 		return (0);
 	else if (dist >= 1)

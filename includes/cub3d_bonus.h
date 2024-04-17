@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/17 18:12:56 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:25:54 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,48 @@
 # include "libft.h"
 # include "../mlx/mlx.h"
 
+///////////////////////////////////////////////////////////////////
+//////////////////  Define Player (feel free) /////////////////////
+///////////////////////////////////////////////////////////////////
+//SCREEN//
+# define SCREEN_WIDTH 640
+# define HALF_WIDTH 320
+# define SCREEN_HEIGHT 400
+//SKY//
+# define SKY_WIDTH 800.0
+# define SKY_HEIGHT 600
+//YOU//
+# define DIST_WALK 7
+# define SPEED_UP 2.0
+# define TURN_RATE 3.0
+# define FPS_MAX 30
+# define SPHERE 6
+
+///////////////////////////////////////////////////////////////////
+/////////////  Define Game  (don't touch, you fool)  //////////////
+///////////////////////////////////////////////////////////////////
+//MASK//
 # define FACE_MASK 0x3
 # define OFFSET_MASK 0x3F
 # define TEXTURE_MASK 0xFF
 # define DIST_MASK 0xFFFF
+//FACE WALL//
 # define EAST 0
 # define NORTH 1
 # define WEST 2
 # define SOUTH 3
-# define SCREEN_WIDTH 640
-# define HALF_WIDTH 320
-# define SCREEN_HEIGHT 400
+//RAYCASTING//
 # define FLOOR 0
 # define OUTMAP 4294967294
-# define DIST_WALK 8
+//MOVEMENT//
 # define FRONT 0
 # define LEFT 90
 # define RIGHT -90
 # define BEHIND 180
-# define TURN_RATE 3.0
-# define SKY_WIDTH 800.0
-# define SKY_HEIGHT 600
-# define FPS_MAX 30
-# define SPHERE 6
 
+///////////////////////////////////////////////////////////////////
+////////////////////  Some Little Struct  /////////////////////////
+///////////////////////////////////////////////////////////////////
 typedef struct s_textures
 {
 	char	*no;
@@ -110,7 +128,8 @@ typedef struct s_player
 	int			x_max;
 	int			y_max;
 	int			m_d;
-	int			moove[5];
+	int			moove[6];
+	int			speed;
 }	t_player;
 
 typedef struct s_sprite
@@ -145,7 +164,9 @@ typedef struct s_game
 	t_textures		*textures;
 }	t_game;
 
-///////////////Parsing_things///////////////////
+///////////////////////////////////////////////////////////////////
+/////////////////////////  Parsing_things  ////////////////////////
+///////////////////////////////////////////////////////////////////
 
 int				map_parser(char *argv, t_textures *map_info, t_game *game);
 int				map_started(char *str, t_game *game);
@@ -176,7 +197,9 @@ int				great_mighty_init_tex(t_game *game);
 int				check_point_n_w(char **map, int x, int y, t_game *game);
 int				is_in_list(const char c, const char *list);
 
-///////////// Init_things //////////////////
+///////////////////////////////////////////////////////////////////
+/////////////////////////  Init_things  ///////////////////////////
+///////////////////////////////////////////////////////////////////
 
 int				init_game(t_game *game, t_textures *textures);
 t_grid			*init_grid(t_game *game);
@@ -186,7 +209,9 @@ void			free_game(t_game *game, t_textures *map_info);
 int				init_sprites(t_game *game);
 t_image			xpm_to_image(t_game *game, char *path);
 
-///////////// Maths_things /////////////////
+///////////////////////////////////////////////////////////////////
+////////////////////////  Maths_things  ///////////////////////////
+///////////////////////////////////////////////////////////////////
 
 unsigned int	*proj_plan_image(t_game *game, t_grid *grid);
 unsigned int	no_fish_eye(t_game *game, unsigned int value, double angle);
@@ -208,7 +233,9 @@ double			get_xi(double angle);
 double			get_yi(double angle);
 char			try_get_texture(char **map, int yt, int xt);
 
-//////////// Maths_tests ///////////////////
+///////////////////////////////////////////////////////////////////
+////////////////////////  Maths_tests  ////////////////////////////
+///////////////////////////////////////////////////////////////////
 
 unsigned int	proj_plan_col_test(t_game *game, double angle);
 unsigned int	col_intersections_test(t_game *game, t_player *player,
@@ -240,7 +267,9 @@ void			render_ceiling_sky(t_game *game, int x, int y);
 void			render_floor(t_game *game, int x, int y);
 int				player_sphere(t_game *game);
 
-///////////// Mlx_things ///////////////////
+///////////////////////////////////////////////////////////////////
+////////////////////////  Mlx_things  /////////////////////////////
+///////////////////////////////////////////////////////////////////
 
 void			my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void			create_col(t_game *game, unsigned int value, int x);
@@ -249,7 +278,9 @@ int				get_texture_pixel(int projected, unsigned int value,
 					t_game *game, int i);
 int				loop(void);
 
-//////////// Hook_things ///////////////////
+///////////////////////////////////////////////////////////////////
+////////////////////////  Hook_things  ////////////////////////////
+///////////////////////////////////////////////////////////////////
 
 int				handle_close(t_game *game);
 int				handle_keypress(int keycode, t_game *game);
@@ -260,7 +291,9 @@ void			player_move_collide(t_game *game, double angle);
 void			ft_moove(t_player *player, t_game *game);
 void			view_stocked_input(int *moove);
 
-/////////// Hook_tests ////////////////////
+///////////////////////////////////////////////////////////////////
+////////////////////////  Hook_tests  /////////////////////////////
+///////////////////////////////////////////////////////////////////
 
 int				handle_keypress_test(int keycode, t_game *game);
 #endif
