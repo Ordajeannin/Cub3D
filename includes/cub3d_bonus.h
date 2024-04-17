@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/11 14:22:01 by paulk            ###   ########.fr       */
+/*   Updated: 2024/04/17 16:25:25 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define SKY_WIDTH 800.0
 # define SKY_HEIGHT 600
 # define FPS_MAX 30
+# define SPHERE 2
 
 typedef struct s_textures
 {
@@ -100,7 +101,9 @@ typedef struct s_tex
 typedef struct s_player
 {
 	double		pos_x;
+	double		temp_x;
 	double		pos_y;
+	double		temp_y;
 	double		orientation;
 	int			view_y;
 	int			moove_head;
@@ -232,6 +235,7 @@ unsigned int	get_sky(t_game *game, int x, int y);
 int				is_floor(t_game *game, char c);
 void			render_ceiling_sky(t_game *game, int x, int y);
 void			render_floor(t_game *game, int x, int y);
+int				player_sphere(t_game *game, double x, double y);
 
 ///////////// Mlx_things ///////////////////
 

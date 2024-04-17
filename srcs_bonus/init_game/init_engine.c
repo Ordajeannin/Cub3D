@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/22 15:34:09 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:57:03 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ t_player	*init_player(t_game *game)
 		return (NULL);
 	player->pos_x = (game->textures->p_x * 64) + 32;
 	player->pos_y = (game->textures->p_y * 64) + 32;
+	player->temp_x = 0;
+	player->temp_y = 0;
 	player->orientation = (double)game->textures->p_direction;
 	player->x_max = 1000000;
 	player->y_max = 1000000;
