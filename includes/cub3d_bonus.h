@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/17 19:25:54 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:05:30 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ void			set_value2col_sphere(double *y, double *x, t_player *player,
 void			update_ipx(double *ipx, double xi, double angle);
 void			update_ipy(double *ipy, double yi, double angle);
 int				is_floor(t_game *game, char c);
-unsigned int	get_sky(t_game *game, int x, int y);
+unsigned int	get_sky(t_game *game, int x, int y, char texture);
 int				is_floor(t_game *game, char c);
 void			render_ceiling_sky(t_game *game, int x, int y);
 void			render_floor(t_game *game, int x, int y);

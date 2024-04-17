@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:34:07 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/17 18:07:52 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:37:43 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,23 @@ void	render_ceiling_sky(t_game *game, int x, int y)
 	game->floor_y = game->player->pos_y - (sin(dtor(alpha)) * hyp);
 	if (ceiling_or_sky(game, try_get_texture(game->grid->map,
 				(int)game->floor_y >> 6, (int)game->floor_x >> 6)) == 0)
-		my_mlx_pixel_put(game, x, y, get_sky(game, x, y));
+		my_mlx_pixel_put(game, x, y, get_sky(game, x, y,
+				try_get_texture(game->grid->map,
+					(int)game->floor_y >> 6, (int)game->floor_x >> 6)));
 	else
 		my_mlx_pixel_put(game, x, y, get_texture_fsc(game, "CEILING",
 				try_get_texture(game->grid->map,
 					(int)game->floor_y >> 6, (int)game->floor_x >> 6)));
 }
 
-unsigned int	get_sky(t_game *game, int x, int y)
+unsigned int	get_sky(t_game *game, int x, int y, char texture)
 {
 	int		index;
 	char	*pixel;
 	t_tex	*tex;
 
 	tex = game->tex;
-	while (tex->name != '2')
+	while (tex && tex->name != texture)
 		tex = tex->next;
 	if (!tex)
 		return (0);
