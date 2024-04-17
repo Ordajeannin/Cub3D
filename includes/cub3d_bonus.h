@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/17 16:25:25 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:28:28 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,10 @@ void			set_value2lines(double *y, double *x, t_player *player,
 					double angle);
 void			set_value2col(double *y, double *x, t_player *player,
 					double angle);
+void			set_value2lines_sphere(double *y, double *x, t_player *player,
+					double angle);
+void			set_value2col_sphere(double *y, double *x, t_player *player,
+					double angle);
 void			update_ipx(double *ipx, double xi, double angle);
 void			update_ipy(double *ipy, double yi, double angle);
 int				is_floor(t_game *game, char c);
@@ -235,7 +239,7 @@ unsigned int	get_sky(t_game *game, int x, int y);
 int				is_floor(t_game *game, char c);
 void			render_ceiling_sky(t_game *game, int x, int y);
 void			render_floor(t_game *game, int x, int y);
-int				player_sphere(t_game *game, double x, double y);
+int				player_sphere(t_game *game);
 
 ///////////// Mlx_things ///////////////////
 

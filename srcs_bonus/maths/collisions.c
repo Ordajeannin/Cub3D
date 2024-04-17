@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:26:05 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/17 16:28:37 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:37:46 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,49 +124,45 @@ void	player_move_collide(t_game *game, double angle)
 }
 */
 
-double	move_player(double angle, int dist, double *y)
+void	move_player(double angle, int dist, t_player *player)
 {
-	double	x;
-
-	x = 0;
 	if (angle < 90)
 	{
-		x += dist * cos(dtor(angle));
-		*y -= dist * sin(dtor(angle));
+		player->temp_x += dist * cos(dtor(angle));
+		player->temp_y -= dist * sin(dtor(angle));
 	}
 	else if (angle < 180)
 	{
-		x -= dist * sin(dtor(angle - 90));
-		*y -= dist * cos(dtor(angle - 90));
+		player->temp_x -= dist * sin(dtor(angle - 90));
+		player->temp_y -= dist * cos(dtor(angle - 90));
 	}
 	else if (angle < 270)
 	{
-		x -= dist * cos(dtor(angle - 180));
-		*y += dist * sin(dtor(angle - 180));
+		player->temp_x -= dist * cos(dtor(angle - 180));
+		player->temp_y += dist * sin(dtor(angle - 180));
 	}
 	else
 	{
-		x += dist * sin(dtor(angle - 270));
-		*y += dist * cos(dtor(angle - 270));
+		player->temp_x += dist * sin(dtor(angle - 270));
+		player->temp_y += dist * cos(dtor(angle - 270));
 	}
-	return (x);
 }
 
 void	player_move_collide(t_game *game, double angle)
 {
 	int		dist;
 	int		dist2;
-	double	temp_x;
-	double	temp_y;
 
+	game->player->temp_x = game->player->pos_x;
+	game->player->temp_y = game->player->pos_y;
 	dist = collision_line(game, game->player, angle);
 	dist2 = collision_col(game, game->player, angle);
-	if (dist2 < dist)
+	if (dist > dist2)
 		dist = dist2;
-	temp_x += move_player(angle, dist, &temp_y);
-	if (player_sphere(temp_x, temp_y) == 0)
+	move_player(angle, dist, game->player);
+	if (player_sphere(game) == 0)
 	{
-		player->pos_x += temp_x;
-		player->pos_y += temp_y;
+		game->player->pos_x = game->player->temp_x;
+		game->player->pos_y = game->player->temp_y;
 	}
 }
