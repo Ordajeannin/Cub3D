@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:32:16 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 16:09:07 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:47:02 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ double	get_ipx(t_player *p, double i_py, double angle)
 	return (i_px);
 }
 
-//same for coll
 double	get_ipy(t_player *p, double i_px, double angle)
 {
 	double	i_py;

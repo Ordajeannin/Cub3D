@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/17 17:28:28 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:12:56 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@
 # define SCREEN_HEIGHT 400
 # define FLOOR 0
 # define OUTMAP 4294967294
-# define DIST_WALK 5
+# define DIST_WALK 8
 # define FRONT 0
 # define LEFT 90
 # define RIGHT -90
 # define BEHIND 180
-# define TURN_RATE 2.0
+# define TURN_RATE 3.0
 # define SKY_WIDTH 800.0
 # define SKY_HEIGHT 600
 # define FPS_MAX 30
-# define SPHERE 2
+# define SPHERE 6
 
 typedef struct s_textures
 {
@@ -113,37 +113,36 @@ typedef struct s_player
 	int			moove[5];
 }	t_player;
 
-typedef	struct s_sprite
+typedef struct s_sprite
 {
 	t_image	pacman[8];
 }	t_sprite;
 
-
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	void		*img;
-	void		*img_addr;
-	int			bpp;
-	int			ll;
-	int			endian;
-	int			flag;
-	double		dist_l;
-	double		dist_c;
-	char		*map_used;
-	double		angle[SCREEN_WIDTH];
-	char		*floor;
-	char		*ceiling;
-	char		*wall;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	void			*img_addr;
+	int				bpp;
+	int				ll;
+	int				endian;
+	int				flag;
+	double			dist_l;
+	double			dist_c;
+	char			*map_used;
+	double			angle[SCREEN_WIDTH];
+	char			*floor;
+	char			*ceiling;
+	char			*wall;
 	double			floor_x;
 	double			floor_y;
 	struct timeval	time;
-	t_sprite	*sprite;
-	t_tex		*tex;
-	t_player	*player;
-	t_grid		*grid;
-	t_textures	*textures;
+	t_sprite		*sprite;
+	t_tex			*tex;
+	t_player		*player;
+	t_grid			*grid;
+	t_textures		*textures;
 }	t_game;
 
 ///////////////Parsing_things///////////////////
@@ -174,7 +173,7 @@ int				ft_open(int *fd, char *path);
 void			set_null_map(t_textures *map_info);
 int				texture_good(t_textures *map_info);
 int				great_mighty_init_tex(t_game *game);
-int	check_point_n_w(char **map, int x, int y, t_game *game);
+int				check_point_n_w(char **map, int x, int y, t_game *game);
 int				is_in_list(const char c, const char *list);
 
 ///////////// Init_things //////////////////

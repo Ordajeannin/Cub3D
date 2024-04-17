@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/11 14:13:43 by paulk            ###   ########.fr       */
+/*   Updated: 2024/04/17 18:08:45 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	get_map_y(t_textures *map_info, char *map_path, t_game *game)
 	map_info->y_max = i;
 	return (i);
 }
+
 int	w_f_c_set(t_game *game)
 {
 	if (game->ceiling && game->wall && game->floor)
@@ -90,7 +91,7 @@ char	*go_to_map(int fd, t_game *game, int flag)
 	{
 		if (w_f_c_set(game) && map_started(str, game))
 			return (str);
-		if (flag == 1)//doit construire 
+		if (flag == 1)
 		{
 			if (!build_texture_list(str, game))
 			{

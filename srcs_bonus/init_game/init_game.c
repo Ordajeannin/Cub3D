@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:53 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/02 16:48:06 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:07:02 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	quick_free(t_game *game)
 	free(game->mlx);
 	return (-1);
 }
-
 
 int	init_game(t_game *game, t_textures *textures)
 {
