@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 19:23:31 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:06:52 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	*build_list(const char *str)
 	{
 		if (str[i] != ';')
 		{
+			if (!ft_isalnum(str[i]))
+				return (free(list), NULL);
 			list[list_i] = str[i];
 			list_i ++;
 		}
@@ -74,17 +76,16 @@ int	build_next_list(char *str, t_game *game)
 			return (0);
 		}
 		game->ceiling = build_list(str + 8);
-		printf("game->ceiling :%s\n", game->ceiling);
 	}
 	if (str && !strncmp(str, "TELEP=", 6))
 	{
-		if (game->telep)
+		if (game->telep_str)
 		{
 			printf("telep already exist\n");
 			return (0);
 		}
 		game->telep_str = build_telep_str(str + 6);
-		printf("game->telep :%s\n", game->telep_str);
+		printf("game->telep_str :%s\n", game->telep_str);
 	}
 	return (1);
 }
@@ -99,7 +100,6 @@ int	build_texture_list(char *str, t_game *game)
 			return (0);
 		}
 		game->wall = build_list(str + 5);
-		printf("game->wall :%s\n", game->wall);
 	}
 	if (str && !strncmp(str, "FLOOR=", 6))
 	{
@@ -109,7 +109,6 @@ int	build_texture_list(char *str, t_game *game)
 			return (0);
 		}
 		game->floor = build_list(str + 6);
-		printf("game->floor :%s\n", game->floor);
 	}
 	if (!build_next_list(str, game))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 19:17:47 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:13:11 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_game(t_game *game, t_textures *map_info)
 {
 	free_tab(map_info->map);
 	free_textures(game);
+	free_telep(game);
 	free_tex(game);
 	free(game->grid);
 	free(game->player);
@@ -48,7 +49,7 @@ int	main(int argc, char **argv)
 		quit_w_message("you have to put one map as argument");
 	game.map_used = argv[1];
 	if (!map_parser(argv[1], &map_info, &game)
-		|| init_game(&game, &map_info) == -1 || build_telep(&game) == -1)
+		|| init_game(&game, &map_info) == -1)
 		wrong_start(&map_info, &game);
 	if (gettimeofday(&game.time, NULL))
 	{

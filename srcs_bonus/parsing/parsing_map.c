@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 17:12:55 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:52:43 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	init_floor_ceiling_wall(t_game *game)
 	game->ceiling = NULL;
 	game->floor = NULL;
 	game->wall = NULL;
+	game->telep_str = NULL;
 }
 
 /*

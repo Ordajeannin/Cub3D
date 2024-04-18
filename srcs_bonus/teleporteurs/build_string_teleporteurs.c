@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_string_teleporteurs.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeannin <ajeannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:17:17 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/18 20:33:29 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:01:25 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,14 @@ char	*build_telep_str(char *str)
 	if (!str)
 		return (NULL);
 	result = calloc(sizeof(char), ft_strlen(str) + 1);
-	used = calloc(sizeof(char), ft_strlen(str) + 1);
-	if (!used || !result)
+	if (!result)
 		return (NULL);
+	used = calloc(sizeof(char), ft_strlen(str) + 1);
+	if (!used)
+	{
+		free(result);
+		return (NULL);
+	}
 	flag = 0;
 	if (!help_build_telep_str(str, result, used, &flag))
 	{
