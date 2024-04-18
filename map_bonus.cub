@@ -1,20 +1,20 @@
-WALL=1;2
-FLOOR=3;a;b;0
-CEILING=3;b
+WALL=1;2;
+FLOOR=0;s;b;0;
+CEILING=3;b;x
 
             1111111111111111111111111111111111111
             1222222222222222222222222222222222221
-            12aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-            12aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-            12aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-            12aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-1111111111111aaaaaaaaaaaaaaa22aaaaaaaaaaaaaaaa211
-1000000000001aaaaaaaaaaaaaaa22aaaaaaaaaaaaaaaa21
-1000100000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-1001000000000bbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-1000100000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-10000E0000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-1000000000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
+            12sssssssssssssssssssssssssssssssss21
+            12sssssssssssssssssssssssssssssssss21
+            12sssssssssssssssssssssssssssssssss21
+            12sssssssssssssssssssssssssssssssss21
+1111111111111sssssssssssssss22ssssssssssssssss211
+1000000000001sssssssssssssss22ssssssssssssssss21
+1000100000001sssssssssssssssssssssssssssssssss21
+1001000000000bbbssssssssssssssssssssssssssssss21
+100010000001sssssssssssssssssssssssssssssssss21
+10000E0000001ssssssssssssssssssssssssssssssss21
+1000000000001sssssssssssssssssssssssssssssssss21
 111111111111122222222222222222222222222222222221
 111111111111111111111111111111111111111111111111
 111111111111111111111111111111111111111111111111

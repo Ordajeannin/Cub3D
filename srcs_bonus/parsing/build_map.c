@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 17:41:15 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:22:29 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_player_in_line(char *str, t_textures *map_info, int y, t_game *game)
 			&& !is_in_list(str[i], game->floor)
 			&& !is_in_list(str[i], game->wall))
 		{
-			printf("%c is unidentified\n", str[i]);
+			printf("error, %c is unidentified\n", str[i]);
 			player = 42;
 		}
 		i ++;
@@ -95,7 +95,7 @@ char	*go_to_map(int fd, t_game *game, int flag)
 		{
 			if (!build_texture_list(str, game))
 			{
-				printf("je renvoi 0 sur cette sting :%s\n", str);
+				printf("textures path error\n");
 				free(str);
 				return (NULL);
 			}

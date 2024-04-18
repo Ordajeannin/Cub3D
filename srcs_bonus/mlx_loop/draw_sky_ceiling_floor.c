@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:34:07 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/18 17:59:13 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:09:50 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 	tex = game->tex;
 	while (tex && (char)texture != tex->name)
 		tex = tex->next;
-	if (!tex || tex->image[0].im_ptr == NULL || tex->image[1].im_ptr == NULL)
-		return (0);
-	if (ft_strncmp(text, "FLOOR", 5) == 0)
+	if (tex && ft_strncmp(text, "FLOOR", 5) == 0 && tex->image[0].im_ptr)
 	{
 		index = y * tex->image[0].line_size + x * (tex->image[0].bpp >> 3);
 		pixel = tex->image[0].im_addr + index;
 	}
-	else
+	else if (tex && tex->image[1].im_ptr)
 	{
 		index = y * tex->image[1].line_size + x * (tex->image[1].bpp >> 3);
 		pixel = tex->image[1].im_addr + index;
 	}
+	else
+		return (0);
 	return (*(unsigned int *)pixel);
 }
 
@@ -106,6 +106,8 @@ unsigned int	get_sky(t_game *game, int x, int y, char texture)
 	while (tex && tex->name != texture)
 		tex = tex->next;
 	if (!tex)
+		return (0);
+	if (!tex->image[1].im_ptr)
 		return (0);
 	y = y * tex->image[1].im_height / SCREEN_HEIGHT;
 	index = y * tex->image[1].line_size

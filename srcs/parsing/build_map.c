@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/17 18:21:07 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:28:36 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,7 @@ int	valide_pre_map_str(const char *str)
 	while (str && str[i])
 	{
 		if (!ft_isspace(str[i]))
-		{
-			printf("parasite before map\n");
 			return (0);
-		}
 		i ++;
 	}
 	return (1);
@@ -105,7 +102,7 @@ char	*go_to_map(int fd, t_textures *map_utils)
 		{
 			if (!valide_pre_map_str(str) || !get_textures(str, map_utils))
 			{
-				printf("je renvoi 0 sur cette sting :%s\n", str);
+				printf("error in textures init\n");
 				free(str);
 				return (NULL);
 			}

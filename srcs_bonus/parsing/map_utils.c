@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/04/18 17:37:42 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:12:18 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	free_tab(char **map)
 
 int	is_inside(char c, t_game *game)
 {
-	if (is_in_list(c, game->floor)/* || is_in_list(c, game->ceiling)*/)
+	if (is_in_list(c, game->floor))
 		return (1);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (2);

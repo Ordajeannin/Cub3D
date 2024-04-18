@@ -1,8 +1,8 @@
-WE ./textures/map3/wallmax.xpm
-NO ./textures/map3/wall1.xpm
+WE ./textures/map3/cobleM.xpm
+NO ./textures/map3/brickM.xpm
 
-EA   ./textures/map3/ea.xpm
-SO		./textures/map3/wallmin.xpm
+EA   ./textures/map3/netherbrickM.xp
+SO		./textures/map3/woodM.xpm
 F	200,100,50
 C 10,100,200
 

@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:54:43 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/10 17:47:54 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:23:46 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int	init_map(int *i, int *fd, int *player, char *argv)
 	*player = 0;
 	*i = 1;
 	if (!ft_open(fd, argv))
+	{
+		printf("open error\n");
 		return (0);
+	}
 	return (1);
 }
