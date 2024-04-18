@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/03/20 16:04:18 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:35:17 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_f_and_c(char *str, t_textures *map_info)
 	static int	floor;
 	static int	celling;
 
-	if (str && !ft_strncmp(str, "F ", 2))
+	if (str && !ft_strncmp(str, "F", 1))
 	{
 		if (floor)
 		{
@@ -54,7 +54,7 @@ int	get_f_and_c(char *str, t_textures *map_info)
 		floor = 1;
 		map_info->f = atorgb(ft_str_rm_spaces(str + 1));
 	}
-	if (str && !strncmp(str, "C ", 2))
+	if (str && !ft_strncmp(str, "C", 1))
 	{
 		if (celling)
 		{
@@ -69,7 +69,7 @@ int	get_f_and_c(char *str, t_textures *map_info)
 
 int	get_next_textures(char *str, t_textures *map_info)
 {
-	if (str && !strncmp(str, "WE ", 3))
+	if (str && !ft_strncmp(str, "WE", 2))
 	{
 		if (map_info->we)
 		{
@@ -78,7 +78,7 @@ int	get_next_textures(char *str, t_textures *map_info)
 		}
 		map_info->we = ft_str_rm_spaces(str + 2);
 	}
-	if (str && !strncmp(str, "EA ", 3))
+	if (str && !ft_strncmp(str, "EA", 2))
 	{
 		if (map_info->ea)
 		{
@@ -94,7 +94,7 @@ int	get_next_textures(char *str, t_textures *map_info)
 
 int	get_textures(char *str, t_textures *map_info)
 {
-	if (str && !strncmp(str, "NO", 2) && ft_isspace(str[2]))
+	if (str && !ft_strncmp(str, "NO", 2) && ft_isspace(str[2]))
 	{
 		if (map_info && map_info->no)
 		{
@@ -103,7 +103,7 @@ int	get_textures(char *str, t_textures *map_info)
 		}
 		map_info->no = ft_str_rm_spaces(str + 2);
 	}
-	if (str && !strncmp(str, "SO ", 3) && ft_isspace(str[2]))
+	if (str && !ft_strncmp(str, "SO", 2) && ft_isspace(str[2]))
 	{
 		if (map_info->so)
 		{

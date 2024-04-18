@@ -6,14 +6,14 @@
 #    By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 18:02:23 by pkorsako          #+#    #+#              #
-#    Updated: 2024/03/22 15:49:05 by ajeannin         ###   ########.fr        #
+#    Updated: 2024/04/15 20:10:56 by pkorsako         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ########### V A R I A B L E S #############
 
-NAME		= cub3d
-NAME_BONUS	= cub3d_bonus
+NAME		= cub3D
+NAME_BONUS	= cub3D_bonus
 INCLUDES	= -Iincludes -Ilibft
 LIBFT		= -Llibft -lft
 SRC_DIR		= srcs
