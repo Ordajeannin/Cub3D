@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajeannin <ajeannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:30:02 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/17 19:14:21 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:16:39 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ t_player	*init_player(t_game *game)
 	player->moove[4] = 0;
 	player->moove[5] = 0;
 	player->speed = DIST_WALK;
+	player->is_in_telep = 0;
 	return (player);
 }

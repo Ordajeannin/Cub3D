@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajeannin <ajeannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:15 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/15 20:26:09 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:32:57 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,9 @@ void	create_col_test(t_game *game, unsigned int value, int x)
 	create_col_norme(game, projected, value, x);
 }
 
-int	render(t_game *game)
+void	ft_fps(t_game *game)
 {
-	int				i;
-	unsigned int	*image;
 	struct timeval	time;
-	static size_t	frame;
 	int				fps;
 
 	fps = 1000000 / FPS_MAX;
@@ -70,9 +67,18 @@ int	render(t_game *game)
 	if (labs(time.tv_usec - game->time.tv_usec) < fps)
 		usleep(fps - labs(time.tv_usec - game->time.tv_usec));
 	gettimeofday(&game->time, NULL);
+}
+
+int	render(t_game *game)
+{
+	int				i;
+	unsigned int	*image;
+
 	if (game->win == NULL)
 		return (1);
 	i = 0;
+	ft_fps(game);
+	ft_telep(game, game->player);
 	ft_moove(game->player, game);
 	image = proj_plan_image_test(game, game->player->orientation);
 	while (image[i])
@@ -82,13 +88,5 @@ int	render(t_game *game)
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	free(image);
-	frame ++;
 	return (0);
-}
-
-int	loop(void)
-{
-	while (1 != 1)
-		break ;
-	return (1);
 }
