@@ -6,7 +6,7 @@
 /*   By: ajeannin <ajeannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:21:34 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/18 19:40:44 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:35:27 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	apply_telep(t_player *player, t_telep_info *telep, char c)
 
 t_telep	*check_if_telep(t_game *game, char c)
 {
-	t_telep *telep;
+	t_telep	*telep;
 
 	telep = game->telep;
 	while (telep && ft_strchr(telep->name, c) == NULL)
@@ -48,8 +48,6 @@ void	ft_telep(t_game *game, t_player *player)
 	c = try_get_texture(game->grid->map,
 			(int)player->pos_y >> 6, (int)player->pos_x >> 6);
 	telep = check_if_telep(game, c);
-	if (telep)
-		printf("HEY! je suis sur un teleporteur!\n");
 	if (telep && player->is_in_telep == 0)
 		apply_telep(player, telep->peer, c);
 	else if (!telep)

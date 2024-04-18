@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 19:23:22 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:16:38 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,6 +314,9 @@ void			view_stocked_input(int *moove);
 void			ft_telep(t_game *game, t_player *player);
 char			*build_telep_str(char *str);
 int				build_telep(t_game *game);
+int				pos_in_map(char **map, char c, char flag_xy);
+int				is_in_map_and_floor(char **map, char *floor, char c);
+
 
 ///////////////////////////////////////////////////////////////////
 ////////////////////////  Hook_tests  /////////////////////////////

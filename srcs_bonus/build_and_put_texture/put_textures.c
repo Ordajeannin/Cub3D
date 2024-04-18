@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 19:14:38 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:35:04 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	free_tex(t_game *game)
 
 void	free_telep(t_game *game)
 {
-	t_telep *tmp;
+	t_telep	*tmp;
 
 	while (game->telep)
 	{
