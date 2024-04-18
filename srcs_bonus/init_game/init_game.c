@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajeannin <ajeannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:53 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/17 18:07:02 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:15:00 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	free_init(t_game *game)
 {
 	free_tex(game);
+	free_telep(game);
 	mlx_destroy_image(game->mlx, game->img);
 	mlx_destroy_window(game->mlx, game->win);
 	free(game->grid);
@@ -62,6 +63,7 @@ int	init_game(t_game *game, t_textures *textures)
 	game->textures = textures;
 	game->player = init_player(game);
 	game->grid = init_grid(game);
+	game->telep = NULL;
 	if (!great_mighty_init_tex(game))
 		return (free_init(game));
 	return (0);

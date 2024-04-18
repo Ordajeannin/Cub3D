@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/11 16:07:55 by paulk            ###   ########.fr       */
+/*   Updated: 2024/04/18 19:23:31 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,16 @@ int	build_next_list(char *str, t_game *game)
 		}
 		game->ceiling = build_list(str + 8);
 		printf("game->ceiling :%s\n", game->ceiling);
+	}
+	if (str && !strncmp(str, "TELEP=", 6))
+	{
+		if (game->telep)
+		{
+			printf("telep already exist\n");
+			return (0);
+		}
+		game->telep_str = build_telep_str(str + 6);
+		printf("game->telep :%s\n", game->telep_str);
 	}
 	return (1);
 }

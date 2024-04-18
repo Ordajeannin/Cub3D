@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_text_im.c                                   :+:      :+:    :+:   */
+/*   put_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/04 17:30:54 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:14:38 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ void	free_tex(t_game *game)
 		}
 		tmp = game->tex;
 		game->tex = game->tex->next;
+		free(tmp);
+	}
+}
+
+void	free_telep(t_game *game)
+{
+	t_telep *tmp;
+
+	while (game->telep)
+	{
+		free(game->telep->name);
+		free(game->telep->peer);
+		tmp = game->telep;
+		game->telep = game->telep->next;
 		free(tmp);
 	}
 }

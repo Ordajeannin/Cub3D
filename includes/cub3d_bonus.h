@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/17 20:05:30 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:23:22 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,23 @@ typedef struct s_grid
 	t_textures	*textures;
 }	t_grid;
 
+typedef struct s_telep_info
+{
+	char	name_enter;
+	int		x_enter;
+	int		y_enter;
+	char	name_exit;
+	int		x_exit;
+	int		y_exit;
+}	t_telep_info;
+
+typedef struct s_telep
+{
+	char			*name;
+	t_telep_info	*peer;
+	void			*next;
+}	t_telep;
+
 typedef struct s_image
 {
 	void	*im_ptr;
@@ -130,6 +147,7 @@ typedef struct s_player
 	int			m_d;
 	int			moove[6];
 	int			speed;
+	int			is_in_telep;
 }	t_player;
 
 typedef struct s_sprite
@@ -157,11 +175,13 @@ typedef struct s_game
 	double			floor_x;
 	double			floor_y;
 	struct timeval	time;
+	char			*telep_str;
 	t_sprite		*sprite;
 	t_tex			*tex;
 	t_player		*player;
 	t_grid			*grid;
 	t_textures		*textures;
+	t_telep			*telep;
 }	t_game;
 
 ///////////////////////////////////////////////////////////////////
@@ -206,6 +226,7 @@ t_grid			*init_grid(t_game *game);
 t_player		*init_player(t_game *game);
 int				init_textures(t_game *game, t_textures *textures);
 void			free_game(t_game *game, t_textures *map_info);
+void			free_telep(t_game *game);
 int				init_sprites(t_game *game);
 t_image			xpm_to_image(t_game *game, char *path);
 
@@ -290,6 +311,9 @@ void			player_move(t_player *player, double angle);
 void			player_move_collide(t_game *game, double angle);
 void			ft_moove(t_player *player, t_game *game);
 void			view_stocked_input(int *moove);
+void			ft_telep(t_game *game, t_player *player);
+char			*build_telep_str(char *str);
+int				build_telep(t_game *game);
 
 ///////////////////////////////////////////////////////////////////
 ////////////////////////  Hook_tests  /////////////////////////////
