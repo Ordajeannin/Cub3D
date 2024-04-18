@@ -1,7 +1,7 @@
 WALL=1
-FLOOR=0;a;b;2
+FLOOR=0;a;b;2;X;Y;A;B
 CEILING=
-TELEP=[xy][er][fg]
+TELEP=[XY][AB]
 
 
             1111111111111111111111111111111111111
@@ -10,12 +10,12 @@ TELEP=[xy][er][fg]
             12aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
             12aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
             12aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-1111111111111aaaaaaaaaaaaaaa22aaaaaaaaaaaaaaaa211
+1111111111111aaaaaaaaaaaYaaa22aaaaaaaaaaaaaaaa211
 1000000000001aaaaaaaaaaaaaaa22aaaaaaaaaaaaaaaa21
+1000100000001aaaaaaaaaaaaaaaaaBaaaaaaaaaaaaaaa21
+1001000000X00bbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
 1000100000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-1001000000000bbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-1000100000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
-10000E0000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
+10000E0000A01aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
 1000000000001aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa21
 111111111111122222222222222222222222222222222221
 111111111111111111111111111111111111111111111111
