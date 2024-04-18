@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:34:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/15 17:57:40 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:01:54 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	rgb_atoi(char *str)
 	i = 0;
 	sign = 0;
 	result = 0;
-	if (!str)
+	if (!str || !*str)
 		return (-1);
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
 		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')

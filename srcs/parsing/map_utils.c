@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/03/20 16:02:52 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:49:06 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,6 @@ void	free_tab(char **map)
 		i ++;
 	}
 	free(map);
-}
-
-int	valid_char(char **map, int y, int x)
-{
-	static int	starter;
-
-	if (map[y][x] == '1' || map[y][x] == '0')
-		return (1);
-	if (map[y][x] == 'N' || map[y][x] == 'S'
-		|| map[y][x] == 'E' || map[y][x] == 'W')
-	{
-		if (starter)
-			return (0);
-		starter ++;
-		map[y][x] = '0';
-		return (1);
-	}
-	else
-		return (0);
 }
 
 int	is_inside(char c)

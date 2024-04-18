@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/05 14:32:33 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:21:07 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,27 @@ int	get_map_y(t_textures *map_info, char *map_path)
 	return (i);
 }
 
+int	valide_pre_map_str(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!ft_strncmp(str, "WE", 2) || !ft_strncmp(str, "NO", 2)
+		|| !ft_strncmp(str, "EA", 2) || !ft_strncmp(str, "SO", 2)
+		|| *str == 'F' || *str == 'C')
+		return (1);
+	while (str && str[i])
+	{
+		if (!ft_isspace(str[i]))
+		{
+			printf("parasite before map\n");
+			return (0);
+		}
+		i ++;
+	}
+	return (1);
+}
+
 /*
 	avance dans le fichier .cub jusqu'a trouver la map
 	si map_utils != NULL va également rechercher les textures
@@ -82,7 +103,7 @@ char	*go_to_map(int fd, t_textures *map_utils)
 			return (str);
 		if (map_utils)
 		{
-			if (!get_textures(str, map_utils))
+			if (!valide_pre_map_str(str) || !get_textures(str, map_utils))
 			{
 				printf("je renvoi 0 sur cette sting :%s\n", str);
 				free(str);

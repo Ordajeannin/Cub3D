@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:23:00 by paulk             #+#    #+#             */
-/*   Updated: 2024/04/11 14:21:05 by paulk            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:37:42 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,9 @@ void	free_tab(char **map)
 	free(map);
 }
 
-int	valid_char(char **map, int y, int x)
-{
-	static int	starter;
-
-	if (map[y][x] == '1' || map[y][x] == '0')
-		return (1);
-	if (map[y][x] == 'N' || map[y][x] == 'S'
-		|| map[y][x] == 'E' || map[y][x] == 'W')
-	{
-		if (starter)
-			return (0);
-		starter ++;
-		map[y][x] = '0';
-		return (1);
-	}
-	else
-		return (0);
-}
-
 int	is_inside(char c, t_game *game)
 {
-	if (is_in_list(c, game->floor) || is_in_list(c, game->ceiling))
-		return (1);
-	if (c == '0')
+	if (is_in_list(c, game->floor)/* || is_in_list(c, game->ceiling)*/)
 		return (1);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (2);

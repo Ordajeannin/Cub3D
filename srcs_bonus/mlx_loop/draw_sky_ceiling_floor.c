@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:34:07 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/17 20:37:43 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:59:13 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ unsigned int	get_sky(t_game *game, int x, int y, char texture)
 		tex = tex->next;
 	if (!tex)
 		return (0);
-	y = y % tex->image[1].im_height;
+	y = y * tex->image[1].im_height / SCREEN_HEIGHT;
 	index = y * tex->image[1].line_size
 		+ ((int)round((game->angle[x] * tex->image[1].im_width / 360.0)))
 		* (tex->image[1].bpp >> 3);

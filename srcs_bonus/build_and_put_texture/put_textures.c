@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_text_im.c                                   :+:      :+:    :+:   */
+/*   put_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/04 17:30:54 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:18:22 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int	get_texture_pixel(int projected, unsigned int value, t_game *game, int i)
 		tex = tex->next;
 	if (!tex)
 		return (0);
-	x = get_value(value, "OFFSET");
-	y = round(i * (63.0 / projected));
+	x = get_value(value, "OFFSET")
+		* tex->image[get_value(value, "FACE")].im_width / 64;
+	y = round(i * (tex->image[get_value(value, "FACE")].im_height - 1)
+			/ projected);
 	index = y * tex->image[get_value(value, "FACE")].line_size + x
 		* (tex->image[get_value(value, "FACE")].bpp >> 3);
 	pixel = tex->image[get_value(value, "FACE")].im_addr + index;

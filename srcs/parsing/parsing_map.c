@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:27:02 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/15 17:57:00 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:56:14 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	can_access(char **map, int dest_x, int dest_y)
 			break ;
 		y ++;
 	}
-	if (y != dest_y)
+	if (y != dest_y || !map[y])
 		return (0);
 	while (map[y][x])
 	{
@@ -117,7 +117,7 @@ int	map_parser(char *argv, t_textures *map_info)
 	map_y = get_map_y(map_info, argv);
 	if (map_y == -1 || !check_end_of_filename(argv, ".cub"))
 		return (0);
-	map_info->map = malloc(map_y * (sizeof(char *) + 4));
+	map_info->map = malloc(map_y * sizeof(char *) + 8);
 	if (!map_info->map)
 	{
 		printf("malloc failed\n");
