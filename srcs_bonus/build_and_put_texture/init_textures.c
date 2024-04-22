@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:30:11 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 19:24:02 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 21:10:07 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_tex	*build_tex_tab(t_game *game, char *path_to_tex_dir, char dir_nm)
 	return (tex);
 }
 
-char	*built_texture_path(char dir_nb, const char *map_name)
+char	*built_texture_path(char dir_nb, char *map_name)
 {
 	char	*path;
 	char	*tmp;
@@ -65,12 +65,15 @@ char	*built_texture_path(char dir_nb, const char *map_name)
 
 	little_string[1] = 0;
 	little_string[0] = dir_nb;
+	printf("map name is :%s\n", map_name);
 	if (!ft_isalnum(dir_nb))
 		return (NULL);
-	tmp = ft_strtrim(map_name, ".cub");
+	tmp = ft_strtrimstr(map_name, ".cub");
+	printf("tmp :%s\n", tmp);
 	map_name_clean = ft_strjoin(tmp, "/");
 	if (tmp)
 		free(tmp);
+	printf("map name clean :%s\n", map_name_clean);
 	itoa_dir = ft_strjoin(little_string, "/");
 	tmp = ft_strjoin(map_name_clean, itoa_dir);
 	if (itoa_dir)
@@ -80,6 +83,7 @@ char	*built_texture_path(char dir_nb, const char *map_name)
 	path = ft_strjoin("textures/", tmp);
 	if (tmp)
 		free(tmp);
+	printf("path build is :%s\n\n", path);
 	return (path);
 }
 

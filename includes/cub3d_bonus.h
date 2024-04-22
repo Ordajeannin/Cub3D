@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/22 19:01:44 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/22 21:09:57 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ int				texture_good(t_textures *map_info);
 int				great_mighty_init_tex(t_game *game);
 int				check_point_n_w(char **map, int x, int y, t_game *game);
 int				is_in_list(const char c, const char *list);
+char			*ft_strtrimstr(char *str, char *cut);
 
 ///////////////////////////////////////////////////////////////////
 /////////////////////////  Init_things  ///////////////////////////
