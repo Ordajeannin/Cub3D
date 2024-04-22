@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:35:50 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 21:06:52 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:45:02 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	free_textures(t_game *game)
 		free(game->floor);
 	if (game->wall)
 		free(game->wall);
+	if (game->telep_str)
+		free(game->telep_str);
 }
 
 int	how_much_c_in_str(char c, const char *str)
@@ -85,7 +87,6 @@ int	build_next_list(char *str, t_game *game)
 			return (0);
 		}
 		game->telep_str = build_telep_str(str + 6);
-		printf("game->telep_str :%s\n", game->telep_str);
 	}
 	return (1);
 }
