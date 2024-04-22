@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:20:01 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/22 15:37:36 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:15:03 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 		quit_w_message("you have to put one map as argument");
 	game.map_used = argv[1];
 	if (!map_parser(argv[1], &map_info, &game)
-		|| init_game(&game, &map_info) == -1)
+		|| init_game(&game, &map_info) == -1 || build_telep(&game) == -1)
 		wrong_start(&map_info, &game);
 	if (gettimeofday(&game.time, NULL))
 	{
