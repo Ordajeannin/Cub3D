@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:13:52 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/22 17:28:07 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:25:17 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ int	build_telep(t_game *game)
 		build_node_telep(game, game->telep_str[i + 1], game->telep_str[i + 2]);
 		i += 4;
 	}
-	// free(game->telep_str);
 	return (0);
 }

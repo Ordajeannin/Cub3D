@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:10:46 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 20:39:15 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:24:50 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_end_of_filename(char const *filename, const char *end)
 }
 
 int	texture_good(t_textures *map_info)
-{	
+{
 	if (!map_info->so || !map_info->we || !map_info->ea || !map_info->no)
 	{
 		printf("missing or invalid wall\n");
@@ -39,10 +39,10 @@ int	texture_good(t_textures *map_info)
 		|| !check_end_of_filename(map_info->so, ".xpm")
 		|| !check_end_of_filename(map_info->we, ".xpm")
 		|| !check_end_of_filename(map_info->no, ".xpm"))
-		{
-			printf(("wrong texture filetype\n"));
-			return (0);
-		}
+	{
+		printf(("wrong texture filetype\n"));
+		return (0);
+	}
 	if (map_info->c == -1 || map_info->f == -1)
 	{
 		printf("missing or invalid f or c\n");

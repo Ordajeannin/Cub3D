@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:13:14 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/22 16:45:23 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:25:53 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_player_in_line(char *str, t_textures *map_info, int y, t_game *game)
 			str[i] = game->floor[0];
 		}
 		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W'
-			/*&& str[i] != '0' && str[i] != '1' */&& str[i] != ' ' && str[i] != '\n'
+			&& str[i] != ' ' && str[i] != '\n'
 			&& !is_in_list(str[i], game->ceiling)
 			&& !is_in_list(str[i], game->floor)
 			&& !is_in_list(str[i], game->wall))

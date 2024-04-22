@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 20:16:38 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:01:44 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ typedef struct s_player
 	int			m_d;
 	int			moove[6];
 	int			speed;
-	int			is_in_telep;
+	char		is_in_telep;
 }	t_player;
 
 typedef struct s_sprite
@@ -316,7 +316,6 @@ char			*build_telep_str(char *str);
 int				build_telep(t_game *game);
 int				pos_in_map(char **map, char c, char flag_xy);
 int				is_in_map_and_floor(char **map, char *floor, char c);
-
 
 ///////////////////////////////////////////////////////////////////
 ////////////////////////  Hook_tests  /////////////////////////////
