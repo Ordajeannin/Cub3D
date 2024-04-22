@@ -6,15 +6,27 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:34:07 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/18 20:48:21 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:20:26 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
+
+char *get_fc_pixel(t_tex *tex, int x, int y, int flag)
 {
 	int		index;
+	char	*pixel;
+	
+	x = x * tex->image[flag].im_width / 64;
+	y = y * tex->image[flag].im_height / 64;
+	index = y * tex->image[flag].line_size + x * (tex->image[flag].bpp >> 3);
+	pixel = tex->image[flag].im_addr + index;
+	return (pixel);
+}
+
+unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
+{
 	char	*pixel;
 	int		x;
 	int		y;
@@ -22,20 +34,13 @@ unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 
 	x = (int)game->floor_x % 64;
 	y = (int)game->floor_y % 64;
-	index = texture;
 	tex = game->tex;
 	while (tex && (char)texture != tex->name)
 		tex = tex->next;
 	if (tex && ft_strncmp(text, "FLOOR", 5) == 0 && tex->image[0].im_ptr)
-	{
-		index = y * tex->image[0].line_size + x * (tex->image[0].bpp >> 3);
-		pixel = tex->image[0].im_addr + index;
-	}
+		pixel = get_fc_pixel(tex, x, y, 0);
 	else if (tex && tex->image[1].im_ptr)
-	{
-		index = y * tex->image[1].line_size + x * (tex->image[1].bpp >> 3);
-		pixel = tex->image[1].im_addr + index;
-	}
+		pixel = get_fc_pixel(tex, x, y, 1);
 	else
 		return (0);
 	return (*(unsigned int *)pixel);
