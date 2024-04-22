@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 20:16:38 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:53:51 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 //////////////////  Define Player (feel free) /////////////////////
 ///////////////////////////////////////////////////////////////////
 //SCREEN//
-# define SCREEN_WIDTH 640
-# define HALF_WIDTH 320
-# define SCREEN_HEIGHT 400
+# define SCREEN_WIDTH 1280//640
+# define HALF_WIDTH 640
+# define SCREEN_HEIGHT 800
 //SKY//
 # define SKY_WIDTH 800.0
 # define SKY_HEIGHT 600

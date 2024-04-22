@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:30:11 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 19:24:02 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:57:08 by pkorsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ t_image	xpm_to_image(t_game *game, char *path)
 	image.im_ptr = mlx_xpm_file_to_image(game->mlx, path, &image.im_width,
 			&image.im_height);
 	if (!image.im_ptr)
-	{
-		printf("cannot convert .xpm\n");
 		return (image);
-	}
 	image.im_addr = mlx_get_data_addr(image.im_ptr, &image.bpp,
 			&image.line_size, &image.endian);
 	return (image);
