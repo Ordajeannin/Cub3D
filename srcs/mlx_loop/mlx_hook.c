@@ -6,7 +6,7 @@
 /*   By: ajeannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:49:58 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/03/20 14:27:39 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:54:50 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	handle_close(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	game->win = NULL;
 	mlx_destroy_image(game->mlx, game->img);
+	free_game(game, game->textures);
+	exit(0);
 	return (0);
 }
 
