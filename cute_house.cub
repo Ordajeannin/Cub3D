@@ -1,17 +1,17 @@
 WALL=1;2;3;4;5;6
-FLOOR=0;a;b;c;d;D
-CEILING=0;a;d;D
-TELEP=[dD]
+FLOOR=0;a;b;c;d;D;X;Y
+CEILING=0;a;d;D;X
+TELEP=[dD][XY]
 
                      11111111111111
                      10000000000001
                      600E0000000001
                      10000000000001
         4444444444444100000000000d1
-       4ccccccccccccc31111111111121
-       4ccccccccccccc355555555555255555555
-       4ccccccccccccc5aaaaaaaaaaaDaaaaaaaa5
-       4ccccccccccbbb2aaaaaaaaaaaaaaaaaaa5
-       4ccccccccccccc5aaaaaaaaaaaaaaaaaaaa5
-       4ccccccccccccc3aaaaaaaaaaaaaaaaaaaa5 
+       4cccccccccccc331111111111121
+       4cccccccccccc3355555555555255555555
+       4cccccccccccc55aaaaaaaaaaaDaaaaaaaa5
+       4ccccccccccbbY2Xaaaaaaaaaaaaaaaaaaa5
+       4cccccccccccc55aaaaaaaaaaaaaaaaaaaa5
+       4cccccccccccc35aaaaaaaaaaaaaaaaaaaa5 
         4444444444444 55555555555555555555

@@ -32,9 +32,6 @@
 # define SCREEN_WIDTH 640
 # define HALF_WIDTH 320
 # define SCREEN_HEIGHT 400
-//SKY//
-# define SKY_WIDTH 800.0
-# define SKY_HEIGHT 600
 //YOU//
 # define DIST_WALK 7
 # define SPEED_UP 2.0

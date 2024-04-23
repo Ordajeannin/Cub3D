@@ -62,7 +62,6 @@ char	*built_texture_path(char dir_nb, char *map_name)
 
 	little_string[1] = 0;
 	little_string[0] = dir_nb;
-	printf("map name is :%s\n", map_name);
 	if (!ft_isalnum(dir_nb))
 		return (NULL);
 	tmp = ft_strtrimstr(map_name, ".cub");
@@ -70,7 +69,6 @@ char	*built_texture_path(char dir_nb, char *map_name)
 	map_name_clean = ft_strjoin(tmp, "/");
 	if (tmp)
 		free(tmp);
-	printf("map name clean :%s\n", map_name_clean);
 	itoa_dir = ft_strjoin(little_string, "/");
 	tmp = ft_strjoin(map_name_clean, itoa_dir);
 	if (itoa_dir)
@@ -80,7 +78,6 @@ char	*built_texture_path(char dir_nb, char *map_name)
 	path = ft_strjoin("textures/", tmp);
 	if (tmp)
 		free(tmp);
-	printf("path build is :%s\n\n", path);
 	return (path);
 }
 
