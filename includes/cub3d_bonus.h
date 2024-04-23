@@ -6,7 +6,7 @@
 /*   By: paulk <paulk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/22 21:09:57 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/23 18:06:36 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@
 # define SCREEN_WIDTH 640
 # define HALF_WIDTH 320
 # define SCREEN_HEIGHT 400
-//SKY//
-# define SKY_WIDTH 800.0
-# define SKY_HEIGHT 600
 //YOU//
 # define DIST_WALK 7
 # define SPEED_UP 2.0

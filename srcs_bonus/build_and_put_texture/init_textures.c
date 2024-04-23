@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:30:11 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/22 21:10:07 by ajeannin         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:03:11 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ char	*built_texture_path(char dir_nb, char *map_name)
 
 	little_string[1] = 0;
 	little_string[0] = dir_nb;
-	printf("map name is :%s\n", map_name);
 	if (!ft_isalnum(dir_nb))
 		return (NULL);
 	tmp = ft_strtrimstr(map_name, ".cub");
@@ -73,7 +72,6 @@ char	*built_texture_path(char dir_nb, char *map_name)
 	map_name_clean = ft_strjoin(tmp, "/");
 	if (tmp)
 		free(tmp);
-	printf("map name clean :%s\n", map_name_clean);
 	itoa_dir = ft_strjoin(little_string, "/");
 	tmp = ft_strjoin(map_name_clean, itoa_dir);
 	if (itoa_dir)
@@ -83,7 +81,6 @@ char	*built_texture_path(char dir_nb, char *map_name)
 	path = ft_strjoin("textures/", tmp);
 	if (tmp)
 		free(tmp);
-	printf("path build is :%s\n\n", path);
 	return (path);
 }
 
