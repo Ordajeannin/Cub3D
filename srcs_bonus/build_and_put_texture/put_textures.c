@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:25:28 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/18 20:48:08 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:18:00 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,16 @@ void	free_telep(t_game *game)
 		game->telep = game->telep->next;
 		free(tmp);
 	}
+}
+
+char	*get_fc_pixel(t_tex *tex, int x, int y, int flag)
+{
+	int		index;
+	char	*pixel;
+
+	x = x * tex->image[flag].im_width / 64;
+	y = y * tex->image[flag].im_height / 64;
+	index = y * tex->image[flag].line_size + x * (tex->image[flag].bpp >> 3);
+	pixel = tex->image[flag].im_addr + index;
+	return (pixel);
 }

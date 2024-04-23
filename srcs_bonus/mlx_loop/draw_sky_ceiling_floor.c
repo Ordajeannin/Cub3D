@@ -6,24 +6,11 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:34:07 by ajeannin          #+#    #+#             */
-/*   Updated: 2024/04/22 19:20:26 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:17:10 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-
-char *get_fc_pixel(t_tex *tex, int x, int y, int flag)
-{
-	int		index;
-	char	*pixel;
-	
-	x = x * tex->image[flag].im_width / 64;
-	y = y * tex->image[flag].im_height / 64;
-	index = y * tex->image[flag].line_size + x * (tex->image[flag].bpp >> 3);
-	pixel = tex->image[flag].im_addr + index;
-	return (pixel);
-}
 
 unsigned int	get_texture_fsc(t_game *game, char *text, int texture)
 {

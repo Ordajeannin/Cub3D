@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:30:11 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/22 21:17:44 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:20:29 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ char	*built_texture_path(char dir_nb, char *map_name)
 	if (!ft_isalnum(dir_nb))
 		return (NULL);
 	tmp = ft_strtrimstr(map_name, ".cub");
-	printf("tmp :%s\n", tmp);
 	map_name_clean = ft_strjoin(tmp, "/");
 	if (tmp)
 		free(tmp);

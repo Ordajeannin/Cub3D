@@ -6,7 +6,7 @@
 /*   By: pkorsako <pkorsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:15:52 by pkorsako          #+#    #+#             */
-/*   Updated: 2024/04/23 17:27:38 by pkorsako         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:16:44 by ajeannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,6 +285,7 @@ int				is_floor(t_game *game, char c);
 void			render_ceiling_sky(t_game *game, int x, int y);
 void			render_floor(t_game *game, int x, int y);
 int				player_sphere(t_game *game);
+char			*get_fc_pixel(t_tex *tex, int x, int y, int flag);
 
 ///////////////////////////////////////////////////////////////////
 ////////////////////////  Mlx_things  /////////////////////////////
